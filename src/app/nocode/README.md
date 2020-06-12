@@ -17,6 +17,8 @@
 
 `No-Code Solutions` are applications built using the [SalesTim API](/api/) but without requiring a strong technical background, such as apps built on top of the [Microsoft Power Platform](https://docs.microsoft.com/en-us/learn/powerplatform/), especially [PowerApps](https://docs.microsoft.com/en-us/powerapps/powerapps-overview) and [Power Automate](https://docs.microsoft.com/en-us/power-automate/getting-started).
 
+See [Use the SalesTim API with Power Platform](/nocode/power-platform) for more information.
+
 In addition, at the core of the SalesTim Platform, `Teams Templates` are a combination of two elements:
 - A team template, describing the structure and contents of a team.
 - A governance policy that may include security and compliance rules.

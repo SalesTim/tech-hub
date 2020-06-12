@@ -9,6 +9,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AppsApi* | [**createApp**](Apis/AppsApi.md#createapp) | **POST** /apps | Create a virtual app
 *AppsApi* | [**deleteApp**](Apis/AppsApi.md#deleteapp) | **DELETE** /apps/{id} | Delete a virtual app
+*AppsApi* | [**getApp**](Apis/AppsApi.md#getapp) | **GET** /apps/{id} | Get a virtual app
 *AppsApi* | [**getApps**](Apis/AppsApi.md#getapps) | **GET** /apps | Get all virtual apps in a tenant
 *AppsApi* | [**regenerateAppSecret**](Apis/AppsApi.md#regenerateappsecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret
 *AppsApi* | [**updateApp**](Apis/AppsApi.md#updateapp) | **PUT** /apps/{id} | Update a virtual app

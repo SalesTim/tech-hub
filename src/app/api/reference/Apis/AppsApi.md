@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createApp**](AppsApi.md#createApp) | **POST** /apps | Create a virtual app
 [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /apps/{id} | Delete a virtual app
+[**getApp**](AppsApi.md#getApp) | **GET** /apps/{id} | Get a virtual app
 [**getApps**](AppsApi.md#getApps) | **GET** /apps | Get all virtual apps in a tenant
 [**regenerateAppSecret**](AppsApi.md#regenerateAppSecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret
 [**updateApp**](AppsApi.md#updateApp) | **PUT** /apps/{id} | Update a virtual app
@@ -64,6 +65,33 @@ null (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+<a name="getApp"></a>
+# **getApp**
+> App getApp(id)
+
+Get a virtual app
+
+    Get a virtual app
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| The virtual app ID | [default to null]
+
+### Return type
+
+[**App**](..//Models/App.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 <a name="getApps"></a>
 # **getApps**

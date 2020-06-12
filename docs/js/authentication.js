@@ -189,6 +189,9 @@ function getAccessToken () {
           getApps(function (apps) {
             console.info(apps)
           })
+
+          setBearerAuth(response.accessToken)
+
           setAuthenticated(response, data)
           UIkit.notification({
             message: 'Successfully signed-in...',
@@ -202,6 +205,18 @@ function getAccessToken () {
       console.log(error)
       setAnonymous()
     })
+}
+
+// Send access token to swagger ui
+function setBearerAuth (token) {
+  // "Bearer " is automatically added by swagger ui
+  ui.preauthorizeApiKey('bearerAuth', token)
+}
+
+// Send api keys to swagger ui
+function setApiKeys (appId, appSecret) {
+  ui.preauthorizeApiKey('appId', appId)
+  ui.preauthorizeApiKey('appSecret', appSecret)
 }
 
 function signOut () {
@@ -237,12 +252,12 @@ function getTokenPopup (request) {
 
 // #region UI
 
-function enableLoading(){
+function enableLoading () {
   document.getElementById('loading').style.display = ""
   document.getElementById('loginCard').style.display = "none"
 }
 
-function disableLoading(){
+function disableLoading () {
   document.getElementById('loading').style.display = "none"
   document.getElementById('loginCard').style.display = ""
 }
