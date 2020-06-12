@@ -24,7 +24,12 @@ module.exports = {
         moment.locale(lang)
         return moment(timestamp).fromNow()
       }
-    }
+    },
+    ['mermaidjs',
+      {
+        theme: 'forest'
+      }
+    ]
   ],
   themeConfig: {
 
