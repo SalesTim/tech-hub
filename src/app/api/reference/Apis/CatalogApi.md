@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get all templates from your corporate catalog
 
-    Get all templates from your corporate catalog
+    Get all templates from your corporate catalog.
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -25,7 +25,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[appId](../README.md#appId), [appSecret](../README.md#appSecret), [bearerAuth](../README.md#bearerAuth)
+[appSecret](../README.md#appSecret), [bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -38,13 +38,13 @@ This endpoint does not need any parameter.
 
 Install a template from the public template store to your corporate catalog
 
-    Install a template from the public template store to your corporate catalog
+    Install a template from the public template store to your corporate catalog..
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **templateIdentifier** | [**TemplateIdentifier**](..//Models/TemplateIdentifier.md)| The template to be installed |
+ **templateIdentifier** | [**TemplateIdentifier**](..//Models/TemplateIdentifier.md)| An identifier of the the template to be installed. |
 
 ### Return type
 

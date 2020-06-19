@@ -5,9 +5,9 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getStoreCategories**](StoreApi.md#getStoreCategories) | **GET** /store/categories | Get all store categories from the public template store
-[**getStoreTemplate**](StoreApi.md#getStoreTemplate) | **GET** /store/templates/{id} | Get a store template
+[**getStoreTemplate**](StoreApi.md#getStoreTemplate) | **GET** /store/templates/{id} | Get a store template from the public template store
 [**getStoreTemplates**](StoreApi.md#getStoreTemplates) | **GET** /store/templates | Get all templates from the public template store
-[**getStoreTemplatesByCategory**](StoreApi.md#getStoreTemplatesByCategory) | **GET** /store/templates/byCategory/{id} | Get store template from a specific category
+[**getStoreTemplatesByCategory**](StoreApi.md#getStoreTemplatesByCategory) | **GET** /store/templates/byCategory/{id} | Get store templates from a specific category
 
 
 <a name="getStoreCategories"></a>
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Get all store categories from the public template store
 
-    View all templates from the public [Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+    Get all categories from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -38,9 +38,9 @@ No authorization required
 # **getStoreTemplate**
 > Object getStoreTemplate(id)
 
-Get a store template
+Get a store template from the public template store
 
-    View all templates from the public [Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+    Get a specific templates from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
 ### Parameters
 
@@ -67,7 +67,7 @@ No authorization required
 
 Get all templates from the public template store
 
-    View all templates from the public [Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+    Get all templates from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -89,9 +89,9 @@ No authorization required
 # **getStoreTemplatesByCategory**
 > List getStoreTemplatesByCategory(id)
 
-Get store template from a specific category
+Get store templates from a specific category
 
-    View all templates from the public [Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+    Get templatesfrom a specific category from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
 ### Parameters
 

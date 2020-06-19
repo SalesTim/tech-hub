@@ -28,7 +28,7 @@ In this article, you'll only get an overview, therefore please refer to the [API
 Anonymous access is enabled for endpoints related to the public [Template Store](https://store.salestim.com) (read-only access only). 
 > Applies to endpoints under `/store`.
 
-### OAuth + JWT
+### OAuth + JWT (aka "delegated mode")
 OAuth is primarily used to authenticate the SalesTim Platform administrators and catalog managers using Azure AD to manage the corporate catalog of templates and the virtual apps.
 > Applies to endpoints under `/apps` and `/catalog`
 
@@ -39,14 +39,13 @@ A valid Microsoft 365 access token issued by Azure AD is required, and expected 
 }
 ```
 
-### API Keys
+### API Keys (aka "application mode")
 API keys are used by SalesTim virtual apps to access the SalesTim API securely.
 > Applies to endpoints under `/catalog` and `/jobs`
 
-SalesTim API expects two headers to authenticate virtual apps:
+SalesTim API expects one header to authenticate virtual apps:
 ```yaml
 {
-  X-APP-ID: "<APP_ID>",  # The virtual app id
   X-API-KEY: "<API_KEY>" # The virtual app api key
 }
 ```

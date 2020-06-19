@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**createApp**](AppsApi.md#createApp) | **POST** /apps | Create a virtual app
 [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /apps/{id} | Delete a virtual app
 [**getApp**](AppsApi.md#getApp) | **GET** /apps/{id} | Get a virtual app
-[**getApps**](AppsApi.md#getApps) | **GET** /apps | Get all virtual apps in a tenant
+[**getApps**](AppsApi.md#getApps) | **GET** /apps | Get your virtual apps
 [**regenerateAppSecret**](AppsApi.md#regenerateAppSecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret
 [**updateApp**](AppsApi.md#updateApp) | **PUT** /apps/{id} | Update a virtual app
 
@@ -18,13 +18,13 @@ Method | HTTP request | Description
 
 Create a virtual app
 
-    Create a new virtual app and get its generated ID and secret.
+    Create a new virtual app and get its generated secret. Please note, for obvious security reasons, the app secret will only be accessible once, in the response to this call, but it could later be regenerated using the POST verb on the /apps/{id}/regenerateSecret endpoint.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **app** | [**App**](..//Models/App.md)| List of properties to be updated. |
+ **app** | [**App**](..//Models/App.md)| List of properties and values to be updated. |
 
 ### Return type
 
@@ -45,13 +45,13 @@ Name | Type | Description  | Notes
 
 Delete a virtual app
 
-    Delete a virtual app
+    Delete a virtual app.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| ID of the virtual app to delete | [default to null]
+ **id** | **String**| ID of the virtual app to delete. | [default to null]
 
 ### Return type
 
@@ -72,13 +72,13 @@ null (empty response body)
 
 Get a virtual app
 
-    Get a virtual app
+    Get a virtual app.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The virtual app ID | [default to null]
+ **id** | **String**| The virtual app ID. | [default to null]
 
 ### Return type
 
@@ -97,9 +97,9 @@ Name | Type | Description  | Notes
 # **getApps**
 > List getApps()
 
-Get all virtual apps in a tenant
+Get your virtual apps
 
-    Get all virtual apps in a tenant
+    Get all virtual apps associated with your tenant. Please note, apps could be created using the POST verb on the /apps endpoint.
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -123,13 +123,13 @@ This endpoint does not need any parameter.
 
 Regenerate a virtual app secret
 
-    Regenerate a virtual app secret
+    Regenerate a virtual app secret.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The virtual app ID | [default to null]
+ **id** | **String**| The virtual app ID. | [default to null]
 
 ### Return type
 
@@ -150,14 +150,14 @@ Name | Type | Description  | Notes
 
 Update a virtual app
 
-    Update a virtual app
+    Update a virtual app.
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| ID of the virtual app to update | [default to null]
- **app** | [**App**](..//Models/App.md)| List of properties to be updated. |
+ **id** | **String**| ID of the virtual app to update. | [default to null]
+ **app** | [**App**](..//Models/App.md)| List of properties and values to be updated. Please note that some properties are readonly and therefore will be ignored. |
 
 ### Return type
 

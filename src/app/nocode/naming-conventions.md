@@ -68,6 +68,16 @@ PRJ-<%= request.team.name %>
 
 ### Examples: Dynamic naming convention
 
+#### "Generate a unique name based on the current date"
+
+```html
+<%= request.team.name %>-<%= Date.now() %> <!-- Returns the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC.. Example: `1592241059000` -->
+```
+or
+```html
+<%= request.team.name %>-<%= new Date().getTime() %> <!-- Returns the current date and time in the ISO 8601 format. Example: `2020-06-15T17:09:51.312Z` -->
+```
+
 #### "Add country as a suffix to teams names based on the requester location"
 ```javascript
 <%= request.team.name %> - <%= user.msUsageLocation %>

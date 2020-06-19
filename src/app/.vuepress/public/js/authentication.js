@@ -92,6 +92,15 @@ function getApps (callback) {
       'Authorization': bearer
     }
   }
+
+  // var apps = [
+  //   { name: 'aaa', description: 'aaa', id: '123', secret: '123' },
+  //   { name: 'bbb', description: 'bbb', id: '456', secret: '456' },
+  //   { name: 'ccc', description: 'ccc', id: '789', secret: '789' }
+  // ]
+  // window.explorerApps = apps
+  // initAppSelector(apps)
+
   console.log('request made to SalesTim API at: ' + new Date().toString())
   fetch('https://api.salestim.io/v1.0/apps', options)
     .then(function (response) {
@@ -101,10 +110,14 @@ function getApps (callback) {
       return response.json()
     })
     .then(function (response) {
-      callback(response)
+      if (callback) { callback(null, response) }
+      window.explorerApps = response
+      initAppSelector(response)
     })
     .catch(function (error) {
-      console.log(error)
+      console.error('Error in getApps')
+      console.dir(error)
+      if (callback) { callback(error, null) }
     })
 }
 
@@ -186,8 +199,13 @@ function getAccessToken () {
           console.log('Endpoint:')
           console.dir(endpoint)
           window.explorerLoggedUser = response
-          getApps(function (apps) {
-            console.info(apps)
+          getApps(function (err, apps) {
+            if (!err) {
+              console.info(apps)
+            } else {
+              console.error('Error in getApps')
+              console.dir(err)
+            }
           })
 
           setBearerAuth(response.accessToken)
@@ -213,9 +231,8 @@ function setBearerAuth (token) {
   ui.preauthorizeApiKey('bearerAuth', token)
 }
 
-// Send api keys to swagger ui
-function setApiKeys (appId, appSecret) {
-  ui.preauthorizeApiKey('appId', appId)
+// Send app secret to swagger ui
+function setAppSecret (appSecret) {
   ui.preauthorizeApiKey('appSecret', appSecret)
 }
 
@@ -252,6 +269,65 @@ function getTokenPopup (request) {
 
 // #region UI
 
+function initAppSelector (apps) {
+  if (apps) {
+    if (apps.length > 0) {
+      // Initialize apps list
+      var appsList = document.getElementsByClassName('apps-list')[0]
+      appsList.innerHTML = ''
+      apps.forEach((app, i) => {
+        var li = document.createElement('li')
+        var a = document.createElement('a')
+        a.href = '#'
+        a.setAttribute('app-id', app.id)
+        if (i === 0) {
+          li.setAttribute('class', 'uk-active')
+          a.setAttribute('class', 'uk-active')
+        }
+        a.innerText = app.name
+        li.appendChild(a)
+        appsList.appendChild(li)
+      })
+
+      // Initialize apps content
+      var appsContent = document.getElementsByClassName('apps-contents')[0]
+      appsContent.innerHTML = ''
+      apps.forEach(app => {
+        var appContent = `
+          <li>
+          <dl class="uk-description-list">
+          <dt>Name</dt>
+          <dd>
+          ${app.name}
+          </dd>
+          <dt>Description</dt>
+          <dd>
+          ${app.description}
+          </dd>
+          <dt>App ID</dt>
+          <dd>
+          ${app.id}
+          </dd>
+          <dt>App secret</dt>
+          <dd>
+          ************************************
+          </dd>
+          </dl>
+          </li>`
+        appsContent.innerHTML += appContent
+      })
+    } else {
+      showAppsEmpty()
+    }
+  } else {
+    showAppsEmpty()
+  }
+}
+
+function showAppsEmpty () {
+
+}
+
 function enableLoading () {
   document.getElementById('loading').style.display = ""
   document.getElementById('loginCard').style.display = "none"
@@ -265,13 +341,15 @@ function disableLoading () {
 function setAnonymous () {
   disableLoading()
   window.explorerLoggedUser = null
-  document.getElementById("loginDateTime").innerText = '...'
-  document.getElementById("userDisplayName").innerText = 'Anonymous'
+  document.getElementById('loginDateTime').innerText = '...'
+  document.getElementById('userDisplayName').innerText = 'Anonymous'
   document.getElementById('profilePicture').setAttribute('src', '/img/avatar.png')
-  document.getElementById('anonymousMessage').style.display = ""
-  document.getElementById('authenticatedMessage').style.display = "none"
-  document.getElementById('loginButton').style.display = ""
-  document.getElementById('logoutButton').style.display = "none"
+  document.getElementById('delegatedModeStatus').innerHTML = 'Unauthorized 🔐'
+  document.getElementById('applicationModeStatus').innerHTML = 'Unauthorized 🔐'
+  document.getElementById('loginButton').style.display = ''
+  document.getElementById('logoutButton').style.display = 'none'
+  document.getElementById('appSelectorButton').style.display = 'none'
+  document.getElementById('selectedAppLabel').innerText = 'Select an app'
 }
 
 function setAuthenticated (userInfos, profile) {
@@ -279,10 +357,44 @@ function setAuthenticated (userInfos, profile) {
   document.getElementById("loginDateTime").innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
   document.getElementById("userDisplayName").innerText = profile.displayName
   setProfilePicture(userInfos.accessToken)
-  document.getElementById('anonymousMessage').style.display = "none"
-  document.getElementById('authenticatedMessage').style.display = ""
-  document.getElementById('loginButton').style.display = "none"
-  document.getElementById('logoutButton').style.display = ""
+  document.getElementById('delegatedModeStatus').innerHTML = 'Authorized 🟢'
+  document.getElementById('loginButton').style.display = 'none'
+  document.getElementById('logoutButton').style.display = ''
+  document.getElementById('appSelectorButton').style.display = ''
+  document.getElementById('selectedAppLabel').innerText = 'Select an app'
+}
+
+function toggleAdvanced () {
+  var advancedZoneTitle = document.getElementsByClassName('servers-title')[0]
+  var advancedZoneServers = document.getElementsByClassName('servers')[0]
+  if (advancedZoneTitle.style.display === 'none' || advancedZoneTitle.style.display === '') {
+    advancedZoneTitle.style.display = 'block'
+    advancedZoneServers.style.display = 'block'
+  } else {
+    advancedZoneTitle.style.display = 'none'
+    advancedZoneServers.style.display = 'none'
+  }
+}
+
+function selectApp () {
+  UIkit.modal(document.getElementById('appSelectorModal')).hide()
+  var selectedAppId = document.querySelector('.uk-tab-left .uk-active a').getAttribute('app-id')
+  var app = getAppById(selectedAppId)
+  if (app) {
+    document.getElementById('selectedAppLabel').innerText = app.name
+    setAppSecret(app.secret)
+    document.getElementById('applicationModeStatus').innerHTML = 'Authorized 🟢'
+  }
+}
+
+function getAppById (appId) {
+  var foundApp = null
+  window.explorerApps.forEach((app, i) => {
+    if (app.id === appId) {
+      foundApp = app
+    }
+  })
+  return foundApp
 }
 
 function setProfilePicture (token) {
