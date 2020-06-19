@@ -110,9 +110,9 @@ function getApps (callback) {
       return response.json()
     })
     .then(function (response) {
-      if (callback) { callback(null, response) }
-      window.explorerApps = response
-      initAppSelector(response)
+      if (callback) { callback(null, response.body) }
+      window.explorerApps = response.body
+      initAppSelector(response.body)
     })
     .catch(function (error) {
       console.error('Error in getApps')
@@ -125,7 +125,7 @@ function getApps (callback) {
 
 // #region AUTHENTICATION - POPUP MODE
 
-function init () {
+function initExplorerHeader () {
   // Init vars
   if (!msalConfig) {
     msalConfig = {
@@ -143,7 +143,7 @@ function init () {
   }
   if (!loginRequest) {
     loginRequest = {
-      scopes: ['email', 'offline_access', 'openid', 'profile', 'User.Read']
+      scopes: ['email', 'offline_access', 'openid', 'profile', 'User.Read', 'Directory.AccessAsUser.All']
     }
   }
   if (!tokenRequest) {
@@ -167,7 +167,6 @@ function init () {
     setAnonymous()
   }
 }
-init()
 
 function signIn () {
   myMSALObj
@@ -315,6 +314,7 @@ function initAppSelector (apps) {
           </dl>
           </li>`
         appsContent.innerHTML += appContent
+        showAppsFilled()
       })
     } else {
       showAppsEmpty()
@@ -324,8 +324,20 @@ function initAppSelector (apps) {
   }
 }
 
-function showAppsEmpty () {
+function createApp () {
 
+}
+
+function showAppsFilled () {
+  document.getElementById('appsListEmpty').style.display = "none"
+  document.getElementById('appsListFilled').style.display = ""
+  document.getElementById('selectAppButton').style.display = ""
+}
+
+function showAppsEmpty () {
+  document.getElementById('appsListEmpty').style.display = ""
+  document.getElementById('appsListFilled').style.display = "none"
+  document.getElementById('selectAppButton').style.display = "none"
 }
 
 function enableLoading () {

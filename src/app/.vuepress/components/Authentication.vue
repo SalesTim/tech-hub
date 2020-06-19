@@ -112,18 +112,34 @@
       <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-outside" type="button" uk-close></button>
         <h2 class="uk-modal-title">Select an app</h2>
-        <div uk-grid>
-          <div class="uk-width-auto@m">
-            <ul
-              class="uk-tab-left apps-list"
-              uk-tab="connect: #component-tab-left; animation: uk-animation-fade"
-            ></ul>
-          </div>
-          <div class="uk-width-expand@m">
-            <ul id="component-tab-left" class="uk-switcher apps-contents"></ul>
+        <div id="appsListEmpty" style="display: none;">
+          <p>There is no apps registered.</p>
+        </div>
+        <div id="appsListFilled">
+          <div uk-grid>
+            <div class="uk-width-auto@m">
+              <ul
+                class="uk-tab-left apps-list"
+                uk-tab="connect: #component-tab-left; animation: uk-animation-fade"
+              ></ul>
+            </div>
+            <div class="uk-width-expand@m">
+              <ul
+                id="component-tab-left"
+                class="uk-switcher apps-contents"
+              ></ul>
+            </div>
           </div>
         </div>
         <p class="uk-text-right">
+          <button
+            id="createAppButton"
+            class="uk-button uk-button-danger"
+            type="button"
+            onclick=""
+          >
+            New App
+          </button>
           <button
             class="uk-button uk-button-default uk-modal-close"
             type="button"
@@ -131,7 +147,9 @@
             Cancel
           </button>
           <button
+            id="selectAppButton"
             class="uk-button uk-button-primary"
+            style="display: none;"
             type="button"
             onclick="selectApp()"
           >
@@ -143,3 +161,11 @@
     <br />
   </div>
 </template>
+
+<script>
+export default {
+  mounted () {
+    initExplorerHeader()
+  }
+}
+</script>
