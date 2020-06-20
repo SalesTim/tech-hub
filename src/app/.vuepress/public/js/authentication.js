@@ -4,6 +4,8 @@
 
 // #region DECLARATIONS
 
+const TEST_MODE = false
+
 // Config object to be passed to Msal on creation.
 // For a full list of msal.js configuration parameters,
 // visit https://azuread.github.io/microsoft-authentication-library-for-js/docs/msal/modules/_authenticationparameters_.html
@@ -93,15 +95,18 @@ function getApps (callback) {
     }
   }
 
-  // var apps = [
-  //   { name: 'aaa', description: 'aaa', id: '123', secret: '123' },
-  //   { name: 'bbb', description: 'bbb', id: '456', secret: '456' },
-  //   { name: 'ccc', description: 'ccc', id: '789', secret: '789' }
-  // ]
-  // window.explorerApps = apps
-  // initAppSelector(apps)
+  if (TEST_MODE) {
+    var apps = [
+      { name: 'aaa', description: 'aaa', id: '123', secret: '123' },
+      { name: 'bbb', description: 'bbb', id: '456', secret: '456' },
+      { name: 'ccc', description: 'ccc', id: '789', secret: '789' }
+    ]
+    if (callback) { callback(null, apps) }
+    window.explorerApps = apps
+    initAppSelector(apps)
+    return apps
+  }
 
-  console.log('request made to SalesTim API at: ' + new Date().toString())
   fetch('https://api.salestim.io/v1.0/apps', options)
     .then(function (response) {
       if (!response.ok) {
@@ -112,7 +117,7 @@ function getApps (callback) {
     .then(function (response) {
       if (callback) { callback(null, response.body) }
       window.explorerApps = response.body
-      initAppSelector(response.body)
+      initAppSelector(window.explorerApps)
     })
     .catch(function (error) {
       console.error('Error in getApps')
@@ -121,6 +126,49 @@ function getApps (callback) {
     })
 }
 
+function createApp (callback) {
+  const bearer = 'Bearer ' + window.explorerLoggedUser.accessToken
+  var newApp = {
+    name: document.getElementById('newAppName').value,
+    description: document.getElementById('newAppDescription').value
+  }
+  const options = {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': bearer
+    },
+    body: JSON.stringify(newApp)
+  }
+
+  if (TEST_MODE) {
+    newApp.id = "321"
+    newApp.secret = "321"
+    window.explorerApps.push(newApp)
+    if (callback) { callback(null, newApp) }
+    initAppSelector(window.explorerApps)
+    return window.explorerApps
+  }
+
+  fetch('https://api.salestim.io/v1.0/apps', options)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      return response.json()
+    })
+    .then(function (response) {
+      if (callback) { callback(null, response.body) }
+      window.explorerApps.push(response.body)
+      initAppSelector(window.explorerApps)
+    })
+    .catch(function (error) {
+      console.error('Error in createApp')
+      console.dir(error)
+      if (callback) { callback(error, null) }
+    })
+}
 // #endregion SALESTIM API HELPERS
 
 // #region AUTHENTICATION - POPUP MODE
@@ -237,7 +285,9 @@ function setAppSecret (appSecret) {
 
 function signOut () {
   window.explorerLoggedUser = null
-  myMSALObj.logout()
+  // Actually don't do a real ad logout to prevent a global browser-wide logout
+  // myMSALObj.logout()
+  setAnonymous()
   UIkit.notification({
     message: 'Successfully signed-out...',
     status: 'success',
@@ -279,53 +329,47 @@ function initAppSelector (apps) {
         var a = document.createElement('a')
         a.href = '#'
         a.setAttribute('app-id', app.id)
-        if (i === 0) {
-          li.setAttribute('class', 'uk-active')
-          a.setAttribute('class', 'uk-active')
-        }
         a.innerText = app.name
         li.appendChild(a)
         appsList.appendChild(li)
       })
 
       // Initialize apps content
-      var appsContent = document.getElementsByClassName('apps-contents')[0]
-      appsContent.innerHTML = ''
-      apps.forEach(app => {
-        var appContent = `
-          <li>
-          <dl class="uk-description-list">
-          <dt>Name</dt>
-          <dd>
-          ${app.name}
-          </dd>
-          <dt>Description</dt>
-          <dd>
-          ${app.description}
-          </dd>
-          <dt>App ID</dt>
-          <dd>
-          ${app.id}
-          </dd>
-          <dt>App secret</dt>
-          <dd>
-          ************************************
-          </dd>
-          </dl>
-          </li>`
-        appsContent.innerHTML += appContent
-        showAppsFilled()
+      var appsContentElement = document.getElementsByClassName('apps-contents')[0]
+      appsContentElement.innerHTML = ''
+      apps.forEach((app, i) => {
+        var li = document.createElement('li')
+        var appsHtmlContent = ''
+        appsHtmlContent += `
+        <dl class="uk-description-list">
+        <dt>Name</dt>
+        <dd>
+        ${app.name}
+        </dd>
+        <dt>Description</dt>
+        <dd>
+        ${app.description}
+        </dd>
+        <dt>App ID</dt>
+        <dd>
+        ${app.id}
+        </dd>
+        <dt>App secret</dt>
+        <dd>
+        ************************************
+        </dd>
+        </dl>`
+        li.innerHTML += appsHtmlContent
+        appsContentElement.appendChild(li)
       })
+      UIkit.tab(document.getElementById('appsTabs'), null)
+      showAppsFilled()
     } else {
       showAppsEmpty()
     }
   } else {
     showAppsEmpty()
   }
-}
-
-function createApp () {
-
 }
 
 function showAppsFilled () {
@@ -356,12 +400,13 @@ function setAnonymous () {
   document.getElementById('loginDateTime').innerText = '...'
   document.getElementById('userDisplayName').innerText = 'Anonymous'
   document.getElementById('profilePicture').setAttribute('src', '/img/avatar.png')
-  document.getElementById('delegatedModeStatus').innerHTML = 'Unauthorized 🔐'
-  document.getElementById('applicationModeStatus').innerHTML = 'Unauthorized 🔐'
-  document.getElementById('loginButton').style.display = ''
+  document.getElementById('delegatedModeStatus').innerText = '🔐'
+  document.getElementById('applicationModeStatus').innerText = '🔐'
   document.getElementById('logoutButton').style.display = 'none'
   document.getElementById('appSelectorButton').style.display = 'none'
-  document.getElementById('selectedAppLabel').innerText = 'Select an app'
+  document.getElementById('loginButton').style.display = ''
+  document.getElementById('applicationModeDisabled').style.display = ''
+  document.getElementById('selectedAppLabel').innerText = 'Select an app...'
 }
 
 function setAuthenticated (userInfos, profile) {
@@ -369,11 +414,14 @@ function setAuthenticated (userInfos, profile) {
   document.getElementById("loginDateTime").innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
   document.getElementById("userDisplayName").innerText = profile.displayName
   setProfilePicture(userInfos.accessToken)
-  document.getElementById('delegatedModeStatus').innerHTML = 'Authorized 🟢'
+  document.getElementById('delegatedModeStatus').innerText = '🟢'
   document.getElementById('loginButton').style.display = 'none'
+  document.getElementById('applicationModeDisabled').style.display = 'none'
   document.getElementById('logoutButton').style.display = ''
   document.getElementById('appSelectorButton').style.display = ''
-  document.getElementById('selectedAppLabel').innerText = 'Select an app'
+  document.getElementById('appSelectorButton').classList.remove('uk-button-default')
+  document.getElementById('appSelectorButton').classList.add('uk-button-primary')
+  document.getElementById('selectedAppLabel').innerText = 'Select an app...'
 }
 
 function toggleAdvanced () {
@@ -393,9 +441,16 @@ function selectApp () {
   var selectedAppId = document.querySelector('.uk-tab-left .uk-active a').getAttribute('app-id')
   var app = getAppById(selectedAppId)
   if (app) {
-    document.getElementById('selectedAppLabel').innerText = app.name
+    document.getElementById('appSelectorButton').classList.remove('uk-button-primary')
+    document.getElementById('appSelectorButton').classList.add('uk-button-default')
+    // document.getElementById('selectedAppLabel').innerText = app.name
+    document.getElementById('selectedAppLabel').innerHTML = `
+      <span uk-icon="icon: check; ratio: 0.7"></span>&nbsp;<span
+      class="uk-text-middle"
+      >${app.name}</span
+      >`
     setAppSecret(app.secret)
-    document.getElementById('applicationModeStatus').innerHTML = 'Authorized 🟢'
+    document.getElementById('applicationModeStatus').innerHTML = '🟢'
   }
 }
 

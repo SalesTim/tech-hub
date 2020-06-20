@@ -85,6 +85,7 @@ const concatJs = (done) => {
     './src/app/.vuepress/public/js/ga.js',
     './src/app/.vuepress/public/js/intercom.js',
     './node_modules/uikit/dist/js/uikit.min.js',
+    './node_modules/uikit/dist/js/uikit-icons.min.js',
     './node_modules/msal/dist/msal.min.js',
     './node_modules/moment/min/moment.min.js'
   ])

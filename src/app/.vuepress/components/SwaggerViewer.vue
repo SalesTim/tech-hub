@@ -39,7 +39,9 @@ export default {
     document.head.appendChild(s)
 
     window.onload = function () {
-      loadUi(pOpenApiFileUrl)
+      if (!window.ui) {
+        loadUi(pOpenApiFileUrl)
+      }
     }
     function loadUi (url) {
       // Build a system
@@ -55,6 +57,7 @@ export default {
         // layout: 'StandaloneLayout'
       })
       window.ui = ui
+      window.initExplorerHeader()
     }
   },
   props: ['openApiFileUrl']
