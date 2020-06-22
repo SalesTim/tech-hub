@@ -3,7 +3,23 @@
     <div class="posts" v-if="posts.length">
 
       <div uk-filter="target: .cardsGrid">
-        <nav class="uk-navbar-container" uk-navbar>
+
+        <div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/technology.png);">
+          <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
+            <h1>Stories from the makers of SalesTim.</h1>
+            <div class="uk-flex uk-flex-center">
+              <span uk-filter-control><a href="#">All</a></span>&nbsp;|&nbsp;
+              <span uk-filter-control=".tag-intercom"><a href="#">Intercom</a></span>&nbsp;|&nbsp;
+              <span uk-filter-control=".tag-github"><a href="#">GitHub</a></span>&nbsp;|&nbsp;
+              <span uk-filter-control=".tag-wordpress"><a href="#">WordPress</a></span>&nbsp;|&nbsp;
+              <span uk-filter-control=".tag-devops"><a href="#">DevOps</a></span>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <!-- <nav class="uk-navbar-container" uk-navbar>
           <div class="uk-navbar-left">
           </div>
           <div class="uk-navbar-right">
@@ -15,7 +31,7 @@
               <li uk-filter-control=".tag-devops"><a href="#">DevOps</a></li>
             </ul>
           </div>
-        </nav>
+        </nav> -->
       
         <div class="cardsGrid uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-grid uk-grid-small uk-height-match"
           uk-grid uk-height-match="target: > div > .uk-card">
@@ -51,6 +67,7 @@
           </div>
 
         </div>
+
       </div>
     </div>
   </div>
@@ -116,5 +133,10 @@ export default {
   }
   .author-link {
     color: #51459c !important;
+  }
+  .bg-text {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);  
   }
 </style>

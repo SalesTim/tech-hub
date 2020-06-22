@@ -1,20 +1,20 @@
-<div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-  <div class="uk-card-media-left uk-cover-container">
-    <img src="/img/headers/templates.jpg" alt="" uk-cover>
-    <canvas width="300" height="200"></canvas>
-  </div>
-  <div>
-    <div class="uk-card-body">
-      <h3>No-Code</h3>
-      <p>
-      With the SalesTim Platform, you can automate your business process with Microsoft Teams by creating powerful no-code solutions and teams templates without any technical skills.
-      </p>
-    </div>
+# No-Code
+<div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/templates.jpg);">
+  <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
+    <p class="uk-text-large">
+      With the SalesTim Platform, you can automate your business process with Microsoft Teams by creating powerful no-code solutions and teams templates without any technical skills.</p>
   </div>
 </div>
 
-## What are No-Code Solutions and Teams Templates?
+<style>
+  .bg-text {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);  
+  }
+</style>
 
+## What are No-Code Solutions and Teams Templates?
 `No-Code Solutions` are applications built using the [SalesTim API](/api/) but without requiring a strong technical background, such as apps built on top of the [Microsoft Power Platform](https://docs.microsoft.com/en-us/learn/powerplatform/), especially [PowerApps](https://docs.microsoft.com/en-us/powerapps/powerapps-overview) and [Power Automate](https://docs.microsoft.com/en-us/power-automate/getting-started).
 
 See [Use the SalesTim API with Power Platform](/nocode/power-platform) for more information.
