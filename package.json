@@ -1,6 +1,6 @@
 {
   "name": "tech-hub",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "SalesTim Tech Hub",
   "scripts": {
     "dev": "gulp infos && node ./node_modules/vuepress/cli.js dev src/app --no-clear-screen",
@@ -30,6 +30,7 @@
     "standard": "^14.3.1",
     "uikit": "^3.5.3",
     "vuepress": "^1.4.1",
+    "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-mermaidjs": "^1.5.1"
   }
 }

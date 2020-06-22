@@ -17,8 +17,7 @@ module.exports = {
       headerAnchorSelector: '.header-anchor',
       headerTopOffset: 120
     },
-    '@vuepress/last-updated',
-    {
+    '@vuepress/last-updated', {
       transformer: (timestamp, lang) => {
         const moment = require('moment')
         moment.locale(lang)
@@ -29,7 +28,47 @@ module.exports = {
       {
         theme: 'forest'
       }
-    ]
+    ],
+    'autometa', {
+      enable: true, // enables/disables everything - control per page using frontmatter
+      image: true, // regular meta image used by search engines
+      twitter: true, // twitter card
+      og: true, // open graph: facebook, pinterest, google+
+      schema: true,
+      canonical_base: 'https://developers.salestim.com',
+      author: {
+        name: 'SalesTim',
+        twitter: 'salestimcrm',
+      },
+      site: {
+        name: 'SalesTim',
+        twitter: 'salestimcrm',
+      },
+      description_sources: [
+        'frontmatter',
+        'excerpt',
+        // markdown paragraph regex
+        //
+        /^((?:(?!^#)(?!^\-|\+)(?!^[0-9]+\.)(?!^!\[.*?\]\((.*?)\))(?!^\[\[.*?\]\])(?!^\{\{.*?\}\})[^\n]|\n(?! *\n))+)(?:\n *)+\n/img,
+        //
+        // this excludes blockquotes using `(?!^>)`
+        ///^((?:(?!^#)(?!^\-|\+)(?!^[0-9]+\.)(?!^!\[.*?\]\((.*?)\))(?!^>)(?!^\[\[.*?\]\])(?!^\{\{.*?\}\})[^\n]|\n(?! *\n))+)(?:\n *)+\n/img,
+
+        // html paragraph regex
+        /<p(?:.*?)>(.*?)<\/p>/i,
+
+      ],
+      // ---------------------------------------------------------------------------
+      // order of what gets the highest priority:
+      // 1. frontmatter
+      // 2. content markdown image such as `![alt text](http://url)`
+      // 3. content regular html img
+      image_sources: [
+        'frontmatter',
+        /!\[.*?\]\((.*?)\)/i,        // markdown image regex
+        /<img.*?src=['"](.*?)['"]/i, // html image regex
+      ]
+    }
   ],
   themeConfig: {
 
@@ -71,6 +110,7 @@ module.exports = {
       { text: 'API & Webhooks', link: '/api/' },
       { text: 'Explorer', link: '/api/explorer' },
       { text: 'Trust Center', link: '/platform/' },
+      { text: 'Inside SalesTim', link: '/blog/' },
       { text: 'Template Store', link: 'https://store.salestim.com' }
     ],
 

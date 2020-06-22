@@ -6,6 +6,26 @@
       <changefreq>weekly</changefreq>
    </url>
    <url>
+      <loc>https://developers.salestim.com/nocode</loc>
+      <changefreq>weekly</changefreq>
+   </url>
+   <url>
+      <loc>https://developers.salestim.com/api</loc>
+      <changefreq>weekly</changefreq>
+   </url>
+   <url>
+      <loc>https://developers.salestim.com/blog</loc>
+      <changefreq>weekly</changefreq>
+   </url>
+   <url>
+      <loc>https://developers.salestim.com/api/explorer</loc>
+      <changefreq>weekly</changefreq>
+   </url>
+   <url>
+      <loc>https://developers.salestim.com/platform</loc>
+      <changefreq>monthly</changefreq>
+   </url>
+   <url>
       <loc>https://status.salestim.com/</loc>
       <changefreq>weekly</changefreq>
    </url>
