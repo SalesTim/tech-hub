@@ -13,6 +13,7 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**getApps**](Apis/AppsApi.md#getapps) | **GET** /apps | Get your virtual apps
 *AppsApi* | [**regenerateAppSecret**](Apis/AppsApi.md#regenerateappsecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret
 *AppsApi* | [**updateApp**](Apis/AppsApi.md#updateapp) | **PUT** /apps/{id} | Update a virtual app
+*CatalogApi* | [**exportCatalogTemplate**](Apis/CatalogApi.md#exportcatalogtemplate) | **POST** /catalog/templates/{id}/export | Export a template from your corporate catalog
 *CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog
 *CatalogApi* | [**installTemplateFromStore**](Apis/CatalogApi.md#installtemplatefromstore) | **POST** /catalog/templates/installFromStore | Install a template from the public template store to your corporate catalog
 *JobsApi* | [**createProvisioningJob**](Apis/JobsApi.md#createprovisioningjob) | **POST** /jobs/provisioning | Create a new provisioning job
@@ -34,6 +35,7 @@ Class | Method | HTTP request | Description
  - [ProvisioningRequestOnBehalfOf](.//Models/ProvisioningRequestOnBehalfOf.md)
  - [ProvisioningRequestRequestedMembers](.//Models/ProvisioningRequestRequestedMembers.md)
  - [StoreCategory](.//Models/StoreCategory.md)
+ - [StoreCategoryIntro](.//Models/StoreCategoryIntro.md)
  - [StoreCategoryLabel](.//Models/StoreCategoryLabel.md)
  - [TemplateIdentifier](.//Models/TemplateIdentifier.md)
 

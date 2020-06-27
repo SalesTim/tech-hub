@@ -46,7 +46,7 @@ Get a store template from the public template store
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The template ID | [default to null]
+ **id** | **String**| ID of the template to retreive | [default to null]
 
 ### Return type
 

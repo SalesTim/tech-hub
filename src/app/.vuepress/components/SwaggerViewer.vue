@@ -5,10 +5,7 @@
       type="text/css"
       href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css"
     />
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
-    ></script>
+    <script type="text/javascript" src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"></script>
     <div id="swagger-ui"></div>
   </div>
@@ -16,38 +13,47 @@
 
 <script>
 export default {
-  mounted () {
-    console.debug('SwaggerViewer Mounted')
-    var pOpenApiFileUrl = this.openApiFileUrl
+  mounted() {
+    console.debug("SwaggerViewer Mounted");
+    var pOpenApiFileUrl = this.openApiFileUrl;
 
-    var s = document.createElement('script')
+    // Replace openapi definition with local in dev mode
+    if (
+      window.location.host.indexOf("localhost", 0) > -1 ||
+      window.location.host.indexOf("devgme", 0) > -1
+    ) {
+      pOpenApiFileUrl =
+        "https://devgmeweb.eu.ngrok.io/definitions/io.salestim.automation.api.definition.yaml";
+    }
+
+    var s = document.createElement("script");
     s.setAttribute(
-      'src',
-      'https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js'
-    )
-    s.onload = function () {
-      var t = document.createElement('script')
+      "src",
+      "https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
+    );
+    s.onload = function() {
+      var t = document.createElement("script");
       t.setAttribute(
-        'src',
-        'https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js'
-      )
-      t.onload = function () {
-        loadUi(pOpenApiFileUrl)
-      }
-      document.head.appendChild(t)
-    }
-    document.head.appendChild(s)
+        "src",
+        "https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"
+      );
+      t.onload = function() {
+        loadUi(pOpenApiFileUrl);
+      };
+      document.head.appendChild(t);
+    };
+    document.head.appendChild(s);
 
-    window.onload = function () {
+    window.onload = function() {
       if (!window.ui) {
-        loadUi(pOpenApiFileUrl)
+        loadUi(pOpenApiFileUrl);
       }
-    }
-    function loadUi (url) {
+    };
+    function loadUi(url) {
       // Build a system
       const ui = SwaggerUIBundle({
         url: url,
-        dom_id: '#swagger-ui',
+        dom_id: "#swagger-ui",
         deepLinking: true,
         displayOperationId: false,
         displayRequestDuration: false,
@@ -55,13 +61,13 @@ export default {
         plugins: [SwaggerUIBundle.plugins.DownloadUrl]
         // To make the open api file url visible, add:
         // layout: 'StandaloneLayout'
-      })
-      window.ui = ui
-      window.initExplorerHeader()
+      });
+      window.ui = ui;
+      window.initExplorerHeader();
     }
   },
-  props: ['openApiFileUrl']
-}
+  props: ["openApiFileUrl"]
+};
 </script>
 
 <style scoped></style>
