@@ -55,8 +55,9 @@ export default {
         url: url,
         dom_id: "#swagger-ui",
         deepLinking: true,
-        displayOperationId: false,
-        displayRequestDuration: false,
+        displayOperationId: true,
+        displayRequestDuration: true,
+        filter: true,
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
         plugins: [SwaggerUIBundle.plugins.DownloadUrl]
         // To make the open api file url visible, add:
