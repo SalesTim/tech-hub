@@ -4,15 +4,15 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createProvisioningJob**](JobsApi.md#createProvisioningJob) | **POST** /jobs/provisioning | Create a new provisioning job
-[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{id} | Get information about a job
+[**createProvisioningJob**](JobsApi.md#createProvisioningJob) | **POST** /jobs/provisioning | Create a new provisioning job (🔐 Authenticated users and apps)
+[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{id} | Get information about a job (🔐 Authenticated users and apps)
 
 
 <a name="createProvisioningJob"></a>
 # **createProvisioningJob**
 > Job createProvisioningJob(provisioningRequest)
 
-Create a new provisioning job
+Create a new provisioning job (🔐 Authenticated users and apps)
 
     Create a new provisioning job by sending a ProvisioningRequest.
 
@@ -28,7 +28,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[appSecret](../README.md#appSecret), [bearerAuth](../README.md#bearerAuth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 # **getJob**
 > Job getJob(id)
 
-Get information about a job
+Get information about a job (🔐 Authenticated users and apps)
 
     Get detailed information about a job, including its status, progress, logs...
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[appSecret](../README.md#appSecret), [bearerAuth](../README.md#bearerAuth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -4,19 +4,19 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createApp**](AppsApi.md#createApp) | **POST** /apps | Create a virtual app
-[**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /apps/{id} | Delete a virtual app
-[**getApp**](AppsApi.md#getApp) | **GET** /apps/{id} | Get a virtual app
-[**getApps**](AppsApi.md#getApps) | **GET** /apps | Get your virtual apps
-[**regenerateAppSecret**](AppsApi.md#regenerateAppSecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret
-[**updateApp**](AppsApi.md#updateApp) | **PUT** /apps/{id} | Update a virtual app
+[**createApp**](AppsApi.md#createApp) | **POST** /apps | Create a virtual app (🔥 restricted to administrators)
+[**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /apps/{id} | Delete a virtual app (🔥 restricted to administrators)
+[**getApp**](AppsApi.md#getApp) | **GET** /apps/{id} | Get a virtual app (🔥 restricted to administrators)
+[**getApps**](AppsApi.md#getApps) | **GET** /apps | Get your virtual apps (🔥 restricted to administrators)
+[**regenerateAppSecret**](AppsApi.md#regenerateAppSecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret (🔥 restricted to administrators)
+[**updateApp**](AppsApi.md#updateApp) | **PUT** /apps/{id} | Update a virtual app (🔥 restricted to administrators)
 
 
 <a name="createApp"></a>
 # **createApp**
 > App createApp(app)
 
-Create a virtual app
+Create a virtual app (🔥 restricted to administrators)
 
     Create a new virtual app and get its generated secret. Please note, for obvious security reasons, the app secret will only be accessible once, in the response to this call, but it could later be regenerated using the POST verb on the /apps/{id}/regenerateSecret endpoint.
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 # **deleteApp**
 > deleteApp(id)
 
-Delete a virtual app
+Delete a virtual app (🔥 restricted to administrators)
 
     Delete a virtual app.
 
@@ -70,7 +70,7 @@ null (empty response body)
 # **getApp**
 > App getApp(id)
 
-Get a virtual app
+Get a virtual app (🔥 restricted to administrators)
 
     Get a virtual app.
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 # **getApps**
 > List getApps()
 
-Get your virtual apps
+Get your virtual apps (🔥 restricted to administrators)
 
     Get all virtual apps associated with your tenant. Please note, apps could be created using the POST verb on the /apps endpoint.
 
@@ -121,7 +121,7 @@ This endpoint does not need any parameter.
 # **regenerateAppSecret**
 > App regenerateAppSecret(id)
 
-Regenerate a virtual app secret
+Regenerate a virtual app secret (🔥 restricted to administrators)
 
     Regenerate a virtual app secret.
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 # **updateApp**
 > App updateApp(id, app)
 
-Update a virtual app
+Update a virtual app (🔥 restricted to administrators)
 
     Update a virtual app.
 

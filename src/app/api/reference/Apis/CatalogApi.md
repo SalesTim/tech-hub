@@ -4,16 +4,16 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**exportCatalogTemplate**](CatalogApi.md#exportCatalogTemplate) | **POST** /catalog/templates/{id}/export | Export a template from your corporate catalog
-[**getCatalogTemplates**](CatalogApi.md#getCatalogTemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog
-[**installTemplateFromStore**](CatalogApi.md#installTemplateFromStore) | **POST** /catalog/templates/installFromStore | Install a template from the public template store to your corporate catalog
+[**exportCatalogTemplate**](CatalogApi.md#exportCatalogTemplate) | **POST** /catalog/templates/{id}/export | Export a template from your corporate catalog (🔥 restricted to administrators)
+[**getCatalogTemplates**](CatalogApi.md#getCatalogTemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog (🔐 Authenticated users and apps)
+[**installTemplateFromStore**](CatalogApi.md#installTemplateFromStore) | **POST** /catalog/templates/installFromStore | Install a template from the public template store to your corporate catalog (🔥 restricted to administrators)
 
 
 <a name="exportCatalogTemplate"></a>
 # **exportCatalogTemplate**
-> Object exportCatalogTemplate(id)
+> Object exportCatalogTemplate(id, templateExportOptions)
 
-Export a template from your corporate catalog
+Export a template from your corporate catalog (🔥 restricted to administrators)
 
     Export a template from your corporate catalog.
 
@@ -22,6 +22,7 @@ Export a template from your corporate catalog
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of the template to export. | [default to null]
+ **templateExportOptions** | [**TemplateExportOptions**](..//Models/TemplateExportOptions.md)| Defines template export options | [optional]
 
 ### Return type
 
@@ -33,14 +34,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="getCatalogTemplates"></a>
 # **getCatalogTemplates**
 > List getCatalogTemplates()
 
-Get all templates from your corporate catalog
+Get all templates from your corporate catalog (🔐 Authenticated users and apps)
 
     Get all templates from your corporate catalog.
 
@@ -53,7 +54,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[appSecret](../README.md#appSecret), [bearerAuth](../README.md#bearerAuth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -64,7 +65,7 @@ This endpoint does not need any parameter.
 # **installTemplateFromStore**
 > Object installTemplateFromStore(templateIdentifier)
 
-Install a template from the public template store to your corporate catalog
+Install a template from the public template store to your corporate catalog (🔥 restricted to administrators)
 
     Install a template from the public template store to your corporate catalog.
 

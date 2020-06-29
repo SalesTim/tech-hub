@@ -4,17 +4,17 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getStoreCategories**](StoreApi.md#getStoreCategories) | **GET** /store/categories | Get all store categories from the public template store
-[**getStoreTemplate**](StoreApi.md#getStoreTemplate) | **GET** /store/templates/{id} | Get a store template from the public template store
-[**getStoreTemplates**](StoreApi.md#getStoreTemplates) | **GET** /store/templates | Get all templates from the public template store
-[**getStoreTemplatesByCategory**](StoreApi.md#getStoreTemplatesByCategory) | **GET** /store/templates/byCategory/{id} | Get store templates from a specific category
+[**getStoreCategories**](StoreApi.md#getStoreCategories) | **GET** /store/categories | Get all store categories from the public template store (📡 Anonymous access)
+[**getStoreTemplate**](StoreApi.md#getStoreTemplate) | **GET** /store/templates/{id} | Get a store template from the public template store (📡 Anonymous access)
+[**getStoreTemplates**](StoreApi.md#getStoreTemplates) | **GET** /store/templates | Get all templates from the public template store (📡 Anonymous access)
+[**getStoreTemplatesByCategory**](StoreApi.md#getStoreTemplatesByCategory) | **GET** /store/templates/byCategory/{id} | Get store templates from a specific category (📡 Anonymous access)
 
 
 <a name="getStoreCategories"></a>
 # **getStoreCategories**
 > List getStoreCategories()
 
-Get all store categories from the public template store
+Get all store categories from the public template store (📡 Anonymous access)
 
     Get all categories from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
@@ -38,7 +38,7 @@ No authorization required
 # **getStoreTemplate**
 > Object getStoreTemplate(id)
 
-Get a store template from the public template store
+Get a store template from the public template store (📡 Anonymous access)
 
     Get a specific templates from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
@@ -65,7 +65,7 @@ No authorization required
 # **getStoreTemplates**
 > List getStoreTemplates()
 
-Get all templates from the public template store
+Get all templates from the public template store (📡 Anonymous access)
 
     Get all templates from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
@@ -89,7 +89,7 @@ No authorization required
 # **getStoreTemplatesByCategory**
 > List getStoreTemplatesByCategory(id)
 
-Get store templates from a specific category
+Get store templates from a specific category (📡 Anonymous access)
 
     Get templatesfrom a specific category from the public [Template Store](https://store.salestim.com). Visit the [Template Manifests Repository](https://github.com/SalesTim/template-manifests) for more information.
 
