@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createProvisioningJob**](JobsApi.md#createProvisioningJob) | **POST** /jobs/provisioning | Create a new provisioning job (🔐 Authenticated users and apps)
 [**getJob**](JobsApi.md#getJob) | **GET** /jobs/{id} | Get information about a job (🔐 Authenticated users and apps)
+[**getJobs**](JobsApi.md#getJobs) | **GET** /jobs | Get all jobs from your organization (🔥 restricted to administrators)
 
 
 <a name="createProvisioningJob"></a>
@@ -52,6 +53,30 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Job**](..//Models/Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="getJobs"></a>
+# **getJobs**
+> List getJobs()
+
+Get all jobs from your organization (🔥 restricted to administrators)
+
+    Get all jobs from your organization.
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List**](..//Models/Job.md)
 
 ### Authorization
 
