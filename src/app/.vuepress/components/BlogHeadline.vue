@@ -28,8 +28,8 @@
     <div id="share-offcanvas-flip" uk-offcanvas="mode: slide; flip: true; overlay: true">
       <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <h3>Share This Template</h3>
-        <p>Please select how you want to share this template:</p>
+        <h3>Share This Post</h3>
+        <p>Please select how you want to share this post:</p>
         <a :href="teamsSharingLink"
           target="_blank">
           <button class="uk-button uk-button-danger uk-width-1-1" uk-tooltip="Share to Microsoft Teams">
