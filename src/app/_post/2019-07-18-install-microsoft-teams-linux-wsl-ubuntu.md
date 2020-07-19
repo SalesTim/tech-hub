@@ -2,7 +2,7 @@
 permalink: /blog/install-microsoft-teams-linux-wsl-ubuntu
 title: Install Microsoft Teams for Linux using Ubuntu on WSL2
 description: Learn how to install Microsoft Teams for Linux using an Ubuntu WSL2 distro.
-image: https://developers.salestim.com/img/blog/teams-for-linux.png
+image: https://developers.salestim.com/img/blog/teams-linux-windows.png
 author:
   name: Guillaume Meyer
   profile: https://twitter.com/guillaumemeyer
@@ -73,7 +73,7 @@ Refer to [this thread](https://stackoverflow.com/questions/61110603/how-to-set-u
 Save your configuration and launch the VcxSrv server.
 
 ## Use your first GUI app
-You should now be ready to use your first app. As we'll have to download the Microsoft Teams for Linux Ubuntu package, and that the download page only shows the download link for Linux when using a linux box, let's install and start firefox:
+You should now be ready to use your first GUI app. As we'll have to download the Microsoft Teams for Linux Ubuntu package, and that the download page only shows the download link for Linux when using a linux box, let's install and start firefox:
 ```sh
 sudo apt install firefox
 firefox
