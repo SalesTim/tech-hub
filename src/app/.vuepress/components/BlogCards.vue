@@ -9,6 +9,7 @@
             <h1>Stories from the makers of SalesTim.</h1>
             <div class="uk-flex uk-flex-center">
               <span uk-filter-control><a href="#">All</a></span>&nbsp;|&nbsp;
+              <span uk-filter-control=".tag-teams"><a href="#">Teams</a></span>&nbsp;|&nbsp;
               <span uk-filter-control=".tag-intercom"><a href="#">Intercom</a></span>&nbsp;|&nbsp;
               <span uk-filter-control=".tag-github"><a href="#">GitHub</a></span>&nbsp;|&nbsp;
               <span uk-filter-control=".tag-wordpress"><a href="#">WordPress</a></span>&nbsp;|&nbsp;
