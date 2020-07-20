@@ -19,8 +19,8 @@ tags:
 
 ## Why would-you do that?
 Well, first, just because it's fun!  
-Second, it's a nice technical challenge that may lead you to learn some new stuffs, and you may be interested in testing Microsoft Teams for Linux.  
-Third, Of course, you could install a full-blown Linux VM using Hyper-V or VirtualBox, but as you probably already have WSL installed, it makes sense to reuse this resource and keep your CPU/RAM consumption low.
+Second, it's a nice technical challenge that may lead you to learn some new stuff, and you may be interested in testing Microsoft Teams for Linux.  
+Third, of course, you could install a full-blown Linux VM using Hyper-V or VirtualBox, but as you probably already have WSL installed, it makes sense to reuse this resource and keep your CPU/RAM consumption low.
 
 ## Prerequisites
 For this tutorial, I'll assume your configuration matches the following requirements (even if you could probably follow a similar procedure in a different configuration, with WSL v1 for instance):
@@ -68,7 +68,7 @@ Enable "Disable access control":
 
 ![](/img/blog/vcxsrv-3.png)
 
-Refer to [this thread](https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2) to learn why you need to do that.
+Refer to [this thread](https://stackoverflow.com/questions/61110603/how-to-set-up-working-x11-forwarding-on-wsl2) to learn why you need to disable access control.
 
 Save your configuration and launch the VcxSrv server.
 
@@ -93,7 +93,7 @@ sudo apt install ./teams-insiders_1.3.00.16851_amd64.deb
 ```
 
 :::tip
-Doing the install this way is useful to test your X server configuration. But you could also download the latest "non-insiders" version from an official repo using the following commands:
+Doing the install this way is useful to test your X server configuration. But you can also download the latest "non-insiders" version from an official repo using the following commands:
 ```sh
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list' 
