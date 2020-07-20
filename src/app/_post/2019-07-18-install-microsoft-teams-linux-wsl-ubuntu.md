@@ -113,3 +113,5 @@ You should now have a fully functional Microsoft Teams client for Linux running 
 If you have any issue with this tutorial, you can refer to these useful links:
 - [Running graphical apps on Ubuntu for WSL](https://wiki.ubuntu.com/WSL#Running_Graphical_Applications)
 - [Get Microsoft Teams client for Linux](https://docs.microsoft.com/en-us/microsoftteams/get-clients#linux)
+
+<Comments />
