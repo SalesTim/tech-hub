@@ -136,3 +136,5 @@ The GitHub Pages hosting is temporary by nature, as it's subject to some usage l
 - GitHub Pages sites have a soft limit of 10 builds per hour.
 
 But above all, [GitHub Pages is not allowed to be used as a free web hosting service](https://help.github.com/en/articles/what-is-github-pages) to run an online business. So even if we're still under the radar, we'll soon move to [Static website hosting in Azure Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
+
+<Comments />

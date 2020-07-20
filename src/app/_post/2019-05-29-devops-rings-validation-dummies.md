@@ -85,3 +85,5 @@ The advantages of such pipeline:
 
 ## To go further
 Of course, SalesTim is not Microsoft (At least for the moment 😉), therefore we don't have the same teams, constraints or volumetry... But as our platform gains more traction, we'll have to implement CI/CD for the whole validation rings... so stay tuned for another article!
+
+<Comments />

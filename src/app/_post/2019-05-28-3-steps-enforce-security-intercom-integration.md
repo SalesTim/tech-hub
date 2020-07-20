@@ -98,3 +98,5 @@ Learn more about [Intercom test workspace...](https://www.intercom.com/help/conf
 
 ### b. GDPR
 In addition to security, and even if [Intercom complies with GDPR](https://www.intercom.com/help/pricing-privacy-and-terms/data-protection/how-intercom-complies-with-gdpr), you'll have to work on an automated process to link your GDPR process with Intercom and other third-party services...
+
+<Comments />

@@ -120,3 +120,5 @@ GitHub Package Registry is fully integrated with GitHub, so you can use the same
 You can also use the same user and team permissions to manage code and packages together.
 
 Learn more about [GitHub Package Registry...](https://github.com/features/package-registry/)
+
+<Comments />
