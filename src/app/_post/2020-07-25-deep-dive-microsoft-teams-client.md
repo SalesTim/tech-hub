@@ -1,5 +1,5 @@
 ---
-permalink: /_drafts/deep-dive-microsoft-teams-client
+permalink: /blog/deep-dive-microsoft-teams-client
 title: Deep Dive into the Microsoft Teams Client
 description: A journey into the architecture, source code and technologies of the Microsoft Teams client. 
 image: https://developers.salestim.com/img/blog/deep-dive-microsoft-teams-client.png

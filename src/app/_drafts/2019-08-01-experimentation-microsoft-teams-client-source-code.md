@@ -61,4 +61,8 @@ nohup "$TEAMS_PATH" "$@" > "$TEAMS_LOGS/teams-insiders-startup.log" 2>&1 &
 
 
 
+config options:
+enableUseNativeTitlebarButtons
+
+
 <Comments />
