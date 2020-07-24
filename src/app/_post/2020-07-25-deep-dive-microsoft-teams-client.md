@@ -35,7 +35,7 @@ and more specifically about the calling stacks:
 
 ![Microsoft Teams client calling stacks](/img/blog/teams-client-calling-stacks.png)  
 
-Some articles were written relaying these new infos, but maybe the only article that really tried to delve into the details is [Under the Hood of the Microsoft Teams Desktop Application](https://blog.thoughtstuff.co.uk/2017/04/under-the-hood-of-the-microsoft-teams-desktop-application/) written by a Microsoft MVP for Microsoft Teams [Tom Morgan](https://www.thoughtstuff.co.uk/). This is a good starting point, but I'm pretty sure we can go further.  
+Some articles were written relaying this new info, but maybe the only article that really tried to delve into the details is [Under the Hood of the Microsoft Teams Desktop Application](https://blog.thoughtstuff.co.uk/2017/04/under-the-hood-of-the-microsoft-teams-desktop-application/) written by a Microsoft MVP for Microsoft Teams [Tom Morgan](https://www.thoughtstuff.co.uk/). This is a good starting point, but I'm pretty sure we can go further.  
 
 In this article, we'll discover how to access part of the Microsoft Teams client source code and see what we can learn from it.
 
@@ -84,7 +84,7 @@ What can we learn from this:
 
 3. **Binary dependencies**: Aside from the main electron app (That will download its required dependencies from the npm package registry), the package includes some additional binary dependencies, in different formats:
   - `.so` files: `so` stands for shared object (a library format commonly used in C/C++ development), that mostly includes electron base libraries and dependencies such as the [SwiftShader](https://github.com/google/swiftshader) graphic api.
-  - `.node` files: [Electron native node modules](https://www.electronjs.org/docs/tutorial/using-native-node-modules), that enables Teams to access some lower-level features than what you could't use directly in a hybrid web app, or to perform resource-intensive operations faster, such as the `slimcore` library, which operates the telephony features in Teams.
+  - `.node` files: [Electron native node modules](https://www.electronjs.org/docs/tutorial/using-native-node-modules), that enables Teams to access some lower-level features than what you couldn't use directly in a hybrid web app, or to perform resource-intensive operations faster, such as the `slimcore` library, which operates the telephony features in Teams.
 
 ## Accessing Microsoft Teams client source code
 It's time to go down the rabbit hole Alice! (or Neo depending on your references)
@@ -116,8 +116,8 @@ Now you should see the electron app source code:
 
 ![Microsoft Teams client source code](/img/blog/teams-client-source-code.png)
 
-## What can we learn from that?
-I've only spent a few minutes analyzing the source code so far, but we still can see some very interesting stuff.
+## What can we learn from this?
+I've only spent a few minutes analyzing the source code so far, but we still can see some very interesting things.
 
 ### A limited set of the codebase  
 As a hybrid app, of course you'll not see here any server-side code. But more than this, a lot of the client-side code is dynamically loaded at runtime from Microsoft's servers (This code could be inspected easily right from a web browser using the developers tools). Still, we have access to:
@@ -128,10 +128,10 @@ As a hybrid app, of course you'll not see here any server-side code. But more th
 Also, we don't have access to the original source code (that is written in TypeScript), but only to its transpiled version in JavaScript. Hopefully, the TypeScript compiler produces pretty human-readable code.
 
 ### Package
-From the `package.json` file, we can see that the project was started in 2016. Also, if you look at the dependencies, we can see some interesting stuff...
+From the `package.json` file, we can see that the project was started in 2016. Also, if you look at the dependencies, we can see some interesting things...
 
 **KeyTar**:  
-[KeyTar](https://www.npmjs.com/package/keytar) is an interesting packages that enables node.js apps to interact with os-specific credentials managers using an abstracted interface:
+[KeyTar](https://www.npmjs.com/package/keytar) is an interesting package that enables node.js apps to interact with os-specific credentials managers using an abstracted interface:
 - Windows: Windows credential manager
 - Mac: Keychain Access
 - Linux: libsecret (and gnome-keyring on Ubuntu)
@@ -143,7 +143,7 @@ From the file `utility-keytar.js`, we can see that this module is used to secure
 From the `languageDetectionService.js` file, we can see that it's especially used for language detection. You may ask yourself *"why is Microsoft not using Azure Text Analytics API?"*... well... I don't know, but it may be related to the fact that Teams may in the future support some forms of offline mode, therefore using this kind of module could make sense.
 
 ### Configuration file
-From the `env_config.json` file, we can see some interesting stuff too.  
+From the `env_config.json` file, we can see some interesting things too.  
 For instance, the list of the different environments that supports Microsoft Teams, such as `commercial cloud`, `government` or `department of defense`
 ```json
 "serverEndpointsMap": {
@@ -184,7 +184,7 @@ Again from the `env_config.json` file, there is this funny option:
 ```js
 "enableAlphonso": true
 ```
-I didn't found on the web a lot of references to "Alphonso" that may be related to Teams. I just found this [npm package](https://www.npmjs.com/package/alphonso) which is a private offline npm registry. It could make sense as Microsoft may use private local registries to avoid to publish some packages publicly... Anybody knows what it stands for?
+I didn't find on the web a lot of references to "Alphonso" that may be related to Teams. I just found this [npm package](https://www.npmjs.com/package/alphonso) which is a private offline npm registry. It could make sense as Microsoft may use private local registries to avoid to publish some packages publicly... Anybody knows what it stands for?
 
 **A little FREE advice for Microsoft 😎**  
 Last but not least, from the `sharingIndicatorFactory.js` file, you can see that the development team has to fix this issue:
