@@ -117,7 +117,7 @@ Now you should see the electron app source code:
 ![Microsoft Teams client source code](/img/blog/teams-client-source-code.png)
 
 ## What can we learn from that?
-I've only spent a few minutes analyzing the source code so far, but we still can see some very interesting stuffs.
+I've only spent a few minutes analyzing the source code so far, but we still can see some very interesting stuff.
 
 ### A limited set of the codebase  
 As a hybrid app, of course you'll not see here any server-side code. But more than this, a lot of the client-side code is dynamically loaded at runtime from Microsoft's servers (This code could be inspected easily right from a web browser using the developers tools). Still, we have access to:
@@ -128,7 +128,7 @@ As a hybrid app, of course you'll not see here any server-side code. But more th
 Also, we don't have access to the original source code (that is written in TypeScript), but only to its transpiled version in JavaScript. Hopefully, the TypeScript compiler produces pretty human-readable code.
 
 ### Package
-From the `package.json` file, we can see that the project was started in 2016. Also, if you look at the dependencies, we can see some interesting stuffs...
+From the `package.json` file, we can see that the project was started in 2016. Also, if you look at the dependencies, we can see some interesting stuff...
 
 **KeyTar**:  
 [KeyTar](https://www.npmjs.com/package/keytar) is an interesting packages that enables node.js apps to interact with os-specific credentials managers using an abstracted interface:
