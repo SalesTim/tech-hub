@@ -6,7 +6,7 @@ image: https://developers.salestim.com/img/blog/deep-dive-microsoft-teams-client
 author:
   name: Guillaume Meyer
   profile: https://twitter.com/guillaumemeyer
-date: 2020-07-18
+date: 2020-07-25
 tags:
   - teams
   - client
