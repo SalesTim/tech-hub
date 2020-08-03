@@ -29,26 +29,13 @@ Here is a short description of each flow:
 
 ## Traffic encryption
 
-All the traffic from and to the SalesTim platform is SSL encrypted (and HTTPS protocol enforced), using [TLS v1.2](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices), ensuring secure communication between our customers and our platform.  
+All the traffic from and to the SalesTim platform is encrypted (and HTTPS protocol enforced), using [TLS v1.2](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices), ensuring secure communication between our customers and our platform. To do so, we’re using Azure Front Door as the only entry point to the app (web apps and API).
 
-Our SSL certificate is issued by GoDaddy from the Microsoft Azure App Service Certificate service:
-
-| Key | Value |
-|-----|-------|
-| Domain	| *.salestim.io |
-| Fingerprint | SHA256: fd5b33fcdd9d4afd2a941b230f73f03b91678fd05f52dc4a22163e6926bc4c43 |
-| Pin SHA256 | +pHxm2I5Ejq4BEmb3uAe1e1PUu/xh20r7/slACMzx/4= |
-| Common names | *.salestim.io |
-| Alternative names | *.salestim.io salestim.io |
-| Serial Number	| 7eb6cb4ac0117946 |
-| Key	RSA | 2048 bits (e 65537) |
-| Issuer | Go Daddy Secure Certificate Authority - G2 |
-| AIA | http://certificates.godaddy.com/repository/gdig2.crt |
-| Signature algorithm	| SHA256withRSA |
+You can review online our latest [Certificates Report](https://dist.salestim.com/audits/certificates_report.log)
 
 ::: tip Online SSL Test
 You can see a detailed report of our SSL certificate using this free online service that performs a deep analysis of the configuration of our SSL:  
-[Launch Qualys SSL Server Test](https://www.ssllabs.com/ssltest/analyze.html?d=prd.salestim.io)
+[Launch Qualys SSL Server Test](https://www.ssllabs.com/ssltest/analyze.html?d=app.salestim.io)
 :::
 
 ## DDoS prevention
