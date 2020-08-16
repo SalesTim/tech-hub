@@ -10,9 +10,13 @@ This article describes how to configure SalesTim to create an approval workflow 
 
 ## Abstract
 
-To implement its approval workflow, SalesTim relies on [Outlook Actionable Messages](https://docs.microsoft.com/en-us/outlook/actionable-messages/) to help approvers manage their approval requests right from their inbox. Outlook Actionable messages are emails that embed [Adaptive Cards](https://adaptivecards.io/) in a very secure way, by enforcing both end-user authentication and phishing prevention. In this context :
+To implement its approval workflow, SalesTim relies on [Outlook Actionable Messages](https://docs.microsoft.com/en-us/outlook/actionable-messages/) to help approvers manage their approval requests right from their inbox. Outlook Actionable messages are emails that embed [Adaptive Cards](https://adaptivecards.io/) in a very secure way, by enforcing both end-user authentication and phishing prevention.
+
+![SalesTim Approval Workflow Actionable Message](/img/nocode/approval-actionable-message.png)
+
+In this context :
 - End-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
-- Phishing prevention is ensured by using a [Card Signing]() mechanism
+- Phishing prevention is ensured by using a [Card Signing](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#signed-card-payloads) mechanism
 
 ## How does it works?
 Actionable messages security is guaranteed by:

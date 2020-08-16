@@ -1,4 +1,5 @@
 # Naming Conventions
+<Classification label="public" />
 
 ## Purpose
 You use a naming conventions to enforce a consistent naming strategy for teams created by users in your organization. A naming convention can help you and your users identify the function of the team, membership, geographic region, or who created the team. The naming covention can also help categorize teams and underlying groups in the address book. 

@@ -1,4 +1,5 @@
 # Audience Targeting
+<Classification label="public" />
 
 ## Purpose
 A targeting rule could be applied to each template to define who can use it, based on the user profile data.  

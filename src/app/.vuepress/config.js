@@ -128,9 +128,10 @@ module.exports = {
           sidebarDepth: 1,
           children: [
             ['/nocode/', 'Get Started'],
-            ['/nocode/power-platform.md', 'Power Platform'],
             ['/nocode/naming-conventions.md', 'Naming conventions'],
-            ['/nocode/audience-targeting.md', 'Audience Targeting']
+            ['/nocode/approval.md', 'Approval workflow'],
+            ['/nocode/audience-targeting.md', 'Audience Targeting'],
+            ['/nocode/power-platform.md', 'Power Platform'],
           ]
         },
         {
