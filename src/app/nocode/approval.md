@@ -49,8 +49,9 @@ To do so:
     - Additional Information: **One of your Microsoft 365 Exchange or Global administrators**
 4. Before submitting the form, ***BE SURE TO COPY THE PROVIDER ID VALUE***
 5. Accept the terms and conditions and hit "Save"
-6. Open the SalesTim Settings tab and open "Approval"
-7. Paste the provider id that you previously copied and hit "Save"
+6. Wait for your Microsoft 365 Exchange or Global administrators to approve this request
+7. Open the SalesTim Settings tab and open "Approval"
+8. Paste the provider id that you previously copied and hit "Save"
 
 From the SalesTim Catalog, you should now be able to enable the approval workflow on your templates (You may have to refresh the page to see your changes).
 
