@@ -20,6 +20,7 @@ To implement its approval workflow, SalesTim relies on [Outlook Actionable Messa
 You need to enable the service account that you configured in SalesTim to be authorized to send actionable messages. For that, and to ensure the security around the messages that are sent, Microsoft require to follow these quick steps: 
 
 1. Open the [Actionable Email Developer Dashboard](https://aka.ms/publishoam) and login with a Microsoft 365 user with `Exchange Administrator` or `Global administrator` permissions.
+
 2. Select `New provider`
 
 ![SalesTim Approval Actionable Message New Provider 2](/img/nocode/approval-actionable-message-new-provider-add.png)
@@ -36,17 +37,20 @@ You need to enable the service account that you configured in SalesTim to be aut
     ```
     - Logo: **You can use the [SalesTim Logo](https://developers.salestim.com/color.png)**
     
-   ![SalesTim Approval Actionable Message New Provider Form](img/nocode/approval-actionablea-message-new-provider-form.png)
+   ![SalesTim Approval Actionable Message New Provider Form](/img/nocode/approval-actionable-message-new-provider-form.png)
     
     - Scope of submission: `Organization`
-    - Additional Information: **One of your Microsoft 365 Exchange or Global administrators**
+    - Additional Information: **One of your Microsoft 365 Exchange or Global administrators**  
+<br/>
+
 4. Before submitting the form, ***BE SURE TO COPY THE PROVIDER ID VALUE***
+
 5. Accept the terms and conditions and hit "Save"
 
 ![SalesTim Approval Actionable Message New Provider Form 2](/img/nocode/approval-actionable-message-new-provider-form-2.png)
 
 6. Wait for your Microsoft 365 Exchange or Global administrators to approve this request
-![SalesTim Approval Actionable Message New Provider Pending Approval](img/nocode/approval-actionable-message-new-provider-pending-approval.png)
+![SalesTim Approval Actionable Message New Provider Pending Approval](/img/nocode/approval-actionable-message-new-provider-pending-approval.png)
 
 7. Global Admin and Exchange Administrators are then receiving the request in inbox that needs to be approved. 
 
@@ -61,6 +65,7 @@ You need to enable the service account that you configured in SalesTim to be aut
 ![SalesTim Approval Actionable Message New Provider Approved](/img/nocode/approval-actionable-message-new-provider-approved.png)
 
 8. Open the SalesTim Settings tab and open "Approval"
+
 9. Paste the provider id you copied in the step 3 and hit "Save"
 
 From the SalesTim Catalog, you should now be able to enable the approval workflow on your templates (You may have to refresh the page to see your changes).
@@ -68,13 +73,13 @@ From the SalesTim Catalog, you should now be able to enable the approval workflo
 For more details about this procedure, you may refer to [Register your service with the actionable email developer dashboard](https://docs.microsoft.com/en-us/outlook/actionable-messages/email-dev-dashboard).
 
 
-# More about Actionable Messages
+## More about Actionable Messages
 
-## what about security? 
+### what about security? 
 - End-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
 - Phishing prevention is ensured by using a [Card Signing](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#signed-card-payloads) mechanism
 
-## How does it works?
+### How does it works?
 Actionable messages security is guaranteed by:
 - The fact that the actionable message could only be used from the context of a secured Outlook client.
 - A sender verification is enforced using signed cards. See: [Sender verification
