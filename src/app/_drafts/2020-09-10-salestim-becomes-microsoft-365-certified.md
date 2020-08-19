@@ -1,5 +1,5 @@
 ---
-permalink: /blog/salestim-becomes-microsoft-365-certified
+permalink: /_drafts/salestim-becomes-microsoft-365-certified
 title: SalesTim is now the first and the only Microsoft Teams governance app certified for Microsoft 365
 description: Discover how SalesTim became a Microsoft 365 certified app, and what are the benefits for our customers. 
 image: https://developers.salestim.com/img/headers/transparency.png
