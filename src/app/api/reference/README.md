@@ -21,6 +21,7 @@ Class | Method | HTTP request | Description
 *CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog (🔐 Authenticated users and apps)
 *CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get all templates a user can see filtered by audience (🔐 Authenticated users)
 *CatalogApi* | [**installTemplate**](Apis/CatalogApi.md#installtemplate) | **POST** /catalog/templates/install | Install a template from the public template store to your corporate catalog (🔥 restricted to administrators)
+*ConnectedappsApi* | [**getIntegration**](Apis/ConnectedappsApi.md#getintegration) | **GET** /connectedapps/integrations/{integration} | Get a connected app integration (🔥 restricted to administrators)
 *JobsApi* | [**createProvisioningJob**](Apis/JobsApi.md#createprovisioningjob) | **POST** /jobs/provisioning | Create a new provisioning job (🔐 Authenticated users and apps)
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{id} | Get information about a job (🔐 Authenticated users and apps)
 *JobsApi* | [**getJobs**](Apis/JobsApi.md#getjobs) | **GET** /jobs | Get all jobs from your organization (🔥 restricted to administrators)
