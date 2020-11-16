@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getCatalogTemplates"></a>
 # **getCatalogTemplates**
-> getCatalogTemplates()
+> List getCatalogTemplates()
 
 Get all templates from your corporate catalog (🔐 Virtual App Virtual Token)
 
@@ -20,7 +20,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-null (empty response body)
+[**List**](..//Models/CatalogTemplate.md)
 
 ### Authorization
 
@@ -29,5 +29,5 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 

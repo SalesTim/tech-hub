@@ -15,7 +15,19 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [ApiError](.//Models/ApiError.md)
+ - [ApiErrorError](.//Models/ApiErrorError.md)
+ - [ApiErrorErrorInnerError](.//Models/ApiErrorErrorInnerError.md)
+ - [ApprovalTeamMember](.//Models/ApprovalTeamMember.md)
+ - [CatalogTemplate](.//Models/CatalogTemplate.md)
+ - [CatalogTemplateClonedTeam](.//Models/CatalogTemplateClonedTeam.md)
+ - [CatalogTemplateNewTeam](.//Models/CatalogTemplateNewTeam.md)
+ - [CatalogTemplateTemplateConfiguration](.//Models/CatalogTemplateTemplateConfiguration.md)
+ - [CatalogTemplateTemplateConfigurationApproval](.//Models/CatalogTemplateTemplateConfigurationApproval.md)
+ - [CatalogTemplateTemplateConfigurationAudienceTargeting](.//Models/CatalogTemplateTemplateConfigurationAudienceTargeting.md)
+ - [CatalogTemplateTemplateConfigurationPermanentMembership](.//Models/CatalogTemplateTemplateConfigurationPermanentMembership.md)
  - [Job](.//Models/Job.md)
+ - [PermanentMember](.//Models/PermanentMember.md)
  - [TeamProvisioningRequest](.//Models/TeamProvisioningRequest.md)
  - [UserIdentifier](.//Models/UserIdentifier.md)
 

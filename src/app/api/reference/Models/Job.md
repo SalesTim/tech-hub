@@ -3,7 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**UUID**](UUID.md) | The job ID, auto-generated at creation | [optional] [default to null]
+**id** | [**String**](string.md) | The job ID, auto-generated at creation | [optional] [default to null]
 **log** | [**List**](string.md) | A collection of JobLogsEntry. See [https://developers.salestim.com/api/reference/Models/JobLogs](https://developers.salestim.com/api/reference/Models/JobLogs) for more information. | [optional] [default to null]
 **type** | [**String**](string.md) | The job type (for instance &#x60;ProvisioningRequest&#x60;) | [optional] [default to null]
 **status** | [**String**](string.md) | The job current status | [optional] [default to null]

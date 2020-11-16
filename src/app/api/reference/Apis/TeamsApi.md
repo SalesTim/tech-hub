@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="createTeamProvisioningJob"></a>
 # **createTeamProvisioningJob**
-> createTeamProvisioningJob(teamProvisioningRequest)
+> Job createTeamProvisioningJob(teamProvisioningRequest)
 
 Create a new team provisioning job (🔐 Virtual App Virtual Token)
 
@@ -23,7 +23,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Job**](..//Models/Job.md)
 
 ### Authorization
 
@@ -32,5 +32,5 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
