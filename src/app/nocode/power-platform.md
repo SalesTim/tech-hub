@@ -29,17 +29,24 @@ This process only requires a few operations that could be completed in a few min
 - Open the `API permissions` menu and click `Add a permission`
 - Select `Microsoft Graph`, then `Delegated permissions`
 - From the permissions list, select:
-```
-Directory.AccessAsUser.All
-email
-offline_access
-openid
-profile
-Group.Read.All
-Mail.Send
-User.Read
-User.Read.All
-```
+    - OpenId permissions >
+        - `email`
+        - `offline_access`
+        - `openid`
+        - `profile`
+    - Directory >
+        - `Directory.AccessAsUser.All`
+    - Group >
+        - `Group.ReadWrite.All`
+    - Mail >
+        - `Mail.Send`
+    - User >
+        - `User.Read`
+        - `User.Read.All`
+    - InformationProtectionPolicy >
+        - `InformationProtectionPolicy.Read`
+
+- Then click `Grant admin consent` then `Yes`
 
 ## Import the SalesTim OpenAPI definition
 
