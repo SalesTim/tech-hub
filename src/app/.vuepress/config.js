@@ -110,8 +110,7 @@ module.exports = {
       { text: 'API & Webhooks', link: '/api/' },
       { text: 'Explorer', link: '/api/explorer' },
       { text: 'Trust Center', link: '/platform/' },
-      { text: 'Inside SalesTim', link: '/blog/' },
-      { text: 'Template Store', link: 'https://store.salestim.com' }
+      { text: 'Inside SalesTim', link: '/blog/' }
     ],
 
     // Sidebar options

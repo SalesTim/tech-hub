@@ -27,11 +27,11 @@ Deployment procedure: [Install SalesTim in Microsoft Teams](https://help.salesti
 
 ### Targeted packages
 
+This "targeted" package is a personal Microsoft Teams app comprised of 1 tab (🏠 Home).
+
 | Package name | Download link |
 |--------------|---------------|
 | SalesTim Home | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Home_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/packages/io.salestim.automation.targeted.home.prd.zip) |
-| SalesTim Catalog | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Catalog_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/packages/io.salestim.automation.targeted.catalog.prd.zip) |
-| SalesTim Settings | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Settings_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/packages/io.salestim.automation.targeted.settings.prd.zip) |
 
 ::: tip Deployment procedure
 [Setup pinned apps](https://help.salestim.com/articles/3507463-set-up-the-home-page)
