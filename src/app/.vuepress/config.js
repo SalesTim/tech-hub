@@ -146,6 +146,7 @@ module.exports = {
             ['/api/use-sdks', 'Use SDKs'],
             ['/api/use-postman', 'Use Postman'],
             ['/api/throttling', 'Throttling'],
+            ['/api/webhooks', 'Webhooks'],
             ['/api/reference/', 'REST API Reference'],
             ['/api/versions', 'Versions']
           ]
