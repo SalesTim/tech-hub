@@ -1,6 +1,6 @@
 # TeamsApi
 
-All URIs are relative to *https://api.salestim.io/v1.0*
+All URIs are relative to *https://apippr.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
