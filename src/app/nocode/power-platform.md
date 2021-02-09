@@ -8,11 +8,12 @@ description: "Use the SalesTim API with the Microsoft Power Platform to build Mi
 
 This article explains how to register the SalesTim API as a a custom connector for the Microsoft Power Platform. The `SalesTim Connector` gives you access to all the powerful features of our Governance API, such as managing your teams or start a new team provisioning job.
 
-This process only requires a few operations that could be completed in a few minutes:
-1. Register a new app registration in Azure Active Directory
-2. Import the SalesTim OpenAPI definition
+This process only requires a few operations that could be completed in a few minutes.
 
-## Register a new app registration in Azure Active Directory
+Table of Contents:
+[[toc]]
+
+## Create a new app registration in Azure Active Directory
 
 - Open your [Azure Active Directory portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)
 - Select `App registrations`
@@ -55,9 +56,15 @@ To import the SalesTim API OpenAPI definitions for Power Automate and Power Apps
 In the navigation pane, select Data > Custom connectors.
 - Select `New custom connector` then choose `Import an OpenAPI from URL`
 - Set the connector name to: `SalesTim Connector`
-- Paste this URL: `https://dist.salestim.com/api/beta/open-api/power-platform/apiDefinition.swagger.json`
+- Paste this URL:
+```
+https://dist.salestim.com/api/v1.0/open-api/power-platform/apiDefinition.swagger.json
+```
 - Click `Continue`
-- Upload the connector logo that you can download from: `https://www.salestim.com/wp-content/uploads/2019/05/color.png`
+- Upload the connector logo that you can download from:
+```
+https://www.salestim.com/wp-content/uploads/2019/05/color.png
+```
 - Set the icon background color to: `#000000`
 - Click `Security`
 - Ensure that the authentication type is set to `OAuth 2.0` and the identity provider is set to `Azure Active Directory`
