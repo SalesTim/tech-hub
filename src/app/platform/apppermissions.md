@@ -1,3 +1,8 @@
+---
+title: "Microsoft Graph Permissions"
+description: "Microsoft Graph permissions required by SalesTim."
+---
+
 # Microsoft Graph Permissions
 
 <Classification label="public" />
@@ -17,19 +22,31 @@ Learn more:
 
 ## Required Permissions
 
-For SalesTim to work properly and perform some administrative operations, it requires the following permissions:
+For SalesTim to work properly and perform some administrative operations, it requires the following permissions.
 
-| Scope | Usage | Admin Consent Required |
-|-------|-------|:----------------------:|
-| ```AppCatalog.ReadWrite.All``` | *Allows the app to create, read, update, and delete apps in the app catalogs.* <hr>***Allows SalesTim to manage its "Targeted Apps" packages to your corporate store.*** | Yes |
-| ```Directory.AccessAsUser.All``` | *Allows the app to have the same access to information in the directory as the signed-in user.* <hr>***Allows SalesTim to find the relevant people involved in approval processes and perform advanced users security checks.*** | Yes |
-| ```Group.ReadWrite.All``` | *Allows the app to create groups and read all group properties and memberships on behalf of the signed-in user. Additionally allows group owners to manage their groups and allows group members to update group content.* <hr>***Allows SalesTim to manage teams from Microsoft Teams and their underlying groups.*** | Yes |
-| ```Mail.Send``` | *Allows the app to send mail as users in the organization.* <hr>***Allows SalesTim to send some notification emails.*** | No |
-| ```Notifications.ReadWrite.CreatedByApp``` | *Allow the app to deliver its notifications on behalf of signed-in users. Also allows the app to read, update, and delete the user’s notification items for this app.*  <hr>***Allows SalesTim to send some in-app notification in Microsoft Teams.*** | No |
-| ```offline_access``` (OpenID) | *Allows the app to read and update user data, even when they are not currently using the app.* <hr>***Allows SalesTim to perform operations in the background on behalf of a user.*** | No |
-| ```profile``` (OpenID) | *Allows the app to see your users' basic profile (name, picture, user name).*  <hr>***Allows SalesTim to get current user basic profile.*** | No |
-| ```Sites.FullControl.All``` | *Allows the app to have full control to SharePoint sites in all site collections on behalf of the signed-in user.* <hr>***Allows SalesTim to manage teams from Microsoft Teams and their underlying SharePoint sites.*** | Yes |
-| ```User.Read.All``` | *Allows the app to read the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user.* <hr>***Allows SalesTim to get current user profile properties and related teams. Also used for the "Templates Audience Targeting" feature.*** | No |
+### OpenId standard scopes
+The OpenID scopes represents the basics required for any OAuth authentication:
+
+| Scope | Description | Justification | Admin Consent Required |
+|-------|-------------|---------------|:----------------------:|
+| ```email``` | View users' email address. | **Allows SalesTim to perform operations in the background on behalf of a user.** | No |
+| ```offline_access``` | Maintain access to data you have given it access to. | **Allows SalesTim to perform operations in the background on behalf of a user.** | No |
+| ```openid``` | Sign users in. | **Allows SalesTim to perform operations in the background on behalf of a user.** | No |
+| ```profile``` | View users' basic profile. | **Allows SalesTim to get current user basic profile (name, picture, user name).** | No |
+
+### Microsoft Graph Scopes
+The Microsoft Graph scopes are specific to the Microsoft platform:
+
+| Scope | Description | Justification | Admin Consent Required |
+|-------|-------------|---------------|:----------------------:|
+| ```AppCatalog.ReadWrite.All``` | Allows the app to create, read, update, and delete apps in the app catalogs. | **Allows SalesTim to manage its "Targeted Apps" packages to your corporate store.** | No |
+| ```Directory.AccessAsUser.All``` | Allows the app to have the same access to information in the directory as the signed-in user | **Allows SalesTim to find the relevant people involved in approval processes and perform advanced users security checks.** | Yes |
+| ```Group.ReadWrite.All``` | Allows the app to create groups and read all group properties and memberships. Additionally allows group owners to manage their groups and allows group members to update group content. | **Allows SalesTim to manage teams from Microsoft Teams and their underlying groups.** | Yes |
+| ```Mail.Send``` | Allows the app to send mail as users in the organization. | **Allows SalesTim to send some notification emails.** | No |
+| ```Notifications.ReadWrite.CreatedByApp``` | Allow the app to deliver its notifications on behalf of signed-in users. Also allows the app to read, update, and delete the user’s notification items for this app. | **Allows SalesTim to send some in-app notification in Microsoft Teams.** | No |
+| ```Sites.FullControl.All``` | Allows the app to have full control to SharePoint sites in all site collections on behalf of the signed-in user. | **Allows SalesTim to manage teams from Microsoft Teams and their underlying SharePoint sites.** | Yes |
+| ```User.Read.All``` | Allows the app to read the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user. | **Allows SalesTim to get current user profile properties and related teams. Also used for the "Templates Audience Targeting" feature.** | No |
+| ```ChannelMember.ReadWrite.All``` | Add and remove members from channels. Also allows changing a member's role, for example from owner to non-owner. | **Allows SalesTim to manage members of private channels. Especially used during the provisioning process to create private channels and manage their membership.** | Yes |
 
 Learn more with [Microsoft Graph permissions reference...](https://docs.microsoft.com/en-us/graph/permissions-reference)
 
