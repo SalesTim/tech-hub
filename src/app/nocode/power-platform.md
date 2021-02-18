@@ -77,7 +77,7 @@ SalesTim Power Platform Connector client secret
 12. Copy the `Client secret` value (be careful, it will only be shown once), and keep it as we're gonna reuse it later. You can temporarily paste it here:
 
 **Client secret**:  
-<input type="password" style="width: 500px;" placeholder="Paste your Client Secret here"></input>
+<input type="text" style="width: 500px;" placeholder="Paste your Client Secret here"></input>
 
 13. Open the `API permissions` from the left menu and click `Add a permission` from the top bar
 14. Select `Microsoft Graph`, then `Delegated permissions`
