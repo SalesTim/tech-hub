@@ -81,7 +81,7 @@ module.exports = {
     }
   ],
 
-  theme: 'yuu',
+  // theme: 'yuu',
 
   themeConfig: {
 
