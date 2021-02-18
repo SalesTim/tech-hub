@@ -1,26 +1,22 @@
-# Role Based Access Control
+# Role Based Access Control (RBAC)
 
 <Classification label="public" />
 
-Role based access control (RBAC) functionality enables application admins to limit the permissions of some users within a team.
+Role based access control (RBAC) enables Microsoft 365 global administrators to define permissions and restrict access to specific SalesTim's features to specific groups of users.
+
+To implement RBAC and provide a high level of granularity, SalesTim relies on both standard Microsoft 365 roles, namely `Teams service admin` and `Global admin`, and also on some application specific roles, such as `Catalog managers` and `Integration manager`.
 
 ## Roles and Profiles
-Here is the list user roles and profiles for the key features of SalesTim:
+Here is the matrix of features/roles supported by the SalesTim platform:
 
-| Features | Description | End-Users | Catalog Managers | Administrators |
-|----------|-------------|:---------:|:----------------:|:--------------:|
-| My teams | View its own teams from the homepage | ✔ | ✔ | ✔ |
-| New team | Create a new team based on a template | ✔ | ✔ | ✔ |
-| Requests approval | Approve / Reject an end-user request | ✔ | ✔ | ✔ |
-| Manage templates | Create / Update / Delete team templates, define their contents, approvers and audience targeting | | ✔ | ✔ |
-| Manage governance policies | Define governance policies for each team template, security and permanent owners / members | | ✔ | ✔ |
-| View analytics | View usage data and reports | | ✔ | ✔ |
-| Service account management | Define / Remove service account | | | ✔ |
-| Read audit trails | View company-wide and user-level audit trails | | | ✔ |
-| Rights management | Define Catalog managers | | | ✔ |
-| Apps & API management | Manage LoB integrations, Create / Delete App Id and App keys | | | ✔ |
-
-## Security Groups
-
-As of today, to access their respective features in SalesTim, Catalog Managers and Administrators must be members of the "Office 365 Global Administrators" group.  
-In a future release, we'll offer more granularity, especially to delegate catalog management to specific non-administrators users.
+| Feature | End-Users | Catalog managers | Integration manager | Teams service admin | Global admin |
+|-|:-:|:-:|:-:|:-:|:-:|
+| **Home** - View teams you're a member of from the homepage | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **New team** - Create a new team based on a template | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Approval** - Approve / Reject a team creation request | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Templates Catalog** - Create / Update / Delete team templates, define their content, select their approvers, define their audience targeting and select a governance policy | 🚫 | ✅ | 🚫 | ✅ | ✅ |
+| **Integration** - Manage platform's webhooks and external connected apps integration settings | 🚫 | 🚫 | ✅ | ✅ | ✅ |
+| **Governance policies** - Define global governance policies available from the template catalog, including security and compliance rules | 🚫 | 🚫 | 🚫 | ✅ | ✅ |
+| **Settings** - Manage service credentials and other platform's system configuration | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |
+| **Audit trails** - View company-wide and user-level audit trails | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |
+| **Roles management** - Assign roles to specific users | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |

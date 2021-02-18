@@ -18,17 +18,16 @@ Through the implementation of its different features, SalesTim access, processes
 - [Teams data](#teams-data)
 
 Here is how we're managing data for these different categories:
-| Category | Data | Accessed | Cached | Stored | Notes |
-|----------|------|:--------:|:------:|:------:|-------|
-| User profiles | | ✔ | ✔ | ✔ | Accessed and updated after each login.<br/>Cached for 1h.<br/>Stored as long as the organization is active. |
-| Organization settings | | ✔ | ✔ | ✔ | Accessed and updated after each admin login.<br/>Cached for 24h.<br/>Stored as long as the organization is active. |
-| Templates catalog | | ✔ | 🚫 | ✔ | Accessed by the SalesTim web client and during provisioning operations.<br/>Stored as long as the organization is active. |
-| User requests | | ✔ | 🚫 | ✔ | Accessed by the SalesTim web client and during provisioning operations.<br/>Stored as long as the organization is active. |
-| Teams data | | | | | |
-| | Teams conversations | 🚫 | 🚫 | 🚫 | No access.<br/>No cache.<br/>No storage. |
-| | Teams files | 🚫 | 🚫 | 🚫 | No access.<br/>No cache.<br/>No storage. |
-| | Planner tabs | ✔ | 🚫 | 🚫 | Accessed during cloning operations.<br/>No cache.<br/>No storage. |
-| | Other tabs | ✔ | 🚫 | 🚫 | Tabs configurations are accessed during cloning, without access to tabs contents.<br/>No cache.<br/>No storage. |
+| Data | Accessed | Cached | Stored | Notes |
+|------|:--------:|:------:|:------:|-------|
+| User profiles | ✔ | ✔ | ✔ | Accessed and updated after each login.<br/>Cached for 1h.<br/>Stored as long as the organization is active. |
+| Organization settings | ✔ | ✔ | ✔ | Accessed and updated after each admin login.<br/>Cached for 24h.<br/>Stored as long as the organization is active. |
+| Templates catalog | ✔ | 🚫 | ✔ | Accessed by the SalesTim web client and during provisioning operations.<br/>Stored as long as the organization is active. |
+| User requests | ✔ | 🚫 | ✔ | Accessed by the SalesTim web client and during provisioning operations.<br/>Stored as long as the organization is active. |
+| Teams conversations | 🚫 | 🚫 | 🚫 | No access.<br/>No cache.<br/>No storage. |
+| Teams files | 🚫 | 🚫 | 🚫 | No access.<br/>No cache.<br/>No storage. |
+| Planner tabs | ✔ | 🚫 | 🚫 | Accessed during cloning operations.<br/>No cache.<br/>No storage. |
+| Other tabs | ✔ | 🚫 | 🚫 | Tabs configurations are accessed during cloning, without access to tabs contents.<br/>No cache.<br/>No storage. |
 
 ::: tip
 As you can see, we're not storing (nor in cache nor in database) any team content as part of our provisioning process. Teams data are processed in memory and not persisted.

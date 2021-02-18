@@ -58,6 +58,9 @@ user.preferredLanguage.includes('en-')
 ```
 
 ### Combining multiple criteria
+::: tip Operator precedence
+Rules follows the standard javascript [Operator Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) so you can combine multiple rules in one expression, 
+:::
 
 #### "French or Belgium users from the Marketing Department"
 ```javascript
@@ -66,11 +69,9 @@ user.preferredLanguage.includes('en-')
 
 #### Domain-based targeting: "users with @contoso.com or @contoso.fr in their domain name"
 ```javascript
-user.mail.includes('@contoso.com') === true || user.mail.includes('@contoso.fr') === true
+user.mail.includes('@contoso.com') || user.mail.includes('@contoso.fr')
 ```
-::: tip Operator precedence
-Rules follows the standard javascript [Operator Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) so you can combine multiple rules in one expression, 
-:::
+
 
 ### Using groups membership
 The `user.groups.direct` tag gives you access to all the groups that the user is a DIRECT member of, as an array of groups objects. There are several types of groups, that can be differentiated by their `@odata.type` property:

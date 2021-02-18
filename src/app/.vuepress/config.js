@@ -114,7 +114,7 @@ module.exports = {
     repo: 'salestim',
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
-    repoLabel: 'Open Source',
+    repoLabel: 'GitHub',
     // Optional options for generating "Edit this page" link
     //   if your docs are in a different repo from your main project:
     docsRepo: 'salestim/tech-hub',
