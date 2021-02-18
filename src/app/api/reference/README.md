@@ -3,13 +3,15 @@
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://apippr.salestim.io/v1.0*
+All URIs are relative to *https://api.salestim.io/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog (🔐 Virtual App Virtual Token)
-*JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{JobId} | Get information about a job (🔐 Virtual App Virtual Token)
-*TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /teams/provisioning | Create a new team provisioning job (🔐 Virtual App Virtual Token)
+*CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get all the team templates from your catalog (Restricted through RBAC to the following roles: \"Global admin\", \"Teams service admin\", \"Catalog Manager\") 
+*CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
+*JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{JobId} | Get information about a job
+*LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
+*TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /teams/provisioning | Create a new team based on a template
 
 
 <a name="documentation-for-models"></a>
@@ -26,19 +28,25 @@ Class | Method | HTTP request | Description
  - [CatalogTemplateTemplateConfigurationApproval](.//Models/CatalogTemplateTemplateConfigurationApproval.md)
  - [CatalogTemplateTemplateConfigurationAudienceTargeting](.//Models/CatalogTemplateTemplateConfigurationAudienceTargeting.md)
  - [CatalogTemplateTemplateConfigurationPermanentMembership](.//Models/CatalogTemplateTemplateConfigurationPermanentMembership.md)
+ - [CatalogTemplates](.//Models/CatalogTemplates.md)
  - [Job](.//Models/Job.md)
+ - [Label](.//Models/Label.md)
+ - [Labels](.//Models/Labels.md)
+ - [MemberUserIdentifier](.//Models/MemberUserIdentifier.md)
+ - [OwnerUserIdentifier](.//Models/OwnerUserIdentifier.md)
  - [PermanentMember](.//Models/PermanentMember.md)
  - [TeamProvisioningRequest](.//Models/TeamProvisioningRequest.md)
- - [UserIdentifier](.//Models/UserIdentifier.md)
 
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization
 
-<a name="virtualToken"></a>
-### virtualToken
+<a name="oauth2_auth"></a>
+### oauth2_auth
 
-- **Type**: API key
-- **API key parameter name**: X-API-KEY
-- **Location**: HTTP header
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: https://login.windows.net/common/oauth2/authorize
+- **Scopes**: 
+  - https://graph.microsoft.com/.default: https://graph.microsoft.com/.default
 

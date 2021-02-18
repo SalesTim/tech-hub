@@ -1,17 +1,17 @@
 # JobsApi
 
-All URIs are relative to *https://apippr.salestim.io/v1.0*
+All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{JobId} | Get information about a job (🔐 Virtual App Virtual Token)
+[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{JobId} | Get information about a job
 
 
 <a name="getJob"></a>
 # **getJob**
 > Job getJob(jobId)
 
-Get information about a job (🔐 Virtual App Virtual Token)
+Get information about a job
 
     Get detailed information about a job, including its status, progress, logs...
 
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[virtualToken](../README.md#virtualToken)
+[oauth2_auth](../README.md#oauth2_auth)
 
 ### HTTP request headers
 

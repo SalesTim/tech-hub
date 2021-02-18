@@ -26,7 +26,17 @@ module.exports = {
     },
     ['mermaidjs',
       {
-        theme: 'forest'
+        theme: 'neutral' // default, dark, forest, neutral
+      }
+    ],
+    ['vuepress-plugin-code-copy',
+      {
+        align: 'top',
+        color: '#ffffff',
+        backgroundTransition: true,
+        backgroundColor: '#000000',
+        successText: 'Copied!',
+        staticIcon: true
       }
     ],
     'autometa', {

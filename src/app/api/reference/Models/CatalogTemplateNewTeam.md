@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **defaultDescription** | [**String**](string.md) | Defines the default team description presented to end-users in the new team provisioning form. | [optional] [default to null]
 **defaultWelcomeMessage** | [**String**](string.md) | Defines the default team welcome message presented to end-users in the new team provisioning form. | [optional] [default to null]
 **teamPrivacy** | [**String**](string.md) | Defines the new team privacy level. | [optional] [default to null]
-**addRequesterAsTeamOwner** | [**Boolean**](boolean.md) | Defines if the requester of the new team should be invited as a team owner or just as a team member. | [optional] [default to null]
+**addRequesterAsTeamOwner** | [**String**](string.md) | Defines if the requester of the new team should be invited as a team owner or just as a team member. | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
