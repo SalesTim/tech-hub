@@ -15,7 +15,7 @@ Creating the `SalesTim Connector for Power Platform` only requires a few operati
 **Table of Contents**:
 [[toc]]
 
-## Process Overview
+## Procedure Overview
 
 ```mermaid
 graph LR
@@ -66,7 +66,7 @@ https://global.consent.azure-apim.net/redirect
 8. From the `Overview` menu, copy the `Application (client) ID`, and keep it as we're gonna reuse it later. You can temporarily paste it here:
 
 **Application (client) ID**:  
-<input type="text" style="width: 500px;" placeholder="Paste your Application ID here"></input>
+<input type="text" id="clientIdInput" style="width: 500px;" placeholder="Paste your Application ID here"></input>
 
 9. Open the `Certificates and secrets` menu and click `New client secret`. A client secret is a kind of a password for your app, so manage it carefully.
 10. Give a name to your client secret such as:
@@ -118,38 +118,37 @@ The custom connector you're about to create will be available for both PowerApps
 ```
 SalesTim Connector
 ```
-- Paste this URL:
+3. Paste this URL:
 ```
 https://dist.salestim.com/api/v1.0/open-api/power-platform/apiDefinition.swagger.json
 ```
-- Click `Import`, then `Continue`
-- Upload the connector logo that you can download from:
+4. Click `Import`, then `Continue`
+5. Upload the connector logo that you can download from:
 ```
 https://www.salestim.com/wp-content/uploads/2019/05/color.png
 ```
-- Set the icon background color to:
+6. Set the icon background color to:
 ```
 #000000
 ```
-- Click `Security`
-- Ensure that the authentication type is set to `OAuth 2.0` and the identity provider is set to `Azure Active Directory`
-- Paste the previously copied `Client id` and `Client secret`
-- Ensure that the login url is set to:
+7. Click `Security`
+8. Ensure that the authentication type is set to `OAuth 2.0` and the identity provider is set to `Azure Active Directory`
+9. Paste the previously copied `Client id` and `Client secret`
+10. Ensure that the login url is set to:
 ```
 https://login.windows.net
 ```
-- Ensure that the tenant ID is set to:
+11. Ensure that the tenant ID is set to:
 ```common```
-- Set the resource URL to:
+12. Set the resource URL to:
 ```
 https://graph.microsoft.com
 ```
-- Set the scope to:
+13. Set the scope to:
 ```
 https://graph.microsoft.com/.default`
 ```
-- Click `Create connector`
-- Click `Close`
+14. Click `Create connector`, then `Close`
 
 ## Next Steps
 Now that you've created the `SalesTim Connector for Power Platform`, you can use it from both [PowerApps](https://powerapps.com) and [Power Automate](https://flow.microsoft.com).

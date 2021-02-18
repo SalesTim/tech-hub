@@ -80,15 +80,28 @@ module.exports = {
       ]
     }
   ],
+
+  theme: 'yuu',
+
   themeConfig: {
 
-    logo: '/color.png',
+    yuu: {
+      defaultDarkTheme: false,
+      disableDarkTheme: false,
+      colorThemes: ['blue', 'red'], // green (default), blue, red, and purple
+      defaultColorTheme: 'default',
+      labels: {
+        darkTheme: 'Enable Dark Theme', // Default is "Enable Dark Theme?"
+        ignoreThemes: 'Ignore Other Themes', // Default is "Ignore Other Themes?"
+      },
+    },
 
-    // Algolia search
-    // algolia: {
-    //   apiKey: 'a108a2d4f0180bd3f301ba9047a897f7',
-    //   indexName: 'salestimhelpcenter'
-    // },
+    logo: '/color.png',
+    
+    algolia: {
+      apiKey: 'a108a2d4f0180bd3f301ba9047a897f7',
+      indexName: 'salestimhelpcenter'
+    },
 
     // Footer options
     lastUpdated: 'Last Updated',
