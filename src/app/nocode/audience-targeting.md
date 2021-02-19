@@ -71,16 +71,17 @@ user.mail.includes('@contoso.com') || user.mail.includes('@contoso.fr')
 ```
 
 ### Using groups membership
-The `user.groups.direct` tag gives you access to all the groups that the user is a DIRECT member of, as an array of groups objects. Therefore, you can use any standard JavaScript array function (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods) for your evaluation.
+The `user.groups.direct` tag gives you access to all the groups that the user is a DIRECT member of, as an array of groups objects. Therefore, you can use any standard JavaScript [array function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods) for your evaluation.
 
 There are several types of groups, that can be differentiated by their `@odata.type` property:
-- `#microsoft.graph.directoryRole`: Standard Azure AD groups, such as the admin roles from your Microsoft 365 environment
-- `#microsoft.graph.group`: Microsoft 365 groups, associated with a team or a SharePoint site.
 
-Example Directory Role group:
+:::warning Note
+The response object shown here might be shortened for readability. All the default properties are returned for each group in an actual call.
+:::
+
 ```json
 {
-    "@odata.type":"#microsoft.graph.directoryRole",
+    "@odata.type":"#microsoft.graph.directoryRole", // Standard Azure AD groups, such as the admin roles from your Microsoft 365 environment
     "id":"3b4b0f4e-d037-4116-bd0e-1a2173d95d5a",
     "deletedDateTime":null,
     "description":"Company Administrator role has full access to perform any operation in the company scope.",
@@ -89,14 +90,9 @@ Example Directory Role group:
 }
 ```
 
-Example Microsoft 365 group:
-:::warning Note
-The response object shown here might be shortened for readability. All the default properties are returned for each group in an actual call.
-:::
-
 ```json
 {
-    "@odata.type":"#microsoft.graph.group",
+    "@odata.type":"#microsoft.graph.group", // Microsoft 365 groups, associated with a team or a SharePoint site.
     "id":"e9090752-4430-4361-8594-e6ce98a7fbfa",
     "deletedDateTime":null,
     "classification":null,
@@ -114,7 +110,7 @@ The response object shown here might be shortened for readability. All the defau
 }
 ```
 
-In this example, we're testing is the user is a member of the "Onboarding" group by checking if one of its groups contains the word "Onboarding" in its display name:
+In this example, we're testing user membership by checking if one of its groups contains the word "Onboarding" in its display name:
 
 ```js
 // Is a member of an "Onboarding" group
@@ -125,7 +121,7 @@ user.groups.direct.some(group => group.displayName.includes('Onboarding'))
 Be careful, evaluations are **case-sensitive**. Therefore to make sure your evaluation work independently of the case, you can use the `toLowerCase` function, such as: `group.displayName.toLowerCase().includes('Onboarding')`
 :::
 
-In this example, we're testing is the user is a member of a group by checking if one of its groups has a specific ID:
+In this example, we're testing is the user is a member of a specific group by checking if one of its groups has a specific ID:
 
 ```js
 // Is a member of a specific group by its ID
