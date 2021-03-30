@@ -56,7 +56,7 @@ npm run dev
 As a static website, the SalesTim Tech Hub Store could be hosted anywhere easily.  
 N.B: In production environment, the SalesTim Template Store is hosted by GitHub Pages:
 - Serving the `/docs` folder
-- Publishing the static website to `https://store.salestim.com`
+- Publishing the static website to `https://developers.salestim.com`
 
 ## X. APPENDICES
 

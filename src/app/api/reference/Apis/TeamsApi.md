@@ -4,7 +4,7 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTeamProvisioningJob**](TeamsApi.md#createTeamProvisioningJob) | **POST** /teams/provisioning | Create a new team based on a template
+[**createTeamProvisioningJob**](TeamsApi.md#createTeamProvisioningJob) | **POST** /powerplatform/teams/provisioning | Create a new team based on a template
 
 
 <a name="createTeamProvisioningJob"></a>

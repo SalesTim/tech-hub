@@ -11,7 +11,7 @@ Class | Method | HTTP request | Description
 *CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{JobId} | Get information about a job
 *LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
-*TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /teams/provisioning | Create a new team based on a template
+*TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /powerplatform/teams/provisioning | Create a new team based on a template
 
 
 <a name="documentation-for-models"></a>

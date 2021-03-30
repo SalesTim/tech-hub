@@ -3,15 +3,20 @@
 
 Webhooks enable organizations to trigger automated operations outside of the SalesTim platform, such as in a custom application, or in an automation tool such as Power Automate or Zapier.
 
+**Table of Contents:**
+[[toc]]
+
+## Managing Webhooks
+Organizations can manage webhooks from the SalesTim App UI:
+1. Open the `Integration` tab
+2. Select the `Webhooks` section.
+
 ::: warning
-Due to the fact that data may be exchanged outside of your Microsoft 365 environment, webhooks have to be considered as **highly sensitive**. Therefore, the SalesTim platform controls webhooks management through RBAC, making any operation related to webhooks accessible only to users granted with one of the following roles:
+Due to the fact that data may be exchanged outside of your Microsoft 365 environment, webhooks have to be considered as **highly sensitive**. To protect these operations, the SalesTim platform controls webhooks management through RBAC, making any operation related to webhooks accessible only to users granted with one of the following roles:
 - `Global admin` (Microsoft 365) role
 - `Teams service admin` (Microsoft 365) role
 - `Integration Manager` (SalesTim) role
 :::
-
-Table of Contents:
-[[toc]]
 
 ## Anatomy of a Webhook
 A wehbook is defined by the following properties:
@@ -22,7 +27,7 @@ A wehbook is defined by the following properties:
   description: 'This is a new webhook', // {string} Webhook description - Read/Write
   active: true, // {boolean} Webhook status - Read/Write
   events: [ // {array} Array of events codes that will trigger the webhook - Read/Write
-    'team_provisioning_complete', // {string} Event code - Read/Write
+    'team_provisioning_completed', // {string} Event code - Read/Write
     ...
   ],
   config: { // {object} Webhook http configuration
@@ -38,7 +43,7 @@ A wehbook is defined by the following properties:
 When triggered, the webhook generates an http `POST` request to its configured url.
 
 ### Headers
-The following headers are systematically included in the request:
+The following headers are included in the request:
 ```js
 'X-SalesTim-Hook': '', // {string} UUID of the webhook that triggered the request.
 'X-SalesTim-Event': '', // {string} Code of the event that triggered the request.
@@ -47,53 +52,63 @@ The following headers are systematically included in the request:
 ```
 
 ### Payload
-A webhook payload has always the same structure:
+A webhook payload contains at least the following properties:
 ```js
 @odata.context: 'https://developers.salestim.com/api/webhooks', // {string} Link to the webhook online help
-tenant_id: '', // {string} The tenant ID from where the event originates
-value: {} // {object} Data associated with the event. See the related chapter dedicated to each event for more details.
-metadata: {} // {object} - See the "Metadata" chapter below
-```
-
-::: tip
-For readibility, in the next chapters, we're only describing the structure of the `value` property, as the other properties are always included and following the same pattern.
-:::
-
-Here is a sample data payload for each supported event. 
-
-#### team_provisioning_complete
-Category: `provisioning`  
-Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
-
-```js
-{
-  team: {
-    id: '' // Team ID
-  },
-  template: { // {object}
-    id: '', // Template ID
-    name: '' // Template name
-  }
+tenant: {
+  id: // {string} The tenant ID from where the event originates
 }
-```
-
-#### Metadata
-In addition to the event data, the payload may contain additional metadata. Here is a sample:
-```js
-metadata: { // {object} - Collection of `system` and `custom` metadata associated with the event
-    'system': { // {object} The `system` metadata object is comprised of data managed by the SalesTim platform itself, for instance, additional information passed to the provisioning request that could be used by our naming convention engine.
-        'division': '' // {string} Division the team belongs to
-        'data_location': '' // {string} Data location of the team and its associated resources
-        ...
-      }
-      ... // N.B: The payload may also contain additional `custom` metadata managed by your `connected apps`.
-    },
-  }
 ```
 
 ### User-Agent
 The User-Agent for the requests will have the prefix `SalesTim-Hook/` and include the SalesTim current version number.  
 For instance `SalesTim-Hook/2.1.193`
+
+## Supported Events
+Here are sample payloads for each supported event. 
+
+### Team Created
+Code: `team_created`  
+Category: `team`  
+Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
+
+```json
+{
+  tenant: {
+    id: ''
+  },
+  team: {
+    id: ''
+  }
+}
+```
+
+### Team Provisioning Completed
+Code: `team_provisioning_completed`  
+Category: `team`  
+Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
+
+```json
+{
+  tenant: {
+    id: '',
+    initialDomainName: '',
+    defaultDomainName: ''
+  },
+  team: {
+    id: '',
+    displayName: ''
+  },
+  requester: {
+    id: '',
+    displayName: ''
+  },
+  template: {
+    id: '',
+    name: ''
+  }
+}
+```
 
 ## Endpoints Requirements
 
@@ -108,7 +123,7 @@ RETRY_INTERVAL = 10000 // Number of milliseconds between each retry
 ```
 
 ### Verifying Webhooks
-Webhooks sent by SalesTim can be verified by calculating a digital signature. Each webhook request includes a `X-SalesTim-Signature` header.  
+Webhooks sent by SalesTim can be verified by calculating a digital signature. If a secret has been defined, webhook requests includes a `X-SalesTim-Signature` header.  
 To verify that the request came from SalesTim, compute the HMAC hex digest of the request body, generated using the SHA-256 hash function and the secret as the HMAC key. If they match, then you can be sure that the webhook was sent from SalesTim.
 
 Here are a comprehensive list of examples for multiple languages:
@@ -235,7 +250,3 @@ print (result)
 ```
 
 
-## Managing Webhooks
-Organizations can manage webhooks from the SalesTim App UI:
-1. Open the `Integration` tab
-2. Select the `Webhooks` section.
