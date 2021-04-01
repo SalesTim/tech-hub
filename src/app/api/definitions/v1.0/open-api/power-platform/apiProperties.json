@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "connectionParameters": {
+      "api_key": {
+        "type": "securestring",
+        "uiDefinition": {
+          "displayName": "Authentication ID",
+          "description": "Enter a valid connected app authentication ID . You must be a SalesTim Governance Automation administrator.",
+          "tooltip": "Connected App Authentication ID",
+          "constraints": {
+            "clearText": false,
+            "required": "true",
+            "tabIndex": 2
+          }
+        }
+      }
+    },
+    "iconBrandColor": "#000000",
+    "publisher": "SalesTim, Inc.",
+    "stackOwner": "SalesTim, Inc.",
+    "capabilities": [],
+    "policyTemplateInstances": []
+  }
+}

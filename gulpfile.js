@@ -1,17 +1,16 @@
 'use strict'
 
 // #region DECLARATIONS
-
 // Platform Dependencies
 const os = require('os')
-
+const fs = require('fs')
 // External Dependencies
 const figlet = require('figlet')
 const gulp = require('gulp')
 const bump = require('gulp-bump')
 const git = require('gulp-git')
 const concat = require('gulp-concat')
-
+const YAML = require('yamljs')
 // Variables
 const CONSOLE_PADDING = 120
 const ROOT_FOLDER = './'
@@ -21,8 +20,7 @@ const SRC_FOLDER = ROOT_FOLDER + 'src/'
 const PUBLIC_FOLDER = SRC_FOLDER + 'app/.vuepress/public/'
 const JS_FOLDER = PUBLIC_FOLDER + 'js/'
 const CSS_FOLDER = PUBLIC_FOLDER + 'css/'
-
-// #endregion
+// #endregion DECLARATIONS
 
 // #region INITIALIZATION
 
@@ -109,6 +107,46 @@ const concatCss = (done) => {
     })
 }
 
+const convertOpenApiYamlToJson = (done) => {
+  try {
+    const srcYamlFiles = [
+      './src/app/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml',
+      './src/app/api/definitions/v1.0/open-api/power-platform/apiDefinition.swagger.yaml'
+    ]
+    for (let index = 0; index < srcYamlFiles.length; index++) {
+      const srcYamlFile = srcYamlFiles[index] // eslint-disable-line
+      const targetJsonFile = srcYamlFile.replace('.yaml', '.json')
+
+      fs.readFile(srcYamlFile, 'utf8', (err, data) => { // eslint-disable-line
+        if (!err) {
+          console.log('JSON file has been saved.')
+          const openApiJson = YAML.parse(data)
+          fs.writeFile(targetJsonFile, JSON.stringify(openApiJson), 'utf8', function (err) { // eslint-disable-line
+            if (!err) {
+              console.log('JSON file has been saved.')
+              if (index === srcYamlFiles.length - 1) {
+                done()
+              }
+            } else {
+              console.error('An error occured while writing JSON Object to File.')
+              console.dir(err)
+              done(err)
+            }
+          })
+        } else {
+          console.error('An error occured while reading YAML File.')
+          console.dir(err)
+          done(err)
+        }
+      })
+    }
+  } catch (err) { // Unexpected error
+    console.error('Unexpected error in /gulpfile/convertOpenApiYamlToJson.')
+    console.dir(err)
+    done(err)
+  }
+}
+
 // #endregion BUILD
 
 // #region PUSH
@@ -147,7 +185,8 @@ exports.infos = gulp.series(
 exports.build = gulp.series(
   logInfos,
   concatJs,
-  concatCss
+  concatCss,
+  convertOpenApiYamlToJson
 )
 exports.push = gulp.series(
   logInfos,

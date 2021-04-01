@@ -274,7 +274,7 @@ function getAccessToken () {
 // Send access token to swagger ui
 function setBearerAuth (token) {
   // "Bearer " is automatically added by swagger ui
-  ui.preauthorizeApiKey('oauth2_auth', token)
+  ui.preauthorizeApiKey('bearerAuth', token)
 }
 
 // Send app secret to swagger ui

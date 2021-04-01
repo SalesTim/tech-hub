@@ -67,7 +67,7 @@ For instance `SalesTim-Hook/2.1.193`
 ## Supported Events
 Here are sample payloads for each supported event. 
 
-### Team Created
+### Team Created <Badge text="beta" type="warning"/>
 Code: `team_created`  
 Category: `team`  
 Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
@@ -109,7 +109,7 @@ Schema:
 }
 ```
 
-### Team Provisioning Completed
+### Team Provisioning Completed <Badge text="v1.0" type="tip"/>
 Code: `team_provisioning_completed`  
 Category: `team`  
 Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).

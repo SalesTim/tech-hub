@@ -1,8 +1,3 @@
----
-title: "Best practices for working with SalesTim API"
-description: "This article describes best practices that you can apply to help your applications get the most out of SalesTim API - whether that involves learning about SalesTim API, improving app performance, or making your application more reliable for end users."
----
-
 # Best practices for working with SalesTim API
 <Classification label="public" />
 

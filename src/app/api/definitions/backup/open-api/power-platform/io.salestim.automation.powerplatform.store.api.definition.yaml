@@ -1,0 +1,205 @@
+swagger: "2.0"
+
+info:
+  version: "1.0.0"
+  title: SalesTim Store API
+  description: >
+    Performs anonymous requests on the free SalesTim Template Store
+  contact:
+    email: support@salestim.com
+    name: SalesTim Support
+    url: https://developers.salestim.com/api
+
+host: api.salestim.io
+basePath: /v1.0
+
+schemes:
+  - https
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+
+  /store/templates:
+    get:
+      description: View all templates from the [Public Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+      summary: GetStoreTemplates
+      tags:
+        - Store
+      operationId: GetStoreTemplates
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        200:
+          description: Operation executed successfully.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StoreTemplate"
+          headers: {}
+        404:
+          description: The ressource cannot be found.
+          schema: {}
+        429:
+          description: Too many requests. Your request has been throttled.
+          schema: {}
+        500:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+        default:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/StoreApi.html#getstoretemplates
+  /store/templates/{id}:
+    get:
+      description: View all templates from the [Public Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+      summary: GetStoreTemplate
+      tags:
+        - Store
+      operationId: GetStoreTemplate
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: The template ID
+      responses:
+        200:
+          description: Operation executed successfully.
+          schema:
+            $ref: "#/definitions/StoreTemplate"
+          headers: {}
+        404:
+          description: The ressource cannot be found.
+          schema: {}
+        429:
+          description: Too many requests. Your request has been throttled.
+          schema: {}
+        500:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+        default:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/StoreApi.html#getstoretemplate
+  /store/templates/byCategory/{id}:
+    get:
+      description: View all templates from the [Public Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+      summary: GetStoreTemplatesByCategory
+      tags:
+        - Store
+      operationId: GetStoreTemplatesByCategory
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: The category ID
+      responses:
+        200:
+          description: Operation executed successfully.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StoreTemplate"
+          headers: {}
+        404:
+          description: The ressource cannot be found.
+          schema: {}
+        429:
+          description: Too many requests. Your request has been throttled.
+          schema: {}
+        500:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+        default:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/StoreApi.html#getstoretemplatesbycategory
+  /store/categories:
+    get:
+      description: View all templates from the [Public Template Store](https://store.salestim.com) or publish your own templates to the [Template Manifests Repository](https://github.com/SalesTim/template-manifests)
+      summary: GetStoreCategories
+      tags:
+        - Store
+      operationId: GetStoreCategories
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        200:
+          description: Operation executed successfully.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StoreCategory"
+          headers: {}
+        404:
+          description: The ressource cannot be found.
+          schema: {}
+        429:
+          description: Too many requests. Your request has been throttled.
+          schema: {}
+        500:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+        default:
+          description: The server encountered an unexpected condition that prevented it from fulfilling the request.
+          schema: {}
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/StoreApi.html#getstorecategories
+
+definitions:
+  StoreTemplate:
+    title: StoreTemplate
+    description: A template from the public template store
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Models/StoreTemplate.html
+    type: object
+  StoreCategory:
+    title: StoreCategory
+    description: A category of templates from the public template store
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Models/StoreCategory.html
+    type: object
+    properties:
+      id:
+        description: Category ID
+        type: string
+      label:
+        $ref: "#/definitions/Label"
+      slug:
+        description: Category slug used for clean and seo-friendly urls
+        type: string
+  Label:
+    title: Label
+    description: Collection of localized category labels
+    type: object
+    properties:
+      en-us:
+        description: Category label localized for en-us.
+        type: string
+      fr-fr:
+        description: Category label localized for fr-fr.
+        type: string
+
+tags:
+  - name: Store
+    description: Microsoft Teams and policy templates from the public template store
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Apis/StoreApi

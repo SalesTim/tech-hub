@@ -162,15 +162,13 @@ module.exports = {
           sidebarDepth: 1,
           children: [
             ['/api/', 'Overview'],
-            ['/api/key-concepts', 'Key Concepts'],
             ['/api/getting-started', 'Getting Started'],
             ['/api/best-practices', 'Best Practices'],
             ['/api/explorer', 'API Explorer'],
-            ['/api/use-sdks', 'Use SDKs'],
+            ['/api/webhooks', 'Webhooks'],
             ['/api/use-postman', 'Use Postman'],
             ['/api/rate-limits', 'Rate Limits'],
             ['/api/throttling', 'Throttling'],
-            ['/api/webhooks', 'Webhooks'],
             ['/api/reference/', 'REST API Reference'],
             ['/api/versions', 'Versions']
           ]

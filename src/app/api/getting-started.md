@@ -1,8 +1,3 @@
----
-title: "Getting Started with SalesTim API"
-description: "This article describes the basic aspects and the keys to start working with the SalesTim API."
----
-
 # Getting Started with SalesTim API
 <Classification label="public" />
 
@@ -13,48 +8,50 @@ description: "This article describes the basic aspects and the keys to start wor
 
 ---
 
-This article describes the basic aspects and the keys to start working with the SalesTim API.
+## Key concepts for working with SalesTim API
+
+### Templates
+Templates are at the core of the SalesTim platform. As a rule of thumb, templates are a combination of two elements:
+- A team template, describing the structure and contents of a team.
+- A governance policy that may include security and compliance rules.
+
+A template may be created by yourself and saved in your private corporate catalog for internal use. We call this kind of template `Catalog Template`.
+
+:::tip Learn more
+- See [How to create a new template](https://help.salestim.com/collections/2021774-build-your-microsoft-teams-templates) from our [Help Center](https://help.salestim.com)
+- See [How to apply governance policies](https://help.salestim.com/collections/2036258-governance-policies)
+:::
+
+A template may also be public and accessible for free from the Microsoft Teams [Template Store](https://store.salestim.com). We call this kind of template `Store Template`
+:::tip Learn more
+See our open source GitHub repository [@salestim/template-manifests](https://github.com/SalesTim/template-manifests) to learn how to publish your own template to the template store.
+:::
+
+### Corporate Catalog
+The corporate catalog contains your own private templates, accessible to your end-users, that includes your custom governance policies, such as:
+- Naming conventions
+- Audience targeting
+- Approval rules
+- Security automation
+- Classification labels
+
+### Jobs
+Jobs are governance tasks executed by the SalesTim Platform automation engine.
+
+Jobs can be requested by the SalesTim administrators, catalog managers and virtual apps, to perform powerful operations such as:
+- Provision a new team based on a template
+- Apply governance policies to multiple teams
+- Automatically archive teams based on a specific rule
+
 
 ## Use API Explorer to get to know the API
 The easiest way to start exploring the data and services available through SalesTim API is to use [API Explorer](/api/explorer).  
 API Explorer lets you craft REST requests, adapt the HTTP request headers, and see the data responses.
 
-
-## Authenticate with SalesTim API
-Data and services in SalesTim API are exposed through different endpoints, that may use three different authentication schemes.  
-In this article, you'll only get an overview, therefore please refer to the [API Explorer](/api/explorer) to identify the authentication scheme for each endpoint.
-
-### Anonymous Access
-Anonymous access is enabled for endpoints related to the public [Template Store](https://store.salestim.com) (read-only access only). 
-> Applies to endpoints under `/store`.
-
-### OAuth + JWT (aka "delegated mode")
-OAuth is primarily used to authenticate the SalesTim Platform administrators and catalog managers using Azure AD to manage the corporate catalog of templates and the virtual apps.
-> Applies to endpoints under `/apps` and `/catalog`
-
+## Authenticate
 A valid Microsoft 365 access token issued by Azure AD is required, and expected by SalesTim API in the HTTP `Authorization` request header with a `bearer` token such as:
 ```yaml
 {
   Authorization: "bearer <JWT_TOKEN>"
 }
 ```
-
-### API Keys (aka "application mode")
-API keys are used by SalesTim virtual apps to access the SalesTim API securely.
-> Applies to endpoints under `/catalog` and `/jobs`
-
-SalesTim API expects one header to authenticate virtual apps:
-```yaml
-{
-  X-API-KEY: "<API_KEY>" # The virtual app api key
-}
-```
-
-The app ID (`<APP_ID>`) and API key (`<API_KEY>`) could be obtained by making a POST to `/apps` to create a virtual app.  
-Try it in our [API Explorer](/api/explorer.html#/Apps/CreateApp)
-
-:::warning API Key
-For obvious security reasons, the api key is only accessible at the creation of a virtual and cannot be retreived later.  
-The API key could also be regenerated at any time by making a POST to `/apps/{id}/regenerateSecret`
-:::
-
