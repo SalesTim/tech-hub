@@ -5,7 +5,10 @@
       type="text/css"
       href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css"
     />
-    <script type="text/javascript" src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
+    ></script>
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"></script>
     <div id="swagger-ui"></div>
   </div>
@@ -23,7 +26,7 @@ export default {
       window.location.host.indexOf("devgme", 0) > -1
     ) {
       pOpenApiFileUrl =
-        "https://devgmeweb.eu.ngrok.io/definitions/io.salestim.automation.api.definition.yaml";
+        "https://devgmeweb.eu.ngrok.io/definitions/io.salestim.openapi.definition.yaml";
     }
 
     var s = document.createElement("script");
@@ -31,20 +34,20 @@ export default {
       "src",
       "https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
     );
-    s.onload = function() {
+    s.onload = function () {
       var t = document.createElement("script");
       t.setAttribute(
         "src",
         "https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"
       );
-      t.onload = function() {
+      t.onload = function () {
         loadUi(pOpenApiFileUrl);
       };
       document.head.appendChild(t);
     };
     document.head.appendChild(s);
 
-    window.onload = function() {
+    window.onload = function () {
       if (!window.ui) {
         loadUi(pOpenApiFileUrl);
       }
@@ -56,10 +59,18 @@ export default {
         dom_id: "#swagger-ui",
         deepLinking: true,
         displayOperationId: true,
-        displayRequestDuration: true,
-        filter: true,
+        displayRequestDuration: false,
+        showExtensions: false,
+        filter: false,
+        operationsSorter: "alpha",
+        tagsSorter: "alpha",
+        tryItOutEnabled: true,
+        syntaxHighlight: {
+          activate: true,
+          theme: "agate",
+        },
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
-        plugins: [SwaggerUIBundle.plugins.DownloadUrl]
+        plugins: [SwaggerUIBundle.plugins.DownloadUrl],
         // To make the open api file url visible, add:
         // layout: 'StandaloneLayout'
       });
@@ -67,7 +78,7 @@ export default {
       window.initExplorerHeader();
     }
   },
-  props: ["openApiFileUrl"]
+  props: ["openApiFileUrl"],
 };
 </script>
 

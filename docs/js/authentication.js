@@ -191,7 +191,7 @@ function initExplorerHeader () {
   }
   if (!loginRequest) {
     loginRequest = {
-      scopes: ['email', 'offline_access', 'openid', 'profile', 'User.Read', 'Directory.AccessAsUser.All']
+      scopes: ['email', 'offline_access', 'openid', 'profile', 'User.Read']
     }
   }
   if (!tokenRequest) {
@@ -246,17 +246,16 @@ function getAccessToken () {
           console.log('Endpoint:')
           console.dir(endpoint)
           window.explorerLoggedUser = response
-          getApps(function (err, apps) {
-            if (!err) {
-              console.info(apps)
-            } else {
-              console.error('Error in getApps')
-              console.dir(err)
-            }
-          })
+          // getApps(function (err, apps) {
+          //   if (!err) {
+          //     console.info(apps)
+          //   } else {
+          //     console.error('Error in getApps')
+          //     console.dir(err)
+          //   }
+          // })
 
           setBearerAuth(response.accessToken)
-
           setAuthenticated(response, data)
           UIkit.notification({
             message: 'Successfully signed-in...',
@@ -275,7 +274,7 @@ function getAccessToken () {
 // Send access token to swagger ui
 function setBearerAuth (token) {
   // "Bearer " is automatically added by swagger ui
-  ui.preauthorizeApiKey('bearerAuth', token)
+  ui.preauthorizeApiKey('oauth2_auth', token)
 }
 
 // Send app secret to swagger ui
@@ -401,12 +400,8 @@ function setAnonymous () {
   document.getElementById('userDisplayName').innerText = 'Anonymous'
   document.getElementById('profilePicture').setAttribute('src', '/img/avatar.png')
   document.getElementById('delegatedModeStatus').innerText = '🔐'
-  document.getElementById('applicationModeStatus').innerText = '🔐'
   document.getElementById('logoutButton').style.display = 'none'
-  document.getElementById('appSelectorButton').style.display = 'none'
-  document.getElementById('loginButton').style.display = ''
-  document.getElementById('applicationModeDisabled').style.display = ''
-  document.getElementById('selectedAppLabel').innerText = 'Select an app...'
+  document.getElementById('loginButton').style.display = 'block'
 }
 
 function setAuthenticated (userInfos, profile) {
@@ -416,25 +411,20 @@ function setAuthenticated (userInfos, profile) {
   setProfilePicture(userInfos.accessToken)
   document.getElementById('delegatedModeStatus').innerText = '🟢'
   document.getElementById('loginButton').style.display = 'none'
-  document.getElementById('applicationModeDisabled').style.display = 'none'
-  document.getElementById('logoutButton').style.display = ''
-  document.getElementById('appSelectorButton').style.display = ''
-  document.getElementById('appSelectorButton').classList.remove('uk-button-default')
-  document.getElementById('appSelectorButton').classList.add('uk-button-primary')
-  document.getElementById('selectedAppLabel').innerText = 'Select an app...'
+  document.getElementById('logoutButton').style.display = 'block'
 }
 
-function toggleAdvanced () {
-  var advancedZoneTitle = document.getElementsByClassName('servers-title')[0]
-  var advancedZoneServers = document.getElementsByClassName('servers')[0]
-  if (advancedZoneTitle.style.display === 'none' || advancedZoneTitle.style.display === '') {
-    advancedZoneTitle.style.display = 'block'
-    advancedZoneServers.style.display = 'block'
-  } else {
-    advancedZoneTitle.style.display = 'none'
-    advancedZoneServers.style.display = 'none'
-  }
-}
+// function toggleAdvanced () {
+//   var advancedZoneTitle = document.getElementsByClassName('servers-title')[0]
+//   var advancedZoneServers = document.getElementsByClassName('servers')[0]
+//   if (advancedZoneTitle.style.display === 'none' || advancedZoneTitle.style.display === '') {
+//     advancedZoneTitle.style.display = 'block'
+//     advancedZoneServers.style.display = 'block'
+//   } else {
+//     advancedZoneTitle.style.display = 'none'
+//     advancedZoneServers.style.display = 'none'
+//   }
+// }
 
 function selectApp () {
   UIkit.modal(document.getElementById('appSelectorModal')).hide()

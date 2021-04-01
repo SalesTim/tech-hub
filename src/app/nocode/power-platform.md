@@ -1,15 +1,10 @@
----
-title: "No-Code Solutions with Power Platform and SalesTim API"
-description: "Use the SalesTim API with the Microsoft Power Platform to build Microsoft Teams apps and integrations easily."
----
-
 # Use the SalesTim API with Power Platform <Badge text="beta" type="warning"/>
 <Classification label="public" />
 
-**Abstract**: This article explains how to register the SalesTim API as a a custom connector for the Microsoft Power Platform. The `SalesTim Connector for Power Platform` gives you access to all the powerful features of our [Governance API](/api/), such as managing your teams or start a new team provisioning job, right from [PowerApps](https://powerapps.com), [Power Automate](https://flow.microsoft.com).
+**Abstract**: This article explains how to register the SalesTim API as a custom connector for the Microsoft [Power Platform](https://powerplatform.microsoft.com). The `SalesTim Connector for Power Platform` gives you access to all the powerful features of our [Governance API](/api/), such as managing your teams or start a new team provisioning job, right from [PowerApps](https://powerapps.com), [Power Automate](https://flow.microsoft.com), or [Power BI](https://powerbi.microsoft.com).
 
 ::: tip ⏱ Expected Duration
-Creating the `SalesTim Connector for Power Platform` only requires a few operations that are fully described hereafter as a detailed step-by-step procedure. Assuming you have all the required access and permissions to execute it properly, it should take ***less than 10 minutes***.
+Creating the `SalesTim Connector for Power Platform` only requires a few operations that are described hereafter as a detailed step-by-step procedure. Assuming you have all the required access and permissions to execute it properly, it should take ***less than 10 minutes***.
 :::
 
 **Table of Contents**:
@@ -23,12 +18,13 @@ graph LR
     %% Nodes
     s([Start])
     subgraph adop[Azure AD]
-        appreg(Azure AD App Registration)
+        appreg(1. Azure AD App Registration)
     end
     subgraph pp[Power Platform]
-        openapi(OpenAPI Import)
-        papps(PowerApps)
-        pauto(Power Automate)
+        openapi(2. OpenAPI Import)
+        papps(3. Power Apps)
+        pauto(3. Power Automate)
+        pbi(3. Power BI)
     end
     e([End])
 
@@ -42,11 +38,13 @@ graph LR
     appreg -->|Client id & secret| openapi
     openapi -->|Use| papps
     openapi -->|Use| pauto
+    openapi -->|Use| pbi
     papps --> e
     pauto --> e
+    pbi --> e
 ```
 
-## Create a new app registration in Azure Active Directory
+## 1. Create a new app registration in Azure Active Directory
 To securely access your Microsoft 365 environment through the Microsoft Graph APIs, the first step is to create a dedicated app registration. An Azure AD app registration identifies a third-party app such as SalesTim, and defines the permissions you wan to grant to it. To learn more, you can refer to [How and why applications are added to Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-applications-are-added).
 
 To create a new app registration, follow these steps:
@@ -103,7 +101,7 @@ SalesTim Power Platform Connector client secret
 
 You're done, you've created your app registration for the SalesTim Connector. You should also have saved for later the `Application (client) ID` and `Client secret` that we're gonna use in the next steps.
 
-## Import the SalesTim OpenAPI definition
+## 2. Import the SalesTim OpenAPI definition
 Now that we've created the app registration, we're gonna use it to create our custom connector.
 
 1. To import the SalesTim API OpenAPI definitions for Power Automate and Power Apps, go to [PowerApps](https://powerapps.com) or [Power Automate](https://flow.microsoft.com).
@@ -146,12 +144,12 @@ https://graph.microsoft.com
 ```
 13. Set the scope to:
 ```
-https://graph.microsoft.com/.default`
+https://graph.microsoft.com/.default
 ```
 14. Click `Create connector`, then `Close`
 
-## Next Steps
-Now that you've created the `SalesTim Connector for Power Platform`, you can use it from both [PowerApps](https://powerapps.com) and [Power Automate](https://flow.microsoft.com).
+## 3. Next Steps
+Now that you've created the `SalesTim Connector for Power Platform`, you can use it from both [Power Apps](https://powerapps.com), [Power Automate](https://flow.microsoft.com), and [Power BI](https://powerbi.microsoft.com).
 
 ::: tip To Go Further
 Here are a few interesting articles that may give you some guidelines and new ideas on how to use the the `SalesTim Connector for Power Platform`:

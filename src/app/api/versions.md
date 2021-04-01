@@ -1,8 +1,3 @@
----
-title: "SalesTim API Versions"
-description: "This article describes the different versions of the SalesTim API."
----
-
 # Versions
 <Classification label="public" />
 

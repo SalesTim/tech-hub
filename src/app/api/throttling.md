@@ -1,9 +1,4 @@
----
-title: "SalesTim API throttling guidance"
-description: "Throttling limits the number of concurrent calls to a service to prevent overuse of resources. SalesTim API is designed to handle a high volume of requests. If an overwhelming number of requests occurs, throttling helps maintain optimal performance and reliability of the SalesTim API service."
----
-
-# SalesTim API throttling guidance
+# Throttling Guidance
 <Classification label="public" />
 
 ---
@@ -61,42 +56,10 @@ In addition to the `Retry-After` header, SalesTim API includes `X-RateLimit-Limi
   message: 'Too many requests, please try again later...',
   body: {
     rateLimitExceeded: {
+      tier: 'Tier 1',              # Could be 'Tier 1', 'Tier 2' or 'Tier 3'
       rateLimitWindow: 900000,     # In ms
-      ratelimitMax: RATE_LIMIT_MAX # In # of requests
+      ratelimitMax: 6              # In # of requests
     }
   }
 }
-```
-
-## Service-specific limits
-
-SalesTim API allows you to access data in multiple services, such as the public [Template Store](https://store.salestim.com), your own [Corporate Catalog of Templates](/api/reference/Apis/CatalogApi.md) or our [Governance Automation Jobs Engine](/api/reference/Apis/JobsApi.md). These services impose their own throttling limits that affect applications that use SalesTim API to access them.
-
-> Note: The specific limits described here are subject to change.
-
-### Template Store
-The template store service limits are evaluated for each origin IP address.
-
-```
-2000 API requests in a 15 minute period  
-```
-
-### Catalog of templates
-The catalog of templates service limits are evaluated by combinint the following criteria:
-- origin IP address
-- virtual app ID
-
-```
-1000 API requests in a 15 minute period  
-```
-
-### Governance Automation Jobs Engine
-The governance automation jobs engine service limits are evaluated by combinint the following criteria:
-- origin IP address
-- virtual app ID
-- number of concurrent jobs
-
-```
-500 API requests in a 15 minute period
-A maximum of 10 concurrent jobs  
 ```

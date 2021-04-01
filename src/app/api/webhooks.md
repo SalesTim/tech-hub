@@ -1,4 +1,4 @@
-# Webhooks Reference <Badge text="beta" type="warning"/>
+# Webhooks Reference
 <Classification label="public" />
 
 Webhooks enable organizations to trigger automated operations outside of the SalesTim platform, such as in a custom application, or in an automation tool such as Power Automate or Zapier.
@@ -72,13 +72,39 @@ Code: `team_created`
 Category: `team`  
 Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
 
+Sample:
 ```json
 {
-  tenant: {
-    id: ''
+  "tenant": {
+    "id": "79f874ba-8775-44eb-b4d4-b32d9b65cce8"
   },
-  team: {
-    id: ''
+  "team": {
+    "id": "3d8a075c-1226-4c1e-969b-b6d5d65700b1"
+  }
+}
+```
+
+Schema:
+```json
+{
+  "type": "object",
+  "properties": {
+    "tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    }
   }
 }
 ```
@@ -88,24 +114,81 @@ Code: `team_provisioning_completed`
 Category: `team`  
 Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
 
+Sample:
 ```json
 {
-  tenant: {
-    id: '',
-    initialDomainName: '',
-    defaultDomainName: ''
+  "tenant": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "initialDomainName": "contoso.onmicrosoft.com",
+    "defaultDomainName": "contoso.com"
   },
-  team: {
-    id: '',
-    displayName: ''
+  "team": {
+    "id": "94735ea1-c097-4cbb-963b-f59bb586fba1",
+    "displayName": "Project Team"
   },
-  requester: {
-    id: '',
-    displayName: ''
+  "requester": {
+    "id": "f16c50fe-dcb7-4adc-a5ba-2f59f8f50da2",
+    "displayName": "John Doe"
   },
-  template: {
-    id: '',
-    name: ''
+  "template": {
+    "id": "d8854819-c06f-4680-82f7-cc6d5b230c27",
+    "name": "Project Template"
+  }
+}
+```
+
+Schema:
+```json
+{
+  "type": "object",
+  "properties": {
+    "tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "initialDomainName": {
+          "type": "string"
+        },
+        "defaultDomainName": {
+          "type": "string"
+        }
+      }
+    },
+    "team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
   }
 }
 ```
@@ -123,7 +206,7 @@ RETRY_INTERVAL = 10000 // Number of milliseconds between each retry
 ```
 
 ### Verifying Webhooks
-Webhooks sent by SalesTim can be verified by calculating a digital signature. If a secret has been defined, webhook requests includes a `X-SalesTim-Signature` header.  
+Webhooks sent by SalesTim can be verified by calculating a digital signature. If a secret has been defined, the webhook requests will includes a `X-SalesTim-Signature` header.  
 To verify that the request came from SalesTim, compute the HMAC hex digest of the request body, generated using the SHA-256 hash function and the secret as the HMAC key. If they match, then you can be sure that the webhook was sent from SalesTim.
 
 Here are a comprehensive list of examples for multiple languages:

@@ -4,14 +4,43 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{JobId} | Get information about a job
+[**createProvisioningJob**](JobsApi.md#createProvisioningJob) | **POST** /jobs/provisioning | Create a new provisioning job (🔐 Authenticated users and apps)
+[**getJob**](JobsApi.md#getJob) | **GET** /jobs/{id} | Get information about a job (🔐 Authenticated users and apps)
+[**getJobs**](JobsApi.md#getJobs) | **GET** /jobs | Get all jobs from your organization (🔥 restricted to administrators)
 
+
+<a name="createProvisioningJob"></a>
+# **createProvisioningJob**
+> Job createProvisioningJob(ProvisioningRequest)
+
+Create a new provisioning job (🔐 Authenticated users and apps)
+
+    Create a new provisioning job by sending a ProvisioningRequest.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ProvisioningRequest** | [**ProvisioningRequest**](../Models/ProvisioningRequest.md)| A ProvisioningRequest object describing the job to execute. |
+
+### Return type
+
+[**Job**](../Models/Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 <a name="getJob"></a>
 # **getJob**
-> Job getJob(jobId)
+> Job getJob(id)
 
-Get information about a job
+Get information about a job (🔐 Authenticated users and apps)
 
     Get detailed information about a job, including its status, progress, logs...
 
@@ -19,15 +48,39 @@ Get information about a job
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **String**| The job ID generated during its creation. | [default to null]
+ **id** | **String**| The job ID. | [default to null]
 
 ### Return type
 
-[**Job**](..//Models/Job.md)
+[**Job**](../Models/Job.md)
 
 ### Authorization
 
-[oauth2_auth](../README.md#oauth2_auth)
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="getJobs"></a>
+# **getJobs**
+> List getJobs()
+
+Get all jobs from your organization (🔥 restricted to administrators)
+
+    Get all jobs from your organization.
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List**](../Models/Job.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

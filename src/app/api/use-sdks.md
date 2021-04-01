@@ -1,8 +1,3 @@
----
-title: "SalesTim API SDKs overview"
-description: "Describes the SDKs that are available, the platforms they support, and the value they provide to developers."
----
-
 # SalesTim API SDKs overview <Badge text="beta" type="warning"/>
 <Classification label="public" />
 

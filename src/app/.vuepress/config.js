@@ -168,6 +168,7 @@ module.exports = {
             ['/api/explorer', 'API Explorer'],
             ['/api/use-sdks', 'Use SDKs'],
             ['/api/use-postman', 'Use Postman'],
+            ['/api/rate-limits', 'Rate Limits'],
             ['/api/throttling', 'Throttling'],
             ['/api/webhooks', 'Webhooks'],
             ['/api/reference/', 'REST API Reference'],

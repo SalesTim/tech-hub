@@ -1,8 +1,3 @@
----
-title: "Team Creation Approval Workflow"
-description: "Use SalesTim to create an approval workflow for your teams creation requests."
----
-
 # Team creation approval workflow
 <Classification label="public" />
 

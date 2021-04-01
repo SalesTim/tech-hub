@@ -1,8 +1,3 @@
----
-title: "Overview of SalesTim API"
-description: "SalesTim API provides a unified programmability model that you can use to manage your Microsoft Teams environment and build powerful apps easily."
----
-
 # Overview of SalesTim API
 <div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/api.jpg);">
   <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
