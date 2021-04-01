@@ -118,7 +118,7 @@ SalesTim Connector
 ```
 3. Paste this URL:
 ```
-https://developers.salestim.com/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml
+https://developers.salestim.com/api/definitions/v1.0/open-api/power-platform/apiDefinition.swagger.json
 ```
 4. Click `Import`, then `Continue`
 5. Upload the connector logo that you can download from:

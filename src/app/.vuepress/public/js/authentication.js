@@ -286,6 +286,8 @@ function signOut () {
   window.explorerLoggedUser = null
   // Actually don't do a real ad logout to prevent a global browser-wide logout
   // myMSALObj.logout()
+  // Reset swagger ui bearer token
+  setBearerAuth('')
   setAnonymous()
   UIkit.notification({
     message: 'Successfully signed-out...',

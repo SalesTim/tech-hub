@@ -70,7 +70,7 @@ export default {
           theme: "agate",
         },
         presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
-        plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+        plugins: [SwaggerUIBundle.plugins.DownloadUrl]
         // To make the open api file url visible, add:
         // layout: 'StandaloneLayout'
       });
