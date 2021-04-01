@@ -18,11 +18,7 @@ To import the Postman collection:
 4. Paste the following URL and choose **Import**.
 
 ```
-https://dist.salestim.com/api/v1.0/open-api/io.salestim.automation.api.definition.yaml
-```
-This URL is for the `YAML` format. You can also use the `JSON` OpenAPI file:
-```
-https://dist.salestim.com/api/v1.0/open-api/io.salestim.automation.api.definition.json
+https://developers.salestim.com/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml
 ```
 
 You are now up and running with the SalesTim API collection.

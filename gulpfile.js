@@ -110,8 +110,8 @@ const concatCss = (done) => {
 const convertOpenApiYamlToJson = (done) => {
   try {
     const srcYamlFiles = [
-      './src/app/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml',
-      './src/app/api/definitions/v1.0/open-api/power-platform/apiDefinition.swagger.yaml'
+      './src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml',
+      './src/app/.vuepress/public/api/definitions/v1.0/open-api/power-platform/apiDefinition.swagger.yaml'
     ]
     for (let index = 0; index < srcYamlFiles.length; index++) {
       const srcYamlFile = srcYamlFiles[index] // eslint-disable-line
