@@ -24,13 +24,16 @@ securityDefinitions:
     flow: accessCode
     authorizationUrl: https://login.windows.net/common/oauth2/authorize
     tokenUrl: https://login.windows.net/common/oauth2/authorize
-    scopes: {'https://graph.microsoft.com/.default': 'https://graph.microsoft.com/.default'}
+    scopes:
+      {
+        "https://graph.microsoft.com/.default": "https://graph.microsoft.com/.default",
+      }
 security:
-- oauth2_auth: ['https://graph.microsoft.com/.default']
+  - oauth2_auth: ["https://graph.microsoft.com/.default"]
 
 tags:
   - name: catalog
-    description: Your corporate catalog of teams templates and governance policies. See our [Key Concepts / Corporate Catalog](https://developers.salestim.com/api/key-concepts.html#corporate-catalog) article for more information.
+    description: Your corporate catalog of teams templates and governance policies.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/CatalogApi
   - name: teams
@@ -42,15 +45,15 @@ tags:
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/UsersApi
   - name: jobs
-    description: Automated jobs that performs governance operations. See our [Key Concepts / Jobs](https://developers.salestim.com/api/key-concepts.html#jobs) article for more information.
+    description: Jobs that performs governance operations.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/JobsApi
   - name: labels
-    description: Microsoft 365 sensitivity labels. See our [Key Concepts / Labels](https://developers.salestim.com/api/key-concepts.html#labels) article for more information.
+    description: Microsoft 365 sensitivity labels.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/LabelsApi
   - name: hooks
-    description: SalesTim Webhooks. See our [Webhooks](https://developers.salestim.com/api/webhooks) article for more information.
+    description: SalesTim Platform Webhooks.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
@@ -60,7 +63,7 @@ paths:
       tags:
         - catalog
       summary: Get my teams templates
-      description: Get teams templates accessible to the connected user filtered by the audience targeting rules.
+      description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: GetMyCatalogTemplates
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getmycatalogtemplates
@@ -93,10 +96,10 @@ paths:
       tags:
         - labels
       summary: Get my sensitivity labels
-      description: Get my Microsoft 365 sensitivity labels.
+      description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: GetMyLabels
       externalDocs:
-        url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getmylabels
+        url: https://developers.salestim.com/api/reference/Apis/LabelsApi.html#getmylabels
       responses:
         "200":
           description: OK - Returns a Labels object (Collection of Label objects).
@@ -119,17 +122,17 @@ paths:
         "503":
           $ref: "#/responses/503"
         default:
-          $ref: "#/responses/500" 
+          $ref: "#/responses/500"
 
   /users:
     get:
       tags:
         - users
       summary: Retreive users from your Microsoft 365 environment
-      description: Retreive users from your Microsoft 365 environment.
+      description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: GetUsers
       externalDocs:
-        url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getUsers
+        url: https://developers.salestim.com/api/reference/Apis/UsersApi.html#getUsers
       responses:
         "200":
           description: OK - Returns a Users object (Collection of User objects).
@@ -152,17 +155,55 @@ paths:
         "503":
           $ref: "#/responses/503"
         default:
-          $ref: "#/responses/500" 
+          $ref: "#/responses/500"
 
+  /teams/{teamId}:
+    get:
+      tags:
+        - teams
+      summary: Get a team
+      description: Get detailed information about a team. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: GetTeam
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteam
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK - Returns a Team object.
+          schema:
+            $ref: "#/definitions/Team"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
   /teams/provisioning:
     post:
       tags:
         - teams
       summary: Create a new team based on a template
-      description: Create a new team provisioning job.
+      description: Create a new team provisioning job. TIER 1️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: CreateTeamProvisioningJob
       externalDocs:
-        url: https://developers.salestim.com/api/reference/Apis/JobsApi.html#createteamprovisioningjob
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamprovisioningjob
       parameters:
         - in: body
           name: TeamProvisioningRequest
@@ -193,19 +234,229 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+  /teams/{teamId}/channels:
+    get:
+      tags:
+        - teams
+      summary: Get team channels
+      description: Get team channels. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: GetTeamChannels
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchannels
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK - Returns a TeamChannels object.
+          schema:
+            $ref: "#/definitions/TeamChannels"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+    post:
+      tags:
+        - teams
+      summary: Create a new team channel
+      description: Create a new team channel. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: CreateTeamChannel
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchannel
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+        - in: body
+          name: teamChannelPayload
+          description: A TeamChannelPayload object describing the channel to create.
+          required: true
+          schema:
+            $ref: "#/definitions/TeamChannelPayload"
+      responses:
+        "201":
+          description: Created - Returns a Job object.
+          schema:
+            $ref: "#/definitions/Job"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+  /teams/{teamId}/channels/primary:
+    get:
+      tags:
+        - teams
+      summary: Get the primary channel of a team
+      description: Get the primary channel of a team. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: GetTeamPrimaryChannel
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamprimarychannel
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK - Returns a TeamChannel object.
+          schema:
+            $ref: "#/definitions/TeamChannel"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+  /teams/{teamId}/channels/{channelId}/tabs:
+    get:
+      tags:
+        - teams
+      summary: Get team channel tabs
+      description: Get team channel tabs. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: GetTeamChannelTabs
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchanneltabs
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+        - in: path
+          name: channelId
+          description: The team channel ID.
+          required: true
+          type: string
+      responses:
+        "200":
+          description: OK - Returns a TeamChannelTabs object.
+          schema:
+            $ref: "#/definitions/TeamChannelTabs"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+    post:
+      tags:
+        - teams
+      summary: Create a new team channel tab
+      description: Create a new team channel tab. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      operationId: CreateTeamChannelTab
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchanneltab
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+        - in: path
+          name: channelId
+          description: The team channel ID.
+          required: true
+          type: string
+        - in: body
+          name: teamChannelTabPayload
+          description: A TeamChannelTabPayload object describing the channel to create.
+          required: true
+          schema:
+            $ref: "#/definitions/TeamChannelTabPayload"
+      responses:
+        "201":
+          description: Created - Returns a TeamChannelTab object.
+          schema:
+            $ref: "#/definitions/TeamChannelTab"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
 
-  /jobs/{JobId}:
+  /jobs/{jobId}:
     get:
       tags:
         - jobs
       summary: Get information about a job
-      description: Get detailed information about a job, including its status, progress, logs...
+      description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: GetJob
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/JobsApi.html#getjob
       parameters:
         - in: path
-          name: JobId
+          name: jobId
           description: The job ID generated during its creation.
           required: true
           type: string
@@ -238,13 +489,13 @@ paths:
       tags:
         - hooks
       summary: Generate a signature from a secret and a webhook payload
-      description: Generate a signature from a secret and a webhook payload.
+      description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
       operationId: GenerateHookSignature
       externalDocs:
-        url: https://developers.salestim.com/api/webhooks
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#generatehooksignature
       parameters:
         - in: body
-          name: HookSignatureRequest
+          name: hookSignatureRequest
           description: A HookSignatureRequest object comprised of the secret and payload.
           required: true
           schema:
@@ -274,6 +525,206 @@ paths:
           $ref: "#/responses/500"
 
 definitions:
+  Team:
+    title: Team
+    description: A Microsoft Teams team.
+    type: object
+    properties:
+      "@odata.context":
+        title: OData Context
+        description: OData Context
+        type: string
+      id:
+        title: Team ID
+        description: Team ID
+        type: string
+      createdDateTime:
+        title: Team Created Date Time
+        description: Team Created Date Time
+        type: string
+      displayName:
+        title: Team Display Name
+        description: Team Display Name
+        type: string
+      description:
+        title: Team Description
+        description: Team Description
+        type: string
+      internalId:
+        type: string
+      classification:
+        type: string
+      specialization:
+        type: string
+      visibility:
+        type: string
+      webUrl:
+        type: string
+      isArchived:
+        type: boolean
+      isMembershipLimitedToOwners:
+        type: boolean
+      discoverySettings:
+        type: object
+        properties:
+          showInTeamsSearchAndSuggestions:
+            type: boolean
+      memberSettings:
+        type: object
+        properties:
+          allowCreateUpdateChannels:
+            type: boolean
+          allowCreatePrivateChannels:
+            type: boolean
+          allowDeleteChannels:
+            type: boolean
+          allowAddRemoveApps:
+            type: boolean
+          allowCreateUpdateRemoveTabs:
+            type: boolean
+          allowCreateUpdateRemoveConnectors:
+            type: boolean
+      guestSettings:
+        type: object
+        properties:
+          allowCreateUpdateChannels:
+            type: boolean
+          allowDeleteChannels:
+            type: boolean
+      messagingSettings:
+        type: object
+        properties:
+          allowUserEditMessages:
+            type: boolean
+          allowUserDeleteMessages:
+            type: boolean
+          allowOwnerDeleteMessages:
+            type: boolean
+          allowTeamMentions:
+            type: boolean
+          allowChannelMentions:
+            type: boolean
+      funSettings:
+        type: object
+        properties:
+          allowGiphy:
+            type: boolean
+          giphyContentRating:
+            type: string
+          allowStickersAndMemes:
+            type: boolean
+          allowCustomMemes:
+            type: boolean
+
+  TeamChannels:
+    title: Team Channels
+    description: Channels of a Microsoft Teams team.
+    type: array
+    items:
+      $ref: "#/definitions/TeamChannel"
+
+  TeamChannel:
+    title: Team Channel
+    description: Channel of a Microsoft Teams team.
+    type: object
+    properties:
+      id:
+        title: Team Channel ID
+        description: Team Channel ID
+        type: string
+      createdDateTime:
+        title: Team Channel Created Date Time
+        description: Team Channel Created Date Time
+        type: string
+      displayName:
+        title: Team Channel Display Name
+        description: Team Channel Display Name
+        type: string
+      description:
+        title: Team Channel Description
+        description: Team Channel Description
+        type: string
+      membershipType:
+        title: Team Channel Membership Type
+        description: Team Channel Membership Type
+        type: string
+
+  TeamChannelPayload:
+    title: Team Channel Payload
+    description: Payload of a Microsoft Teams team channel to be created/updated.
+    type: object
+
+  TeamChannelTabs:
+    title: Team Channels
+    description: Tabs from a Channel of a Microsoft Teams team.
+    type: array
+    items:
+      $ref: "#/definitions/TeamChannelTab"
+
+  TeamChannelTab:
+    title: Team Channel Tab
+    description: Tab from a Channel of a Microsoft Teams team.
+    type: object
+    properties:
+      id:
+        title: Team Channel Tab ID
+        description: Team Channel Tab ID
+        type: string
+      displayName:
+        title: Team Channel Tab Display Name
+        description: Team Channel Tab Display Name
+        type: string
+      configuration:
+        type: object
+        properties:
+          entityId:
+            title: Team Channel Tab Configuration Entity ID
+            description: Team Channel Tab Configuration Entity ID
+            type: string
+          contentUrl:
+            title: Team Channel Tab Configuration Content URL
+            description: Team Channel Tab Configuration Content URL
+            type: string
+          websiteUrl:
+            title: Team Channel Tab Configuration Website URL
+            description: Team Channel Tab Configuration Website URL
+            type: string
+          removeUrl:
+            title: Team Channel Tab Configuration Remove URL
+            description: Team Channel Tab Configuration Remove URL
+            type: string
+      teamsApp:
+        type: object
+        properties:
+          id:
+            title: Team Channel Tab Teams App ID
+            description: Team Channel Tab Teams App ID
+            type: string
+          externalId:
+            title: Team Channel Tab Teams App External ID
+            description: Team Channel Tab Teams App External ID
+            type: string
+          displayName:
+            title: Team Channel Tab Teams App Display Name
+            description: Team Channel Tab Teams App Display Name
+            type: string
+          distributionMethod:
+            title: Team Channel Tab Teams App Distribution Method
+            description: Team Channel Tab Teams App Distribution Method
+            type: string
+      sortOrderIndex:
+        title: Team Channel Tab Sort Order Index
+        description: Team Channel Tab Sort Order Index
+        type: string
+      webUrl:
+        title: Team Channel Tab Web URL
+        description: Team Channel Tab Web URL
+        type: string
+
+  TeamChannelTabPayload:
+    title: Team Channel Tab Payload
+    description: Payload of a Microsoft Teams team channel tab to be created/updated.
+    type: object
 
   Labels:
     title: Labels
@@ -281,13 +732,13 @@ definitions:
     type: object
     properties:
       "@odata.context":
-          x-ms-summary: Link to the operation online help
-          description: Odata context
-          type: string
+        x-ms-summary: Link to the operation online help
+        description: Odata context
+        type: string
       "@odata.count":
-          description: Number of labels in the collection
-          type: integer
-          format: int32
+        description: Number of labels in the collection
+        type: integer
+        format: int32
       value:
         description: Array of labels
         type: array
@@ -332,20 +783,20 @@ definitions:
         title: Parent
         description: Parent label
         type: string
-   
+
   Users:
     title: Users
     description: A collection of Microsoft 365 users.
     type: object
     properties:
       "@odata.context":
-          x-ms-summary: Link to the operation online help
-          description: Odata context
-          type: string
+        x-ms-summary: Link to the operation online help
+        description: Odata context
+        type: string
       "@odata.count":
-          description: Number of uisers in the collection
-          type: integer
-          format: int32
+        description: Number of uisers in the collection
+        type: integer
+        format: int32
       value:
         description: Array of users
         type: array
@@ -363,13 +814,13 @@ definitions:
     type: object
     properties:
       "@odata.context":
-          x-ms-summary: Link to the operation online help
-          description: Odata context
-          type: string
+        x-ms-summary: Link to the operation online help
+        description: Odata context
+        type: string
       "@odata.count":
-          description: Number of templates in the collection
-          type: integer
-          format: int32
+        description: Number of templates in the collection
+        type: integer
+        format: int32
       value:
         description: Array of catalog templates
         type: array
@@ -514,7 +965,7 @@ definitions:
           addRequesterAsTeamOwner:
             description: Defines if the requester of the new team should be invited as a team owner or just as a team member.
             type: string
-  
+
   TeamProvisioningRequest:
     title: Team Provisioning Request
     description: A request to provision a team based on a template from your corporate catalog. See [https://developers.salestim.com/api/reference/Models/ProvisioningRequest](https://developers.salestim.com/api/reference/Models/ProvisioningRequest) for more information.
@@ -576,7 +1027,7 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/MemberUserIdentifier"
-  
+
   OwnersUserIdentifiers:
     x-ms-summary: Team owners
     x-ms-visibility: advanced
@@ -604,7 +1055,7 @@ definitions:
         type: string
     required:
       - id
-  
+
   OwnerUserIdentifier:
     x-ms-summary: Team owner
     title: Team owner
@@ -630,7 +1081,7 @@ definitions:
     title: App Metadata
     description: Metadata from the app client as a JSON object. See [https://developers.salestim.com/api/reference/Models/AppMetadata](https://developers.salestim.com/api/reference/Models/VirtualAppMetadata) for more information.
     type: object
-      
+
   HookSignatureRequest:
     title: Hook Signature Request
     description: A HookSignatureRequest object comprised of the secret and payload.
@@ -649,19 +1100,19 @@ definitions:
     required:
       - secret
       - payload
-  
+
   HookSignature:
     title: Hook Signature
     description: A Hook Signature generated from a secret and a payload.
     type: object
     properties:
       "@odata.context":
-          x-ms-summary: Link to the operation online help
-          description: Odata context
-          type: string
+        x-ms-summary: Link to the operation online help
+        description: Odata context
+        type: string
       signature:
-          description: Calculated hook signature
-          type: string
+        description: Calculated hook signature
+        type: string
 
   PermanentMembers:
     title: Permanent Members
