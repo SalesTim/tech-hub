@@ -1,6 +1,6 @@
 {
   "name": "tech-hub",
-  "version": "0.0.83",
+  "version": "0.0.84",
   "description": "SalesTim Tech Hub",
   "scripts": {
     "dev": "gulp infos && node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
@@ -16,7 +16,7 @@
     "url": "https://github.com/SalesTim/tech-hub.git"
   },
   "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.2.4",
+    "@openapitools/openapi-generator-cli": "^2.2.5",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
@@ -26,7 +26,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-git": "^2.10.0",
     "moment": "^2.29.1",
-    "msal": "^1.4.8",
+    "msal": "^1.4.9",
     "request": "^2.88.2",
     "standard": "^14.3.4",
     "uikit": "^3.6.18",
