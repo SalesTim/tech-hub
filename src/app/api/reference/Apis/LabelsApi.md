@@ -13,18 +13,18 @@ Method | HTTP request | Description
 
 Get my sensitivity labels
 
-    Get my Microsoft 365 sensitivity labels.
+    Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
 
 ### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**Labels**](..//Models/Labels.md)
+[**Labels**](../Models/Labels.md)
 
 ### Authorization
 
-[oauth2_auth](../README.md#oauth2_auth)
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

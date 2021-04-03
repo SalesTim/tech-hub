@@ -17,22 +17,24 @@
 Here at SalesTim, we know you want to concentrate on the value of your products, services, and business process, not be challenged by the complexities of integration with Microsoft Teams. Our APIs will take care of the underlying technical complexity, leaving you free to take care of your real value proposition.
 
 ## What can you do with SalesTim API?
-SalesTim API is used in a lot of different industries to automate Microsoft Teams governance and improve business process across the organization, but the following examples are the most common as of today:
+SalesTim API is used in a lot of different industries to automate Microsoft Teams governance and improve business process across the organization, here are some common examples:
 - Create powerful self-service templates for Microsoft Teams
 - Deploy Microsoft Planner at scale with plans templates
 - Create a custom approval process for your teams provisioning requests
 - Apply automaticaly governance policies across all your teams
 - Integrate a custom in-house and LoB apps with Microsoft Teams
 
-> Don't hesitate to submit your ideas and scenarios!
+:::tip 💡 Another Idea?
+Don't hesitate to <a href="#" onclick="Intercom('showNewMessage');"><b><i>submit your ideas and scenarios</i></b></a>!
+:::
 
 ## How to use the API?
 
-:::tip Try It Now!
-Use our [API Explorer](/api/explorer), a tool that lets you make requests and see responses against the SalesTim API.
-:::
+### API Explorer
+Use our [API Explorer](/api/explorer), an online tool that lets you make requests and see responses against the SalesTim API.
 
-In addition to the REST endpoints, you can use the SalesTim API through:
-- Our [API SDKs](/api/use-sdks) available for multiple languages and platforms
-- A [Postman Collection](/api/use-postman) that you can use from your own desktop.
-- [Power Platform](/nocode/power-platform) as a custom connector to use in your `PowerApps` apps and `PowerAutomate` flows.
+### Postman
+Use [Postman](/api/use-postman) to test the SalesTim API from your own desktop.
+
+### Power Platform
+Use the SalesTim API [Power Platform Connector](/nocode/power-platform) for use in `Power Apps` and `Power Automate`.

@@ -7,44 +7,58 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApprovalsApi* | [**getApprovals**](Apis/ApprovalsApi.md#getapprovals) | **GET** /approvals | Get all approvals from your organization (🔥 restricted to administrators)
-*ApprovalsApi* | [**getPendingApprovals**](Apis/ApprovalsApi.md#getpendingapprovals) | **GET** /approvals/pending | Get your pending approvals (beeing the requester or an approver) (🔐 Authenticated users)
-*AppsApi* | [**createApp**](Apis/AppsApi.md#createapp) | **POST** /apps | Create a virtual app (🔥 restricted to administrators)
-*AppsApi* | [**deleteApp**](Apis/AppsApi.md#deleteapp) | **DELETE** /apps/{id} | Delete a virtual app (🔥 restricted to administrators)
-*AppsApi* | [**getApp**](Apis/AppsApi.md#getapp) | **GET** /apps/{id} | Get a virtual app (🔥 restricted to administrators)
-*AppsApi* | [**getApps**](Apis/AppsApi.md#getapps) | **GET** /apps | Get your virtual apps (🔥 restricted to administrators)
-*AppsApi* | [**regenerateAppSecret**](Apis/AppsApi.md#regenerateappsecret) | **POST** /apps/{id}/regenerateSecret | Regenerate a virtual app secret (🔥 restricted to administrators)
-*AppsApi* | [**updateApp**](Apis/AppsApi.md#updateapp) | **PUT** /apps/{id} | Update a virtual app (🔥 restricted to administrators)
-*CatalogApi* | [**exportCatalogTemplate**](Apis/CatalogApi.md#exportcatalogtemplate) | **POST** /catalog/templates/{id}/export | Export a template from your corporate catalog (🔥 restricted to administrators)
-*CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get all templates from your corporate catalog (🔐 Authenticated users and apps)
-*CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get all templates a user can see filtered by audience (🔐 Authenticated users)
-*CatalogApi* | [**installTemplate**](Apis/CatalogApi.md#installtemplate) | **POST** /catalog/templates/install | Install a template from the public template store to your corporate catalog (🔥 restricted to administrators)
-*ConnectedappsApi* | [**getIntegration**](Apis/ConnectedappsApi.md#getintegration) | **GET** /connectedapps/integrations/{integration} | Get a connected app integration (🔥 restricted to administrators)
-*JobsApi* | [**createProvisioningJob**](Apis/JobsApi.md#createprovisioningjob) | **POST** /jobs/provisioning | Create a new provisioning job (🔐 Authenticated users and apps)
-*JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{id} | Get information about a job (🔐 Authenticated users and apps)
-*JobsApi* | [**getJobs**](Apis/JobsApi.md#getjobs) | **GET** /jobs | Get all jobs from your organization (🔥 restricted to administrators)
-*StoreApi* | [**getStoreCategories**](Apis/StoreApi.md#getstorecategories) | **GET** /store/categories | Get all store categories from the public template store (📡 Anonymous access)
-*StoreApi* | [**getStoreTemplate**](Apis/StoreApi.md#getstoretemplate) | **GET** /store/templates/{id} | Get a store template from the public template store (📡 Anonymous access)
-*StoreApi* | [**getStoreTemplates**](Apis/StoreApi.md#getstoretemplates) | **GET** /store/templates | Get all templates from the public template store (📡 Anonymous access)
-*StoreApi* | [**getStoreTemplatesByCategory**](Apis/StoreApi.md#getstoretemplatesbycategory) | **GET** /store/templates/byCategory/{id} | Get store templates from a specific category (📡 Anonymous access)
+*CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
+*HooksApi* | [**generateHookSignature**](Apis/HooksApi.md#generatehooksignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+*JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get information about a job
+*LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
+*TeamsApi* | [**createTeamChannel**](Apis/TeamsApi.md#createteamchannel) | **POST** /teams/{teamId}/channels | Create a new team channel
+*TeamsApi* | [**createTeamChannelTab**](Apis/TeamsApi.md#createteamchanneltab) | **POST** /teams/{teamId}/channels/{channelId}/tabs | Create a new team channel tab
+*TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /teams/provisioning | Create a new team based on a template
+*TeamsApi* | [**getTeam**](Apis/TeamsApi.md#getteam) | **GET** /teams/{teamId} | Get a team
+*TeamsApi* | [**getTeamChannelTabs**](Apis/TeamsApi.md#getteamchanneltabs) | **GET** /teams/{teamId}/channels/{channelId}/tabs | Get team channel tabs
+*TeamsApi* | [**getTeamChannels**](Apis/TeamsApi.md#getteamchannels) | **GET** /teams/{teamId}/channels | Get team channels
+*TeamsApi* | [**getTeamPrimaryChannel**](Apis/TeamsApi.md#getteamprimarychannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
+*UsersApi* | [**getUsers**](Apis/UsersApi.md#getusers) | **GET** /users | Retreive users from your Microsoft 365 environment
 
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [App](./Models/App.md)
- - [ApprovalInfos](./Models/ApprovalInfos.md)
+ - [ApiError](./Models/ApiError.md)
+ - [ApiErrorError](./Models/ApiErrorError.md)
+ - [ApiErrorErrorInnerError](./Models/ApiErrorErrorInnerError.md)
+ - [ApprovalTeamMember](./Models/ApprovalTeamMember.md)
+ - [CatalogTemplate](./Models/CatalogTemplate.md)
+ - [CatalogTemplateClonedTeam](./Models/CatalogTemplateClonedTeam.md)
+ - [CatalogTemplateNewTeam](./Models/CatalogTemplateNewTeam.md)
+ - [CatalogTemplateTemplateConfiguration](./Models/CatalogTemplateTemplateConfiguration.md)
+ - [CatalogTemplateTemplateConfigurationApproval](./Models/CatalogTemplateTemplateConfigurationApproval.md)
+ - [CatalogTemplateTemplateConfigurationAudienceTargeting](./Models/CatalogTemplateTemplateConfigurationAudienceTargeting.md)
+ - [CatalogTemplateTemplateConfigurationPermanentMembership](./Models/CatalogTemplateTemplateConfigurationPermanentMembership.md)
+ - [CatalogTemplates](./Models/CatalogTemplates.md)
+ - [HookSignature](./Models/HookSignature.md)
+ - [HookSignatureRequest](./Models/HookSignatureRequest.md)
  - [Job](./Models/Job.md)
- - [ProvisioningRequest](./Models/ProvisioningRequest.md)
- - [ProvisioningRequestIntegration](./Models/ProvisioningRequestIntegration.md)
- - [ProvisioningRequestIntegrationItem](./Models/ProvisioningRequestIntegrationItem.md)
- - [ProvisioningRequestOnBehalfOf](./Models/ProvisioningRequestOnBehalfOf.md)
- - [ProvisioningRequestRequestedMembers](./Models/ProvisioningRequestRequestedMembers.md)
- - [StoreCategory](./Models/StoreCategory.md)
- - [StoreCategoryIntro](./Models/StoreCategoryIntro.md)
- - [StoreCategoryLabel](./Models/StoreCategoryLabel.md)
- - [TemplateExportOptions](./Models/TemplateExportOptions.md)
- - [TemplateIdentifier](./Models/TemplateIdentifier.md)
+ - [Label](./Models/Label.md)
+ - [Labels](./Models/Labels.md)
+ - [MemberUserIdentifier](./Models/MemberUserIdentifier.md)
+ - [OwnerUserIdentifier](./Models/OwnerUserIdentifier.md)
+ - [PermanentMember](./Models/PermanentMember.md)
+ - [Team](./Models/Team.md)
+ - [TeamChannel](./Models/TeamChannel.md)
+ - [TeamChannelTab](./Models/TeamChannelTab.md)
+ - [TeamChannelTabConfiguration](./Models/TeamChannelTabConfiguration.md)
+ - [TeamChannelTabTeamsApp](./Models/TeamChannelTabTeamsApp.md)
+ - [TeamDiscoverySettings](./Models/TeamDiscoverySettings.md)
+ - [TeamFunSettings](./Models/TeamFunSettings.md)
+ - [TeamGuestSettings](./Models/TeamGuestSettings.md)
+ - [TeamMemberSettings](./Models/TeamMemberSettings.md)
+ - [TeamMessagingSettings](./Models/TeamMessagingSettings.md)
+ - [TeamProvisioningRequest](./Models/TeamProvisioningRequest.md)
+ - [TeamProvisioningRequestTeam](./Models/TeamProvisioningRequestTeam.md)
+ - [TeamProvisioningRequestTeamMembership](./Models/TeamProvisioningRequestTeamMembership.md)
+ - [TeamProvisioningRequestTemplate](./Models/TeamProvisioningRequestTemplate.md)
+ - [Users](./Models/Users.md)
 
 
 <a name="documentation-for-authorization"></a>

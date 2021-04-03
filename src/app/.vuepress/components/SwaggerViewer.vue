@@ -26,7 +26,7 @@ export default {
       window.location.host.indexOf("devgme", 0) > -1
     ) {
       pOpenApiFileUrl =
-        "https://devgmeweb.eu.ngrok.io/definitions/io.salestim.openapi.definition.yaml";
+        "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
     }
 
     var s = document.createElement("script");

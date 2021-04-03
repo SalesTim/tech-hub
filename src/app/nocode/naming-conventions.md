@@ -71,12 +71,12 @@ PRJ-<%= request.team.name %>
 
 #### "Generate a unique name based on the current date"
 
-```html
-<%= request.team.name %>-<%= Date.now() %> <!-- Returns the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC.. Example: `1592241059000` -->
+```js
+<%= request.team.name %>-<%= Date.now() %> // Returns the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC.. Example: `1592241059000`
 ```
 or
-```html
-<%= request.team.name %>-<%= new Date().getTime() %> <!-- Returns the current date and time in the ISO 8601 format. Example: `2020-06-15T17:09:51.312Z` -->
+```js
+<%= request.team.name %>-<%= new Date().getTime() %> // Returns the current date and time in the ISO 8601 format. Example: `2020-06-15T17:09:51.312Z`
 ```
 
 #### "Add country as a suffix to teams names based on the requester location"
@@ -95,22 +95,26 @@ or
 ```javascript
 <%= request.team.name %> - 
 <% if (user.mail.includes('@contoso.fr')) { %>
-CT France // Use "CT France" instead of contoso.fr
+    CT France // Use "CT France" instead of contoso.fr
 <% } else { %>
-<%= user.mail.replace(/.*@/, '') %> // Extract domain name from user email address
+    <%= user.mail.replace(/.*@/, '') %> // Extract domain name from user email address
 <% } %>
 ```
 
 ## Tips
 
-::: warning Team name length
-The total team name length (including prefix, suffix, etc...) is restricted to **53 characters**.
+### Team Name Length
+The maximum team name length (including prefix, suffix, etc...) is fixed to **264 characters**, which is the limit of the [underlying group name](https://docs.microsoft.com/en-us/microsoft-365/solutions/groups-naming-policy?view=o365-worldwide#things-to-look-out-for).
+
+:::warning
+This limit is validated by adding the lengths of **BOTH** the requested team name **AND** the dynamic naming convention!
 :::
 
-::: warning Special characters
+### Special characters
 The following characters are forbidden in teams names:
 ```
-" * : < > ? / \ |
+" * : < > ? / \
 ```
-But you can use "-" as a separator.
+:::tip
+You can use " **-** " or " **|** " as separators.
 :::

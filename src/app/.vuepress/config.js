@@ -1,16 +1,15 @@
 module.exports = {
+  base: '/',
   title: 'SalesTim | Tech Hub',
   description: 'SalesTim documentation for Citizen Developers, Developers and IT Pros',
-  base: '/',
-  dest: 'docs',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'theme-color', content: '#483d8b' }],
-    ['link', { rel: 'stylesheet', href: '/css/bundle.css' }],
+    // ['link', { rel: 'stylesheet', href: '/css/bundle.css' }],
     ['script', { src: 'https://www.googletagmanager.com/gtag/js?id=UA-5688830-15' }],
     // Bundle
     ['script', { type: 'text/javascript', src: '/js/bundle.js' }]
   ],
+  dest: 'docs',
   plugins: [
     '@vuepress/active-header-links', {
       sidebarLinkSelector: '.sidebar-link',
@@ -29,15 +28,11 @@ module.exports = {
         theme: 'neutral' // default, dark, forest, neutral
       }
     ],
-    ['vuepress-plugin-code-copy',
+    [
+      "@mr-hope/copy-code",
       {
-        align: 'top',
-        color: '#ffffff',
-        backgroundTransition: true,
-        backgroundColor: '#000000',
-        successText: 'Copied!',
-        staticIcon: true
-      }
+        // your options
+      },
     ],
     'autometa', {
       enable: true, // enables/disables everything - control per page using frontmatter
@@ -81,18 +76,17 @@ module.exports = {
     }
   ],
 
-  // theme: 'yuu',
+  theme: 'yuu',
 
   themeConfig: {
 
     yuu: {
-      defaultDarkTheme: false,
+      defaultDarkTheme: true,
       disableDarkTheme: false,
-      colorThemes: ['blue', 'red'], // green (default), blue, red, and purple
+      colorThemes: ['purple', 'blue'], // green (default), blue, red, and purple
       defaultColorTheme: 'default',
       labels: {
-        darkTheme: 'Enable Dark Theme', // Default is "Enable Dark Theme?"
-        ignoreThemes: 'Ignore Other Themes', // Default is "Ignore Other Themes?"
+        darkTheme: '🌗 Dark Theme', // Default is "Enable Dark Theme?"
       },
     },
 
@@ -165,11 +159,11 @@ module.exports = {
             ['/api/getting-started', 'Getting Started'],
             ['/api/best-practices', 'Best Practices'],
             ['/api/explorer', 'API Explorer'],
-            ['/api/webhooks', 'Webhooks'],
             ['/api/use-postman', 'Use Postman'],
+            ['/api/webhooks', 'Webhooks'],
             ['/api/rate-limits', 'Rate Limits'],
             ['/api/throttling', 'Throttling'],
-            ['/api/reference/', 'REST API Reference'],
+            ['/api/reference/', 'API Reference'],
             ['/api/versions', 'Versions']
           ]
         },

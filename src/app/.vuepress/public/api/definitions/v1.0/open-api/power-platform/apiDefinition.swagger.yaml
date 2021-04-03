@@ -502,7 +502,7 @@ paths:
             $ref: "#/definitions/HookSignatureRequest"
       responses:
         "200":
-          description: Generated - Returns a Hook Signature.
+          description: Generated - Returns a HookSignature.
           schema:
             $ref: "#/definitions/HookSignature"
         "400":
@@ -551,69 +551,119 @@ definitions:
         description: Team Description
         type: string
       internalId:
+        title: Team Internal ID
+        description: Team Internal ID
         type: string
       classification:
+        title: Team Classification
+        description: Team Classification
         type: string
       specialization:
+        title: Team Specialization
+        description: Team Specialization
         type: string
       visibility:
+        title: Team Visibility
+        description: Team Visibility
         type: string
       webUrl:
+        title: Team Web URL
+        description: Team Web URL
         type: string
       isArchived:
+        title: Team Is Archived
+        description: Team Is Archived
         type: boolean
       isMembershipLimitedToOwners:
+        title: Team Is Membership Limited To Owners
+        description: Team Is Membership Limited To Owners
         type: boolean
       discoverySettings:
         type: object
         properties:
           showInTeamsSearchAndSuggestions:
+            title: Shown in search suggestions
+            description: Is the team shown in search suggestions
             type: boolean
       memberSettings:
         type: object
         properties:
           allowCreateUpdateChannels:
+            title: Allow create Update Channels
+            description: Allow create update channels
             type: boolean
           allowCreatePrivateChannels:
+            title: Allow create private channels
+            description: Allow create private channels
             type: boolean
           allowDeleteChannels:
+            title: Allow delete channels
+            description: Allow delete channels
             type: boolean
           allowAddRemoveApps:
+            title: Allow add/remove apps
+            description: Allow add/remove apps
             type: boolean
           allowCreateUpdateRemoveTabs:
+            title: Allow create/remove tabs
+            description: Allow create/remove tabs
             type: boolean
           allowCreateUpdateRemoveConnectors:
+            title: Allow create/remove connectors
+            description: Allow create/remove connectors
             type: boolean
       guestSettings:
         type: object
         properties:
           allowCreateUpdateChannels:
+            title: Allow create/update channels by guests
+            description: Allow create/update channels by guests
             type: boolean
           allowDeleteChannels:
+            title: Allow delete channels by guests
+            description: Allow delete channels by guests
             type: boolean
       messagingSettings:
         type: object
         properties:
           allowUserEditMessages:
+            title: Allow users to edit messages
+            description: Allow users to edit messages
             type: boolean
           allowUserDeleteMessages:
+            title: Allow users to delete their own messages
+            description: Allow users to delete their own messages
             type: boolean
           allowOwnerDeleteMessages:
+            title: Allow owners to delete messages
+            description: Allow owners to delete messages
             type: boolean
           allowTeamMentions:
+            title: Allow team mentions
+            description: Allow team mentions
             type: boolean
           allowChannelMentions:
+            title: Allow channel mentions
+            description: Allow channel mentions
             type: boolean
       funSettings:
         type: object
         properties:
           allowGiphy:
+            title: Allow Giphy
+            description: Allow Giphy
             type: boolean
           giphyContentRating:
+            title: Giphy content rating level
+            description: Giphy content rating level
             type: string
           allowStickersAndMemes:
+            title: Allow stickers and memes
+            description: Allow stickers and memes
             type: boolean
           allowCustomMemes:
+            title: Allow custom memes
+            description: Allow custom memes
             type: boolean
 
   TeamChannels:

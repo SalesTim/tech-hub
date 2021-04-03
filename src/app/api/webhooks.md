@@ -20,21 +20,21 @@ Due to the fact that data may be exchanged outside of your Microsoft 365 environ
 
 ## Anatomy of a Webhook
 A wehbook is defined by the following properties:
-```js
+```json
 {
-  id: '7f105c7d-2dc5-4532-97cd-4e7ae6534c07', // {string} Webhook UUID automatically generated during its creation - ReadOnly
-  name: 'Example Webhook', // {string} Webhook name - Read/Write
-  description: 'This is a new webhook', // {string} Webhook description - Read/Write
-  active: true, // {boolean} Webhook status - Read/Write
-  events: [ // {array} Array of events codes that will trigger the webhook - Read/Write
-    'team_provisioning_completed', // {string} Event code - Read/Write
+  "id": "7f105c7d-2dc5-4532-97cd-4e7ae6534c07", // {string} Webhook UUID automatically generated during its creation - ReadOnly
+  "name": "Example Webhook", // {string} Webhook name - Read/Write
+  "description": "This is a new webhook", // {string} Webhook description - Read/Write
+  "active": true, // {boolean} Webhook status - Read/Write
+  "events": [ // {array} Array of events codes that will trigger the webhook - Read/Write
+    "team_provisioning_completed", // {string} Event code - Read/Write
     ...
   ],
-  config: { // {object} Webhook http configuration
-    verb: 'post', // {string} Http verb used by the the webhook - ReadOnly as currently only `post` is supported
-    url: 'https://example.com/webhook', // {string} Target URL of the webhook - Read/Write
-    content_type: 'json', // {string} Http content-type used by the webhook - ReadOnly as currently only `json` (matching to `application/json`) is supported
-    secret:'secretClientValue' // {string} Secret value used to authentify the wehbook emitter by the consumer - Read/Write
+  "config": { // {object} Webhook http configuration
+    "verb": "post", // {string} Http verb used by the the webhook - ReadOnly as currently only `post` is supported
+    "url": "https://example.com/webhook", // {string} Target URL of the webhook - Read/Write
+    "content_type": "json", // {string} Http content-type used by the webhook - ReadOnly as currently only `json` (matching to `application/json`) is supported
+    "secret":"secretClientValue" // {string} Secret value used to authentify the wehbook emitter by the consumer - Read/Write
   }
 }
 ```
@@ -44,19 +44,23 @@ When triggered, the webhook generates an http `POST` request to its configured u
 
 ### Headers
 The following headers are included in the request:
-```js
-'X-SalesTim-Hook': '', // {string} UUID of the webhook that triggered the request.
-'X-SalesTim-Event': '', // {string} Code of the event that triggered the request.
-'X-SalesTim-Delivery': '', // {string} An automatically generated UUID to identify the request.
-'X-SalesTim-Signature': '' // {string} This header is sent if the webhook is configured with a secret.
+```json
+{
+  "X-SalesTim-Hook": "", // {string} UUID of the webhook that triggered the request.
+  "X-SalesTim-Event": "", // {string} Code of the event that triggered the request.
+  "X-SalesTim-Delivery": "", // {string} An automatically generated UUID to identify the request.
+  "X-SalesTim-Signature": "" // {string} This header is sent if the webhook is configured with a secret.
+}
 ```
 
 ### Payload
 A webhook payload contains at least the following properties:
-```js
-@odata.context: 'https://developers.salestim.com/api/webhooks', // {string} Link to the webhook online help
-tenant: {
-  id: // {string} The tenant ID from where the event originates
+```json
+{
+  "@odata.context": "https://developers.salestim.com/api/webhooks", // {string} Link to the webhook online help
+  "tenant": {
+    "id": "" // {string} The tenant ID from where the event originates
+  }
 }
 ```
 
@@ -67,10 +71,11 @@ For instance `SalesTim-Hook/2.1.193`
 ## Supported Events
 Here are sample payloads for each supported event. 
 
-### Team Created <Badge text="beta" type="warning"/>
-Code: `team_created`  
-Category: `team`  
-Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
+### Team Created
+- Code: `team_created`  
+- Category: `team`  
+- Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
+- Status: <Badge text="beta" type="warning"/>
 
 Sample:
 ```json
@@ -109,10 +114,11 @@ Schema:
 }
 ```
 
-### Team Provisioning Completed <Badge text="v1.0" type="tip"/>
-Code: `team_provisioning_completed`  
-Category: `team`  
-Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
+### Team Provisioning Completed
+- Code: `team_provisioning_completed`  
+- Category: `team`  
+- Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
+- Status: <Badge text="v1.0" type="tip"/>
 
 Sample:
 ```json
