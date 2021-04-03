@@ -4,7 +4,7 @@ module.exports = {
   description: 'SalesTim documentation for Citizen Developers, Developers and IT Pros',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    // ['link', { rel: 'stylesheet', href: '/css/bundle.css' }],
+    ['link', { rel: 'stylesheet', href: '/css/bundle.css' }],
     ['script', { src: 'https://www.googletagmanager.com/gtag/js?id=UA-5688830-15' }],
     // Bundle
     ['script', { type: 'text/javascript', src: '/js/bundle.js' }]
