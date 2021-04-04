@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get information about a job
 
-    Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

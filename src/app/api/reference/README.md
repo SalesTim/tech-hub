@@ -8,6 +8,8 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
+*HooksApi* | [**createHook**](Apis/HooksApi.md#createhook) | **POST** /hooks | Create a new webhook
+*HooksApi* | [**deleteHook**](Apis/HooksApi.md#deletehook) | **DELETE** /hooks/{hookId} | Delete a webhook
 *HooksApi* | [**generateHookSignature**](Apis/HooksApi.md#generatehooksignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get information about a job
 *LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
@@ -36,6 +38,9 @@ Class | Method | HTTP request | Description
  - [CatalogTemplateTemplateConfigurationAudienceTargeting](./Models/CatalogTemplateTemplateConfigurationAudienceTargeting.md)
  - [CatalogTemplateTemplateConfigurationPermanentMembership](./Models/CatalogTemplateTemplateConfigurationPermanentMembership.md)
  - [CatalogTemplates](./Models/CatalogTemplates.md)
+ - [Hook](./Models/Hook.md)
+ - [HookConfig](./Models/HookConfig.md)
+ - [HookPayload](./Models/HookPayload.md)
  - [HookSignature](./Models/HookSignature.md)
  - [HookSignatureRequest](./Models/HookSignatureRequest.md)
  - [Job](./Models/Job.md)

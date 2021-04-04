@@ -81,13 +81,14 @@ module.exports = {
   themeConfig: {
 
     yuu: {
-      defaultDarkTheme: true,
+      defaultDarkTheme: false,
       disableDarkTheme: false,
-      colorThemes: ['purple', 'blue'], // green (default), blue, red, and purple
+      // colorThemes: ['red', 'blue', 'purple'], // green (default), blue, red, and purple
       defaultColorTheme: 'default',
       labels: {
         darkTheme: '🌗 Dark Theme', // Default is "Enable Dark Theme?"
       },
+      disableThemeIgnore: true
     },
 
     logo: '/color.png',
@@ -147,7 +148,8 @@ module.exports = {
             ['/nocode/naming-conventions.md', 'Naming conventions'],
             ['/nocode/approval.md', 'Approval workflow'],
             ['/nocode/audience-targeting.md', 'Audience Targeting'],
-            ['/nocode/power-platform.md', 'Power Platform'],
+            ['/nocode/power-platform-connector.md', 'Power Platform Connector'],
+            ['/nocode/power-platform-actions.md', 'Power Platform Triggers & Actions'],
           ]
         },
         {
@@ -175,7 +177,7 @@ module.exports = {
             ['/platform/', 'Overview'],
             '/platform/supportedclients.md',
             '/platform/sso.md',
-            '/platform/userroles.md',
+            '/platform/rbac.md',
             '/platform/access.md',
             '/platform/infrastructurekeycomponents.md',
             '/platform/apppermissions.md',

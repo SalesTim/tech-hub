@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Create a new team channel
 
-    Create a new team channel. TIER 2️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Create a new team channel. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -34,7 +34,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -47,7 +47,7 @@ No authorization required
 
 Create a new team channel tab
 
-    Create a new team channel tab. TIER 2️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Create a new team channel tab. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -76,7 +76,7 @@ No authorization required
 
 Create a new team based on a template
 
-    Create a new team provisioning job. TIER 1️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Create a new team provisioning job. TIER 1️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -103,7 +103,7 @@ No authorization required
 
 Get a team
 
-    Get detailed information about a team. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get detailed information about a team. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -130,7 +130,7 @@ No authorization required
 
 Get team channel tabs
 
-    Get team channel tabs. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get team channel tabs. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ No authorization required
 
 Get team channels
 
-    Get team channels. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get team channels. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -185,7 +185,7 @@ No authorization required
 
 Get the primary channel of a team
 
-    Get the primary channel of a team. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get the primary channel of a team. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

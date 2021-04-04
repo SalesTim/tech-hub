@@ -17,7 +17,9 @@ info:
 servers:
   - url: https://api.salestim.io/v1.0
     description: Production environment
-
+  - url: https://devgmeweb.eu.ngrok.io/v1.0
+    description: Development environment
+    
 tags:
   - name: catalog
     description: Your corporate catalog of teams templates and governance policies.
@@ -51,7 +53,7 @@ paths:
       tags:
         - catalog
       summary: Get my teams templates
-      description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetMyCatalogTemplates
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getmycatalogtemplates
@@ -95,7 +97,7 @@ paths:
       tags:
         - labels
       summary: Get my sensitivity labels
-      description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetMyLabels
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/LabelsApi.html#getmylabels
@@ -132,10 +134,12 @@ paths:
       tags:
         - users
       summary: Retreive users from your Microsoft 365 environment
-      description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetUsers
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/UsersApi.html#getUsers
+      security:
+        - bearerAuth: []
       responses:
         "200":
           description: OK - Returns a Users object (Collection of User objects).
@@ -167,10 +171,12 @@ paths:
       tags:
         - teams
       summary: Get a team
-      description: Get detailed information about a team. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get detailed information about a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeam
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteam
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -208,10 +214,12 @@ paths:
       tags:
         - teams
       summary: Create a new team based on a template
-      description: Create a new team provisioning job. TIER 1️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Create a new team provisioning job. TIER 1️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamProvisioningJob
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamprovisioningjob
+      security:
+        - bearerAuth: []
       requestBody:
         description: A TeamProvisioningRequest object describing the job to execute.
         content:
@@ -249,10 +257,12 @@ paths:
       tags:
         - teams
       summary: Get team channels
-      description: Get team channels. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get team channels. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamChannels
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchannels
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -289,10 +299,12 @@ paths:
       tags:
         - teams
       summary: Create a new team channel
-      description: Create a new team channel. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Create a new team channel. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamChannel
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchannel
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -337,10 +349,12 @@ paths:
       tags:
         - teams
       summary: Get the primary channel of a team
-      description: Get the primary channel of a team. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get the primary channel of a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamPrimaryChannel
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamprimarychannel
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -378,10 +392,12 @@ paths:
       tags:
         - teams
       summary: Get team channel tabs
-      description: Get team channel tabs. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get team channel tabs. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamChannelTabs
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchanneltabs
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -424,10 +440,12 @@ paths:
       tags:
         - teams
       summary: Create a new team channel tab
-      description: Create a new team channel tab. TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Create a new team channel tab. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamChannelTab
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchanneltab
+      security:
+        - bearerAuth: []
       parameters:
         - name: teamId
           in: path
@@ -479,10 +497,12 @@ paths:
       tags:
         - jobs
       summary: Get information about a job
-      description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetJob
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/JobsApi.html#getjob
+      security:
+        - bearerAuth: []
       parameters:
         - name: jobId
           in: path
@@ -521,8 +541,10 @@ paths:
       tags:
         - hooks
       summary: Generate a signature from a secret and a webhook payload
-      description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES > All_AUTHENTICATED_USERS.
+      description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GenerateHookSignature
+      security:
+        - bearerAuth: []
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#generatehooksignature
       requestBody:
@@ -539,6 +561,94 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HookSignature"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
+  /hooks:
+    post:
+      tags:
+        - hooks
+      summary: Create a new webhook
+      description: Create a new webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      operationId: CreateHook
+      security:
+        - bearerAuth: []
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#createhook
+      requestBody:
+        description: A HookPayload object.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HookPayload"
+        required: true
+      responses:
+        "201":
+          description: Created - Returns a Hook object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hook"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
+  /hooks/{hookId}:
+    delete:
+      tags:
+        - hooks
+      summary: Delete a webhook
+      description: Delete a webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      operationId: DeleteHook
+      security:
+        - bearerAuth: []
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#deletehook
+      parameters:
+        - name: hookId
+          in: path
+          description: ID of the webhook to be deleted.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK - Returns the deleted Hook object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hook"
         "400":
           $ref: "#/components/responses/400"
         "401":
@@ -1174,6 +1284,101 @@ components:
       title: App Metadata
       description: Metadata from the app client as a JSON object. See [https://developers.salestim.com/api/reference/Models/AppMetadata](https://developers.salestim.com/api/reference/Models/VirtualAppMetadata) for more information.
       type: object
+
+    Hook:
+      title: Webhook
+      description: A webhook.
+      type: object
+      properties:
+        id:
+          x-ms-summary: Webhook ID
+          description: Webhook ID
+          type: string
+        name:
+          x-ms-summary: Webhook name
+          description: Webhook name
+          type: string
+        description:
+          x-ms-summary: Webhook description
+          description: Webhook description
+          type: string
+        active:
+          x-ms-summary: Is the webhook active
+          description: Is the webhook active
+          type: boolean
+        events:
+          x-ms-summary: Webhook events
+          description: Webhook events
+          type: array
+          items:
+            $ref: "#/components/schemas/HookEvent"
+        config:
+          x-ms-summary: Webhook configuration
+          description: Webhook configuration
+          type: object
+          properties:
+            verb:
+              x-ms-summary: Webhook configuration verb
+              description: Webhook configuration verb
+              type: string
+            url:
+              x-ms-summary: Webhook configuration url
+              description: Webhook configuration url
+              type: string
+            content_type:
+              x-ms-summary: Webhook configuration content type
+              description: Webhook configuration content type
+              type: string
+            secret:
+              x-ms-summary: Webhook configuration secret
+              description: Webhook configuration secret
+              type: string
+
+    HookPayload:
+      title: Webhook Payload
+      description: A webhook payload.
+      type: object
+      properties:
+        name:
+          x-ms-summary: Webhook name
+          description: Webhook name
+          type: string
+        description:
+          x-ms-summary: Webhook description
+          description: Webhook description
+          type: string
+        events:
+          x-ms-summary: Webhook events
+          description: Webhook events
+          type: array
+          items:
+            $ref: "#/components/schemas/HookEvent"
+        config:
+          x-ms-summary: Webhook configuration
+          description: Webhook configuration
+          type: object
+          properties:
+            verb:
+              x-ms-summary: Webhook configuration verb
+              description: Webhook configuration verb
+              type: string
+            url:
+              x-ms-summary: Webhook configuration url
+              description: Webhook configuration url
+              type: string
+            content_type:
+              x-ms-summary: Webhook configuration content type
+              description: Webhook configuration content type
+              type: string
+            secret:
+              x-ms-summary: Webhook configuration secret
+              description: Webhook configuration secret
+              type: string
+      
+    HookEvent:
+      title: Webhook event
+      description: Webhook event
+      type: string
 
     HookSignatureRequest:
       title: Hook Signature Request

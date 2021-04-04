@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Retreive users from your Microsoft 365 environment
 
-    Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -24,7 +24,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

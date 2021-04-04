@@ -4,8 +4,64 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createHook**](HooksApi.md#createHook) | **POST** /hooks | Create a new webhook
+[**deleteHook**](HooksApi.md#deleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
 [**generateHookSignature**](HooksApi.md#generateHookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
 
+
+<a name="createHook"></a>
+# **createHook**
+> Hook createHook(HookPayload)
+
+Create a new webhook
+
+    Create a new webhook. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **HookPayload** | [**HookPayload**](../Models/HookPayload.md)| A HookPayload object. |
+
+### Return type
+
+[**Hook**](../Models/Hook.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="deleteHook"></a>
+# **deleteHook**
+> Hook deleteHook(hookId)
+
+Delete a webhook
+
+    Delete a webhook. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hookId** | **String**| ID of the webhook to be deleted. | [default to null]
+
+### Return type
+
+[**Hook**](../Models/Hook.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 <a name="generateHookSignature"></a>
 # **generateHookSignature**
@@ -13,7 +69,7 @@ Method | HTTP request | Description
 
 Generate a signature from a secret and a webhook payload
 
-    Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -27,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

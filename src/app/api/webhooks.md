@@ -3,8 +3,12 @@
 
 Webhooks enable organizations to trigger automated operations outside of the SalesTim platform, such as in a custom application, or in an automation tool such as Power Automate or Zapier.
 
-**Table of Contents:**
+---
+
+**TABLE OF CONTENTS**
 [[toc]]
+
+---
 
 ## Managing Webhooks
 Organizations can manage webhooks from the SalesTim App UI:
@@ -72,8 +76,8 @@ For instance `SalesTim-Hook/2.1.193`
 Here are sample payloads for each supported event. 
 
 ### Team Created
-- Code: `team_created`  
-- Category: `team`  
+- Code: `team_created`
+- Category: `team`
 - Description: Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
 - Status: <Badge text="beta" type="warning"/>
 
@@ -115,8 +119,8 @@ Schema:
 ```
 
 ### Team Provisioning Completed
-- Code: `team_provisioning_completed`  
-- Category: `team`  
+- Code: `team_provisioning_completed`
+- Category: `team`
 - Description: Triggered when a team provisioning request based on a template is complete (wether successfully or not).
 - Status: <Badge text="v1.0" type="tip"/>
 

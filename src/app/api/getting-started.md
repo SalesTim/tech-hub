@@ -33,7 +33,7 @@ The corporate catalog contains your own private templates, accessible to your en
 - Audience targeting
 - Approval rules
 - Security automation
-- Classification labels
+- Sensitivity labels
 
 ### Jobs
 Jobs are governance tasks executed by the SalesTim Platform automation engine.

@@ -60,6 +60,8 @@ export default {
         deepLinking: true,
         displayOperationId: true,
         displayRequestDuration: false,
+        defaultModelsExpandDepth:0,
+        defaultModelExpandDepth:0,
         showExtensions: false,
         filter: false,
         operationsSorter: "alpha",

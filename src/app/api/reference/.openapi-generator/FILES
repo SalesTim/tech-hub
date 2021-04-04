@@ -16,6 +16,9 @@ Models/CatalogTemplateTemplateConfigurationApproval.md
 Models/CatalogTemplateTemplateConfigurationAudienceTargeting.md
 Models/CatalogTemplateTemplateConfigurationPermanentMembership.md
 Models/CatalogTemplates.md
+Models/Hook.md
+Models/HookConfig.md
+Models/HookPayload.md
 Models/HookSignature.md
 Models/HookSignatureRequest.md
 Models/Job.md

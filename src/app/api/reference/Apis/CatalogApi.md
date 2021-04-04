@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get my teams templates
 
-    Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES &gt; All_AUTHENTICATED_USERS.
+    Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
 
 ### Parameters
 
