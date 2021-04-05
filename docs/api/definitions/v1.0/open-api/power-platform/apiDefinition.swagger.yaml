@@ -1,6 +1,9 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
+  x-ms-deployment-version: "1.0.0"
+  x-ms-api-annotation:
+    status: Production
   title: SalesTim Governance Automation
   description: >
     Automate the governance, compliance and security of your Microsoft Teams environment.
@@ -9,7 +12,7 @@ info:
     url: https://developers.salestim.com/api
     email: support@salestim.com
 
-host: api.salestim.io
+host: devgmeweb.eu.ngrok.io
 basePath: /v1.0
 schemes:
   - https
@@ -524,23 +527,24 @@ paths:
         default:
           $ref: "#/responses/500"
 
-  /hooks:
+  /hooks/team_created:
+    x-ms-notification-content:
+      description: Payload of the Team Created event
+      schema:
+        $ref: "#/definitions/TeamCreatedNotificationPayload"
     post:
       tags:
         - hooks
-      x-ms-notification-content:
-        description: 
-        schema:
-          $ref: "#/definitions/Hook"
-      summary: Create a new webhook
-      description: Create a new webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
-      operationId: CreateHook
       x-ms-trigger: "single"
+      x-ms-visibility: important
+      summary: When a new team is created
+      description: When a new team is created.
+      operationId: TeamCreatedHook
       externalDocs:
-        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#createhook
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#teamcreatedhook
       parameters:
         - in: body
-          name: hookPayload
+          name: HookPayload
           description: A HookPayload object.
           required: true
           schema:
@@ -569,10 +573,58 @@ paths:
         default:
           $ref: "#/responses/500"
 
+  /hooks/team_provisioning_completed:
+    x-ms-notification-content:
+      description: Payload of the Team Provisioning Completed event
+      schema:
+        $ref: "#/definitions/TeamProvisioningCompletedNotificationPayload"
+    post:
+      tags:
+        - hooks
+      x-ms-trigger: "single"
+      x-ms-visibility: important
+      summary: When a team is provisioned using a template
+      description: When a team is provisioned using a template.
+      operationId: TeamProvisioningCompletedHook
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#teamprovisioningcompletedhook
+      parameters:
+        - in: body
+          name: HookPayload
+          description: A HookPayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/HookPayload"
+      responses:
+        "201":
+          description: Created - Returns a Hook object.
+          schema:
+            $ref: "#/definitions/Hook"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+
   /hooks/{hookId}:
     delete:
       tags:
         - hooks
+      x-ms-visibility: internal
       summary: Delete a webhook
       description: Delete a webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: DeleteHook
@@ -1238,11 +1290,7 @@ definitions:
         description: Is the webhook active
         type: boolean
       events:
-        x-ms-summary: Webhook events
-        description: Webhook events
-        type: array
-        items:
-          $ref: "#/definitions/HookEvent"
+        $ref: "#/definitions/HookEvents"          
       config:
         x-ms-summary: Webhook configuration
         description: Webhook configuration
@@ -1265,25 +1313,96 @@ definitions:
             description: Webhook configuration secret
             type: string
 
+  TeamCreatedNotificationPayload:
+    title: Team Created Notification Payload
+    description: Team Created Notification Payload.
+    type: object
+    properties:
+      tenant:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Current tenant ID
+            description: Current tenant ID
+            type: string
+      team:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Created team ID
+            description: Created team ID
+            type: string
+
+  TeamProvisioningCompletedNotificationPayload:
+    title: Team Provisioning Completed Notification Payload
+    description: Team Provisioning Completed Notification Payload.
+    type: object
+    properties:
+      tenant:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Current tenant ID
+            description: Current tenant ID
+            type: string
+          initialDomainName:
+            x-ms-summary: Current tenant initial domain name
+            description: Current tenant initial domain name
+            type: string
+          defaultDomainName:
+            x-ms-summary: Current tenant default domain name
+            description: Current tenant default domain name
+            type: string
+      team:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Created team ID
+            description: Created team ID
+            type: string
+          displayName:
+            x-ms-summary: Created team diaplay name
+            description: Created team display name
+            type: string
+      requester:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Requester ID
+            description: Requester ID
+            type: string
+          displayName:
+            x-ms-summary: Requester display name
+            description: Requester display name
+            type: string
+      template:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Provisioning template ID
+            description: Provisioning template  ID
+            type: string
+          name:
+            x-ms-summary: Provisioning template name
+            description: Provisioning template name
+            type: string
+
   HookPayload:
+    x-ms-visibility: important
     title: Webhook Payload
     description: A webhook payload.
     type: object
     properties:
       name:
         x-ms-summary: Webhook name
+        x-ms-visibility: important
         description: Webhook name
         type: string
       description:
         x-ms-summary: Webhook description
+        x-ms-visibility: important
         description: Webhook description
         type: string
-      events:
-        x-ms-summary: Webhook events
-        description: Webhook events
-        type: array
-        items:
-          $ref: "#/definitions/HookEvent"
       config:
         x-ms-summary: Webhook configuration
         description: Webhook configuration
@@ -1291,24 +1410,50 @@ definitions:
         properties:
           verb:
             x-ms-summary: Webhook configuration verb
+            x-ms-visibility: advanced
             description: Webhook configuration verb
             type: string
+            default: post
+            enum: [post]
           url:
             x-ms-summary: Webhook configuration url
+            x-ms-notification-url: true
+            x-ms-visibility: internal
             description: Webhook configuration url
             type: string
           content_type:
             x-ms-summary: Webhook configuration content type
+            x-ms-visibility: advanced
             description: Webhook configuration content type
             type: string
+            default: application/json
+            enum: [application/json]
           secret:
             x-ms-summary: Webhook configuration secret
+            x-ms-visibility: advanced
             description: Webhook configuration secret
             type: string
-     
-  HookEvent:
-    title: Webhook event
-    description: Webhook event
+            format: password
+        required:
+          - verb
+          - url
+          - content_type
+    required:
+      - name
+      - config
+
+  HookEvents:
+    x-ms-summary: Webhook events
+    title: Webhook events
+    description: Webhook events
+    type: array
+    items:
+      $ref: "#/definitions/HookEventCode"
+  
+  HookEventCode:
+    x-ms-summary: Webhook event code
+    title: Webhook event code
+    description: Webhook event code
     type: string
 
   HookSignatureRequest:
@@ -1321,6 +1466,7 @@ definitions:
         x-ms-visibility: important
         description: Webhook secret
         type: string
+        format: password
       payload:
         x-ms-summary: Webhook payload
         x-ms-visibility: important

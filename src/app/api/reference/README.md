@@ -11,6 +11,7 @@ Class | Method | HTTP request | Description
 *HooksApi* | [**createHook**](Apis/HooksApi.md#createhook) | **POST** /hooks | Create a new webhook
 *HooksApi* | [**deleteHook**](Apis/HooksApi.md#deletehook) | **DELETE** /hooks/{hookId} | Delete a webhook
 *HooksApi* | [**generateHookSignature**](Apis/HooksApi.md#generatehooksignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+*HooksApi* | [**getHooksEvents**](Apis/HooksApi.md#gethooksevents) | **GET** /hooks/events | Get webhooks events
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get information about a job
 *LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
 *TeamsApi* | [**createTeamChannel**](Apis/TeamsApi.md#createteamchannel) | **POST** /teams/{teamId}/channels | Create a new team channel
@@ -40,9 +41,11 @@ Class | Method | HTTP request | Description
  - [CatalogTemplates](./Models/CatalogTemplates.md)
  - [Hook](./Models/Hook.md)
  - [HookConfig](./Models/HookConfig.md)
+ - [HookEvent](./Models/HookEvent.md)
  - [HookPayload](./Models/HookPayload.md)
  - [HookSignature](./Models/HookSignature.md)
  - [HookSignatureRequest](./Models/HookSignatureRequest.md)
+ - [HooksEvents](./Models/HooksEvents.md)
  - [Job](./Models/Job.md)
  - [Label](./Models/Label.md)
  - [Labels](./Models/Labels.md)

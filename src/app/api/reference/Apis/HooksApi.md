@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createHook**](HooksApi.md#createHook) | **POST** /hooks | Create a new webhook
 [**deleteHook**](HooksApi.md#deleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
 [**generateHookSignature**](HooksApi.md#generateHookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+[**getHooksEvents**](HooksApi.md#getHooksEvents) | **GET** /hooks/events | Get webhooks events
 
 
 <a name="createHook"></a>
@@ -88,5 +89,29 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="getHooksEvents"></a>
+# **getHooksEvents**
+> HooksEvents getHooksEvents()
+
+Get webhooks events
+
+    Get webhooks events. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**HooksEvents**](../Models/HooksEvents.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

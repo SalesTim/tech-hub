@@ -536,6 +536,44 @@ paths:
         default:
           $ref: "#/components/responses/500"
 
+
+  /hooks/events:
+    get:
+      tags:
+        - hooks
+      summary: Get webhooks events
+      description: Get webhooks events. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      operationId: GetHooksEvents
+      security:
+        - bearerAuth: []
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#gethooksevents
+      responses:
+        "200":
+          description: OK - Returns a HooksEvents object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HooksEvents"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
   /hooks/signature:
     post:
       tags:
@@ -579,7 +617,6 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
-
   /hooks:
     post:
       tags:
@@ -623,7 +660,6 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
-
   /hooks/{hookId}:
     delete:
       tags:
@@ -935,7 +971,6 @@ components:
       type: object
       properties:
         "@odata.context":
-          x-ms-summary: Link to the operation online help
           description: Odata context
           type: string
         "@odata.count":
@@ -993,7 +1028,6 @@ components:
       type: object
       properties:
         "@odata.context":
-          x-ms-summary: Link to the operation online help
           description: Odata context
           type: string
         "@odata.count":
@@ -1017,7 +1051,6 @@ components:
       type: object
       properties:
         "@odata.context":
-          x-ms-summary: Link to the operation online help
           description: Odata context
           type: string
         "@odata.count":
@@ -1179,13 +1212,6 @@ components:
           type: object
           properties:
             id:
-              x-ms-summary: Template ID
-              x-ms-visibility: important
-              x-ms-dynamic-values:
-                operationId: GetMyCatalogTemplates
-                value-path: templateConfiguration/id
-                value-title: templateConfiguration/name
-                value-collection: value
               description: The template ID
               type: string
           required:
@@ -1195,18 +1221,12 @@ components:
           type: object
           properties:
             name:
-              x-ms-summary: Team name
-              x-ms-visibility: important
               description: Requested team name
               type: string
             description:
-              x-ms-summary: Team description
-              x-ms-visibility: advanced
               description: Requested team description
               type: string
             welcomeMessage:
-              x-ms-summary: Team welcome message
-              x-ms-visibility: advanced
               description: Requested team welcome message
               type: string
             membership:
@@ -1223,8 +1243,6 @@ components:
           $ref: "#/components/schemas/AppMetadata"
 
     MembersUserIdentifiers:
-      x-ms-summary: Team members
-      x-ms-visibility: advanced
       title: Teams members
       description: An array of UserIdentifier. See [https://developers.salestim.com/api/reference/Models/UserIdentifier](https://developers.salestim.com/api/reference/Models/UserIdentifier) for more information.
       type: array
@@ -1232,8 +1250,6 @@ components:
         $ref: "#/components/schemas/MemberUserIdentifier"
 
     OwnersUserIdentifiers:
-      x-ms-summary: Team owners
-      x-ms-visibility: advanced
       title: Team owners
       description: An array of UserIdentifier. See [https://developers.salestim.com/api/reference/Models/UserIdentifier](https://developers.salestim.com/api/reference/Models/UserIdentifier) for more information.
       type: array
@@ -1241,18 +1257,11 @@ components:
         $ref: "#/components/schemas/OwnerUserIdentifier"
 
     MemberUserIdentifier:
-      x-ms-summary: Team member
       title: Team member
       description: Object representing a user. User identifier could be its ID, UPN or email. See See [https://developers.salestim.com/api/reference/Models/UserIdentifier](https://developers.salestim.com/api/reference/Models/UserIdentifier) for more information.
       type: object
       properties:
         id:
-          x-ms-summary: ID
-          x-ms-dynamic-values:
-            operationId: GetUsers
-            value-path: id
-            value-title: displayName
-            value-collection: value
           title: ID
           description: User identifier
           type: string
@@ -1260,18 +1269,11 @@ components:
         - id
 
     OwnerUserIdentifier:
-      x-ms-summary: Team owner
       title: Team owner
       description: Object representing a user. User identifier could be its ID, UPN or email. See See [https://developers.salestim.com/api/reference/Models/UserIdentifier](https://developers.salestim.com/api/reference/Models/UserIdentifier) for more information.
       type: object
       properties:
         id:
-          x-ms-summary: ID
-          x-ms-dynamic-values:
-            operationId: GetUsers
-            value-path: id
-            value-title: displayName
-            value-collection: value
           title: ID
           description: User identifier
           type: string
@@ -1279,8 +1281,6 @@ components:
         - id
 
     AppMetadata:
-      x-ms-summary: Metadata
-      x-ms-visibility: advanced
       title: App Metadata
       description: Metadata from the app client as a JSON object. See [https://developers.salestim.com/api/reference/Models/AppMetadata](https://developers.salestim.com/api/reference/Models/VirtualAppMetadata) for more information.
       type: object
@@ -1291,46 +1291,33 @@ components:
       type: object
       properties:
         id:
-          x-ms-summary: Webhook ID
           description: Webhook ID
           type: string
         name:
-          x-ms-summary: Webhook name
           description: Webhook name
           type: string
         description:
-          x-ms-summary: Webhook description
           description: Webhook description
           type: string
         active:
-          x-ms-summary: Is the webhook active
           description: Is the webhook active
           type: boolean
         events:
-          x-ms-summary: Webhook events
-          description: Webhook events
-          type: array
-          items:
-            $ref: "#/components/schemas/HookEvent"
+          $ref: "#/components/schemas/HookEvents"
         config:
-          x-ms-summary: Webhook configuration
           description: Webhook configuration
           type: object
           properties:
             verb:
-              x-ms-summary: Webhook configuration verb
               description: Webhook configuration verb
               type: string
             url:
-              x-ms-summary: Webhook configuration url
               description: Webhook configuration url
               type: string
             content_type:
-              x-ms-summary: Webhook configuration content type
               description: Webhook configuration content type
               type: string
             secret:
-              x-ms-summary: Webhook configuration secret
               description: Webhook configuration secret
               type: string
 
@@ -1340,44 +1327,66 @@ components:
       type: object
       properties:
         name:
-          x-ms-summary: Webhook name
           description: Webhook name
           type: string
         description:
-          x-ms-summary: Webhook description
           description: Webhook description
           type: string
         events:
-          x-ms-summary: Webhook events
-          description: Webhook events
-          type: array
-          items:
-            $ref: "#/components/schemas/HookEvent"
+          $ref: "#/components/schemas/HookEvents"
         config:
-          x-ms-summary: Webhook configuration
           description: Webhook configuration
           type: object
           properties:
             verb:
-              x-ms-summary: Webhook configuration verb
               description: Webhook configuration verb
               type: string
             url:
-              x-ms-summary: Webhook configuration url
               description: Webhook configuration url
               type: string
             content_type:
-              x-ms-summary: Webhook configuration content type
               description: Webhook configuration content type
               type: string
             secret:
-              x-ms-summary: Webhook configuration secret
               description: Webhook configuration secret
               type: string
-      
+
+    HooksEvents:
+      title: Hooks events
+      description: A collection of webhook events.
+      type: object
+      properties:
+        "@odata.context":
+          description: Odata context
+          type: string
+        "@odata.count":
+          description: Number of events in the collection
+          type: integer
+          format: int32
+        value:
+          description: Array of HookEvent
+          type: array
+          items:
+            $ref: "#/components/schemas/HookEvent"
+
     HookEvent:
       title: Webhook event
       description: Webhook event
+      type: object
+      properties:
+        code:
+          $ref: "#/components/schemas/HookEventCode"
+    
+    HookEvents:
+      title: Webhook events
+      description: Webhook events
+      type: array
+      items:
+        $ref: "#/components/schemas/HookEventCode"
+
+    HookEventCode:
+      title: Webhook event code
+      description: Webhook event code
       type: string
 
     HookSignatureRequest:
@@ -1386,13 +1395,9 @@ components:
       type: object
       properties:
         secret:
-          x-ms-summary: Webhook secret
-          x-ms-visibility: important
           description: Webhook secret
           type: string
         payload:
-          x-ms-summary: Webhook payload
-          x-ms-visibility: important
           description: Webhook payload
           type: string
       required:
@@ -1405,7 +1410,6 @@ components:
       type: object
       properties:
         "@odata.context":
-          x-ms-summary: Link to the operation online help
           description: Odata context
           type: string
         signature:

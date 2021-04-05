@@ -18,9 +18,11 @@ Models/CatalogTemplateTemplateConfigurationPermanentMembership.md
 Models/CatalogTemplates.md
 Models/Hook.md
 Models/HookConfig.md
+Models/HookEvent.md
 Models/HookPayload.md
 Models/HookSignature.md
 Models/HookSignatureRequest.md
+Models/HooksEvents.md
 Models/Job.md
 Models/Label.md
 Models/Labels.md
