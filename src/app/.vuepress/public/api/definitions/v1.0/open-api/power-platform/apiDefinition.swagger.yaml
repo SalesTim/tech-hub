@@ -12,7 +12,7 @@ info:
     url: https://developers.salestim.com/api
     email: support@salestim.com
 
-host: devgmeweb.eu.ngrok.io
+host: api.salestim.io
 basePath: /v1.0
 schemes:
   - https
@@ -60,11 +60,41 @@ tags:
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
+x-ms-capabilities:
+  testConnection:
+    operationId: TestAPIConnection
+
 paths:
+
+  /monitoring/test_api_connection:
+    get:
+      tags:
+        - monitoring
+      x-ms-visibility: internal
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: TestAPIConnection
+        revision: 1
+      summary: Test connection to the SalesTim API
+      description: Test connection to the SalesTim API
+      operationId: TestAPIConnection
+      responses:
+        "200":
+          description: OK
+        default:
+          description: Operation failed.
+
   /me/catalog/templates:
     get:
       tags:
         - catalog
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetMyCatalogTemplates
+        revision: 1
       summary: Get my teams templates
       description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetMyCatalogTemplates
@@ -98,6 +128,12 @@ paths:
     get:
       tags:
         - labels
+      x-ms-visibility: advanced
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetMyLabels
+        revision: 1
       summary: Get my sensitivity labels
       description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetMyLabels
@@ -131,6 +167,12 @@ paths:
     get:
       tags:
         - users
+      x-ms-visibility: advanced
+      deprecated: false
+      x-ms-api-annotation:
+        status: Preview
+        family: GetUsers
+        revision: 1
       summary: Retreive users from your Microsoft 365 environment
       description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetUsers
@@ -164,6 +206,12 @@ paths:
     get:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetTeam
+        revision: 1
       summary: Get a team
       description: Get detailed information about a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeam
@@ -202,6 +250,12 @@ paths:
     post:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: CreateTeamProvisioningJob
+        revision: 1
       summary: Create a new team based on a template
       description: Create a new team provisioning job. TIER 1️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamProvisioningJob
@@ -241,6 +295,12 @@ paths:
     get:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetTeamChannels
+        revision: 1
       summary: Get team channels
       description: Get team channels. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamChannels
@@ -278,6 +338,12 @@ paths:
     post:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: CreateTeamChannel
+        revision: 1
       summary: Create a new team channel
       description: Create a new team channel. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamChannel
@@ -322,6 +388,12 @@ paths:
     get:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetTeamPrimaryChannel
+        revision: 1
       summary: Get the primary channel of a team
       description: Get the primary channel of a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamPrimaryChannel
@@ -360,6 +432,12 @@ paths:
     get:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetTeamChannelTabs
+        revision: 1
       summary: Get team channel tabs
       description: Get team channel tabs. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetTeamChannelTabs
@@ -402,6 +480,12 @@ paths:
     post:
       tags:
         - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: CreateTeamChannelTab
+        revision: 1
       summary: Create a new team channel tab
       description: Create a new team channel tab. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: CreateTeamChannelTab
@@ -452,6 +536,12 @@ paths:
     get:
       tags:
         - jobs
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GetJob
+        revision: 1
       summary: Get information about a job
       description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GetJob
@@ -491,6 +581,12 @@ paths:
     post:
       tags:
         - hooks
+      x-ms-visibility: advanced
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: GenerateHookSignature
+        revision: 1
       summary: Generate a signature from a secret and a webhook payload
       description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: GenerateHookSignature
@@ -535,8 +631,14 @@ paths:
     post:
       tags:
         - hooks
-      x-ms-trigger: "single"
       x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Preview
+        family: TeamCreatedHook
+        revision: 1
+      x-ms-trigger: "single"
+      x-ms-trigger-hint: To see it work, create a new team.
       summary: When a new team is created
       description: When a new team is created.
       operationId: TeamCreatedHook
@@ -582,7 +684,13 @@ paths:
       tags:
         - hooks
       x-ms-trigger: "single"
+      x-ms-trigger-hint: To see it work, create a new team from SalesTim.
       x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: TeamProvisioningCompletedHook
+        revision: 1
       summary: When a team is provisioned using a template
       description: When a team is provisioned using a template.
       operationId: TeamProvisioningCompletedHook
@@ -625,6 +733,11 @@ paths:
       tags:
         - hooks
       x-ms-visibility: internal
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: DeleteHook
+        revision: 1
       summary: Delete a webhook
       description: Delete a webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
       operationId: DeleteHook
