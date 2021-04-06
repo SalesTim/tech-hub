@@ -21,13 +21,13 @@ export default {
     var pOpenApiFileUrl = this.openApiFileUrl;
 
     // Replace openapi definition with local in dev mode
-    // if (
-    //   window.location.host.indexOf("localhost", 0) > -1 ||
-    //   window.location.host.indexOf("devgme", 0) > -1
-    // ) {
-    //   pOpenApiFileUrl =
-    //     "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
-    // }
+    if (
+      window.location.host.indexOf("localhost", 0) > -1 ||
+      window.location.host.indexOf("devgme", 0) > -1
+    ) {
+      pOpenApiFileUrl =
+        "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
+    }
 
     var s = document.createElement("script");
     s.setAttribute(
