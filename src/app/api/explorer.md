@@ -6,4 +6,4 @@ description: "API Explorer lets you craft REST requests, adapt the HTTP request 
 
 <Authentication />
 
-<SwaggerViewer openApiFileUrl="https://developers.salestim.com/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml"/>
+<SwaggerViewer openApiFileUrl="/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml"/>

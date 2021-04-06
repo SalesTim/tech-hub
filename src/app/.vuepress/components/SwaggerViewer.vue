@@ -21,13 +21,13 @@ export default {
     var pOpenApiFileUrl = this.openApiFileUrl;
 
     // Replace openapi definition with local in dev mode
-    if (
-      window.location.host.indexOf("localhost", 0) > -1 ||
-      window.location.host.indexOf("devgme", 0) > -1
-    ) {
-      pOpenApiFileUrl =
-        "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
-    }
+    // if (
+    //   window.location.host.indexOf("localhost", 0) > -1 ||
+    //   window.location.host.indexOf("devgme", 0) > -1
+    // ) {
+    //   pOpenApiFileUrl =
+    //     "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
+    // }
 
     var s = document.createElement("script");
     s.setAttribute(
@@ -86,22 +86,32 @@ export default {
                       );
                       const devmode = urlParams.get("dev");
                       if (
-                        (window.location.host.indexOf("localhost", 0) > -1 ||
+                        window.location.host.indexOf("localhost", 0) > -1 ||
                         window.location.host.indexOf("devgme", 0) > -1 ||
-                        devmode === "true")
+                        devmode === "true"
                       ) {
                         // change spec.servers here to add new entry, use concat to put it as the first & default one
                         spec.servers = [
-                          { url: "https://devgmeweb.eu.ngrok.io/v1.0" },
-                          { url: "https://apippr.salestim.io/v1.0" },
+                          {
+                            url: "https://devgmeweb.eu.ngrok.io/v1.0",
+                            description: "Development Environment",
+                          },
+                          {
+                            url: "https://apippr.salestim.io/v1.0",
+                            description: "Pre-Production Environment",
+                          },
                         ].concat(spec.servers || []);
                         // Show server list
                         var checkExist = setInterval(function () {
                           if (
-                            document.querySelector(".scheme-container") !== null
+                            document.querySelector(".information-container") !==
+                            null
                           ) {
                             clearInterval(checkExist);
-                            // Show scheme-container
+                            // Show containers
+                            document.querySelector(
+                              ".information-container"
+                            ).style.display = "block";
                             document.querySelector(
                               ".scheme-container"
                             ).style.display = "block";
