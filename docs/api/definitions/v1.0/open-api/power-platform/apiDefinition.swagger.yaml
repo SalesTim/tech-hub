@@ -12,7 +12,15 @@ info:
     url: https://developers.salestim.com/api
     email: support@salestim.com
 
-host: api.salestim.io
+x-ms-connector-metadata:
+  - propertyName: Website
+    propertyValue: https://www.salestim.com
+  - propertyName: Privacy policy
+    propertyValue: https://www.salestim.com/legal/privacy
+  - propertyName: Categories
+    propertyValue: IT Operations;Productivity
+
+host: devgmeweb.eu.ngrok.io
 basePath: /v1.0
 schemes:
   - https
@@ -65,7 +73,6 @@ x-ms-capabilities:
     operationId: TestAPIConnection
 
 paths:
-
   /monitoring/test_api_connection:
     get:
       tags:
@@ -96,7 +103,7 @@ paths:
         family: GetMyCatalogTemplates
         revision: 1
       summary: Get my teams templates
-      description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyCatalogTemplates
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getmycatalogtemplates
@@ -135,7 +142,7 @@ paths:
         family: GetMyLabels
         revision: 1
       summary: Get my sensitivity labels
-      description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyLabels
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/LabelsApi.html#getmylabels
@@ -174,7 +181,7 @@ paths:
         family: GetUsers
         revision: 1
       summary: Retreive users from your Microsoft 365 environment
-      description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetUsers
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/UsersApi.html#getUsers
@@ -213,7 +220,7 @@ paths:
         family: GetTeam
         revision: 1
       summary: Get a team
-      description: Get detailed information about a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeam
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteam
@@ -246,6 +253,191 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+    delete:
+      tags:
+        - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: DeleteTeam
+        revision: 1
+      summary: Delete a team
+      description: Delete a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: DeleteTeam
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#deleteteam
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+      responses:
+        "204":
+          description: No Content.
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /teams/{teamId}/archive:
+    post:
+      tags:
+        - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: ArchiveTeam
+        revision: 1
+      summary: Archive a team
+      description: Archive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: ArchiveTeam
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#archiveteam
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+        - in: body
+          name: teamArchivingOptions
+          description: In the request, you may optionally include the shouldSetSpoSiteReadOnlyForMembers parameter in a JSON body. This optional parameter defines whether to set permissions for team members to read-only on the SharePoint Online site associated with the team. Setting it to false or omitting the body altogether will result in this step being skipped.
+          required: false
+          schema:
+            $ref: "#/definitions/TeamArchivingOptions"
+      responses:
+        "202":
+          description: Accepted - The response will also contain a Location header, which contains the location of the teamsAsyncOperation that was created to handle archiving of the team. Check the status of the archiving operation by making a GET request to this location.
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /teams/{teamId}/unarchive:
+    post:
+      tags:
+        - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: UnarchiveTeam
+        revision: 1
+      summary: Unarchive a team
+      description: Unarchive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: UnarchiveTeam
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#unarchiveteam
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+      responses:
+        "202":
+          description: Accepted - The response will also contain a Location header, which contains the location of the teamsAsyncOperation that was created to handle archiving of the team. Check the status of the archiving operation by making a GET request to this location.
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /teams/{teamId}/members:
+    post:
+      tags:
+        - teams
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: AddTeamMember
+        revision: 1
+      summary: Add a team member
+      description: Add a team member. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: AddTeamMember
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#addteammember
+      parameters:
+        - in: path
+          name: teamId
+          description: The team ID.
+          required: true
+          type: string
+        - in: body
+          name: TeamMembershipPayload
+          description: A TeamMembershipPayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/TeamMembershipPayload"
+      responses:
+        "201":
+          description: Accepted - The response will also contain a Location header, which contains the location of the teamsAsyncOperation that was created to handle archiving of the team. Check the status of the archiving operation by making a GET request to this location.
+          schema:
+            $ref: "#/definitions/TeamMember"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
   /teams/provisioning:
     post:
       tags:
@@ -257,7 +449,7 @@ paths:
         family: CreateTeamProvisioningJob
         revision: 1
       summary: Create a new team based on a template
-      description: Create a new team provisioning job. TIER 1️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Create a new team provisioning job. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamProvisioningJob
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamprovisioningjob
@@ -302,7 +494,7 @@ paths:
         family: GetTeamChannels
         revision: 1
       summary: Get team channels
-      description: Get team channels. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get team channels. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannels
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchannels
@@ -345,7 +537,7 @@ paths:
         family: CreateTeamChannel
         revision: 1
       summary: Create a new team channel
-      description: Create a new team channel. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Create a new team channel. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannel
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchannel
@@ -395,7 +587,7 @@ paths:
         family: GetTeamPrimaryChannel
         revision: 1
       summary: Get the primary channel of a team
-      description: Get the primary channel of a team. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get the primary channel of a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamPrimaryChannel
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamprimarychannel
@@ -439,7 +631,7 @@ paths:
         family: GetTeamChannelTabs
         revision: 1
       summary: Get team channel tabs
-      description: Get team channel tabs. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get team channel tabs. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannelTabs
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteamchanneltabs
@@ -487,7 +679,7 @@ paths:
         family: CreateTeamChannelTab
         revision: 1
       summary: Create a new team channel tab
-      description: Create a new team channel tab. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Create a new team channel tab. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannelTab
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamchanneltab
@@ -543,7 +735,7 @@ paths:
         family: GetJob
         revision: 1
       summary: Get information about a job
-      description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetJob
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/JobsApi.html#getjob
@@ -588,7 +780,7 @@ paths:
         family: GenerateHookSignature
         revision: 1
       summary: Generate a signature from a secret and a webhook payload
-      description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GenerateHookSignature
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#generatehooksignature
@@ -622,7 +814,6 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
-
   /hooks/team_created:
     x-ms-notification-content:
       description: Payload of the Team Created event
@@ -674,7 +865,6 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
-
   /hooks/team_provisioning_completed:
     x-ms-notification-content:
       description: Payload of the Team Provisioning Completed event
@@ -726,8 +916,6 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
-
-
   /hooks/{hookId}:
     delete:
       tags:
@@ -739,7 +927,7 @@ paths:
         family: DeleteHook
         revision: 1
       summary: Delete a webhook
-      description: Delete a webhook. TIER 2️⃣ | ROLES > AUTHENTICATED_USER.
+      description: Delete a webhook. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: DeleteHook
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#deletehook
@@ -914,6 +1102,54 @@ definitions:
             title: Allow custom memes
             description: Allow custom memes
             type: boolean
+
+  TeamArchivingOptions:
+    title: Team Archiving Options
+    description: Team Archiving Options.
+    type: object
+    properties:
+      shouldSetSpoSiteReadOnlyForMembers:
+        title: Defines whether to set permissions for team members to read-only on the SharePoint Online site associated with the team
+        description: Defines whether to set permissions for team members to read-only on the SharePoint Online site associated with the team.
+        type: boolean
+
+  TeamMembershipPayload:
+    title: Team Membership Payload
+    description: Team Membership Payload.
+    type: object
+    properties:
+      user:
+        title: User
+        description: User
+        type: object
+        properties:
+          id:
+            title: ID
+            description: ID
+            type: string
+            x-ms-summary: ID
+            x-ms-dynamic-values:
+              operationId: GetUsers
+              value-path: id
+              value-title: displayName
+              value-collection: value
+        required:
+          - id
+      role:
+        title: Team Membership Role
+        description: Team Membership Role (member/owner)
+        type: string
+        enum:
+          - member
+          - owner
+          - unknownFutureValue
+    required:
+      - role
+
+  TeamMember:
+    title: Team Member
+    description: Team member.
+    type: object
 
   TeamChannels:
     title: Team Channels
@@ -1403,7 +1639,7 @@ definitions:
         description: Is the webhook active
         type: boolean
       events:
-        $ref: "#/definitions/HookEvents"          
+        $ref: "#/definitions/HookEvents"
       config:
         x-ms-summary: Webhook configuration
         description: Webhook configuration
@@ -1562,7 +1798,7 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/HookEventCode"
-  
+
   HookEventCode:
     x-ms-summary: Webhook event code
     title: Webhook event code

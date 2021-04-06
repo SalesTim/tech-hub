@@ -38,10 +38,12 @@ Models/TeamDiscoverySettings.md
 Models/TeamFunSettings.md
 Models/TeamGuestSettings.md
 Models/TeamMemberSettings.md
+Models/TeamMembershipPayload.md
 Models/TeamMessagingSettings.md
 Models/TeamProvisioningRequest.md
 Models/TeamProvisioningRequestTeam.md
 Models/TeamProvisioningRequestTeamMembership.md
 Models/TeamProvisioningRequestTemplate.md
+Models/User1.md
 Models/Users.md
 README.md

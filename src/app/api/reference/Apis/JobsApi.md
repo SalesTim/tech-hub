@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get information about a job
 
-    Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 

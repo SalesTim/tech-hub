@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Get my sensitivity labels
 
-    Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 This endpoint does not need any parameter.

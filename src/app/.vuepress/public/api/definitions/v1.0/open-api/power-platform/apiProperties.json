@@ -1,23 +1,49 @@
 {
   "properties": {
     "connectionParameters": {
-      "api_key": {
-        "type": "securestring",
+      "token": {
+        "type": "oauthSetting",
+        "oAuthSettings": {
+          "identityProvider": "aad",
+          "clientId": null,
+          "scopes": [
+            "https://graph.microsoft.com/.default"
+          ],
+          "redirectMode": "Global",
+          "redirectUrl": "https://global.consent.azure-apim.net/redirect",
+          "properties": {
+            "IsFirstParty": "False",
+            "AzureActiveDirectoryResourceId": "https://graph.microsoft.com"
+          },
+          "customParameters": {
+            "loginUri": {
+              "value": "https://login.windows.net"
+            },
+            "tenantId": {
+              "value": "common"
+            },
+            "resourceUri": {
+              "value": "https://graph.microsoft.com"
+            }
+          }
+        }
+      },
+      "token:TenantId": {
+        "type": "string",
+        "metadata": {
+          "sourceType": "AzureActiveDirectoryTenant"
+        },
         "uiDefinition": {
-          "displayName": "Authentication ID",
-          "description": "Enter a valid connected app authentication ID . You must be a SalesTim Governance Automation administrator.",
-          "tooltip": "Connected App Authentication ID",
           "constraints": {
-            "clearText": false,
-            "required": "true",
-            "tabIndex": 2
+            "required": "false",
+            "hidden": "true"
           }
         }
       }
     },
     "iconBrandColor": "#000000",
-    "publisher": "SalesTim, Inc.",
-    "stackOwner": "SalesTim, Inc.",
+    "publisher": "SalesTim",
+    "stackOwner": "SalesTim",
     "capabilities": [],
     "policyTemplateInstances": []
   }

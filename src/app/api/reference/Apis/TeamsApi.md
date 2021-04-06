@@ -4,14 +4,74 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addTeamMember**](TeamsApi.md#addTeamMember) | **POST** /teams/{teamId}/members | Add a team member
+[**archiveTeam**](TeamsApi.md#archiveTeam) | **POST** /teams/{teamId}/archive | Archive a team
 [**createTeamChannel**](TeamsApi.md#createTeamChannel) | **POST** /teams/{teamId}/channels | Create a new team channel
 [**createTeamChannelTab**](TeamsApi.md#createTeamChannelTab) | **POST** /teams/{teamId}/channels/{channelId}/tabs | Create a new team channel tab
 [**createTeamProvisioningJob**](TeamsApi.md#createTeamProvisioningJob) | **POST** /teams/provisioning | Create a new team based on a template
+[**deleteTeam**](TeamsApi.md#deleteTeam) | **DELETE** /teams/{teamId} | Delete a team
 [**getTeam**](TeamsApi.md#getTeam) | **GET** /teams/{teamId} | Get a team
 [**getTeamChannelTabs**](TeamsApi.md#getTeamChannelTabs) | **GET** /teams/{teamId}/channels/{channelId}/tabs | Get team channel tabs
 [**getTeamChannels**](TeamsApi.md#getTeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 [**getTeamPrimaryChannel**](TeamsApi.md#getTeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
+[**unarchiveTeam**](TeamsApi.md#unarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
 
+
+<a name="addTeamMember"></a>
+# **addTeamMember**
+> ApiError addTeamMember(teamId, TeamMembershipPayload)
+
+Add a team member
+
+    Add a team member. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | [default to null]
+ **TeamMembershipPayload** | [**TeamMembershipPayload**](../Models/TeamMembershipPayload.md)| TeamMembershipPayload. |
+
+### Return type
+
+[**ApiError**](../Models/ApiError.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="archiveTeam"></a>
+# **archiveTeam**
+> archiveTeam(teamId, body)
+
+Archive a team
+
+    Archive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | [default to null]
+ **body** | **Object**| In the request, you may optionally include the shouldSetSpoSiteReadOnlyForMembers parameter in a JSON body. This optional parameter defines whether to set permissions for team members to read-only on the SharePoint Online site associated with the team. Setting it to false or omitting the body altogether will result in this step being skipped. | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 <a name="createTeamChannel"></a>
 # **createTeamChannel**
@@ -19,7 +79,7 @@ Method | HTTP request | Description
 
 Create a new team channel
 
-    Create a new team channel. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Create a new team channel. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -47,7 +107,7 @@ Name | Type | Description  | Notes
 
 Create a new team channel tab
 
-    Create a new team channel tab. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Create a new team channel tab. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -76,7 +136,7 @@ Name | Type | Description  | Notes
 
 Create a new team based on a template
 
-    Create a new team provisioning job. TIER 1️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Create a new team provisioning job. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -97,13 +157,40 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+<a name="deleteTeam"></a>
+# **deleteTeam**
+> deleteTeam(teamId)
+
+Delete a team
+
+    Delete a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | [default to null]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
 <a name="getTeam"></a>
 # **getTeam**
 > Team getTeam(teamId)
 
 Get a team
 
-    Get detailed information about a team. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -130,7 +217,7 @@ Name | Type | Description  | Notes
 
 Get team channel tabs
 
-    Get team channel tabs. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get team channel tabs. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -158,7 +245,7 @@ Name | Type | Description  | Notes
 
 Get team channels
 
-    Get team channels. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get team channels. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -185,7 +272,7 @@ Name | Type | Description  | Notes
 
 Get the primary channel of a team
 
-    Get the primary channel of a team. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get the primary channel of a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -196,6 +283,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TeamChannel**](../Models/TeamChannel.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="unarchiveTeam"></a>
+# **unarchiveTeam**
+> unarchiveTeam(teamId)
+
+Unarchive a team
+
+    Unarchive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | [default to null]
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

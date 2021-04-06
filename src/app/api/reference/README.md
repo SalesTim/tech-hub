@@ -14,13 +14,17 @@ Class | Method | HTTP request | Description
 *HooksApi* | [**getHooksEvents**](Apis/HooksApi.md#gethooksevents) | **GET** /hooks/events | Get webhooks events
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get information about a job
 *LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
+*TeamsApi* | [**addTeamMember**](Apis/TeamsApi.md#addteammember) | **POST** /teams/{teamId}/members | Add a team member
+*TeamsApi* | [**archiveTeam**](Apis/TeamsApi.md#archiveteam) | **POST** /teams/{teamId}/archive | Archive a team
 *TeamsApi* | [**createTeamChannel**](Apis/TeamsApi.md#createteamchannel) | **POST** /teams/{teamId}/channels | Create a new team channel
 *TeamsApi* | [**createTeamChannelTab**](Apis/TeamsApi.md#createteamchanneltab) | **POST** /teams/{teamId}/channels/{channelId}/tabs | Create a new team channel tab
 *TeamsApi* | [**createTeamProvisioningJob**](Apis/TeamsApi.md#createteamprovisioningjob) | **POST** /teams/provisioning | Create a new team based on a template
+*TeamsApi* | [**deleteTeam**](Apis/TeamsApi.md#deleteteam) | **DELETE** /teams/{teamId} | Delete a team
 *TeamsApi* | [**getTeam**](Apis/TeamsApi.md#getteam) | **GET** /teams/{teamId} | Get a team
 *TeamsApi* | [**getTeamChannelTabs**](Apis/TeamsApi.md#getteamchanneltabs) | **GET** /teams/{teamId}/channels/{channelId}/tabs | Get team channel tabs
 *TeamsApi* | [**getTeamChannels**](Apis/TeamsApi.md#getteamchannels) | **GET** /teams/{teamId}/channels | Get team channels
 *TeamsApi* | [**getTeamPrimaryChannel**](Apis/TeamsApi.md#getteamprimarychannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
+*TeamsApi* | [**unarchiveTeam**](Apis/TeamsApi.md#unarchiveteam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
 *UsersApi* | [**getUsers**](Apis/UsersApi.md#getusers) | **GET** /users | Retreive users from your Microsoft 365 environment
 
 
@@ -61,11 +65,13 @@ Class | Method | HTTP request | Description
  - [TeamFunSettings](./Models/TeamFunSettings.md)
  - [TeamGuestSettings](./Models/TeamGuestSettings.md)
  - [TeamMemberSettings](./Models/TeamMemberSettings.md)
+ - [TeamMembershipPayload](./Models/TeamMembershipPayload.md)
  - [TeamMessagingSettings](./Models/TeamMessagingSettings.md)
  - [TeamProvisioningRequest](./Models/TeamProvisioningRequest.md)
  - [TeamProvisioningRequestTeam](./Models/TeamProvisioningRequestTeam.md)
  - [TeamProvisioningRequestTeamMembership](./Models/TeamProvisioningRequestTeamMembership.md)
  - [TeamProvisioningRequestTemplate](./Models/TeamProvisioningRequestTemplate.md)
+ - [User1](./Models/User1.md)
  - [Users](./Models/Users.md)
 
 

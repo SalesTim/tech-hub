@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create a new webhook
 
-    Create a new webhook. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Create a new webhook. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 Delete a webhook
 
-    Delete a webhook. TIER 2️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Delete a webhook. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 Generate a signature from a secret and a webhook payload
 
-    Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 Get webhooks events
 
-    Get webhooks events. TIER 3️⃣ | ROLES &gt; AUTHENTICATED_USER.
+    Get webhooks events. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 This endpoint does not need any parameter.

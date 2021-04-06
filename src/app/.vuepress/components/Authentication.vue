@@ -63,7 +63,7 @@
                 class="uk-card uk-card-hover uk-text-center uk-card-small uk-card-default uk-card-body"
               >
                 <i>Delegated Access:</i>
-                <b><span id="delegatedModeStatus">🔐</span></b>
+                <b><span id="delegatedModeStatus">🔴</span></b>
                 <button
                   id="loginButton"
                   class="uk-button uk-align-center uk-button-primary"

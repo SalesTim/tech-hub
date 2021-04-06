@@ -30,7 +30,7 @@ var myMSALObj = null
 
 // Helper function to call MS Graph API endpoint
 // using authorization bearer token scheme
-function callMSGraph (endpoint, token, callback) {
+function callMSGraph(endpoint, token, callback) {
   const bearer = `Bearer ${token}`
   const options = {
     method: 'GET',
@@ -56,7 +56,7 @@ function callMSGraph (endpoint, token, callback) {
     })
 }
 
-function callMSGraphBinary (endpoint, token, callback) {
+function callMSGraphBinary(endpoint, token, callback) {
   const bearer = `Bearer ${token}`
   const options = {
     method: 'GET',
@@ -84,7 +84,7 @@ function callMSGraphBinary (endpoint, token, callback) {
 
 // #region SALESTIM API HELPERS
 
-function getApps (callback) {
+function getApps(callback) {
   const bearer = 'Bearer ' + window.explorerLoggedUser.accessToken
   const options = {
     method: 'GET',
@@ -126,7 +126,7 @@ function getApps (callback) {
     })
 }
 
-function createApp (callback) {
+function createApp(callback) {
   const bearer = 'Bearer ' + window.explorerLoggedUser.accessToken
   var newApp = {
     name: document.getElementById('newAppName').value,
@@ -173,7 +173,7 @@ function createApp (callback) {
 
 // #region AUTHENTICATION - POPUP MODE
 
-function initExplorerHeader () {
+function initExplorerHeader() {
   // Init vars
   if (!msalConfig) {
     msalConfig = {
@@ -208,6 +208,7 @@ function initExplorerHeader () {
   if (!myMSALObj) {
     myMSALObj = new Msal.UserAgentApplication(msalConfig)
   }
+
   // Check pre-existing account
   if (myMSALObj.getAccount()) {
     getAccessToken()
@@ -216,7 +217,7 @@ function initExplorerHeader () {
   }
 }
 
-function signIn () {
+function signIn() {
   myMSALObj
     .loginPopup(loginRequest)
     .then(loginResponse => {
@@ -232,7 +233,7 @@ function signIn () {
     })
 }
 
-function getAccessToken () {
+function getAccessToken() {
   getTokenPopup(loginRequest)
     .then(response => {
       console.info('Access Token:')
@@ -272,17 +273,17 @@ function getAccessToken () {
 }
 
 // Send access token to swagger ui
-function setBearerAuth (token) {
+function setBearerAuth(token) {
   // "Bearer " is automatically added by swagger ui
   ui.preauthorizeApiKey('bearerAuth', token)
 }
 
 // Send app secret to swagger ui
-function setAppSecret (appSecret) {
+function setAppSecret(appSecret) {
   ui.preauthorizeApiKey('appSecret', appSecret)
 }
 
-function signOut () {
+function signOut() {
   window.explorerLoggedUser = null
   // Actually don't do a real ad logout to prevent a global browser-wide logout
   // myMSALObj.logout()
@@ -296,7 +297,7 @@ function signOut () {
   })
 }
 
-function getTokenPopup (request) {
+function getTokenPopup(request) {
   return myMSALObj.acquireTokenSilent(request).catch(error => {
     console.log(error)
     console.log(
@@ -319,7 +320,7 @@ function getTokenPopup (request) {
 
 // #region UI
 
-function initAppSelector (apps) {
+function initAppSelector(apps) {
   if (apps) {
     if (apps.length > 0) {
       // Initialize apps list
@@ -373,40 +374,40 @@ function initAppSelector (apps) {
   }
 }
 
-function showAppsFilled () {
+function showAppsFilled() {
   document.getElementById('appsListEmpty').style.display = "none"
   document.getElementById('appsListFilled').style.display = ""
   document.getElementById('selectAppButton').style.display = ""
 }
 
-function showAppsEmpty () {
+function showAppsEmpty() {
   document.getElementById('appsListEmpty').style.display = ""
   document.getElementById('appsListFilled').style.display = "none"
   document.getElementById('selectAppButton').style.display = "none"
 }
 
-function enableLoading () {
+function enableLoading() {
   document.getElementById('loading').style.display = ""
   document.getElementById('loginCard').style.display = "none"
 }
 
-function disableLoading () {
+function disableLoading() {
   document.getElementById('loading').style.display = "none"
   document.getElementById('loginCard').style.display = ""
 }
 
-function setAnonymous () {
+function setAnonymous() {
   disableLoading()
   window.explorerLoggedUser = null
   document.getElementById('loginDateTime').innerText = '...'
   document.getElementById('userDisplayName').innerText = 'Anonymous'
   document.getElementById('profilePicture').setAttribute('src', '/img/avatar.png')
-  document.getElementById('delegatedModeStatus').innerText = '🔐'
+  document.getElementById('delegatedModeStatus').innerText = '🔴'
   document.getElementById('logoutButton').style.display = 'none'
   document.getElementById('loginButton').style.display = 'block'
 }
 
-function setAuthenticated (userInfos, profile) {
+function setAuthenticated(userInfos, profile) {
   disableLoading()
   document.getElementById("loginDateTime").innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
   document.getElementById("userDisplayName").innerText = profile.displayName
@@ -428,7 +429,7 @@ function setAuthenticated (userInfos, profile) {
 //   }
 // }
 
-function selectApp () {
+function selectApp() {
   UIkit.modal(document.getElementById('appSelectorModal')).hide()
   var selectedAppId = document.querySelector('.uk-tab-left .uk-active a').getAttribute('app-id')
   var app = getAppById(selectedAppId)
@@ -446,7 +447,7 @@ function selectApp () {
   }
 }
 
-function getAppById (appId) {
+function getAppById(appId) {
   var foundApp = null
   window.explorerApps.forEach((app, i) => {
     if (app.id === appId) {
@@ -456,7 +457,7 @@ function getAppById (appId) {
   return foundApp
 }
 
-function setProfilePicture (token) {
+function setProfilePicture(token) {
   callMSGraphBinary(graphConfig.graphPhotoEndpoint, token, function (response, endpoint) {
     const url = window.URL || window.webkitURL
     const blobUrl = url.createObjectURL(response)

@@ -1,4 +1,4 @@
-# Overview of SalesTim API
+# SalesTim API Overview
 <div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/api.jpg);">
   <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
     <p class="uk-text-large">
@@ -37,4 +37,4 @@ Use our [API Explorer](/api/explorer), an online tool that lets you make request
 Use [Postman](/api/use-postman) to test the SalesTim API from your own desktop.
 
 ### Power Platform
-Use the SalesTim API [Power Platform Connector](/nocode/power-platform) for use in `Power Apps` and `Power Automate`.
+Use the SalesTim API [Power Platform Connector](/power-platform/) for use in `Power Apps` and `Power Automate`.
