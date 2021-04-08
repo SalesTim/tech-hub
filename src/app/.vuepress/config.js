@@ -125,8 +125,8 @@ module.exports = {
     // Navbar: Horizontal navigation
     nav: [
       { text: 'API Explorer', link: '/api/explorer' },
-      { text: 'API Reference', link: '/api/reference/' },
-      { text: 'Power Platform', link: '/power-platform/' },
+      { text: 'Power Platform', link: '/connectors/power-platform-connector' },
+      { text: 'Logic Apps', link: '/connectors/logic-apps-connector' },
       { text: 'Trust Center', link: '/platform/' },
       { text: 'Inside SalesTim', link: '/blog/' }
     ],
@@ -151,13 +151,14 @@ module.exports = {
           ]
         },
         {
-          title: 'Power Platform Connector',
+          title: 'Power Platform & Logic Apps',
           collapsable: true,
           sidebarDepth: 1,
           children: [
-            ['/power-platform/', 'Get Started'],
-            ['/power-platform/power-platform-connector.md', 'Setup the Connector'],
-            ['/power-platform/power-platform-actions.md', 'Triggers & Actions Reference']
+            ['/connectors/', 'Get Started'],
+            ['/connectors/power-platform-connector.md', 'Power Platform Setup'],
+            ['/connectors/logic-apps-connector.md', 'Logic Apps Setup'],
+            ['/connectors/connectors-actions.md', 'Triggers & Actions Reference']
           ]
         },
         {

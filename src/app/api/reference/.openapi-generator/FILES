@@ -1,3 +1,4 @@
+Apis/ApprovalsApi.md
 Apis/CatalogApi.md
 Apis/HooksApi.md
 Apis/JobsApi.md
@@ -8,6 +9,9 @@ Models/ApiError.md
 Models/ApiErrorError.md
 Models/ApiErrorErrorInnerError.md
 Models/ApprovalTeamMember.md
+Models/ApprovedApprovalResponsePayload.md
+Models/ApprovedApprovalResponsePayloadApprover.md
+Models/ApprovedApprovalResponsePayloadUpdates.md
 Models/CatalogTemplate.md
 Models/CatalogTemplateClonedTeam.md
 Models/CatalogTemplateNewTeam.md
@@ -29,6 +33,7 @@ Models/Labels.md
 Models/MemberUserIdentifier.md
 Models/OwnerUserIdentifier.md
 Models/PermanentMember.md
+Models/RejectedApprovalResponsePayload.md
 Models/Team.md
 Models/TeamChannel.md
 Models/TeamChannelTab.md

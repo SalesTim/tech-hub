@@ -7,6 +7,8 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ApprovalsApi* | [**approveTeamCreation**](Apis/ApprovalsApi.md#approveteamcreation) | **POST** /approvals/{approvalRequestId}/approve | Approve a team creation request
+*ApprovalsApi* | [**rejectTeamCreation**](Apis/ApprovalsApi.md#rejectteamcreation) | **POST** /approvals/{approvalRequestId}/reject | Reject a team creation request
 *CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
 *HooksApi* | [**createHook**](Apis/HooksApi.md#createhook) | **POST** /hooks | Create a new webhook
 *HooksApi* | [**deleteHook**](Apis/HooksApi.md#deletehook) | **DELETE** /hooks/{hookId} | Delete a webhook
@@ -35,6 +37,9 @@ Class | Method | HTTP request | Description
  - [ApiErrorError](./Models/ApiErrorError.md)
  - [ApiErrorErrorInnerError](./Models/ApiErrorErrorInnerError.md)
  - [ApprovalTeamMember](./Models/ApprovalTeamMember.md)
+ - [ApprovedApprovalResponsePayload](./Models/ApprovedApprovalResponsePayload.md)
+ - [ApprovedApprovalResponsePayloadApprover](./Models/ApprovedApprovalResponsePayloadApprover.md)
+ - [ApprovedApprovalResponsePayloadUpdates](./Models/ApprovedApprovalResponsePayloadUpdates.md)
  - [CatalogTemplate](./Models/CatalogTemplate.md)
  - [CatalogTemplateClonedTeam](./Models/CatalogTemplateClonedTeam.md)
  - [CatalogTemplateNewTeam](./Models/CatalogTemplateNewTeam.md)
@@ -56,6 +61,7 @@ Class | Method | HTTP request | Description
  - [MemberUserIdentifier](./Models/MemberUserIdentifier.md)
  - [OwnerUserIdentifier](./Models/OwnerUserIdentifier.md)
  - [PermanentMember](./Models/PermanentMember.md)
+ - [RejectedApprovalResponsePayload](./Models/RejectedApprovalResponsePayload.md)
  - [Team](./Models/Team.md)
  - [TeamChannel](./Models/TeamChannel.md)
  - [TeamChannelTab](./Models/TeamChannelTab.md)

@@ -20,7 +20,7 @@ x-ms-connector-metadata:
   - propertyName: Categories
     propertyValue: IT Operations;Productivity
 
-host: devgmeweb.eu.ngrok.io
+host: api.salestim.io
 basePath: /v1.0
 schemes:
   - https
@@ -73,6 +73,7 @@ x-ms-capabilities:
     operationId: TestAPIConnection
 
 paths:
+
   /monitoring/test_api_connection:
     get:
       tags:

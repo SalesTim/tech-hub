@@ -37,4 +37,4 @@ Use our [API Explorer](/api/explorer), an online tool that lets you make request
 Use [Postman](/api/use-postman) to test the SalesTim API from your own desktop.
 
 ### Power Platform
-Use the SalesTim API [Power Platform Connector](/power-platform/) for use in `Power Apps` and `Power Automate`.
+Use the SalesTim [Power Platform & Logic Apps Connector](/connectors/) for use in `Power Apps`, `Power Automate` and `Logic Apps`.

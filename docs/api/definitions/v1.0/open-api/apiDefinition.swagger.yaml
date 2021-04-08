@@ -23,6 +23,10 @@ tags:
     description: Your corporate catalog of teams templates and governance policies.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/CatalogApi
+  - name: approvals
+    description: Team creation requests approvals.
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi
   - name: teams
     description: Teams from your Microsoft Teams environment.
     externalDocs:
@@ -45,6 +49,102 @@ tags:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
 paths:
+
+
+  /approvals/{approvalRequestId}/approve:
+    post:
+      tags:
+        - approvals
+      summary: Approve a team creation request
+      description: Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: ApproveTeamCreation
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#approveteamcreation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: approvalRequestId
+          in: path
+          description: The approval request ID.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: An ApprovedApprovalResponsePayload object.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApprovedApprovalResponsePayload"
+      responses:
+        "200":
+          description: OK
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
+  /approvals/{approvalRequestId}/reject:
+    post:
+      tags:
+        - approvals
+      summary: Reject a team creation request
+      description: Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: RejectTeamCreation
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#rejectteamcreation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: approvalRequestId
+          in: path
+          description: The approval request ID.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: An RejectedApprovalResponsePayload object.
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RejectedApprovalResponsePayload"
+      responses:
+        "200":
+          description: OK
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
   /me/catalog/templates:
     get:
       tags:
@@ -426,6 +526,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+
   /teams/{teamId}/channels:
     get:
       tags:
@@ -518,6 +619,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+
   /teams/{teamId}/channels/primary:
     get:
       tags:
@@ -561,6 +663,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+ 
   /teams/{teamId}/channels/{channelId}/tabs:
     get:
       tags:
@@ -746,6 +849,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+ 
   /hooks/signature:
     post:
       tags:
@@ -789,6 +893,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+
   /hooks:
     post:
       tags:
@@ -832,6 +937,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
+
   /hooks/{hookId}:
     delete:
       tags:
@@ -877,6 +983,7 @@ paths:
           $ref: "#/components/responses/500"
 
 components:
+
   securitySchemes:
     bearerAuth:
       description: A valid Microsoft 365 access_token issued by Azure AD.
@@ -885,6 +992,50 @@ components:
       bearerFormat: JWT
 
   schemas:
+
+    ApprovedApprovalResponsePayload:
+      title: A positive approval response payload
+      description: A positive approval response payload.
+      type: object
+      properties:        
+        message:
+          description: Approval response message
+          type: string
+        approver:
+          description: Approval approver
+          type: object
+          properties:
+            id:
+              description: Approver ID
+        updates:
+          description: Updates made by the approver
+          type: object
+          properties:
+            name:
+              description: Webhook configuration verb
+              type: string
+            description:
+              description: Webhook configuration url
+              type: string
+            welcomeMessage:
+              description: Webhook configuration content type
+              type: string
+
+    RejectedApprovalResponsePayload:
+      title: A negative approval response payload
+      description: A negative approval response payload.
+      type: object
+      properties:        
+        message:
+          description: Approval response message
+          type: string
+        approver:
+          description: Approval approver
+          type: object
+          properties:
+            id:
+              description: Approver ID
+
     Team:
       title: Team
       description: A Microsoft Teams team.

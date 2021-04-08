@@ -14,18 +14,11 @@
   }
 </style>
 
-## What are No-Code Solutions and Teams Templates?
-`No-Code Solutions` are applications built using the [SalesTim API](/api/) but without requiring a strong technical background, such as apps built on top of the [Microsoft Power Platform](https://docs.microsoft.com/en-us/learn/powerplatform/), especially [PowerApps](https://docs.microsoft.com/en-us/powerapps/powerapps-overview) and [Power Automate](https://docs.microsoft.com/en-us/power-automate/getting-started).
-
-See [Use the SalesTim API with Power Platform](/power-platform/) for more information.
-
-In addition, at the core of the SalesTim Platform, `Teams Templates` are a combination of two elements:
+## What are No-Code Solutions?
+`No-Code Solutions` are applications built using the SalesTim app and its provisioning and governance engine.
+At the core of the SalesTim Platform, `Teams Templates` are a combination of two elements:
 - A team template, describing the structure and contents of a team.
 - A governance policy that may include security and compliance rules.
-
-These templates may be:
-- Created by yourself and saved in your private corporate catalog for your internal use
-- Public and accessible from the Microsoft Teams [Template Store](https://store.salestim.com)
 
 Through these teams templates, end-users can create ready-to-use and full-featured teams, customized to perform a specific business activity, such as:
 - Project management
@@ -39,7 +32,6 @@ This question is already largely covered in our [Help Center](https://help.sales
 
 But if you need more advanced capabilities, we've got you covered.
 Here is a list of advanced capabilities from the SalesTim Platform that you can leverage to create more advanced templates:
-- Use [Microsoft Power Platform with SalesTim API](/power-platform/) to create advanced PowerApps apps and Power Automate flows.
 - Create advanced [Naming Conventions](/nocode/naming-conventions) to keep your Microsoft Teams environment clean and manageable.
 - Create advanced rules of [Audience Targeting](/nocode/audience-targeting) to selectively show or hide your teams templates to specific users or groups.
-- Use the [SalesTim API](/api/) to automate your Microsoft Teams governance or create your own teams provisioning workflow.
+- Create [Approval Workflows](/nocode/approval) to control team creation in your environment.

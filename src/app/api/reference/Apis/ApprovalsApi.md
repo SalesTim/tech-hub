@@ -4,24 +4,28 @@ All URIs are relative to *https://api.salestim.io/v1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApprovals**](ApprovalsApi.md#getApprovals) | **GET** /approvals | Get all approvals from your organization (🔥 restricted to administrators)
-[**getPendingApprovals**](ApprovalsApi.md#getPendingApprovals) | **GET** /approvals/pending | Get your pending approvals (beeing the requester or an approver) (🔐 Authenticated users)
+[**approveTeamCreation**](ApprovalsApi.md#approveTeamCreation) | **POST** /approvals/{approvalRequestId}/approve | Approve a team creation request
+[**rejectTeamCreation**](ApprovalsApi.md#rejectTeamCreation) | **POST** /approvals/{approvalRequestId}/reject | Reject a team creation request
 
 
-<a name="getApprovals"></a>
-# **getApprovals**
-> List getApprovals()
+<a name="approveTeamCreation"></a>
+# **approveTeamCreation**
+> approveTeamCreation(approvalRequestId, ApprovedApprovalResponsePayload)
 
-Get all approvals from your organization (🔥 restricted to administrators)
+Approve a team creation request
 
-    Get all approvals from your organization.
+    Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **approvalRequestId** | **String**| The approval request ID. | [default to null]
+ **ApprovedApprovalResponsePayload** | [**ApprovedApprovalResponsePayload**](../Models/ApprovedApprovalResponsePayload.md)| An ApprovedApprovalResponsePayload object. | [optional]
 
 ### Return type
 
-[**List**](../Models/object.md)
+null (empty response body)
 
 ### Authorization
 
@@ -29,23 +33,27 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
-<a name="getPendingApprovals"></a>
-# **getPendingApprovals**
-> List getPendingApprovals()
+<a name="rejectTeamCreation"></a>
+# **rejectTeamCreation**
+> rejectTeamCreation(approvalRequestId, RejectedApprovalResponsePayload)
 
-Get your pending approvals (beeing the requester or an approver) (🔐 Authenticated users)
+Reject a team creation request
 
-    Get your pending approvals (beeing the requester or an approver).
+    Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **approvalRequestId** | **String**| The approval request ID. | [default to null]
+ **RejectedApprovalResponsePayload** | [**RejectedApprovalResponsePayload**](../Models/RejectedApprovalResponsePayload.md)| An RejectedApprovalResponsePayload object. | [optional]
 
 ### Return type
 
-[**List**](../Models/object.md)
+null (empty response body)
 
 ### Authorization
 
@@ -53,6 +61,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
