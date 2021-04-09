@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Approve a team creation request
 
-    Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+    Approve a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 
@@ -42,7 +42,7 @@ null (empty response body)
 
 Reject a team creation request
 
-    Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+    Reject a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
 
 ### Parameters
 

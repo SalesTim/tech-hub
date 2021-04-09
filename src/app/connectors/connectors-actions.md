@@ -146,6 +146,24 @@ Create a new team provisioning job.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#createteamprovisioningjob)
 
+### Approve Team Creation
+Approve a team creation request.
+- Operation ID: ApproveTeamCreation
+- Category: `approvals`
+- Rate Limit: <Badge text="Tier 3" type="tip" vertical="middle"/>
+- Roles: All_AUTHENTICATED_USERS.
+
+See [API Documentation](/api/reference/Apis/ApprovalsApi.html#approveteamcreation)
+
+### Reject Team Creation
+Reject a team creation request.
+- Operation ID: RejectTeamCreation
+- Category: `approvals`
+- Rate Limit: <Badge text="Tier 3" type="tip" vertical="middle"/>
+- Roles: All_AUTHENTICATED_USERS.
+
+See [API Documentation](/api/reference/Apis/ApprovalsApi.html#rejectteamcreation)
+
 ### Get Team Channels
 Get team channels.
 - Operation ID: GetTeamChannels

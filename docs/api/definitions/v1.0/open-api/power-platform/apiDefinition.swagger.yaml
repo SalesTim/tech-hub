@@ -106,8 +106,8 @@ paths:
         status: Production
         family: ApproveTeamCreation
         revision: 1
-      summary: Approve a team creation request
-      description: Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      summary: Approve a team creation request ✅
+      description: Approve a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: ApproveTeamCreation
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#approveteamcreation
@@ -155,8 +155,8 @@ paths:
         status: Production
         family: RejectTeamCreation
         revision: 1
-      summary: Reject a team creation request
-      description: Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      summary: Reject a team creation request 🚫
+      description: Reject a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: RejectTeamCreation
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#rejectteamcreation
@@ -204,7 +204,7 @@ paths:
         status: Production
         family: GetMyCatalogTemplates
         revision: 1
-      summary: Get my teams templates
+      summary: Get my teams templates 🎨
       description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyCatalogTemplates
       externalDocs:
@@ -243,7 +243,7 @@ paths:
         status: Production
         family: GetMyLabels
         revision: 1
-      summary: Get my sensitivity labels
+      summary: Get my sensitivity labels 🔖
       description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyLabels
       externalDocs:
@@ -407,7 +407,7 @@ paths:
         status: Production
         family: ArchiveTeam
         revision: 1
-      summary: Archive a team
+      summary: Archive a team 📦
       description: Archive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: ArchiveTeam
       externalDocs:
@@ -456,7 +456,7 @@ paths:
         status: Production
         family: UnarchiveTeam
         revision: 1
-      summary: Unarchive a team
+      summary: Unarchive a team 📦
       description: Unarchive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: UnarchiveTeam
       externalDocs:
@@ -499,8 +499,8 @@ paths:
         status: Production
         family: AddTeamMember
         revision: 1
-      summary: Add a team member
-      description: Add a team member. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      summary: Invite a team member 👋
+      description: Invite a team member. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: AddTeamMember
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#addteammember
@@ -550,7 +550,7 @@ paths:
         status: Production
         family: CreateTeamProvisioningJob
         revision: 1
-      summary: Create a new team based on a template
+      summary: Create a new team based on a template 🆕
       description: Create a new team provisioning job. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamProvisioningJob
       externalDocs:
@@ -596,7 +596,7 @@ paths:
         status: Production
         family: GetTeamChannels
         revision: 1
-      summary: Get team channels
+      summary: Get team channels 💬
       description: Get team channels. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannels
       externalDocs:
@@ -639,7 +639,7 @@ paths:
         status: Production
         family: CreateTeamChannel
         revision: 1
-      summary: Create a new team channel
+      summary: Create a new team channel 💬
       description: Create a new team channel. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannel
       externalDocs:
@@ -690,7 +690,7 @@ paths:
         status: Production
         family: GetTeamPrimaryChannel
         revision: 1
-      summary: Get the primary channel of a team
+      summary: Get the primary channel of a team 💬
       description: Get the primary channel of a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamPrimaryChannel
       externalDocs:
@@ -735,7 +735,7 @@ paths:
         status: Production
         family: GetTeamChannelTabs
         revision: 1
-      summary: Get team channel tabs
+      summary: Get team channel tabs 🧱
       description: Get team channel tabs. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannelTabs
       externalDocs:
@@ -783,7 +783,7 @@ paths:
         status: Production
         family: CreateTeamChannelTab
         revision: 1
-      summary: Create a new team channel tab
+      summary: Create a new team channel tab 🧱
       description: Create a new team channel tab. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannelTab
       externalDocs:
@@ -839,7 +839,7 @@ paths:
         status: Production
         family: GetJob
         revision: 1
-      summary: Get information about a job
+      summary: Get information about a job 🦺
       description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetJob
       externalDocs:
@@ -884,7 +884,7 @@ paths:
         status: Production
         family: GenerateHookSignature
         revision: 1
-      summary: Generate a signature from a secret and a webhook payload
+      summary: Generate a signature from a secret and a webhook payload 🔏
       description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GenerateHookSignature
       externalDocs:
@@ -936,7 +936,7 @@ paths:
         revision: 1
       x-ms-trigger: "single"
       x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template.
-      summary: When a new team creation approval is requested
+      summary: When a new team creation approval is requested 🛃
       description: When a new team creation approval is requested.
       operationId: TeamCreationApprovalRequestedHook
       externalDocs:
@@ -988,7 +988,7 @@ paths:
         revision: 1
       x-ms-trigger: "single"
       x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template, and approve the approval request.
-      summary: When a team creation is approved
+      summary: When a team creation is approved ✅
       description: When a team creation is approved.
       operationId: TeamCreationApprovalApprovedHook
       externalDocs:
@@ -1040,7 +1040,7 @@ paths:
         revision: 1
       x-ms-trigger: "single"
       x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template, and reject the approval request.
-      summary: When a team creation is rejected
+      summary: When a team creation is rejected 🚫
       description: When a team creation is rejected.
       operationId: TeamCreationApprovalRejectedHook
       externalDocs:
@@ -1092,7 +1092,7 @@ paths:
         revision: 1
       x-ms-trigger: "single"
       x-ms-trigger-hint: To see it work, create a new team.
-      summary: When a new team is created
+      summary: When a new team is created 🆕
       description: When a new team is created.
       operationId: TeamCreatedHook
       externalDocs:
@@ -1144,7 +1144,7 @@ paths:
         status: Production
         family: TeamProvisioningCompletedHook
         revision: 1
-      summary: When a team is provisioned using a template
+      summary: When a team is provisioned using a template 🎨
       description: When a team is provisioned using a template.
       operationId: TeamProvisioningCompletedHook
       externalDocs:

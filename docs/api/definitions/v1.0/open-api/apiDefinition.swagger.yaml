@@ -55,7 +55,7 @@ paths:
       tags:
         - approvals
       summary: Approve a team creation request
-      description: Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      description: Approve a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: ApproveTeamCreation
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#approveteamcreation
@@ -102,7 +102,7 @@ paths:
       tags:
         - approvals
       summary: Reject a team creation request
-      description: Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      description: Reject a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: RejectTeamCreation
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#rejectteamcreation
