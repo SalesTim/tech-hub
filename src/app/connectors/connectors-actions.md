@@ -36,6 +36,33 @@ Triggered when a team provisioning request based on a template is complete (weth
 
 See [Webhook Documentation](/api/webhooks.html#team-provisioning-completed)
 
+### When a Team Creation Approval is Requested
+Triggered when a user is requesting the creation of a new team using a template that enforces team creation approval.
+- Event Code: `team_creation_approval_requested`
+- Category: `approvals`
+- Rate Limit: None
+- Roles: `INTEGRATION_MANAGER`, `TEAMS_SERVICE_ADMIN`, `GLOBAL_ADMIN`
+
+See [Webhook Documentation](/api/webhooks.html#team-creation-approval-requested)
+
+### When a Team Creation is Approved
+Triggered when a team creation approval is approved.
+- Event Code: `team_creation_approved`
+- Category: `approvals`
+- Rate Limit: None
+- Roles: `INTEGRATION_MANAGER`, `TEAMS_SERVICE_ADMIN`, `GLOBAL_ADMIN`
+
+See [Webhook Documentation](/api/webhooks.html#team-creation-approved)
+
+### When a Team Creation is Rejected
+Triggered when a team creation approval is rejected.
+- Event Code: `team_creation_rejected`
+- Category: `approvals`
+- Rate Limit: None
+- Roles: `INTEGRATION_MANAGER`, `TEAMS_SERVICE_ADMIN`, `GLOBAL_ADMIN`
+
+See [Webhook Documentation](/api/webhooks.html#team-creation-rejected)
+
 ## Actions
 
 ### Get My Catalog Templates

@@ -203,6 +203,401 @@ Schema:
 }
 ```
 
+### Team Creation Approval Requested
+- Code: `team_creation_approval_requested`
+- Category: `approval`
+- Description: Triggered when a user is requesting the creation of a new team using a template that enforces team creation approval.
+- Status: <Badge text="v1.0" type="tip"/>
+
+Sample:
+```json
+{
+  "tenant": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a"
+  },
+  "requester": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "displayName": "Alice Hawking",
+    "mail": "alice.hawking@contoso.com"
+  },
+  "approval": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a"
+  },
+  "template": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "name": "Project Template",
+    "approvers": {},
+    "permanentMembership": {}
+  },
+  "request": {
+    "team": {
+      "name": "Construction Project",
+      "description": "Project team for the P100 project",
+      "welcomeMessage": "Welcome to the P100 project team!"
+    },
+    "membership": {}
+  }
+}
+```
+
+Schema:
+```json
+{
+  "type": "object",
+  "properties": {
+    "tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "mail": {
+          "type": "string"
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "approvers": {
+          "type": "object",
+          "properties": {}
+        },
+        "permanentMembership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "team": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "welcomeMessage": {
+              "type": "string"
+            }
+          }
+        },
+        "membership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    }
+  }
+}
+```
+
+### Team Creation Approved
+- Code: `team_creation_approved`
+- Category: `approval`
+- Description: Triggered when a team creation approval is approved.
+- Status: <Badge text="v1.0" type="tip"/>
+
+Sample:
+```json
+{
+  "tenant": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a"
+  },
+  "requester": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "displayName": "Alice Hawking",
+    "mail": "alice.hawking@contoso.com"
+  },
+  "approval": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "approver": {
+      "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+      "message": "Approved!"
+    }
+  },
+  "template": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "name": "Project Template",
+    "approvers": {},
+    "permanentMembership": {}
+  },
+  "request": {
+    "team": {
+      "name": "Construction Project",
+      "description": "Project team for the P100 project",
+      "welcomeMessage": "Welcome to the P100 project team!"
+    },
+    "membership": {}
+  },
+  "provisioning": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a"
+  }
+}
+```
+
+Schema:
+```json
+{
+  "type": "object",
+  "properties": {
+    "tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "mail": {
+          "type": "string"
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "approver": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "approvers": {
+          "type": "object",
+          "properties": {}
+        },
+        "permanentMembership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "team": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "welcomeMessage": {
+              "type": "string"
+            }
+          }
+        },
+        "membership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "provisioning": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
+### Team Creation Rejected
+- Code: `team_creation_rejected`
+- Category: `approval`
+- Description: Triggered when a team creation approval is rejected.
+- Status: <Badge text="v1.0" type="tip"/>
+
+Sample:
+```json
+{
+  "tenant": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a"
+  },
+  "requester": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "displayName": "Alice Hawking",
+    "mail": "alice.hawking@contoso.com"
+  },
+  "approval": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a-5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "approver": {
+      "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+      "message": "Rejected!"
+    }
+  },
+  "template": {
+    "id": "5cbf4991-76ef-4a5d-94be-59d72d6e2d7a",
+    "name": "Project Template",
+    "approvers": {},
+    "permanentMembership": {}
+  },
+  "request": {
+    "team": {
+      "name": "Construction Project",
+      "description": "Project team for the P100 project",
+      "welcomeMessage": "Welcome to the P100 project team!"
+    },
+    "membership": {}
+  }
+}
+```
+
+Schema:
+```json
+{
+  "type": "object",
+  "properties": {
+    "tenant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "requester": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "mail": {
+          "type": "string"
+        }
+      }
+    },
+    "approval": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "approver": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "approvers": {
+          "type": "object",
+          "properties": {}
+        },
+        "permanentMembership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "team": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "welcomeMessage": {
+              "type": "string"
+            }
+          }
+        },
+        "membership": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    }
+  }
+}
+```
+
 ## Endpoints Requirements
 
 ### Security

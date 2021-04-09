@@ -50,7 +50,6 @@ tags:
 
 paths:
 
-
   /approvals/{approvalRequestId}/approve:
     post:
       tags:
@@ -1007,18 +1006,19 @@ components:
           properties:
             id:
               description: Approver ID
+              type: string
         updates:
           description: Updates made by the approver
           type: object
           properties:
             name:
-              description: Webhook configuration verb
+              description: Updated team name
               type: string
             description:
-              description: Webhook configuration url
+              description: Updated team description
               type: string
             welcomeMessage:
-              description: Webhook configuration content type
+              description: Updated welcome message
               type: string
 
     RejectedApprovalResponsePayload:
@@ -1035,6 +1035,7 @@ components:
           properties:
             id:
               description: Approver ID
+              type: string
 
     Team:
       title: Team

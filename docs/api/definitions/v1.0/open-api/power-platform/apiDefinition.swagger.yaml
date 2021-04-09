@@ -47,6 +47,10 @@ tags:
     description: Your corporate catalog of teams templates and governance policies.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/CatalogApi
+  - name: approvals
+    description: Team creation requests approvals.
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi
   - name: teams
     description: Teams from your Microsoft Teams environment.
     externalDocs:
@@ -73,7 +77,6 @@ x-ms-capabilities:
     operationId: TestAPIConnection
 
 paths:
-
   /monitoring/test_api_connection:
     get:
       tags:
@@ -92,6 +95,104 @@ paths:
           description: OK
         default:
           description: Operation failed.
+
+  /approvals/{approvalRequestId}/approve:
+    post:
+      tags:
+        - approvals
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: ApproveTeamCreation
+        revision: 1
+      summary: Approve a team creation request
+      description: Approve a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: ApproveTeamCreation
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#approveteamcreation
+      parameters:
+        - name: approvalRequestId
+          in: path
+          description: The approval request ID.
+          required: true
+          type: string
+        - in: body
+          name: approvedApprovalResponsePayload
+          description: An ApprovedApprovalResponsePayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/ApprovedApprovalResponsePayload"
+      responses:
+        "200":
+          description: OK
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /approvals/{approvalRequestId}/reject:
+    post:
+      tags:
+        - approvals
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Production
+        family: RejectTeamCreation
+        revision: 1
+      summary: Reject a team creation request
+      description: Reject a team creation request. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
+      operationId: RejectTeamCreation
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi.html#rejectteamcreation
+      parameters:
+        - name: approvalRequestId
+          in: path
+          description: The approval request ID.
+          required: true
+          type: string
+        - in: body
+          name: rejectedApprovalResponsePayload
+          description: An RejectedApprovalResponsePayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/RejectedApprovalResponsePayload"
+      responses:
+        "200":
+          description: OK
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
 
   /me/catalog/templates:
     get:
@@ -484,6 +585,7 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
   /teams/{teamId}/channels:
     get:
       tags:
@@ -577,6 +679,7 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
   /teams/{teamId}/channels/primary:
     get:
       tags:
@@ -621,6 +724,7 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
   /teams/{teamId}/channels/{channelId}/tabs:
     get:
       tags:
@@ -815,6 +919,163 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
+  /hooks/team_creation_approval_requested:
+    x-ms-notification-content:
+      description: Payload of the Team Creation Approval Requested event
+      schema:
+        $ref: "#/definitions/TeamCreationApprovalRequestedNotificationPayload"
+    post:
+      tags:
+        - hooks
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Preview
+        family: TeamCreationApprovalRequestedHook
+        revision: 1
+      x-ms-trigger: "single"
+      x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template.
+      summary: When a new team creation approval is requested
+      description: When a new team creation approval is requested.
+      operationId: TeamCreationApprovalRequestedHook
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#teamcreationapprovalrequestedhook
+      parameters:
+        - in: body
+          name: HookPayload
+          description: A HookPayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/HookPayload"
+      responses:
+        "201":
+          description: Created - Returns a Hook object.
+          schema:
+            $ref: "#/definitions/Hook"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /hooks/team_creation_approved:
+    x-ms-notification-content:
+      description: Payload of the Team Creation Approval Approved event
+      schema:
+        $ref: "#/definitions/TeamCreationApprovalApprovedNotificationPayload"
+    post:
+      tags:
+        - hooks
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Preview
+        family: TeamCreationApprovalApprovedHook
+        revision: 1
+      x-ms-trigger: "single"
+      x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template, and approve the approval request.
+      summary: When a team creation is approved
+      description: When a team creation is approved.
+      operationId: TeamCreationApprovalApprovedHook
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#teamcreationapprovalapprovedhook
+      parameters:
+        - in: body
+          name: HookPayload
+          description: A HookPayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/HookPayload"
+      responses:
+        "201":
+          description: Created - Returns a Hook object.
+          schema:
+            $ref: "#/definitions/Hook"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
+  /hooks/team_creation_rejected:
+    x-ms-notification-content:
+      description: Payload of the Team Creation Approval Rejected event
+      schema:
+        $ref: "#/definitions/TeamCreationApprovalRejectedNotificationPayload"
+    post:
+      tags:
+        - hooks
+      x-ms-visibility: important
+      deprecated: false
+      x-ms-api-annotation:
+        status: Preview
+        family: TeamCreationApprovalRejectedHook
+        revision: 1
+      x-ms-trigger: "single"
+      x-ms-trigger-hint: To see it work, create a new team with approval enabled on a template, and reject the approval request.
+      summary: When a team creation is rejected
+      description: When a team creation is rejected.
+      operationId: TeamCreationApprovalRejectedHook
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/HooksApi.html#teamcreationapprovalrejectedhook
+      parameters:
+        - in: body
+          name: HookPayload
+          description: A HookPayload object.
+          required: true
+          schema:
+            $ref: "#/definitions/HookPayload"
+      responses:
+        "201":
+          description: Created - Returns a Hook object.
+          schema:
+            $ref: "#/definitions/Hook"
+        "400":
+          $ref: "#/responses/400"
+        "401":
+          $ref: "#/responses/401"
+        "402":
+          $ref: "#/responses/402"
+        "403":
+          $ref: "#/responses/403"
+        "404":
+          $ref: "#/responses/404"
+        "429":
+          $ref: "#/responses/429"
+        "500":
+          $ref: "#/responses/500"
+        "503":
+          $ref: "#/responses/503"
+        default:
+          $ref: "#/responses/500"
+
   /hooks/team_created:
     x-ms-notification-content:
       description: Payload of the Team Created event
@@ -866,6 +1127,7 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
   /hooks/team_provisioning_completed:
     x-ms-notification-content:
       description: Payload of the Team Provisioning Completed event
@@ -917,6 +1179,7 @@ paths:
           $ref: "#/responses/503"
         default:
           $ref: "#/responses/500"
+
   /hooks/{hookId}:
     delete:
       tags:
@@ -963,6 +1226,63 @@ paths:
           $ref: "#/responses/500"
 
 definitions:
+
+  ApprovedApprovalResponsePayload:
+    x-ms-summary: A positive approval response payload
+    description: A positive approval response payload.
+    type: object
+    properties:        
+      message:
+        x-ms-summary: Approval response message
+        description: Approval response message
+        type: string
+      approver:
+        x-ms-summary: Approval approver
+        description: Approval approver
+        type: object
+        properties:
+          id:
+            x-ms-summary: Approver ID
+            description: Approver ID
+            type: string
+      updates:
+        x-ms-summary: Updates made by the approver
+        description: Updates made by the approver
+        type: object
+        properties:
+          name:
+            x-ms-summary: Updated team name
+            description: Updated team name
+            type: string
+          description:
+            x-ms-summary: Updated team description
+            description: Updated team description
+            type: string
+          welcomeMessage:
+            x-ms-summary: Updated welcome message
+            description: Updated welcome message
+            type: string
+
+  RejectedApprovalResponsePayload:
+    x-ms-summary: A negative approval response payload
+    title: A negative approval response payload
+    description: A negative approval response payload.
+    type: object
+    properties:        
+      message:
+        x-ms-summary: Approval response message
+        description: Approval response message
+        type: string
+      approver:
+        x-ms-summary: Approval approver
+        description: Approval approver
+        type: object
+        properties:
+          id:
+            x-ms-summary: Approver ID
+            description: Approver ID
+            type: string
+
   Team:
     title: Team
     description: A Microsoft Teams team.
@@ -1662,6 +1982,276 @@ definitions:
             x-ms-summary: Webhook configuration secret
             description: Webhook configuration secret
             type: string
+
+  TeamCreationApprovalRequestedNotificationPayload:
+    x-ms-summary: Team Creation Approval Requested Notification Payload
+    title: Team Creation Approval Requested Notification Payload
+    description: Team Creation Approval Requested Notification Payload.
+    type: object
+    properties:
+      tenant:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Current tenant ID
+            description: Current tenant ID
+            type: string
+      requester:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Requester ID
+            description: Requester ID
+            type: string
+          displayName:
+            x-ms-summary: Requester display name
+            description: Requester display name
+            type: string
+          mail:
+            x-ms-summary: Requester email
+            description: Requester email
+            type: string
+      approval:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Approval request ID
+            description: Approval request ID
+            type: string
+      template:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Template ID
+            description: Template ID
+            type: string
+          name:
+            x-ms-summary: Template name
+            description: Template name
+            type: string
+          approvers:
+            x-ms-summary: Approval team
+            description: Approval team
+            type: array
+            items:
+              type: object
+          permanentMembership:
+            x-ms-summary: Permanent members and owners
+            description: Permanent members and owners
+            type: object
+      request:
+        type: object
+        properties:
+          team:
+            type: object
+            properties:
+              name:
+                x-ms-summary: Requested team name
+                description: Requested team name
+                type: string
+              description:
+                x-ms-summary: Requested team description
+                description: Requested team description
+                type: string
+              welcomeMessage:
+                x-ms-summary: Requested team welcome message
+                description: Requested team welcome message
+                type: string
+          membership:
+            x-ms-summary: Requested members and owners
+            description: Requested members and owners
+            type: object
+
+  TeamCreationApprovalApprovedNotificationPayload:
+    x-ms-summary: Team Creation Approval Approved Notification Payload
+    title: Team Creation Approval Approved Notification Payload
+    description: Team Creation Approval Approved Notification Payload.
+    type: object
+    properties:
+      tenant:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Current tenant ID
+            description: Current tenant ID
+            type: string
+      requester:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Requester ID
+            description: Requester ID
+            type: string
+          displayName:
+            x-ms-summary: Requester display name
+            description: Requester display name
+            type: string
+          mail:
+            x-ms-summary: Requester email
+            description: Requester email
+            type: string
+      approval:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Approval request ID
+            description: Approval request ID
+            type: string
+          approver:
+            x-ms-summary: Approver
+            description: Approver
+            type: object
+            properties:
+              id:
+                x-ms-summary: Approver ID
+                description: Approver ID
+                type: string
+              message:
+                x-ms-summary: Approver message
+                description: Approver message
+                type: string
+      template:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Template ID
+            description: Template ID
+            type: string
+          name:
+            x-ms-summary: Template name
+            description: Template name
+            type: string
+          approvers:
+            x-ms-summary: Approval team
+            description: Approval team
+            type: array
+            items:
+              type: object
+          permanentMembership:
+            x-ms-summary: Permanent members and owners
+            description: Permanent members and owners
+            type: object
+      request:
+        type: object
+        properties:
+          team:
+            type: object
+            properties:
+              name:
+                x-ms-summary: Requested team name
+                description: Requested team name
+                type: string
+              description:
+                x-ms-summary: Requested team description
+                description: Requested team description
+                type: string
+              welcomeMessage:
+                x-ms-summary: Requested team welcome message
+                description: Requested team welcome message
+                type: string
+          membership:
+            x-ms-summary: Requested members and owners
+            description: Requested members and owners
+            type: object
+      provisioning:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Provisioning Job ID
+            description: Provisioning Job ID
+            type: string
+
+  TeamCreationApprovalRejectedNotificationPayload:
+    x-ms-summary: Team Creation Approval Rejected Notification Payload
+    title: Team Creation Approval Rejected Notification Payload
+    description: Team Creation Approval Rejected Notification Payload.
+    type: object
+    properties:
+      tenant:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Current tenant ID
+            description: Current tenant ID
+            type: string
+      requester:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Requester ID
+            description: Requester ID
+            type: string
+          displayName:
+            x-ms-summary: Requester display name
+            description: Requester display name
+            type: string
+          mail:
+            x-ms-summary: Requester email
+            description: Requester email
+            type: string
+      approval:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Approval request ID
+            description: Approval request ID
+            type: string
+          approver:
+            x-ms-summary: Approver
+            description: Approver
+            type: object
+            properties:
+              id:
+                x-ms-summary: Approver ID
+                description: Approver ID
+                type: string
+              message:
+                x-ms-summary: Approver message
+                description: Approver message
+                type: string
+      template:
+        type: object
+        properties:
+          id:
+            x-ms-summary: Template ID
+            description: Template ID
+            type: string
+          name:
+            x-ms-summary: Template name
+            description: Template name
+            type: string
+          approvers:
+            x-ms-summary: Approval team
+            description: Approval team
+            type: array
+            items:
+              type: object
+          permanentMembership:
+            x-ms-summary: Permanent members and owners
+            description: Permanent members and owners
+            type: object
+      request:
+        type: object
+        properties:
+          team:
+            type: object
+            properties:
+              name:
+                x-ms-summary: Requested team name
+                description: Requested team name
+                type: string
+              description:
+                x-ms-summary: Requested team description
+                description: Requested team description
+                type: string
+              welcomeMessage:
+                x-ms-summary: Requested team welcome message
+                description: Requested team welcome message
+                type: string
+          membership:
+            x-ms-summary: Requested members and owners
+            description: Requested members and owners
+            type: object
 
   TeamCreatedNotificationPayload:
     title: Team Created Notification Payload
