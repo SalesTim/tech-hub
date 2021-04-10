@@ -1,14 +1,19 @@
 # Team creation approval workflow
 <Classification label="public" />
 
-This article describes how to configure SalesTim to create an approval workflow for your teams creation requests with your own internal email as a sender to approvers.  
+**ABSTRACT**  
+*This article describes how to configure SalesTim to create an approval workflow for your teams creation requests with your own internal email as a sender to approvers.*
 
-## Abstract
-
-To implement its approval workflow, SalesTim relies on [Outlook Actionable Messages](https://docs.microsoft.com/en-us/outlook/actionable-messages/) to help approvers manage their approval requests right from their inbox. Outlook Actionable messages are emails that embed [Adaptive Cards](https://adaptivecards.io/) in a very secure way, by enforcing both end-user authentication and phishing prevention.
+*To implement its approval workflow, SalesTim relies on [Outlook Actionable Messages](https://docs.microsoft.com/en-us/outlook/actionable-messages/) to help approvers manage their approval requests right from their inbox. Outlook Actionable messages are emails that embed [Adaptive Cards](https://adaptivecards.io/) in a very secure way, by enforcing both end-user authentication and phishing prevention.*
 
 ![SalesTim Approval Workflow Actionable Message](/img/nocode/approval-actionable-message.png)
 
+---
+
+**TABLE OF CONTENTS**
+[[toc]]
+
+---
 
 ## What do I have to do?
 

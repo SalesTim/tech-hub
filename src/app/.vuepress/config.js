@@ -151,7 +151,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Power Platform & Logic Apps',
+          title: 'Connectors',
           collapsable: true,
           sidebarDepth: 1,
           children: [
@@ -194,7 +194,10 @@ module.exports = {
             '/platform/securedevelopment.md',
             '/platform/securitypolicy.md',
             '/platform/privacyandcompliance.md',
-            '/platform/classification.md'
+            '/platform/classification.md',
+            '/platform/installation-options.md',
+            '/platform/releases.md',
+            '/platform/knownissues.md'
           ]
         }
       ]

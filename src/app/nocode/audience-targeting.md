@@ -1,11 +1,15 @@
 # Audience Targeting
 <Classification label="public" />
 
-## Abstract
-An audience targeting rule could be applied to a template to define who can access and therefore use it, based on the user profile data. Intrinsically, targeting rules are a combination of tags and expressions that are evaluated against a user profile to determine if a template is shown or not.
+**ABSTRACT**  
+*An audience targeting rule could be applied to a template to define who can access and therefore use it, based on the user profile data. Intrinsically, targeting rules are a combination of tags and expressions that are evaluated against a user profile to determine if a template is shown or not.*
 
-**TABLE OF CONTENTS**:
+---
+
+**TABLE OF CONTENTS**
 [[toc]]
+
+---
 
 ## Available tags
 Targeting rules can use user profile information through the following tags:

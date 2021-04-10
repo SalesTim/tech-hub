@@ -1,10 +1,17 @@
 # Naming Conventions
 <Classification label="public" />
 
-## Purpose
-You use a naming conventions to enforce a consistent naming strategy for teams created by users in your organization. A naming convention can help you and your users identify the function of the team, membership, geographic region, or who created the team. The naming covention can also help categorize teams and underlying groups in the address book. 
+**ABSTRACT**  
+*You use a naming conventions to enforce a consistent naming strategy for teams created by users in your organization. A naming convention can help you and your users identify the function of the team, membership, geographic region, or who created the team. The naming covention can also help categorize teams and underlying groups in the address book.*
 
-Intrinsically, naming conventions are a combination of values and expressions that are evaluated against a user profile and a request form, that defines the final value of fields.
+*Intrinsically, naming conventions are a combination of values and expressions that are evaluated against a user profile and a request form, that defines the final value of fields.*
+
+---
+
+**TABLE OF CONTENTS**
+[[toc]]
+
+---
 
 ## Available tags
 Naming conventions can use information coming from the user profile and the user request form through the following tags.
