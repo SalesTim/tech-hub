@@ -54,5 +54,5 @@ Example:
 For reference, see [Manifest schema for Microsoft Teams](https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema).
 
 :::tip We'll be glad to help!
-Need help to customize your own package? Just <a onclick="Intercom('show');">Contact Us!</a>
+Need help to customize your own package? Just <a onclick="Intercom('showNewMessage');">Contact Us!</a>
 :::
