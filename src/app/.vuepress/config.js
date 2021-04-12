@@ -147,7 +147,8 @@ module.exports = {
             ['/nocode/', 'Get Started'],
             ['/nocode/naming-conventions.md', 'Naming conventions'],
             ['/nocode/approval.md', 'Approval workflow'],
-            ['/nocode/audience-targeting.md', 'Audience Targeting']
+            ['/nocode/audience-targeting.md', 'Audience Targeting'],
+            ['/nocode/ad-schema-extensions.md', 'AD Schema Extensions']
           ]
         },
         {
