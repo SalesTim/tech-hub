@@ -53,6 +53,10 @@ On-premises extension attributes may be accessed from the `onPremisesExtensionAt
 }
 ```
 
+:::tip
+To see the available extensions in your tenant, you can use this link from the [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&method=GET&version=beta&GraphUrl=https://graph.microsoft.com) that list all the user profile properties for the current user.
+:::
+
 :::tip Note
 For an `onPremisesSyncEnabled` user, the source of authority for this set of properties is the on-premises Active Directory which is synchronized to Azure AD, and is read-only. For a cloud-only user (where `onPremisesSyncEnabled` is false), these properties may be set during creation or update.
 :::

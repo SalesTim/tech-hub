@@ -132,6 +132,9 @@ In this example, we're testing is the user is a member of a specific group by ch
 user.groups.direct.some(group => group.id === ('a937979b-5dbb-4f54-a405-936046244b0b'))
 ```
 
+### Azure AD Schema Extension
+To use Azure AD schema extensions in your audience targeting rules, please refer to [this article](/nocode/ad-schema-extensions)
+
 ## Validate and test your audience targeting rule
 
 ::: tip Syntax Assistant
