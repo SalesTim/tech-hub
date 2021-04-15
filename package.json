@@ -1,11 +1,11 @@
 {
   "name": "tech-hub",
-  "version": "0.0.105",
+  "version": "0.0.106",
   "description": "SalesTim Tech Hub",
   "scripts": {
     "dev": "gulp infos && node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
-    "api:genreference:md": "./node_modules/@openapitools/openapi-generator-cli/main.js generate -i ./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml -g markdown -o ./src/app/api/reference",
-    "build": "gulp build && npm run api:genreference:md && node ./node_modules/vuepress/cli.js build src/app --no-cache",
+    "gen": "./node_modules/@openapitools/openapi-generator-cli/main.js generate",
+    "build": "gulp build && npm run gen && node ./node_modules/vuepress/cli.js build src/app --no-cache",
     "push": "gulp push"
   },
   "author": "Guillaume Meyer <gmeyer@salestim.com> (https://www.salestim.com)",
@@ -17,6 +17,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "sales_tim_api": "file:src/app/api/sdks/node",
     "@mr-hope/vuepress-plugin-copy-code": "^1.13.3",
     "@openapitools/openapi-generator-cli": "^2.2.5",
     "yamljs": "^0.3.0",

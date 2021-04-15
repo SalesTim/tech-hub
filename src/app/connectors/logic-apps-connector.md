@@ -74,7 +74,7 @@ https://global.consent.azure-apim.net/redirect
 ```
 SalesTim Logic Apps Connector client secret
 ```
-- Select the option `Never` to prevent this secret to expire in the future, and click `Add`
+- Select the expiration option, and click `Add`
 - Copy the `Client secret` value (be careful, it will only be shown once), and keep it as we're gonna reuse it later. You can temporarily paste it here:
 
 **Client secret**:  
