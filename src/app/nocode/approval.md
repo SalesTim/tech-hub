@@ -2,11 +2,8 @@
 <Classification label="public" />
 
 **ABSTRACT**  
-*This article describes how to configure SalesTim to create an approval workflow for your teams creation requests with your own internal email as a sender to approvers.*
+*This article describes the different options you have to configure your team creation approval workflow.*
 
-*To implement its approval workflow, SalesTim relies on [Outlook Actionable Messages](https://docs.microsoft.com/en-us/outlook/actionable-messages/) to help approvers manage their approval requests right from their inbox. Outlook Actionable messages are emails that embed [Adaptive Cards](https://adaptivecards.io/) in a very secure way, by enforcing both end-user authentication and phishing prevention.*
-
-![SalesTim Approval Workflow Actionable Message](/img/nocode/approval-actionable-message.png)
 
 ---
 
@@ -15,8 +12,42 @@
 
 ---
 
-## What do I have to do?
+## Understanding your options
+Team creation approval workflow in SalesTim could be configured using one of these options:
+- [Approval email sent by SalesTim](#approval-email-sent-by-salestim): This is the default and easiest option, works without any configuration.
+- [Approval email sent by your organization](#approval-email-sent-by-your-organization): If you need advanced security/compliance control over your notification emails.
+- [Microsoft Teams Approval App](#microsoft-teams-approval-app): A Microsoft Teams native experience, that you can customize using Power Automate or Logic Apps.
+- [Use your own custom app](#use-your-own-custom-app): Bring your own aproval workflow as a custom application.
 
+## Approval email sent by SalesTim
+
+### How does it work?
+This is the option enabled by default in any new organization, and doesn't require any configuration. In this mode, the approval process is implemented as an Outlook actionable email, send from the `notifications@salestim.io` address.
+
+![SalesTim Approval Workflow Actionable Message](/img/nocode/approval-actionable-message.png)
+
+### What about security?   
+Actionable messages security is guaranteed by:
+- The fact that the actionable message could only be used from the context of a secured Outlook client, and that end-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
+- A sender verification is enforced using signed cards. See: [Sender verification
+](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#sender-verification)
+- Phishing prevention is ensured by using a [Card Signing](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#signed-card-payloads) mechanism
+- Requests sent by the actionable message are verified to ensure that they originate from Microsoft. See: [Verifying that requests come from Microsoft](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#verifying-that-requests-come-from-microsoft)
+- The token provided by Outlook to the actionable message is used to verify the end-user identity. See: [Verifying the identity of the user](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#verifying-the-identity-of-the-user).
+
+Learn more by reading [Security requirements for actionable messages in Office 365](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements).
+
+:::tip Add `notifications@salestim.io` to Exchange safelist collections on a mailbox
+As a Microsoft 365 administrator, you can directly manage an end-user mailbox rules, and add the `notifications@salestim.io` address to its "Safe Senders" list.  
+See [Use Exchange Online PowerShell to configure the safelist collection on a mailbox](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/configure-junk-email-settings-on-exo-mailboxes?view=o365-worldwide#use-exchange-online-powershell-to-configure-the-safelist-collection-on-a-mailbox)
+:::
+
+## Approval email sent by your organization
+
+### How does it work?
+For advanced control over your approval notification emails (for instance to implement custom Exchange transport rules), you can configure SalesTim to send your approval emails from your own internal email as a sender.
+
+### What do I have to do?
 You need to enable the service account that you configured in SalesTim to be authorized to send actionable messages. For that, and to ensure the security around the messages that are sent, Microsoft require to follow these quick steps: 
 
 1. Open the [Actionable Email Developer Dashboard](https://aka.ms/publishoam) and login with a Microsoft 365 user with `Exchange Administrator` or `Global administrator` permissions.
@@ -64,27 +95,45 @@ You need to enable the service account that you configured in SalesTim to be aut
  
 ![SalesTim Approval Actionable Message New Provider Approved](/img/nocode/approval-actionable-message-new-provider-approved.png)
 
-8. Open the SalesTim Settings tab and open "Approval"
-
+8. Open the SalesTim Settings tab and open "Approval" and check the "Enable organization-level provider" option
 9. Paste the provider id you copied in the step 3 and hit "Save"
 
 From the SalesTim Catalog, you should now be able to enable the approval workflow on your templates (You may have to refresh the page to see your changes).
 
 For more details about this procedure, you may refer to [Register your service with the actionable email developer dashboard](https://docs.microsoft.com/en-us/outlook/actionable-messages/email-dev-dashboard).
 
-
-## More about Actionable Messages
-
-### what about security? 
-- End-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
-- Phishing prevention is ensured by using a [Card Signing](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#signed-card-payloads) mechanism
-
-### How does it works?
+### What about security?   
 Actionable messages security is guaranteed by:
-- The fact that the actionable message could only be used from the context of a secured Outlook client.
+- The fact that the actionable message could only be used from the context of a secured Outlook client, and that end-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
 - A sender verification is enforced using signed cards. See: [Sender verification
 ](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#sender-verification)
+- Phishing prevention is ensured by using a [Card Signing](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#signed-card-payloads) mechanism
 - Requests sent by the actionable message are verified to ensure that they originate from Microsoft. See: [Verifying that requests come from Microsoft](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#verifying-that-requests-come-from-microsoft)
 - The token provided by Outlook to the actionable message is used to verify the end-user identity. See: [Verifying the identity of the user](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements#verifying-the-identity-of-the-user).
 
 Learn more by reading [Security requirements for actionable messages in Office 365](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements).
+
+## Microsoft Teams "Approval" app
+Instead of relying on Outlook actionable emails, you can leverage the [Microsoft Teams Approvals app](https://support.microsoft.com/en-us/office/what-is-approvals-a9a01c95-e0bf-4d20-9ada-f7be3fc283d3) to implement your team creation approval workflow.
+
+![SalesTim Approval Workflow with Approval App](/img/nocode/approvals-app.png)
+
+This options brings some valuable benefits and new options:
+- Multi-stage approvals
+- Dynamic approvers list (for instance based on the requester profile and manager) 
+- Integration with third-party apps
+
+To learn more about this option, please read to our [Power Platform and Logic Apps Connectors](/connectors/) documentation, and refer to our connector's triggers that you can leverage from Microsoft Power Platform and Azure Logic Apps:
+- [When a Team Creation Approval is Requested](/connectors/connectors-actions.html#when-a-team-creation-approval-is-requested-🛃)
+- [When a Team Creation is Approved](/connectors/connectors-actions.html#when-a-team-creation-is-approved-✅)
+- [When a Team Creation is Rejected](/connectors/connectors-actions.html#when-a-team-creation-is-rejected-🚫)
+
+## Use your own custom app
+Instead of relying on Outlook actionable emails, you can use your own custom application to manage approval workflows.
+
+![SalesTim Approval Workflow with Custom App](/img/nocode/custom-approval.png)
+
+To learn more about this option, please read to our [SalesTim API](/api/) documentation, and refer to these webhooks that you can leverage from your custom application:
+- [Team Creation Approval Requested](/api/webhooks.html#team-creation-approval-requested)
+- [Team Creation Approved](/api/webhooks.html#supported-events)
+- [Team Creation Rejected](/api/webhooks.html#team-creation-rejected)

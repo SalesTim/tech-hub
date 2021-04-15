@@ -144,6 +144,51 @@ paths:
         default:
           $ref: "#/components/responses/500"
 
+
+  /catalog/templates:
+    get:
+      tags:
+        - catalog
+      summary: Get teams templates
+      description: Get all the teams templates accessible in your organization. TIER 2️⃣ | ROLES - AUTHORIZED_APP, CATALOG_MANAGER, INTEGRATION_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+      operationId: GetCatalogTemplates
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/CatalogApi.html#getcatalogtemplates
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: language
+          description: Optional. Default to 'en'. Language code to be used to filter the colection of templates, for instance 'en' or 'en-uk'.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK - Returns a CatalogTemplates object (Collection of CatalogTemplate objects).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogTemplates"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
   /me/catalog/templates:
     get:
       tags:
