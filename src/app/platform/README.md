@@ -1,4 +1,4 @@
-# Success is built on trust. Trust starts with transparency
+# Success is Built on Trust. Trust Starts with Transparency
 
 <div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/transparency.png);">
   <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
@@ -23,3 +23,5 @@ Through these pages, you'll discover:
 - Our release process
 - How we manage data
 - How to integrate SalesTim securely in your own corporate environment
+
+<Classification label="public" />

@@ -1,5 +1,4 @@
 # Role Based Access Control (RBAC)
-<Classification label="public" />
 
 **ABSTRACT**  
 *Role based access control (RBAC) enables Microsoft 365 global administrators to define permissions and restrict access to specific SalesTim's features to specific groups of users.*  
@@ -40,3 +39,5 @@ Here is the matrix of features/roles supported by the SalesTim platform:
 | **Settings** - Manage service credentials and other platform's system configuration | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |
 | **Audit trails** - View company-wide and user-level audit trails | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |
 | **Roles management** - Assign roles to specific users | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | ✅ |
+
+<Classification label="public" />

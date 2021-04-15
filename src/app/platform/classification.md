@@ -1,6 +1,4 @@
-# Classification labels
-
-<Classification label="public" />
+# Classification Labels
 
 To get their work done, people at SalesTim collaborate with others both inside and outside the organization. This means that content roams everywhere, and when it roams, we want it to do so in a secure, protected way that meets our organization’s business and compliance policies.  
 
@@ -43,3 +41,5 @@ Here is the list of classification labels we're using, from the least to the mos
 2.	Access to this information is highly restricted within the our organisation. 
 3.	The highest possible levels of integrity, confidentiality and availability are vital.
 4.	Material that can only be accessed by some specific employees (authenticated).
+
+<Classification label="public" />

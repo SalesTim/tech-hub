@@ -1,7 +1,5 @@
 # Communication & Network Security
 
-<Classification label="public" />
-
 ## Network diagram
 In order to prepare your organization's network for SalesTim, here is an overview of the the different network flows involved:
 
@@ -86,3 +84,5 @@ This information is subject to change and we recommend that you check back quart
 ::: tip
 Learn more about [Third-party Security](./thirdpartysecurity)
 :::
+
+<Classification label="public" />

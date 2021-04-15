@@ -1,10 +1,8 @@
 # Naming Conventions
-<Classification label="public" />
 
 **ABSTRACT**  
-*You use a naming conventions to enforce a consistent naming strategy for teams created by users in your organization. A naming convention can help you and your users identify the function of the team, membership, geographic region, or who created the team. The naming covention can also help categorize teams and underlying groups in the address book.*
-
-*Intrinsically, naming conventions are a combination of values and expressions that are evaluated against a user profile and a request form, that defines the final value of fields.*
+You use a naming conventions to enforce a consistent naming strategy for teams created by users in your organization. A naming convention can help you and your users identify the function of the team, membership, geographic region, or who created the team. The naming covention can also help categorize teams and underlying groups in the address book.  
+Intrinsically, naming conventions are a combination of values and expressions that are evaluated against a user profile and a request form, that defines the final value of fields.
 
 ---
 
@@ -128,3 +126,5 @@ The following characters are forbidden in teams names:
 :::tip
 You can use " **-** " or " **|** " as separators.
 :::
+
+<Classification label="public" />

@@ -1,8 +1,7 @@
 # Active Directory Schema Extensions
-<Classification label="public" />
 
 **ABSTRACT**  
-*This article describes how you can leverage the SalesTim platform to create [naming conventions](/nocode/naming-conventions) and [audience targeting](/nocode/audience-targeting) rules based on user profiles Active Directory schema extensions (aka `extension attributes`).*
+This article describes how you can leverage the SalesTim platform to create [naming conventions](/nocode/naming-conventions) and [audience targeting](/nocode/audience-targeting) rules based on user profiles Active Directory schema extensions (aka `extension attributes`).
 
 :::warning
 This article only applies to `Azure Active Directory Schema Extensions`, that are different from the Microsoft Graph specific `Open extensions` and `Schema extensions`. To learn more about Microsoft Graph extensions, see [Add custom data to resources using extensions](https://docs.microsoft.com/en-us/graph/extensibility-overview).
@@ -87,3 +86,5 @@ user.extension_e3049e305790413ca1b11bb53526f057_extensionAttribute10
 :::tip
 To see the available extensions in your tenant, you can use this link from the [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer?request=me&method=GET&version=beta&GraphUrl=https://graph.microsoft.com) that list all the user profile properties for the current user.
 :::
+
+<Classification label="public" />

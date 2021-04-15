@@ -1,7 +1,5 @@
 # Infrastructure Services
 
-<Classification label="public" />
-
 As a Microsoft Teams App, SalesTim relies on several "first-party" components and services such as the Microsoft Teams platform and Microsoft Azure.  
 In addition the SalesTim platform uses several "second-party" or "third-party" services, especially:
 - GitHub Enterprise is our source code repository platform and issue tracking tool. [Learn more...](https://github.com/)
@@ -106,3 +104,5 @@ Read our [Intercom Security Integration Guide](https://backstage.salestim.com/20
 ::: tip
 Learn more about [Stripe Security](https://stripe.com/docs/security/stripe)
 :::
+
+<Classification label="public" />

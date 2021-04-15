@@ -1,5 +1,4 @@
 # Versions
-<Classification label="public" />
 
 The SalesTim API currently supports two versions: `v1.0` and `beta`.
 
@@ -17,3 +16,5 @@ SalesTim API under the `beta` endpoint (under `https://api.salestim.io/beta`) in
 :::warning Recommendation
 **Do NOT use beta APIs in your production apps**.
 :::
+
+<Classification label="public" />

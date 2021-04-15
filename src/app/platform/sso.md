@@ -1,5 +1,4 @@
 # Authentication & Single Sign On
-<Classification label="public" />
 
 ## Identity Provider (IdP)
 Access to SalesTim relies 100% on Microsoft Azure Active Directory (AAD) as an IdP for authentication.  
@@ -17,3 +16,5 @@ For further reference, see [Microsoft Teams SSO for custom apps known limitation
 ::: tip Service account authentication details 
 For service account authentication details, please refer to [Microsoft Graph Permissions](./apppermissions)
 :::
+
+<Classification label="public" />

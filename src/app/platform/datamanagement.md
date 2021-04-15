@@ -1,7 +1,5 @@
 # Data Management Practices
 
-<Classification label="public" />
-
 We understand that our customers need to be confident using SalesTim, and be aware of our data collection practices.
 
 ::: tip Note
@@ -417,3 +415,5 @@ Here is a summary of the key architecture components and their associated data r
 ::: tip Reference
 Learn more about [Azure Regions](https://azure.microsoft.com/en-us/global-infrastructure/regions/)
 :::
+
+<Classification label="public" />

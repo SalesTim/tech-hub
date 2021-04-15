@@ -1,7 +1,5 @@
 # Privacy and Compliance
 
-<Classification label="public" />
-
 Customer trust and data security are critical to everything we do at SalesTim.
 
 ## Our primary privacy principles
@@ -34,3 +32,5 @@ As well as country-specific standards, including:
 - Singapore MTCS
 
 See [Microsoft Azure Trusted Cloud](https://azure.microsoft.com/en-us/overview/trusted-cloud/) for more information.
+
+<Classification label="public" />

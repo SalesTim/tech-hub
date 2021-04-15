@@ -1,6 +1,4 @@
-# Domains to whitelist
-
-<Classification label="public" />
+# Domains to Whitelist
 
 We understand that our customers need to be confident that they are communicating with SalesTim in a secure environment. Domains whitelisting is one of the most effective methods of ensuring this and prevents any internet traffic intended for SalesTim from being hijacked or rerouted to a rogue website.  
 Our complete portfolio of domains are outlined below to help our customers configure their corporate web proxy.
@@ -46,3 +44,5 @@ Learn more about [Third-party Security](./thirdpartysecurity)
   * ***.intercomassets.com**
   * ***.intercomcdn.com**
 * Justification/Purpose: Used by SalesTim to bring an embedded support system into the app, and connect end-users and administrators with our support team.
+
+<Classification label="public" />

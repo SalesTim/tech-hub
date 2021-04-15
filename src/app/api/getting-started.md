@@ -1,5 +1,4 @@
-# Getting Started with SalesTim API
-<Classification label="public" />
+# Getting Started with the SalesTim API
 
 ---
 
@@ -65,3 +64,5 @@ SalesTim supports [access tokens](https://docs.microsoft.com/en-us/azure/active-
 And therefore supports the main Microsoft Graph authentication scenarios:
 - [Get access on behalf of a user](https://docs.microsoft.com/en-us/graph/auth-v2-user)
 - [Get access without a user](https://docs.microsoft.com/en-us/graph/auth-v2-service)
+
+<Classification label="public" />

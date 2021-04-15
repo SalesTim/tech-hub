@@ -1,7 +1,5 @@
 # Secure Development
 
-<Classification label="public" />
-
 ## Secure Development Principles
 
 We at SalesTim know you care about how your personal information is used and shared, and we take your privacy seriously by implementing the most rigorous practices for our developments.
@@ -62,3 +60,5 @@ When GitHub discovers or is notified of a new vulnerability, the SalesTim team i
 Any alert of any severity breaks our build and deployment process until resolution.
 :::
 Learn more about [GitHub Security Alerts](https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/)
+
+<Classification label="public" />

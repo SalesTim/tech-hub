@@ -76,6 +76,6 @@ sidebar: false
   </div>
 </div>
 
-<br /><br />
+<br />
 
-<p class="uk-text-center">(c) Copyright 2019-2021 SalesTim, all rights reserved.</p>
+<Copyright />

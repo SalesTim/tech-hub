@@ -1,7 +1,7 @@
 # SalesTim Connector Triggers & Actions
-<Classification label="public" />
 
-**Abstract**: This article describes the Power Platform and Logic Apps triggers and actions available from the SalesTim Connector.
+**Abstract**  
+This article describes the Power Platform and Logic Apps triggers and actions available from the SalesTim Connector.
 
 :::tip 
 This article refers to connex concepts. If required, please refer to:
@@ -226,3 +226,5 @@ Generate a signature from a secret and a webhook payload
 - Roles: All_AUTHENTICATED_USERS
 
 See [API Documentation](/api/reference/Apis/HooksApi.html#generatehooksignature)
+
+<Classification label="public" />

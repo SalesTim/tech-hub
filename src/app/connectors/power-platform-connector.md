@@ -1,7 +1,7 @@
 # Setup the SalesTim Connector for Power Platform
-<Classification label="public" />
 
-**Abstract**: This article explains how to register the SalesTim Connector as a custom connector for Microsoft [Power Platform](https://powerplatform.microsoft.com).
+**Abstract**  
+This article explains how to register the SalesTim Connector as a custom connector for Microsoft [Power Platform](https://powerplatform.microsoft.com).
 
 ::: tip ⏱ Expected Duration
 Creating the custom connector only requires a few operations that are described hereafter as a detailed step-by-step procedure. Assuming you have all the required access and permissions to execute it properly, it should take ***less than 10 minutes***.
@@ -176,3 +176,5 @@ Here are a few interesting articles that may give you some guidelines and new id
 - [Get started with Power Automate](https://docs.microsoft.com/en-us/power-automate/getting-started)
 - [Power BI with Microsoft Teams: How to Manage Reports Effectively](https://www.salestim.com/power-bi-with-microsoft-teams-how-to-manage-reports-effectively/)
 :::
+
+<Classification label="public" />

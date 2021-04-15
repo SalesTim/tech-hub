@@ -1,11 +1,4 @@
----
-title: "Microsoft Graph Permissions"
-description: "Microsoft Graph permissions required by SalesTim."
----
-
 # Microsoft Graph Permissions
-
-<Classification label="public" />
 
 ## Admin-restricted permissions
 Depending on the permission type (Delegated or Application), some high-privilege permissions in the Microsoft ecosystem are set to admin-restricted.  
@@ -121,3 +114,5 @@ Be sure to enable auditing for all service accounts and related objects. Once au
 
 ### 7. Implement access rights management software.
 Carefully managing your Active Directory service accounts is crucial to preventing misuse of broad access and privileges. An access rights management tool can be beneficial to ensure user accounts are set up and managed with appropriate permissions and access.
+
+<Classification label="public" />

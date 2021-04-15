@@ -1,5 +1,7 @@
 # Rate Limits
-<Classification label="public" />
+
+**ABSTRACT**  
+SalesTim API allows you to access data and to perform operations on multiple services. These services impose their own rate limits that affect applications that use SalesTim API to access them.
 
 ---
 
@@ -9,8 +11,6 @@
 ---
 
 ## Overview of rate limit tiers
-
-SalesTim API allows you to access data and to perform operations on multiple services. These services impose their own rate limits that affect applications that use SalesTim API to access them.
 Rate limits are defined as "tiers" applied on a "per user (or app) per tenant" basis.
 
 :::warning Note
@@ -28,3 +28,5 @@ The specific limits described here are subject to change.
 When a threshold is exceeded, SalesTim API limits any further requests from that client for a period of time. When throttling occurs, SalesTim API returns HTTP status code 429 (Too many requests), and the requests fail.
 
 See the [Throttling Guidance](/api/throttling) article to understand how to properly handle throttled requests.
+
+<Classification label="public" />

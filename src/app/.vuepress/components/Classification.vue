@@ -6,32 +6,39 @@ Usage: <Classification label="public" />
 
 <template>
   <div>
-    <div v-if="label === 'public'">
-      <a href="/platform/classification.html"
+    <div v-if="label === 'public'" class="classification">
+      <a href="/platform/classification"
         ><img
           alt="classification:PUBLIC"
-          src="https://img.shields.io/badge/classification-PUBLIC-red"
+          src="https://img.shields.io/badge/classification-PUBLIC-green"
       /></a>
     </div>
-    <div v-else-if="label === 'external'">
-      <a href="/platform/classification.html"
+    <div v-else-if="label === 'external'" class="classification">
+      <a href="/platform/classification"
         ><img
           alt="classification:EXTERNAL"
-          src="https://img.shields.io/badge/classification-EXTERNAL-red"
+          src="https://img.shields.io/badge/classification-EXTERNAL-blue"
       /></a>
     </div>
-    <div v-else-if="label === 'internal'">
-      <a href="/platform/classification.html"
+    <div v-else-if="label === 'internal'" class="classification">
+      <a href="/platform/classification"
         ><img
           alt="classification:INTERNAL"
-          src="https://img.shields.io/badge/classification-INTERNAL-red"
+          src="https://img.shields.io/badge/classification-INTERNAL-orange"
       /></a>
     </div>
-    <div v-else-if="label === 'confidential'">
-      <a href="/platform/classification.html"
+    <div v-else-if="label === 'client-confidential'" class="classification">
+      <a href="/platform/classification"
         ><img
-          alt="classification:CONFIDENTIAL"
-          src="https://img.shields.io/badge/classification-CONFIDENTIAL-red"
+          alt="classification:CLIENT-CONFIDENTIAL"
+          src="https://img.shields.io/badge/classification-CLIENT%20CONFIDENTIAL-red"
+      /></a>
+    </div>
+    <div v-else-if="label === 'company-confidential'" class="classification">
+      <a href="/platform/classification"
+        ><img
+          alt="classification:COMPANY-CONFIDENTIAL"
+          src="https://img.shields.io/badge/classification-COMPANY%20CONFIDENTIAL-red"
       /></a>
     </div>
   </div>
@@ -40,8 +47,13 @@ Usage: <Classification label="public" />
 <script>
 // Get access to the "label" property
 export default {
-  props: ['label']
-}
+  props: ["label"],
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.classification {
+  text-align: right;
+  padding-top: 10px;
+}
+</style>

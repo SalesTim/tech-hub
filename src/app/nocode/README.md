@@ -35,3 +35,5 @@ Here is a list of advanced capabilities from the SalesTim Platform that you can 
 - Create advanced [Naming Conventions](/nocode/naming-conventions) to keep your Microsoft Teams environment clean and manageable.
 - Create advanced rules of [Audience Targeting](/nocode/audience-targeting) to selectively show or hide your teams templates to specific users or groups.
 - Create [Approval Workflows](/nocode/approval) to control team creation in your environment.
+
+<Classification label="public" />

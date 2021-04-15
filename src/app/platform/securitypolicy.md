@@ -11,11 +11,11 @@ The following versions of SalesTim are currently being supported with security u
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.x.x   | :white_check_mark: |
+| 3.x.x   | :white_check_mark: |
+| 2.2.x   | :white_check_mark: |
 | 1.x.x   | :x:                |
 
 ## Reporting a Vulnerability
-
 
 If you believe you have discovered a vulnerability in a SalesTim product or have a security incident to report, please send us a message to **[security@salestim.com](mailto:security@salestim.com)** (english as a preferred languages)that includes a detailed reports with reproducible steps.  
   
@@ -35,3 +35,5 @@ As always, we reserve the right to bring deadlines forwards or backwards based o
 This policy is strongly in line with our desire to improve industry response times to security bugs, but also results in softer landings for bugs marginally over deadline.  
 Creating pressure towards more reasonably-timed fixes will result in smaller windows of opportunity for blackhats to abuse vulnerabilities.  
 In our opinion, vulnerability disclosure policies such as ours result in greater overall safety for users of the Internet.
+
+<Classification label="public" />

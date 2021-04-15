@@ -1,5 +1,4 @@
 # Releases
-<Classification label="public" />
 
 ---
 
@@ -59,3 +58,5 @@ Meaning of each component:
   * MINOR: version that includes functionality in a backwards-compatible manner
   * PATCH: version that includes backwards-compatible bug fixes
   * BUILD: incremental development-only version
+
+<Classification label="public" />

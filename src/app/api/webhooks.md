@@ -1,6 +1,6 @@
 # Webhooks Reference
-<Classification label="public" />
 
+**ABSTACT**  
 Webhooks enable organizations to trigger automated operations outside of the SalesTim platform, such as in a custom application, or in an automation tool such as Power Automate or Zapier.
 
 ---
@@ -737,4 +737,4 @@ result = hmac.new(KEY_BYTES, MESSAGE_BYTES, hashlib.sha256).hexdigest()
 print (result)
 ```
 
-
+<Classification label="public" />

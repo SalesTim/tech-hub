@@ -1,6 +1,5 @@
 # Internal Security
 
-
 ::: tip
 About office, see internal tooling
 :::

@@ -1,9 +1,7 @@
 # Team creation approval workflow
-<Classification label="public" />
 
 **ABSTRACT**  
-*This article describes the different options you have to configure your team creation approval workflow.*
-
+This article describes the different options you have to configure your team creation approval workflow.
 
 ---
 
@@ -26,6 +24,10 @@ This is the option enabled by default in any new organization, and doesn't requi
 
 ![SalesTim Approval Workflow Actionable Message](/img/nocode/approval-actionable-message.png)
 
+:::tip 📧 IMPORTANT
+SalesTim does **NOT** collect **ANYTHING** from these notification emails, neither openings, nor clicks, and does not include any invisible image or other form of tracker.
+:::
+
 ### What about security?   
 Actionable messages security is guaranteed by:
 - The fact that the actionable message could only be used from the context of a secured Outlook client, and that end-user authentication is entirely managed by the Outlook client (Desktop, Web and Mobile) by providing to the actionable message the required token.
@@ -37,7 +39,7 @@ Actionable messages security is guaranteed by:
 
 Learn more by reading [Security requirements for actionable messages in Office 365](https://docs.microsoft.com/en-us/outlook/actionable-messages/security-requirements).
 
-:::tip Add `notifications@salestim.io` to Exchange safelist collections on a mailbox
+:::tip 💡 Configure Exchange safelist collections on a mailbox
 As a Microsoft 365 administrator, you can directly manage an end-user mailbox rules, and add the `notifications@salestim.io` address to its "Safe Senders" list.  
 See [Use Exchange Online PowerShell to configure the safelist collection on a mailbox](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/configure-junk-email-settings-on-exo-mailboxes?view=o365-worldwide#use-exchange-online-powershell-to-configure-the-safelist-collection-on-a-mailbox)
 :::
@@ -123,7 +125,7 @@ This options brings some valuable benefits and new options:
 - Dynamic approvers list (for instance based on the requester profile and manager) 
 - Integration with third-party apps
 
-To learn more about this option, please read to our [Power Platform and Logic Apps Connectors](/connectors/) documentation, and refer to our connector's triggers that you can leverage from Microsoft Power Platform and Azure Logic Apps:
+To learn more about this option, please read the [Power Platform and Logic Apps Connectors](/connectors/) documentation, and refer to these connector's triggers that you can leverage from Microsoft Power Platform and Azure Logic Apps:
 - [When a Team Creation Approval is Requested](/connectors/connectors-actions.html#when-a-team-creation-approval-is-requested-🛃)
 - [When a Team Creation is Approved](/connectors/connectors-actions.html#when-a-team-creation-is-approved-✅)
 - [When a Team Creation is Rejected](/connectors/connectors-actions.html#when-a-team-creation-is-rejected-🚫)
@@ -133,7 +135,9 @@ Instead of relying on Outlook actionable emails, you can use your own custom app
 
 ![SalesTim Approval Workflow with Custom App](/img/nocode/custom-approval.png)
 
-To learn more about this option, please read to our [SalesTim API](/api/) documentation, and refer to these webhooks that you can leverage from your custom application:
+To learn more about this option, please read the [SalesTim API](/api/) documentation, and refer to these webhooks that you can leverage from your custom application:
 - [Team Creation Approval Requested](/api/webhooks.html#team-creation-approval-requested)
 - [Team Creation Approved](/api/webhooks.html#supported-events)
 - [Team Creation Rejected](/api/webhooks.html#team-creation-rejected)
+
+<Classification label="public" />

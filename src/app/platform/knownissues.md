@@ -1,5 +1,4 @@
 # Known Issues
-<Classification label="public" />
 
 :::tip
 In addition to this article that describes known issues with SalesTim, please refer to:
@@ -57,3 +56,5 @@ Reopen the team with a team owner account (To be confirmed).
   * [Missing Teams in List All Teams...](https://docs.microsoft.com/en-us/graph/known-issues#missing-teams-in-list-all-teams)
 
 ***
+
+<Classification label="public" />

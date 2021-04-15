@@ -1,5 +1,7 @@
-# Best practices for working with SalesTim API
-<Classification label="public" />
+# Best Practices for Working with the SalesTim API
+
+**ABSTRACT**  
+This article describes best practices that you can apply to help your applications get the most out of the SalesTim API - whether that involves improving app performance, or making your application more reliable for end users.
 
 ---
 
@@ -7,8 +9,6 @@
 [[toc]]
 
 ---
-
-This article describes best practices that you can apply to help your applications get the most out of SalesTim API - whether that involves learning about SalesTim API, improving app performance, or making your application more reliable for end users.
 
 ## Handle responses effectively
 
@@ -32,3 +32,5 @@ Client applications can be broken by the addition of members to an existing enum
 ## Reliability and support
 To ensure reliability and facilitate support for your application, generate a unique GUID and send it on each SalesTim API REST request. This will help SalesTim investigate any errors more easily if you need to report an issue with SalesTim API.
 To do so, on every request to SalesTim API, generate a unique GUID, send it in the `client-request-id` HTTP request header, and also log it in your application's logs.
+
+<Classification label="public" />
