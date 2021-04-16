@@ -180,7 +180,8 @@ module.exports = {
             ['/api/webhooks', 'Webhooks'],
             ['/api/rate-limits', 'Rate Limits'],
             ['/api/throttling', 'Throttling'],
-            ['/api/versions', 'Versions']
+            ['/api/versions', 'Versions'],
+            ['/api/changelog', 'Changelog']
           ]
         },
         {

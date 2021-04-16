@@ -22,31 +22,37 @@ Be careful: These tags are **CASE-SENSITIVE**!
 
 | Tag | Description |
 |-----|-------------|
-| ```request.team.name``` | Requested team name |
-| ```request.team.description``` | Requested team description |
-| ```request.team.welcomeMessage``` | Requested team welcome message |
-| ```request.template.name``` | Requested template name |
-| ```request.request.requester.name``` | Requester name (Same as ```user.displayName```) |
-| ```request.request.requester.email``` | Requester email (```user.mail```) |
+| `request.team.name` | Requested team name |
+| `request.team.description` | Requested team description |
+| `request.team.welcomeMessage` | Requested team welcome message |
+| `request.template.name` | Requested template name |
+| `request.request.requester.name` | Requester name (Same as `user.displayName`) |
+| `request.request.requester.email` | Requester email (`user.mail`) |
 
 
 ### User Profile (Active Directory attributes)
 
 | Tag | Description |
 |-----|-------------|
-| ```user.displayName``` | *User full name. (for example "Bob Dirac")*
-| ```user.userPrincipalName``` | *User UPN. In Active Directory, a User Principal Name (UPN) is the name of a system user in an email address format. A UPN (for example: "bob.dirac@contoso.com") consists of the user name (logon name), separator (the @ symbol), and domain name (UPN suffix).* <hr>***Important: A UPN is not the same as an email address. Sometimes, a UPN can match a user's email address, but this is not a general rule.*** | 
-| ```user.mail``` | *User email (for example: "bob.dirac@domain.com")* |
-| ```user.preferredLanguage``` | *User preferred language in Microsoft 365.* <hr>***Language and locale codes are limited to those in the [ISO 639-1 standard](https://en.wikipedia.org/wiki/ISO_639-1).*** |
-| ```user.givenName``` | *User given name (for example: "Bob")* |
-| ```user.country``` | *User country (for example: "France")* |
-| ```user.companyName``` | *User company name (for example: "Contoso")* |
-| ```user.department``` | *User department (for example: "Marketing")* |
-| ```user.city``` | *User city (for example: "Paris")* |
-| ```user.jobTitle``` | *User job title (for example: "Product Manager")* |
-| ```user.surname``` | *User surname (for example: "Dirac")* |
-| ```user.usageLocation``` |* Office 365 usage location. (for example: "US")* <hr>***Rely on the [ISO 3166-1 alpha-2 country codes...](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)*** |
+| `user.displayName` | User full name. (for example "Bob Dirac") |
+| `user.userPrincipalName` | User UPN. In Active Directory, a User Principal Name (UPN) is the name of a system user in an email address format. A UPN (for example: "bob.dirac@contoso.com") consists of the user name (logon name), separator (the @ symbol), and domain name (UPN suffix). <hr>❗ A UPN is not the same as an email address. Sometimes, a UPN can match a user's email address, but this is not a general rule. | 
+| `user.mail` | User email (for example: "bob.dirac@domain.com") |
+| `user.preferredLanguage` | User preferred language in Microsoft 365. <hr>Language and locale codes are limited to those in the [ISO 639-1 standard](https://en.wikipedia.org/wiki/ISO_639-1). |
+| `user.givenName` | User given name (for example: "Bob") |
+| `user.country` | User country (for example: "France") |
+| `user.companyName` | User company name (for example: "Contoso") |
+| `user.department` | User department (for example: "Marketing") |
+| `user.city` | User city (for example: "Paris") |
+| `user.jobTitle` | User job title (for example: "Product Manager") |
+| `user.surname` | User surname (for example: "Dirac") |
+| `user.usageLocation` | Office 365 usage location. (for example: "US") <hr>Rely on the [ISO 3166-1 alpha-2 country codes...](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) |
 
+### App Registration
+
+| Tag | Description |
+|-----|-------------|
+| `app.id` | Application ID as defined during the app registration in Azure. |
+| `app.name` | Application name as defined during the app registration in Azure. | 
 
 ## Common scenarios
 In addition to tags, naming conventions can use standard javascript operators and functions.
