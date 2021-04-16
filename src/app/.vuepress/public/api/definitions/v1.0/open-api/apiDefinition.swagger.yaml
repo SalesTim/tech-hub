@@ -312,7 +312,7 @@ paths:
       tags:
         - teams
       summary: Get a team
-      description: Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+      description: Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
       operationId: GetTeam
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#getteam
@@ -332,6 +332,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Team"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+    patch:
+      tags:
+        - teams
+      summary: Update a team
+      description: Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+      operationId: UpdateTeam
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#updateteam
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: teamId
+          in: path
+          description: The team ID.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Supply a JSON representation of team object.
+        content:
+          application/json:
+            schema:
+              type: object
+        required: true
+      responses:
+        "204":
+          description: No Content
         "400":
           $ref: "#/components/responses/400"
         "401":

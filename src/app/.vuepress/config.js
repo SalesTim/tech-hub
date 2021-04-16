@@ -169,6 +169,7 @@ module.exports = {
           children: [
             ['/api/', 'Overview'],
             ['/api/getting-started', 'Getting Started'],
+            ['/api/authentication', 'Authentication'],
             ['/api/best-practices', 'Best Practices'],
             ['/api/explorer', 'API Explorer'],
             ['/api/sdks', 'API SDKs'],

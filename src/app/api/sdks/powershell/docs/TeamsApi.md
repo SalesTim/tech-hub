@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**Get-TeamChannels**](TeamsApi.md#Get-TeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 [**Get-TeamPrimaryChannel**](TeamsApi.md#Get-TeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 [**Invoke-UnarchiveTeam**](TeamsApi.md#Invoke-UnarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
+[**Update-Team**](TeamsApi.md#Update-Team) | **PATCH** /teams/{teamId} | Update a team
 
 
 <a name="Add-TeamMember"></a>
@@ -333,7 +334,7 @@ void (empty response body)
 
 Get a team
 
-Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
 
 ### Example
 ```powershell
@@ -570,6 +571,58 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="Update-Team"></a>
+# **Update-Team**
+> void Update-Team<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-TeamId] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Body] <SystemCollectionsHashtable><br>
+
+Update a team
+
+Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure HTTP basic authorization: bearerAuth
+$Configuration.Username = "YOUR_USERNAME"
+$Configuration.Password = "YOUR_PASSWORD"
+
+$TeamId = "TeamId_example" # String | The team ID.
+$Body = TODO # SystemCollectionsHashtable | Supply a JSON representation of team object.
+
+# Update a team
+try {
+     $Result = Update-Team -TeamId $TeamId -Body $Body
+} catch {
+    Write-Host ("Exception occured when calling Update-Team: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **TeamId** | **String**| The team ID. | 
+ **Body** | **SystemCollectionsHashtable**| Supply a JSON representation of team object. | 
+
+### Return type
+# cmdlet returns PSCustomObject, the return object contains the properties of below type
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

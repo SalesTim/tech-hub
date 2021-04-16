@@ -47,22 +47,4 @@ Jobs can be requested by the SalesTim administrators, catalog managers and virtu
 The easiest way to start exploring the data and services available through SalesTim API is to use [API Explorer](/api/explorer).  
 API Explorer lets you craft REST requests, adapt the HTTP request headers, and see the data responses.
 
-## Authenticate
-A valid Microsoft 365 access token issued by Azure AD is required, and expected by SalesTim API in the HTTP `Authorization` request header with a `bearer` token such as:
-```json
-{
-  "Authorization": "bearer <JWT_TOKEN>"
-}
-```
-SalesTim supports [access tokens](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens) from all the Microsoft-supported OAuth 2.0 grant flows:
-- [Implicit](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)
-- [Auth Code](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-- [On-behalf-of](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-- [Client Credentials](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
-- [Device Code](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code)
-
-And therefore supports the main Microsoft Graph authentication scenarios:
-- [Get access on behalf of a user](https://docs.microsoft.com/en-us/graph/auth-v2-user)
-- [Get access without a user](https://docs.microsoft.com/en-us/graph/auth-v2-service)
-
 <Classification label="public" />

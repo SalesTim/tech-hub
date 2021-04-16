@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getTeamChannels**](TeamsApi.md#getTeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 [**getTeamPrimaryChannel**](TeamsApi.md#getTeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 [**unarchiveTeam**](TeamsApi.md#unarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
+[**updateTeam**](TeamsApi.md#updateTeam) | **PATCH** /teams/{teamId} | Update a team
 
 
 <a name="addTeamMember"></a>
@@ -190,7 +191,7 @@ null (empty response body)
 
 Get a team
 
-    Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+    Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
 
 ### Parameters
 
@@ -318,5 +319,33 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="updateTeam"></a>
+# **updateTeam**
+> updateTeam(teamId, body)
+
+Update a team
+
+    Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | [default to null]
+ **body** | **Object**| Supply a JSON representation of team object. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

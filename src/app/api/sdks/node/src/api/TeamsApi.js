@@ -329,7 +329,7 @@ export default class TeamsApi {
 
     /**
      * Get a team
-     * Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+     * Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
      * @param {String} teamId The team ID.
      * @param {module:api/TeamsApi~getTeamCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Team}
@@ -534,6 +534,53 @@ export default class TeamsApi {
       let returnType = null;
       return this.apiClient.callApi(
         '/teams/{teamId}/unarchive', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the updateTeam operation.
+     * @callback module:api/TeamsApi~updateTeamCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update a team
+     * Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+     * @param {String} teamId The team ID.
+     * @param {Object} body Supply a JSON representation of team object.
+     * @param {module:api/TeamsApi~updateTeamCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    updateTeam(teamId, body, callback) {
+      let postBody = body;
+      // verify the required parameter 'teamId' is set
+      if (teamId === undefined || teamId === null) {
+        throw new Error("Missing the required parameter 'teamId' when calling updateTeam");
+      }
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling updateTeam");
+      }
+
+      let pathParams = {
+        'teamId': teamId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/teams/{teamId}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

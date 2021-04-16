@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 *SalesTimApi.TeamsApi* | [**getTeamChannels**](docs/TeamsApi.md#getTeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 *SalesTimApi.TeamsApi* | [**getTeamPrimaryChannel**](docs/TeamsApi.md#getTeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 *SalesTimApi.TeamsApi* | [**unarchiveTeam**](docs/TeamsApi.md#unarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
+*SalesTimApi.TeamsApi* | [**updateTeam**](docs/TeamsApi.md#updateTeam) | **PATCH** /teams/{teamId} | Update a team
 *SalesTimApi.UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /users | Retreive users from your Microsoft 365 environment
 
 

@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getTeamChannels**](TeamsApi.md#getTeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 [**getTeamPrimaryChannel**](TeamsApi.md#getTeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 [**unarchiveTeam**](TeamsApi.md#unarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
+[**updateTeam**](TeamsApi.md#updateTeam) | **PATCH** /teams/{teamId} | Update a team
 
 
 
@@ -330,7 +331,7 @@ null (empty response body)
 
 Get a team
 
-Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
 
 ### Example
 
@@ -568,5 +569,56 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## updateTeam
+
+> updateTeam(teamId, body)
+
+Update a team
+
+Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+
+### Example
+
+```javascript
+import SalesTimApi from 'sales_tim_api';
+let defaultClient = SalesTimApi.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new SalesTimApi.TeamsApi();
+let teamId = "teamId_example"; // String | The team ID.
+let body = null; // Object | Supply a JSON representation of team object.
+apiInstance.updateTeam(teamId, body, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **teamId** | **String**| The team ID. | 
+ **body** | **Object**| Supply a JSON representation of team object. | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

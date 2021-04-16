@@ -74,6 +74,7 @@ Class | Method | HTTP request | Description
 *TeamsApi* | [**Get-TeamChannels**](docs/TeamsApi.md#Get-TeamChannels) | **GET** /teams/{teamId}/channels | Get team channels
 *TeamsApi* | [**Get-TeamPrimaryChannel**](docs/TeamsApi.md#Get-TeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 *TeamsApi* | [**Invoke-UnarchiveTeam**](docs/TeamsApi.md#Invoke-UnarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
+*TeamsApi* | [**Update-Team**](docs/TeamsApi.md#Update-Team) | **PATCH** /teams/{teamId} | Update a team
 *UsersApi* | [**Get-Users**](docs/UsersApi.md#Get-Users) | **GET** /users | Retreive users from your Microsoft 365 environment
 
 
