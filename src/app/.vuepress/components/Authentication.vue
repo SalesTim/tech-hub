@@ -38,9 +38,14 @@
                 </label>
                 <label
                   id="userLoginDateTime"
-                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top"
+                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top uk-margin-remove-bottom"
                 >
                   <time datetime=""></time>
+                </label>
+                <label
+                  id="userRoles"
+                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top"
+                >
                 </label>
               </div>
             </div>
@@ -109,9 +114,14 @@
                 </label>
                 <label
                   id="appLoginDateTime"
-                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top"
+                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top uk-margin-remove-bottom"
                 >
                   <time datetime=""></time>
+                </label>
+                <label
+                  id="appRoles"
+                  class="uk-align-left uk-text-meta uk-text-small uk-margin-remove-top"
+                >
                 </label>
               </div>
             </div>

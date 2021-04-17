@@ -10,12 +10,14 @@ var authorizations = document.getElementById('authorizations')
 var profilePicture = document.getElementById('profilePicture')
 var userDisplayName = document.getElementById('userDisplayName')
 var userLoginDateTime = document.getElementById('userLoginDateTime')
+var userRoles = document.getElementById('userRoles')
 var delegatedLoginButton = document.getElementById('delegatedLoginButton')
 var delegatedLogoutButton = document.getElementById('delegatedLogoutButton')
 // App mode
 var Picture = document.getElementById('appPicture')
 var appDisplayName = document.getElementById('appDisplayName')
 var appLoginDateTime = document.getElementById('appLoginDateTime')
+var appRoles = document.getElementById('appRoles')
 var appTenantId = document.getElementById('appTenantId')
 var appClientId = document.getElementById('appClientId')
 var appClientSecret = document.getElementById('appClientSecret')
@@ -149,6 +151,18 @@ function delegatedSignIn() {
     })
 }
 
+function getApiRootUrl() {
+  // Replace api root url with local in dev mode
+  var apiRootUrl = 'https://api.salestim.io/v1.0'
+  if (
+    window.location.host.indexOf("localhost", 0) > -1 ||
+    window.location.host.indexOf("devgme", 0) > -1
+  ) {
+    apiRootUrl = 'https://devgmeweb.eu.ngrok.io/v1.0'
+  }
+  return apiRootUrl
+}
+
 function appSignIn() {
   if (appTenantId.value === '' || appClientId.value === '' || appClientSecret.value === '') {
     UIkit.notification({
@@ -157,15 +171,8 @@ function appSignIn() {
       timeout: 2000
     })
   } else {
-    // Replace api root url with local in dev mode
-    var apiRootUrl = 'https://api.salestim.io/v1.0'
-    if (
-      window.location.host.indexOf("localhost", 0) > -1 ||
-      window.location.host.indexOf("devgme", 0) > -1
-    ) {
-      apiRootUrl = 'https://devgmeweb.eu.ngrok.io/v1.0'
-    }
-    fetch(`${apiRootUrl}/authentication/clientcredentials/token`,
+
+    fetch(`${getApiRootUrl()}/authentication/clientcredentials/token`,
       {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -187,11 +194,18 @@ function appSignIn() {
             response.json().then((data) => {
               window.explorerLoggedApp = data
               setAppBearerAuth(data.access_token)
-              setAppAuthenticated(data)
-              UIkit.notification({
-                message: 'Successfully signed-in...',
-                status: 'success',
-                timeout: 2000
+              getRoles(data.access_token, (err, rolesPayload) => {
+                if (!err) {
+                  data.roles = rolesPayload.value
+                  setAppAuthenticated(data)
+                  UIkit.notification({
+                    message: 'Successfully signed-in...',
+                    status: 'success',
+                    timeout: 2000
+                  })
+                } else {
+                  console.error('Error retreiving app roles')
+                }
               })
             })
           } else {
@@ -214,6 +228,45 @@ function appSignIn() {
   }
 }
 
+function getRoles(accessToken, cb) {
+  fetch(`${getApiRootUrl()}/me/roles`,
+    {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${accessToken}`
+      }
+    })
+    .then((response) => {
+      if (response) {
+        if (response.status === 200) {
+          response.json().then((data) => {
+            if (cb) { cb(null, data) }
+          })
+        } else {
+          console.dir(response)
+          let message = `Error ${response.status} retreiving roles: ${response.statusText}`
+          showError(message)
+          if (cb) { cb(new Error(message), null) }
+        }
+      } else {
+        const message = 'No response retreiving roles'
+        console.error(message)
+        if (cb) { cb(new Error(message), null) }
+      }
+    })
+    .catch((error) => {
+      console.dir(error)
+      let message = 'Error fetching roles'
+      if (error.message && error.message !== '') {
+        message += ': ' + error.message
+      }
+      showError(message)
+      if (cb) { cb(error, null) }
+    })
+}
+
 function showError(message) {
   console.error(message)
   UIkit.notification({
@@ -232,11 +285,19 @@ function getDelegatedAccessToken() {
         function (data, endpoint) {
           window.explorerLoggedUser = response
           setUserBearerAuth(response.accessToken)
-          setUserAuthenticated(response, data)
-          UIkit.notification({
-            message: 'Successfully signed-in...',
-            status: 'success',
-            timeout: 2000
+
+          getRoles(response.accessToken, (err, rolesPayload) => {
+            if (!err) {
+              response.roles = rolesPayload.value
+              setUserAuthenticated(response, data)
+              UIkit.notification({
+                message: 'Successfully signed-in...',
+                status: 'success',
+                timeout: 2000
+              })
+            } else {
+              console.error('Error retreiving app roles')
+            }
           })
         }
       )
@@ -306,38 +367,51 @@ function setAppBearerAuth(token) {
 // #region UI
 
 function enableLoading() {
-  loading.style.display = ""
-  authorizations.style.display = "none"
+  loading.style.display = ''
+  authorizations.style.display = 'none'
 }
 
 function disableLoading() {
-  loading.style.display = "none"
-  authorizations.style.display = ""
+  loading.style.display = 'none'
+  authorizations.style.display = ''
 }
 
 function setUserAnonymous() {
   disableLoading()
   window.explorerLoggedUser = null
-  userLoginDateTime.innerText = ''
   userDisplayName.innerText = 'Anonymous'
+  userLoginDateTime.innerText = ''
+  userRoles.innerText = ''
   profilePicture.setAttribute('src', '/img/avatar.png')
-  delegatedLogoutButton.style.display = 'none'
   delegatedLoginButton.style.display = 'block'
+  delegatedLogoutButton.style.display = 'none'
 }
 
 function setAppAnonymous() {
   disableLoading()
   window.explorerLoggedApp = null
-  appLoginDateTime.innerText = ''
   appDisplayName.innerText = 'Anonymous'
-  appLogoutButton.style.display = 'none'
+  appLoginDateTime.innerText = ''
+  appRoles.innerText = ''
   appLoginButton.style.display = 'block'
+  appLogoutButton.style.display = 'none'
 }
 
 function setUserAuthenticated(userInfos, profile) {
   disableLoading()
-  userLoginDateTime.innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
   userDisplayName.innerText = profile.displayName
+  userLoginDateTime.innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
+  userRoles.innerHTML = 'Roles:&nbsp;'
+  if (userInfos.roles && userInfos.roles.length > 0) {
+    userInfos.roles.forEach((role, i) => {
+      userRoles.innerHTML += role
+      if (i !== userInfos.roles.length - 1) {
+        userRoles.innerHTML += ', '
+      }
+    })
+  } else {
+    userRoles.innerHTML += 'None'
+  }
   setUserProfilePicture(userInfos.accessToken)
   delegatedLoginButton.style.display = 'none'
   delegatedLogoutButton.style.display = 'block'
@@ -345,8 +419,19 @@ function setUserAuthenticated(userInfos, profile) {
 
 function setAppAuthenticated(token) {
   disableLoading()
-  appLoginDateTime.innerText = 'App ID: ' + token.app.id + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
   appDisplayName.innerText = token.app.display_name
+  appLoginDateTime.innerText = 'App ID: ' + token.app.id + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
+  appRoles.innerHTML = 'Roles:&nbsp;'
+  if (token.roles && token.roles.length > 0) {
+    token.roles.forEach((role, i) => {
+      appRoles.innerHTML += role
+      if (i !== token.roles.length - 1) {
+        appRoles.innerHTML += ', '
+      }
+    })
+  } else {
+    appRoles.innerHTML += 'None'
+  }
   appLoginButton.style.display = 'none'
   appLogoutButton.style.display = 'block'
 }
