@@ -18,12 +18,10 @@ The SalesTim API expects a valid access token in the HTTP `Authorization` reques
 }
 ```
 
-SalesTim supports [access tokens](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens) generated using all the Microsoft-supported OAuth 2.0 grant flows:
-- [Implicit](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)
+SalesTim supports [access tokens](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens) retreived from the following OAuth 2.0 grant flows:
 - [Auth Code](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 - [On-behalf-of](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 - [Client Credentials](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
-- [Device Code](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code)
 
 ## Access on behalf of a user (authorization code flow)
 Reference: [Get access to the Microsoft Graph on behalf of a user](https://docs.microsoft.com/en-us/graph/auth-v2-user)
