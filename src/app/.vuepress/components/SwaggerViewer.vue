@@ -3,13 +3,9 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css"
+      href="/css/swagger-viewer.bundle.css"
     />
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
-    ></script>
-    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"></script>
+    <script type="text/javascript" src="/js/swagger-viewer.bundle.js"></script>
     <div id="swagger-ui"></div>
   </div>
 </template>
@@ -18,26 +14,29 @@
 export default {
   mounted() {
     console.debug("SwaggerViewer Mounted");
-    var pOpenApiFileUrl = this.openApiFileUrl;
+    var pOpenApiFileUrl =
+      "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
 
     // Replace openapi definition with local in dev mode
-    if (
-      window.location.host.indexOf("localhost", 0) > -1 ||
-      window.location.host.indexOf("devgme", 0) > -1
-    ) {
-      pOpenApiFileUrl =
-        "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
-    }
+    // if (
+    //   window.location.host.indexOf("localhost", 0) > -1 ||
+    //   window.location.host.indexOf("devgme", 0) > -1
+    // ) {
+    //   pOpenApiFileUrl =
+    //     "/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml";
+    // }
 
     var s = document.createElement("script");
     s.setAttribute(
       "src",
+      // "/node_modules/swagger-ui-dist/swagger-ui-bundle.js"
       "https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"
     );
     s.onload = function () {
       var t = document.createElement("script");
       t.setAttribute(
         "src",
+        // "/node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js"
         "https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"
       );
       t.onload = function () {
@@ -132,8 +131,8 @@ export default {
       window.ui = ui;
       window.initExplorerHeader();
     }
-  },
-  props: ["openApiFileUrl"],
+  }, // ,
+  // props: ["openApiFileUrl"],
 };
 </script>
 

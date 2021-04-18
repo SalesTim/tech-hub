@@ -83,13 +83,28 @@ const concatJs = (done) => {
     './src/app/.vuepress/public/js/ga.js',
     './src/app/.vuepress/public/js/intercom.js',
     './node_modules/uikit/dist/js/uikit.min.js',
-    './node_modules/uikit/dist/js/uikit-icons.min.js',
-    './node_modules/msal/dist/msal.min.js',
-    './node_modules/moment/min/moment.min.js'
+    './node_modules/uikit/dist/js/uikit-icons.min.js'
   ])
     .pipe(concat('bundle.js'))
     .pipe(gulp.dest(JS_FOLDER)).on('end', () => {
       done()
+    })
+  gulp.src([
+    './node_modules/swagger-ui-dist/swagger-ui-bundle.js',
+    './node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js'
+  ])
+    .pipe(concat('swagger-viewer.bundle.js'))
+    .pipe(gulp.dest(JS_FOLDER)).on('end', () => {
+      // done()
+    })
+  gulp.src([
+    './node_modules/msal/dist/msal.min.js',
+    './node_modules/moment/min/moment.min.js',
+    './src/app/.vuepress/public/js/authentication.js'
+  ])
+    .pipe(concat('authentication.bundle.js'))
+    .pipe(gulp.dest(JS_FOLDER)).on('end', () => {
+      // done()
     })
 }
 
@@ -105,6 +120,35 @@ const concatCss = (done) => {
     .pipe(gulp.dest(CSS_FOLDER)).on('end', () => {
       done()
     })
+  gulp.src([
+    './node_modules/swagger-ui-dist/swagger-ui.css'
+  ])
+    .pipe(concat('swagger-viewer.bundle.css'))
+    .pipe(gulp.dest(CSS_FOLDER)).on('end', () => {
+      // done()
+    })
+}
+
+const copySdkDocs = (done) => {
+  const sdks = ['node', 'powershell']
+  sdks.forEach((sdk, i) => {
+    gulp.src([
+      `./src/sdks/v1.0/${sdk}/README.md`
+    ])
+      .pipe(gulp.dest(`./src/app/api/sdks/${sdk}`)).on('end', () => {
+        if (i === sdks.length - 1) {
+          done()
+        }
+      })
+    gulp.src([
+      `./src/sdks/v1.0/${sdk}/docs/*.md`
+    ])
+      .pipe(gulp.dest(`./src/app/api/sdks/${sdk}/docs`)).on('end', () => {
+        if (i === sdks.length - 1) {
+          done()
+        }
+      })
+  })
 }
 
 const convertOpenApiYamlToJson = (done) => {
@@ -181,6 +225,9 @@ const pushToMaster = (done) => {
 
 exports.infos = gulp.series(
   logInfos
+)
+exports.cpdocs = gulp.series(
+  copySdkDocs
 )
 exports.build = gulp.series(
   logInfos,

@@ -174,7 +174,7 @@ module.exports = {
             ['/api/explorer', 'API Explorer'],
             ['/api/sdks', 'API SDKs'],
             ['/api/sdks/node/', 'Node.js SDK'],
-            ['/api/sdks/powershell/', 'PowerShell Module'],
+            // ['/api/sdks/powershell/', 'PowerShell Module'],
             ['/api/reference/', 'API Reference'],
             ['/api/use-postman', 'Use Postman'],
             ['/api/webhooks', 'Webhooks'],

@@ -6,18 +6,18 @@
     "generators": {
       "api_reference": {
         "generatorName": "markdown",
-        "output": "#{cwd}/src/app/api/reference",
-        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml"
+        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml",
+        "output": "#{cwd}/src/app/api/reference"
       },
       "node_sdk": {
         "generatorName": "javascript",
-        "output": "#{cwd}/src/app/api/sdks/node",
-        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml"
+        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml",
+        "output": "#{cwd}/src/sdks/v1.0/node"
       },
       "powershell_sdk": {
         "generatorName": "powershell",
-        "output": "#{cwd}/src/app/api/sdks/powershell",
-        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml"
+        "glob": "./src/app/.vuepress/public/api/definitions/v1.0/open-api/apiDefinition.swagger.yaml",
+        "output": "#{cwd}/src/sdks/v1.0/powershell"
       }
     }
   }

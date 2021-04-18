@@ -1,6 +1,6 @@
 <template>
   <div>
-    <script src="/js/authentication.js"></script>
+    <script src="/js/authentication.bundle.js"></script>
     <div id="loading" class="uk-text-center">
       <span class="uk-text-lead">Checking your previous sessions</span>
       <br />

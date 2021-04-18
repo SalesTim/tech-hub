@@ -1,4 +1,4 @@
-# SalesTim API SDKs <Badge text="beta" type="warning"/>
+# API SDKs <Badge text="beta" type="warning"/>
 
 **ABSTRACT**  
 The SalesTim API SDKs are designed to simplify building high-quality, efficient, and resilient applications that access the SalesTim API.  
@@ -25,9 +25,7 @@ Node.js module for the SalesTim API service. This library works both on the serv
 See [Node.js SDK Documentation](/api/sdks/node).
 
 ## Powershell Module
-Status: <Badge text="alpha" type="error"/>  
+Status: <Badge text="Coming Soon" type="error"/>  
 PowerShell module for the SalesTim API service. Cmdlets should work in any environment supported by `PowerShell Core`.
-
-See [PowerShell SDK Documentation](/api/sdks/powershell).
 
 <Classification label="public" />

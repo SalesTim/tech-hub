@@ -1,10 +1,11 @@
 {
   "name": "tech-hub",
-  "version": "1.0.110",
+  "version": "1.0.111",
   "description": "SalesTim Tech Hub",
   "scripts": {
     "dev": "gulp infos && node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
-    "gen": "./node_modules/@openapitools/openapi-generator-cli/main.js generate",
+    "cpdocs": "gulp cpdocs",
+    "gen": "./node_modules/@openapitools/openapi-generator-cli/main.js generate && npm run cpdocs",
     "build": "gulp build && npm run gen && node ./node_modules/vuepress/cli.js build src/app --no-cache",
     "push": "gulp push"
   },
@@ -17,10 +18,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "sales_tim_api": "file:src/app/api/sdks/node",
     "@mr-hope/vuepress-plugin-copy-code": "^1.13.3",
     "@openapitools/openapi-generator-cli": "^2.2.5",
-    "yamljs": "^0.3.0",
     "figlet": "^1.5.0",
     "gulp": "^4.0.2",
     "gulp-bump": "^3.2.0",
@@ -30,12 +29,14 @@
     "msal": "^1.4.9",
     "request": "^2.88.2",
     "standard": "^14.3.4",
+    "swagger-ui-dist": "^3.47.1",
     "uikit": "^3.6.18",
     "vue-embed-gist": "^1.2.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-autometa": "^0.1.13",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-mermaidjs": "^1.8.1",
-    "vuepress-theme-yuu": "^3.0.1"
+    "vuepress-theme-yuu": "^3.0.1",
+    "yamljs": "^0.3.0"
   }
 }
