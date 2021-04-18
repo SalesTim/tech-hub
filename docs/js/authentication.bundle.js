@@ -29,13 +29,17 @@ var authorizations = document.getElementById('authorizations')
 // User mode
 var profilePicture = document.getElementById('profilePicture')
 var userDisplayName = document.getElementById('userDisplayName')
+var userDetails = document.getElementById('userDetails')
+var userIdentifier = document.getElementById('userIdentifier')
 var userLoginDateTime = document.getElementById('userLoginDateTime')
 var userRoles = document.getElementById('userRoles')
 var delegatedLoginButton = document.getElementById('delegatedLoginButton')
 var delegatedLogoutButton = document.getElementById('delegatedLogoutButton')
 // App mode
-var Picture = document.getElementById('appPicture')
+var appPicture = document.getElementById('appPicture')
 var appDisplayName = document.getElementById('appDisplayName')
+var appDetails = document.getElementById('appDetails')
+var appIdentifier = document.getElementById('appIdentifier')
 var appLoginDateTime = document.getElementById('appLoginDateTime')
 var appRoles = document.getElementById('appRoles')
 var appTenantId = document.getElementById('appTenantId')
@@ -72,7 +76,6 @@ function callMSGraph(endpoint, token, callback) {
       'Authorization': bearer
     }
   }
-  console.log('request made to Graph API at: ' + new Date().toString())
   fetch(endpoint, options)
     .then(function (response) {
       if (!response.ok) {
@@ -96,7 +99,6 @@ function callMSGraphBinary(endpoint, token, callback) {
       'Authorization': bearer
     }
   }
-  console.log('binary request made to Graph API at: ' + new Date().toString())
   fetch(endpoint, options)
     .then(function (response) {
       if (!response.ok) {
@@ -400,9 +402,11 @@ function setUserAnonymous() {
   disableLoading()
   window.explorerLoggedUser = null
   userDisplayName.innerText = 'Anonymous'
+  userIdentifier.innerText = ''
   userLoginDateTime.innerText = ''
-  userRoles.innerText = ''
+  userRoles.innerHTML = ''
   profilePicture.setAttribute('src', '/img/avatar.png')
+  userDetails.style.display = 'none'
   delegatedLoginButton.style.display = 'block'
   delegatedLogoutButton.style.display = 'none'
 }
@@ -411,8 +415,11 @@ function setAppAnonymous() {
   disableLoading()
   window.explorerLoggedApp = null
   appDisplayName.innerText = 'Anonymous'
+  appIdentifier.innerText = ''
   appLoginDateTime.innerText = ''
-  appRoles.innerText = ''
+  appRoles.innerHTML = ''
+  appPicture.setAttribute('src', '/img/bot.png')
+  appDetails.style.display = 'none'
   appLoginButton.style.display = 'block'
   appLogoutButton.style.display = 'none'
 }
@@ -420,19 +427,25 @@ function setAppAnonymous() {
 function setUserAuthenticated(userInfos, profile) {
   disableLoading()
   userDisplayName.innerText = profile.displayName
-  userLoginDateTime.innerText = profile.mail + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
-  userRoles.innerHTML = 'Roles:&nbsp;'
+  userIdentifier.innerText = 'Email: ' + profile.mail
+  userLoginDateTime.innerText = 'Sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a')
+  userRoles.innerHTML = 'Roles:<br />'
   if (userInfos.roles && userInfos.roles.length > 0) {
     userInfos.roles.forEach((role, i) => {
-      userRoles.innerHTML += role
+      userRoles.innerHTML += '<a href="/platform/rbac.html#roles">' +
+        '<span class="uk-label uk-text-small uk-text-lowercase uk-label-success">' +
+        `<span uk-icon="icon: check; ratio: 0.7"></span>&nbsp;${role}&nbsp;` +
+        '</span>' +
+        '</a>'
       if (i !== userInfos.roles.length - 1) {
-        userRoles.innerHTML += ', '
+        userRoles.innerHTML += ' '
       }
     })
   } else {
     userRoles.innerHTML += 'None'
   }
   setUserProfilePicture(userInfos.accessToken)
+  userDetails.style.display = 'block'
   delegatedLoginButton.style.display = 'none'
   delegatedLogoutButton.style.display = 'block'
 }
@@ -440,18 +453,26 @@ function setUserAuthenticated(userInfos, profile) {
 function setAppAuthenticated(token) {
   disableLoading()
   appDisplayName.innerText = token.app.display_name
-  appLoginDateTime.innerText = 'App ID: ' + token.app.id + ' (sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a') + ')'
-  appRoles.innerHTML = 'Roles:&nbsp;'
+  appIdentifier.innerText = 'App ID: ' + token.app.id
+  appLoginDateTime.innerText = 'Sign-in: ' + moment().format('MMMM Do YYYY, h:mm:ss a')
+  appRoles.innerHTML = 'Roles:<br />'
   if (token.roles && token.roles.length > 0) {
     token.roles.forEach((role, i) => {
-      appRoles.innerHTML += role
+      appRoles.innerHTML += '<a href="/platform/rbac.html#roles">' +
+        '<span class="uk-label uk-text-small uk-text-lowercase uk-label-success">' +
+        `<span uk-icon="icon: check; ratio: 0.7"></span>&nbsp;${role}&nbsp;` +
+        '</span>' +
+        '</a>'
       if (i !== token.roles.length - 1) {
-        appRoles.innerHTML += ', '
+        appRoles.innerHTML += ' '
       }
     })
   } else {
     appRoles.innerHTML += 'None'
   }
+  appPicture.setAttribute('src', '')
+  appPicture.setAttribute('src', '/img/botcolor.png')
+  appDetails.style.display = 'block'
   appLoginButton.style.display = 'none'
   appLogoutButton.style.display = 'block'
 }
