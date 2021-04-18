@@ -1,9 +1,9 @@
 {
   "name": "tech-hub",
-  "version": "1.0.112",
+  "version": "1.0.113",
   "description": "SalesTim Tech Hub",
   "scripts": {
-    "dev": "gulp infos && node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
+    "dev": "node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
     "cpdocs": "gulp cpdocs",
     "gen": "./node_modules/@openapitools/openapi-generator-cli/main.js generate && npm run cpdocs",
     "build": "gulp build && npm run gen && node ./node_modules/vuepress/cli.js build src/app --no-cache",
