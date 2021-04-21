@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
-  version: "1.2.0"
-  x-ms-deployment-version: "1.2.0"
+  version: "1.2.1"
+  x-ms-deployment-version: "1.2.1"
   x-ms-api-annotation:
     status: Production
   title: SalesTim Governance Automation

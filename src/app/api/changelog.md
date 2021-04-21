@@ -2,6 +2,16 @@
 
 All notable changes to the SalesTim API, Connectors and SDKs will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [1.2.1] - 2021-04-21
+
+### Added
+- The OpenAPI definition of the `/hooks` operation now describes the events and body schema of all the possible callbacks from all the supported webhooks.
+  - It follows the [OpenAPI 3 Specification](https://swagger.io/docs/specification/about/) for [Callbacks](https://swagger.io/docs/specification/callbacks/)
+  - See it live in [API Explorer](https://developers.salestim.com/api/explorer.html#/hooks/CreateHook).
+
+### Changed
+- The `TeamProvisioningCompletedNotificationPayload` object (payload of the `team_provisioning_completed` [webhook](https://developers.salestim.com/api/webhooks.html#team-provisioning-completed)), now has an additional `metadata` property holding the metadata passed to the `createTeamProvisioningJob` [operation](https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamprovisioningjob)
+
 ## [1.2.0] - 2021-04-16
 
 ### Added
@@ -13,14 +23,6 @@ All notable changes to the SalesTim API, Connectors and SDKs will be documented 
 - The [Authentication](/api/authentication) page now reflects the new support for application access tokens.
 - The [GetUsers](/api/reference/Apis/UsersApi.html#getusers) API operation now supports standard [Microsoft Graph filters](https://docs.microsoft.com/en-us/graph/api/user-list?view=graph-rest-1.0&tabs=http#optional-query-parameters).
 - The [GetJob](/connectors/connectors-actions.html#get-job-🦺) Connector Action is now only hidded by default but is still visible through search.
-
-## [1.2.1] - 2021-04-21
-
-### Added
-- The OpenAPI definition of the `/hooks` operation now describes the events and body schema of the possible callbacks from all the supported webhooks. See it live in [API Explorer]()
-
-### Changed
-- The `TeamProvisioningCompletedNotificationPayload` object (payload of the `team_provisioning_completed` [webhook](https://developers.salestim.com/api/webhooks.html#team-provisioning-completed)), now has an additional `metadata` property holding the metadata passed to the `createTeamProvisioningJob` [operation](https://developers.salestim.com/api/reference/Apis/TeamsApi.html#createteamprovisioningjob)
 
 ## [1.1.0] - 2021-02-07
 
