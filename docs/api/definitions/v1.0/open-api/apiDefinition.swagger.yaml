@@ -49,7 +49,6 @@ tags:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
 paths:
-
   /approvals/{approvalRequestId}/approve:
     post:
       tags:
@@ -143,7 +142,6 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
-
 
   /catalog/templates:
     get:
@@ -752,7 +750,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
- 
+
   /teams/{teamId}/channels/{channelId}/tabs:
     get:
       tags:
@@ -938,7 +936,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
- 
+
   /hooks/signature:
     post:
       tags:
@@ -1001,6 +999,47 @@ paths:
             schema:
               $ref: "#/components/schemas/HookPayload"
         required: true
+      callbacks:
+        team_created:
+          "{$request.body#/config/url}":
+            post:
+              requestBody:
+                $ref: "#/components/requestBodies/TeamCreatedNotificationPayload"
+              responses:
+                "200":
+                  description: OK
+        team_provisioning_completed:
+          "{$request.body#/config/url}":
+            post:
+              requestBody:
+                $ref: "#/components/requestBodies/TeamProvisioningCompletedNotificationPayload"
+              responses:
+                "200":
+                  description: OK
+        team_creation_approval_requested:
+          "{$request.body#/config/url}":
+            post:
+              requestBody:
+                $ref: "#/components/requestBodies/TeamCreationApprovalRequestedNotificationPayload"
+              responses:
+                "200":
+                  description: OK
+        team_creation_approved:
+          "{$request.body#/config/url}":
+            post:
+              requestBody:
+                $ref: "#/components/requestBodies/TeamCreationApprovalApprovedNotificationPayload"
+              responses:
+                "200":
+                  description: OK
+        team_creation_rejected:
+          "{$request.body#/config/url}":
+            post:
+              requestBody:
+                $ref: "#/components/requestBodies/TeamCreationApprovalRejectedNotificationPayload"
+              responses:
+                "200":
+                  description: OK
       responses:
         "201":
           description: Created - Returns a Hook object.
@@ -1074,11 +1113,310 @@ paths:
 components:
 
   securitySchemes:
+
     bearerAuth:
       description: A valid Microsoft 365 access_token issued by Azure AD.
       type: http
       scheme: bearer
       bearerFormat: JWT
+
+  requestBodies:
+
+    TeamCreationApprovalRequestedNotificationPayload:
+      description: Team Creation Approval Requested Notification Payload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tenant:
+                type: object
+                properties:
+                  id:
+                    description: Current tenant ID
+                    type: string
+              requester:
+                type: object
+                properties:
+                  id:
+                    description: Requester ID
+                    type: string
+                  displayName:
+                    description: Requester display name
+                    type: string
+                  mail:
+                    description: Requester email
+                    type: string
+              approval:
+                type: object
+                properties:
+                  id:
+                    description: Approval request ID
+                    type: string
+              template:
+                type: object
+                properties:
+                  id:
+                    description: Template ID
+                    type: string
+                  name:
+                    description: Template name
+                    type: string
+                  approvers:
+                    description: Approval team
+                    type: array
+                    items:
+                      type: object
+                  permanentMembership:
+                    description: Permanent members and owners
+                    type: object
+              request:
+                type: object
+                properties:
+                  team:
+                    type: object
+                    properties:
+                      name:
+                        description: Requested team name
+                        type: string
+                      description:
+                        description: Requested team description
+                        type: string
+                      welcomeMessage:
+                        description: Requested team welcome message
+                        type: string
+                  membership:
+                    description: Requested members and owners
+                    type: object
+
+    TeamCreationApprovalApprovedNotificationPayload:
+      description: Team Creation Approval Approved Notification Payload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tenant:
+                type: object
+                properties:
+                  id:
+                    description: Current tenant ID
+                    type: string
+              requester:
+                type: object
+                properties:
+                  id:
+                    description: Requester ID
+                    type: string
+                  displayName:
+                    description: Requester display name
+                    type: string
+                  mail:
+                    description: Requester email
+                    type: string
+              approval:
+                type: object
+                properties:
+                  id:
+                    description: Approval request ID
+                    type: string
+                  approver:
+                    description: Approver
+                    type: object
+                    properties:
+                      id:
+                        description: Approver ID
+                        type: string
+                      message:
+                        description: Approver message
+                        type: string
+              template:
+                type: object
+                properties:
+                  id:
+                    description: Template ID
+                    type: string
+                  name:
+                    description: Template name
+                    type: string
+                  approvers:
+                    description: Approval team
+                    type: array
+                    items:
+                      type: object
+                  permanentMembership:
+                    description: Permanent members and owners
+                    type: object
+              request:
+                type: object
+                properties:
+                  team:
+                    type: object
+                    properties:
+                      name:
+                        description: Requested team name
+                        type: string
+                      description:
+                        description: Requested team description
+                        type: string
+                      welcomeMessage:
+                        description: Requested team welcome message
+                        type: string
+                  membership:
+                    description: Requested members and owners
+                    type: object
+              provisioning:
+                type: object
+                properties:
+                  id:
+                    description: Provisioning Job ID
+                    type: string
+
+    TeamCreationApprovalRejectedNotificationPayload:
+      description: Team Creation Approval Rejected Notification Payload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tenant:
+                type: object
+                properties:
+                  id:
+                    description: Current tenant ID
+                    type: string
+              requester:
+                type: object
+                properties:
+                  id:
+                    description: Requester ID
+                    type: string
+                  displayName:
+                    description: Requester display name
+                    type: string
+                  mail:
+                    description: Requester email
+                    type: string
+              approval:
+                type: object
+                properties:
+                  id:
+                    description: Approval request ID
+                    type: string
+                  approver:
+                    description: Approver
+                    type: object
+                    properties:
+                      id:
+                        description: Approver ID
+                        type: string
+                      message:
+                        description: Approver message
+                        type: string
+              template:
+                type: object
+                properties:
+                  id:
+                    description: Template ID
+                    type: string
+                  name:
+                    description: Template name
+                    type: string
+                  approvers:
+                    description: Approval team
+                    type: array
+                    items:
+                      type: object
+                  permanentMembership:
+                    description: Permanent members and owners
+                    type: object
+              request:
+                type: object
+                properties:
+                  team:
+                    type: object
+                    properties:
+                      name:
+                        description: Requested team name
+                        type: string
+                      description:
+                        description: Requested team description
+                        type: string
+                      welcomeMessage:
+                        description: Requested team welcome message
+                        type: string
+                  membership:
+                    description: Requested members and owners
+                    type: object
+
+    TeamCreatedNotificationPayload:
+      description: Team Created Notification Payload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tenant:
+                type: object
+                properties:
+                  id:
+                    description: Current tenant ID
+                    type: string
+              team:
+                type: object
+                properties:
+                  id:
+                    description: Created team ID
+                    type: string
+
+    TeamProvisioningCompletedNotificationPayload:
+      description: Team Provisioning Completed Notification Payload.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tenant:
+                type: object
+                properties:
+                  id:
+                    description: Current tenant ID
+                    type: string
+                  initialDomainName:
+                    description: Current tenant initial domain name
+                    type: string
+                  defaultDomainName:
+                    description: Current tenant default domain name
+                    type: string
+              team:
+                type: object
+                properties:
+                  id:
+                    description: Created team ID
+                    type: string
+                  displayName:
+                    description: Created team display name
+                    type: string
+              requester:
+                type: object
+                properties:
+                  id:
+                    description: Requester ID
+                    type: string
+                  displayName:
+                    description: Requester display name
+                    type: string
+              template:
+                type: object
+                properties:
+                  id:
+                    description: Provisioning template  ID
+                    type: string
+                  name:
+                    description: Provisioning template name
+                    type: string
+              metadata:
+                type: object
 
   schemas:
 
@@ -1086,7 +1424,7 @@ components:
       title: A positive approval response payload
       description: A positive approval response payload.
       type: object
-      properties:        
+      properties:
         message:
           description: Approval response message
           type: string
@@ -1115,7 +1453,7 @@ components:
       title: A negative approval response payload
       description: A negative approval response payload.
       type: object
-      properties:        
+      properties:
         message:
           description: Approval response message
           type: string

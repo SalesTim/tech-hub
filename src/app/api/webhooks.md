@@ -143,7 +143,8 @@ Sample:
   "template": {
     "id": "d8854819-c06f-4680-82f7-cc6d5b230c27",
     "name": "Project Template"
-  }
+  },
+  "metadata": {}
 }
 ```
 
@@ -198,6 +199,9 @@ Schema:
           "type": "string"
         }
       }
+    },
+    "metadata": {
+      "type": "object"
     }
   }
 }

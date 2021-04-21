@@ -2326,6 +2326,8 @@ definitions:
             x-ms-summary: Provisioning template name
             description: Provisioning template name
             type: string
+      metadata:
+        type: object
 
   HookPayload:
     x-ms-visibility: important
