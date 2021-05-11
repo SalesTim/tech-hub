@@ -1,4 +1,4 @@
-# SalesTim API Overview
+# API Overview
 <div class="uk-background-cover uk-background-blend-screen uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url(/img/headers/api.jpg);">
   <div class="bg-text uk-section uk-section-muted uk-section-xsmall uk-padding-small uk-text-center">
     <p class="uk-text-large">

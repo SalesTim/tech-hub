@@ -152,6 +152,15 @@ module.exports = {
           ]
         },
         {
+          title: 'Connected Apps',
+          collapsable: true,
+          sidebarDepth: 1,
+          children: [
+            ['/connectedapps/', 'Get Started'],
+            ['/connectedapps/salesforce-sales-cloud.md', 'Salesforce Sales Cloud']
+          ]
+        },
+        {
           title: 'Connectors',
           collapsable: true,
           sidebarDepth: 1,

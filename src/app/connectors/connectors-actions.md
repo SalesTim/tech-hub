@@ -18,7 +18,7 @@ This article refers to connex concepts. If required, please refer to:
 
 ## Triggers
 
-### When a Team is Created 🆕
+### When a Team is Created
 Triggered when a team is created, whatever the creation origin (manual, api, using a template...).
 - Event Code: `team_created`
 - Category: `teams`
@@ -27,7 +27,7 @@ Triggered when a team is created, whatever the creation origin (manual, api, usi
 
 See [Webhook Documentation](/api/webhooks.html#team-created)
 
-### When a Team Provisioning is Completed 🎨
+### When a Team Provisioning is Completed
 Triggered when a team provisioning request based on a template is complete (wether successfully or not).
 - Event Code: `team_provisioning_completed`
 - Category: `teams`
@@ -36,7 +36,7 @@ Triggered when a team provisioning request based on a template is complete (weth
 
 See [Webhook Documentation](/api/webhooks.html#team-provisioning-completed)
 
-### When a Team Creation Approval is Requested 🛃
+### When a Team Creation Approval is Requested
 Triggered when a user is requesting the creation of a new team using a template that enforces team creation approval.
 - Event Code: `team_creation_approval_requested`
 - Category: `approvals`
@@ -45,7 +45,7 @@ Triggered when a user is requesting the creation of a new team using a template 
 
 See [Webhook Documentation](/api/webhooks.html#team-creation-approval-requested)
 
-### When a Team Creation is Approved ✅
+### When a Team Creation is Approved
 Triggered when a team creation approval is approved.
 - Event Code: `team_creation_approved`
 - Category: `approvals`
@@ -54,7 +54,7 @@ Triggered when a team creation approval is approved.
 
 See [Webhook Documentation](/api/webhooks.html#team-creation-approved)
 
-### When a Team Creation is Rejected 🚫
+### When a Team Creation is Rejected
 Triggered when a team creation approval is rejected.
 - Event Code: `team_creation_rejected`
 - Category: `approvals`
@@ -65,7 +65,7 @@ See [Webhook Documentation](/api/webhooks.html#team-creation-rejected)
 
 ## Actions
 
-### Get My Catalog Templates 🎨
+### Get My Catalog Templates
 Get teams templates accessible to the connected user filtered by the audience targeting rules.
 - Operation ID: `GetMyCatalogTemplates`
 - Category: `catalog`
@@ -74,7 +74,7 @@ Get teams templates accessible to the connected user filtered by the audience ta
 
 See [API Documentation](/api/reference/Apis/CatalogApi.html#getmycatalogtemplates)
 
-### Get My Sensitivity Labels 🔖
+### Get My Sensitivity Labels
 Get my Microsoft 365 sensitivity labels.
 - Operation ID: `GetMyLabels`
 - Category: `labels`
@@ -110,7 +110,7 @@ Delete a team.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#deleteteam)
 
-### Archive Team 📦
+### Archive Team
 Archive a team.
 - Operation ID: ArchiveTeam
 - Category: `teams`
@@ -119,7 +119,7 @@ Archive a team.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#archiveteam)
 
-### Unarchive Team 📦
+### Unarchive Team
 Unarchive a team.
 - Operation ID: UnarchiveTeam
 - Category: `teams`
@@ -128,7 +128,7 @@ Unarchive a team.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#unarchiveteam)
 
-### Invite Team Member 👋
+### Invite Team Member
 Invite a member to a team.
 - Operation ID: AddTeamMember
 - Category: `teams`
@@ -137,7 +137,7 @@ Invite a member to a team.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#addteammember)
 
-### Create Team Based on Template 🆕
+### Create Team Based on Template
 Create a new team provisioning job.
 - Operation ID: CreateTeamProvisioningJob
 - Category: `teams`
@@ -146,7 +146,7 @@ Create a new team provisioning job.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#createteamprovisioningjob)
 
-### Approve Team Creation ✅
+### Approve Team Creation
 Approve a team creation request.
 - Operation ID: ApproveTeamCreation
 - Category: `approvals`
@@ -155,7 +155,7 @@ Approve a team creation request.
 
 See [API Documentation](/api/reference/Apis/ApprovalsApi.html#approveteamcreation)
 
-### Reject Team Creation 🚫
+### Reject Team Creation
 Reject a team creation request.
 - Operation ID: RejectTeamCreation
 - Category: `approvals`
@@ -164,7 +164,7 @@ Reject a team creation request.
 
 See [API Documentation](/api/reference/Apis/ApprovalsApi.html#rejectteamcreation)
 
-### Get Team Channels 💬
+### Get Team Channels
 Get team channels.
 - Operation ID: GetTeamChannels
 - Category: `teams`
@@ -173,7 +173,7 @@ Get team channels.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#getteamchannels)
 
-### Create Team Channel 💬
+### Create Team Channel
 Create a new team channel.
 - Operation ID: CreateTeamChannel
 - Category: `teams`
@@ -182,7 +182,7 @@ Create a new team channel.
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#createteamchannel)
 
-### Get Team Primary Channel 💬
+### Get Team Primary Channel
 Get the primary channel of a team
 - Operation ID: `GetTeamPrimaryChannel`
 - Category: `teams`
@@ -191,7 +191,7 @@ Get the primary channel of a team
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#getteamprimarychannel)
 
-### Get Team Channel Tabs 🧱
+### Get Team Channel Tabs
 Get team channel tabs
 - Operation ID: `GetTeamChannelTabs`
 - Category: `teams`
@@ -200,7 +200,7 @@ Get team channel tabs
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#getteamchanneltabs)
 
-### Create Team Channel Tab 🧱
+### Create Team Channel Tab
 Create a new team channel tab
 - Operation ID: CreateTeamChannelTab
 - Category: `teams`
@@ -209,7 +209,7 @@ Create a new team channel tab
 
 See [API Documentation](/api/reference/Apis/TeamsApi.html#createteamchanneltab)
 
-### Get Job 🦺
+### Get Job
 Get detailed information about a job, including its status, progress, logs...
 - Operation ID: `GetJob`
 - Category: `jobs`
@@ -218,7 +218,7 @@ Get detailed information about a job, including its status, progress, logs...
 
 See [API Documentation](/api/reference/Apis/JobsApi.html#getjob)
 
-### Generate Hook Signature 🔏
+### Generate Hook Signature
 Generate a signature from a secret and a webhook payload
 - Operation ID: `GenerateHookSignature`
 - Category: `hooks`
