@@ -55,14 +55,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ApprovalsApi* | [**Approve-TeamCreation**](docs/ApprovalsApi.md#Approve-TeamCreation) | **POST** /approvals/{approvalRequestId}/approve | Approve a team creation request
 *ApprovalsApi* | [**Deny-TeamCreation**](docs/ApprovalsApi.md#Deny-TeamCreation) | **POST** /approvals/{approvalRequestId}/reject | Reject a team creation request
-*CatalogApi* | [**Get-CatalogTemplates**](docs/CatalogApi.md#Get-CatalogTemplates) | **GET** /catalog/templates | Get teams templates
-*CatalogApi* | [**Get-MyCatalogTemplates**](docs/CatalogApi.md#Get-MyCatalogTemplates) | **GET** /me/catalog/templates | Get my teams templates
-*HooksApi* | [**New-Hook**](docs/HooksApi.md#New-Hook) | **POST** /hooks | Create a new webhook
-*HooksApi* | [**Invoke-DeleteHook**](docs/HooksApi.md#Invoke-DeleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
-*HooksApi* | [**New-HookSignature**](docs/HooksApi.md#New-HookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
-*HooksApi* | [**Get-HooksEvents**](docs/HooksApi.md#Get-HooksEvents) | **GET** /hooks/events | Get webhooks events
+*AuditTrailsApi* | [**Get-AuditTrailRecords**](docs/AuditTrailsApi.md#Get-AuditTrailRecords) | **GET** /audittrails/{code}/records | Get all the records from an audit trail
+*AuditTrailsApi* | [**Get-AuditTrails**](docs/AuditTrailsApi.md#Get-AuditTrails) | **GET** /audittrails | Get audit trails
 *JobsApi* | [**Get-Job**](docs/JobsApi.md#Get-Job) | **GET** /jobs/{jobId} | Get information about a job
-*LabelsApi* | [**Get-MyLabels**](docs/LabelsApi.md#Get-MyLabels) | **GET** /me/labels | Get my sensitivity labels
+*SensitivityLabelsApi* | [**Get-MyLabels**](docs/SensitivityLabelsApi.md#Get-MyLabels) | **GET** /me/labels | Get my sensitivity labels
 *TeamsApi* | [**Add-TeamMember**](docs/TeamsApi.md#Add-TeamMember) | **POST** /teams/{teamId}/members | Add a team member
 *TeamsApi* | [**Invoke-ArchiveTeam**](docs/TeamsApi.md#Invoke-ArchiveTeam) | **POST** /teams/{teamId}/archive | Archive a team
 *TeamsApi* | [**New-TeamChannel**](docs/TeamsApi.md#New-TeamChannel) | **POST** /teams/{teamId}/channels | Create a new team channel
@@ -75,7 +71,13 @@ Class | Method | HTTP request | Description
 *TeamsApi* | [**Get-TeamPrimaryChannel**](docs/TeamsApi.md#Get-TeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 *TeamsApi* | [**Invoke-UnarchiveTeam**](docs/TeamsApi.md#Invoke-UnarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
 *TeamsApi* | [**Update-Team**](docs/TeamsApi.md#Update-Team) | **PATCH** /teams/{teamId} | Update a team
+*TemplatesCatalogApi* | [**Get-CatalogTemplates**](docs/TemplatesCatalogApi.md#Get-CatalogTemplates) | **GET** /catalog/templates | Get teams templates
+*TemplatesCatalogApi* | [**Get-MyCatalogTemplates**](docs/TemplatesCatalogApi.md#Get-MyCatalogTemplates) | **GET** /me/catalog/templates | Get my teams templates
 *UsersApi* | [**Get-Users**](docs/UsersApi.md#Get-Users) | **GET** /users | Retreive users from your Microsoft 365 environment
+*WebhooksApi* | [**New-Hook**](docs/WebhooksApi.md#New-Hook) | **POST** /hooks | Create a new webhook
+*WebhooksApi* | [**Invoke-DeleteHook**](docs/WebhooksApi.md#Invoke-DeleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
+*WebhooksApi* | [**New-HookSignature**](docs/WebhooksApi.md#New-HookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+*WebhooksApi* | [**Get-HooksEvents**](docs/WebhooksApi.md#Get-HooksEvents) | **GET** /hooks/events | Get webhooks events
 
 
 ## Documentation for Models
@@ -87,6 +89,9 @@ Class | Method | HTTP request | Description
  - [PSOpenAPITools/Model.ApprovedApprovalResponsePayload](docs/ApprovedApprovalResponsePayload.md)
  - [PSOpenAPITools/Model.ApprovedApprovalResponsePayloadApprover](docs/ApprovedApprovalResponsePayloadApprover.md)
  - [PSOpenAPITools/Model.ApprovedApprovalResponsePayloadUpdates](docs/ApprovedApprovalResponsePayloadUpdates.md)
+ - [PSOpenAPITools/Model.AuditTrail](docs/AuditTrail.md)
+ - [PSOpenAPITools/Model.AuditTrailRecords](docs/AuditTrailRecords.md)
+ - [PSOpenAPITools/Model.AuditTrails](docs/AuditTrails.md)
  - [PSOpenAPITools/Model.CatalogTemplate](docs/CatalogTemplate.md)
  - [PSOpenAPITools/Model.CatalogTemplateClonedTeam](docs/CatalogTemplateClonedTeam.md)
  - [PSOpenAPITools/Model.CatalogTemplateNewTeam](docs/CatalogTemplateNewTeam.md)

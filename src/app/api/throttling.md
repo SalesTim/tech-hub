@@ -53,12 +53,10 @@ In addition to the `Retry-After` header, SalesTim API includes `X-RateLimit-Limi
 ```yaml
 {
   message: 'Too many requests, please try again later...',
-  body: {
-    rateLimitExceeded: {
-      tier: 'Tier 1',              # Could be 'Tier 1', 'Tier 2' or 'Tier 3'
-      rateLimitWindow: 900000,     # In ms
-      ratelimitMax: 6              # In # of requests
-    }
+  rateLimitExceeded: {
+    tier: 'Tier 1',              # Could be 'Tier 1', 'Tier 2' or 'Tier 3'
+    rateLimitWindow: 900000,     # In ms
+    rateLimitMax: 6              # In # of requests
   }
 }
 ```

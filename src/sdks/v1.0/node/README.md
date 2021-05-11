@@ -131,14 +131,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SalesTimApi.ApprovalsApi* | [**approveTeamCreation**](docs/ApprovalsApi.md#approveTeamCreation) | **POST** /approvals/{approvalRequestId}/approve | Approve a team creation request
 *SalesTimApi.ApprovalsApi* | [**rejectTeamCreation**](docs/ApprovalsApi.md#rejectTeamCreation) | **POST** /approvals/{approvalRequestId}/reject | Reject a team creation request
-*SalesTimApi.CatalogApi* | [**getCatalogTemplates**](docs/CatalogApi.md#getCatalogTemplates) | **GET** /catalog/templates | Get teams templates
-*SalesTimApi.CatalogApi* | [**getMyCatalogTemplates**](docs/CatalogApi.md#getMyCatalogTemplates) | **GET** /me/catalog/templates | Get my teams templates
-*SalesTimApi.HooksApi* | [**createHook**](docs/HooksApi.md#createHook) | **POST** /hooks | Create a new webhook
-*SalesTimApi.HooksApi* | [**deleteHook**](docs/HooksApi.md#deleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
-*SalesTimApi.HooksApi* | [**generateHookSignature**](docs/HooksApi.md#generateHookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
-*SalesTimApi.HooksApi* | [**getHooksEvents**](docs/HooksApi.md#getHooksEvents) | **GET** /hooks/events | Get webhooks events
+*SalesTimApi.AuditTrailsApi* | [**getAuditTrailRecords**](docs/AuditTrailsApi.md#getAuditTrailRecords) | **GET** /audittrails/{code}/records | Get all the records from an audit trail
+*SalesTimApi.AuditTrailsApi* | [**getAuditTrails**](docs/AuditTrailsApi.md#getAuditTrails) | **GET** /audittrails | Get audit trails
 *SalesTimApi.JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /jobs/{jobId} | Get information about a job
-*SalesTimApi.LabelsApi* | [**getMyLabels**](docs/LabelsApi.md#getMyLabels) | **GET** /me/labels | Get my sensitivity labels
+*SalesTimApi.SensitivityLabelsApi* | [**getMyLabels**](docs/SensitivityLabelsApi.md#getMyLabels) | **GET** /me/labels | Get my sensitivity labels
 *SalesTimApi.TeamsApi* | [**addTeamMember**](docs/TeamsApi.md#addTeamMember) | **POST** /teams/{teamId}/members | Add a team member
 *SalesTimApi.TeamsApi* | [**archiveTeam**](docs/TeamsApi.md#archiveTeam) | **POST** /teams/{teamId}/archive | Archive a team
 *SalesTimApi.TeamsApi* | [**createTeamChannel**](docs/TeamsApi.md#createTeamChannel) | **POST** /teams/{teamId}/channels | Create a new team channel
@@ -151,7 +147,13 @@ Class | Method | HTTP request | Description
 *SalesTimApi.TeamsApi* | [**getTeamPrimaryChannel**](docs/TeamsApi.md#getTeamPrimaryChannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 *SalesTimApi.TeamsApi* | [**unarchiveTeam**](docs/TeamsApi.md#unarchiveTeam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
 *SalesTimApi.TeamsApi* | [**updateTeam**](docs/TeamsApi.md#updateTeam) | **PATCH** /teams/{teamId} | Update a team
+*SalesTimApi.TemplatesCatalogApi* | [**getCatalogTemplates**](docs/TemplatesCatalogApi.md#getCatalogTemplates) | **GET** /catalog/templates | Get teams templates
+*SalesTimApi.TemplatesCatalogApi* | [**getMyCatalogTemplates**](docs/TemplatesCatalogApi.md#getMyCatalogTemplates) | **GET** /me/catalog/templates | Get my teams templates
 *SalesTimApi.UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /users | Retreive users from your Microsoft 365 environment
+*SalesTimApi.WebhooksApi* | [**createHook**](docs/WebhooksApi.md#createHook) | **POST** /hooks | Create a new webhook
+*SalesTimApi.WebhooksApi* | [**deleteHook**](docs/WebhooksApi.md#deleteHook) | **DELETE** /hooks/{hookId} | Delete a webhook
+*SalesTimApi.WebhooksApi* | [**generateHookSignature**](docs/WebhooksApi.md#generateHookSignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+*SalesTimApi.WebhooksApi* | [**getHooksEvents**](docs/WebhooksApi.md#getHooksEvents) | **GET** /hooks/events | Get webhooks events
 
 
 ## Documentation for Models
@@ -163,6 +165,9 @@ Class | Method | HTTP request | Description
  - [SalesTimApi.ApprovedApprovalResponsePayload](docs/ApprovedApprovalResponsePayload.md)
  - [SalesTimApi.ApprovedApprovalResponsePayloadApprover](docs/ApprovedApprovalResponsePayloadApprover.md)
  - [SalesTimApi.ApprovedApprovalResponsePayloadUpdates](docs/ApprovedApprovalResponsePayloadUpdates.md)
+ - [SalesTimApi.AuditTrail](docs/AuditTrail.md)
+ - [SalesTimApi.AuditTrailRecords](docs/AuditTrailRecords.md)
+ - [SalesTimApi.AuditTrails](docs/AuditTrails.md)
  - [SalesTimApi.CatalogTemplate](docs/CatalogTemplate.md)
  - [SalesTimApi.CatalogTemplateClonedTeam](docs/CatalogTemplateClonedTeam.md)
  - [SalesTimApi.CatalogTemplateNewTeam](docs/CatalogTemplateNewTeam.md)

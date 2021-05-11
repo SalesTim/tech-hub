@@ -19,40 +19,127 @@ servers:
     description: Production environment
 
 tags:
-  - name: catalog
+  - name: Templates Catalog
     description: Your corporate catalog of teams templates and governance policies.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/CatalogApi
-  - name: approvals
+  - name: Approvals
     description: Team creation requests approvals.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi
-  - name: teams
+  - name: Audit Trails
+    description: SalesTim audit trails.
+    externalDocs:
+      url: https://developers.salestim.com/api/reference/Apis/ApprovalsApi
+  - name: Teams
     description: Teams from your Microsoft Teams environment.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/TeamsApi
-  - name: users
+  - name: Users
     description: Users from your Microsoft 365 environment.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/UsersApi
-  - name: jobs
+  - name: Jobs
     description: Jobs that performs governance operations.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/JobsApi
-  - name: labels
+  - name: Sensitivity Labels
     description: Microsoft 365 sensitivity labels.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/LabelsApi
-  - name: hooks
+  - name: Webhooks
     description: SalesTim Platform Webhooks.
     externalDocs:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
 paths:
+
+  /audittrails:
+    get:
+      tags:
+        - Audit Trails
+      summary: Get audit trails
+      description: Get all the audit trails accessible in your organization. TIER 3 | ROLES - AUTHORIZED_APP, COMPLIANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+      operationId: GetAuditTrails
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/AuditTrailsApi.html#getaudittrails
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK - Returns an AuditTrails object (Collection of AuditTrail objects).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditTrails"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+  
+  /audittrails/{code}/records:
+    get:
+      tags:
+        - Audit Trails
+      summary: Get all the records from an audit trail
+      description: Get all the records from an audit trail. TIER 2 | ROLES - AUTHORIZED_APP, COMPLIANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
+      operationId: GetAuditTrailRecords
+      externalDocs:
+        url: https://developers.salestim.com/api/reference/Apis/AuditTrailsApi.html#getaudittrailrecords
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: code
+          in: path
+          description: The audit trail code.
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK - Returns an AuditTrailRecords object (Collection of AuditTrailRecord objects).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuditTrailRecords"
+        "400":
+          $ref: "#/components/responses/400"
+        "401":
+          $ref: "#/components/responses/401"
+        "402":
+          $ref: "#/components/responses/402"
+        "403":
+          $ref: "#/components/responses/403"
+        "404":
+          $ref: "#/components/responses/404"
+        "429":
+          $ref: "#/components/responses/429"
+        "500":
+          $ref: "#/components/responses/500"
+        "503":
+          $ref: "#/components/responses/503"
+        default:
+          $ref: "#/components/responses/500"
+
+
   /approvals/{approvalRequestId}/approve:
     post:
       tags:
-        - approvals
+        - Approvals
       summary: Approve a team creation request
       description: Approve a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: ApproveTeamCreation
@@ -99,7 +186,7 @@ paths:
   /approvals/{approvalRequestId}/reject:
     post:
       tags:
-        - approvals
+        - Approvals
       summary: Reject a team creation request
       description: Reject a team creation request. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: RejectTeamCreation
@@ -146,7 +233,7 @@ paths:
   /catalog/templates:
     get:
       tags:
-        - catalog
+        - Templates Catalog
       summary: Get teams templates
       description: Get all the teams templates accessible in your organization. TIER 2️⃣ | ROLES - AUTHORIZED_APP, CATALOG_MANAGER, INTEGRATION_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
       operationId: GetCatalogTemplates
@@ -190,7 +277,7 @@ paths:
   /me/catalog/templates:
     get:
       tags:
-        - catalog
+        - Templates Catalog
       summary: Get my teams templates
       description: Get teams templates accessible to the connected user filtered by the audience targeting rules. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyCatalogTemplates
@@ -234,7 +321,7 @@ paths:
   /me/labels:
     get:
       tags:
-        - labels
+        - Sensitivity Labels
       summary: Get my sensitivity labels
       description: Get my Microsoft 365 sensitivity labels. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetMyLabels
@@ -271,7 +358,7 @@ paths:
   /users:
     get:
       tags:
-        - users
+        - Users
       summary: Retreive users from your Microsoft 365 environment
       description: Retreive users from your Microsoft 365 environment. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetUsers
@@ -308,7 +395,7 @@ paths:
   /teams/{teamId}:
     get:
       tags:
-        - teams
+        - Teams
       summary: Get a team
       description: Get detailed information about a team. TIER 3️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
       operationId: GetTeam
@@ -350,7 +437,7 @@ paths:
           $ref: "#/components/responses/500"
     patch:
       tags:
-        - teams
+        - Teams
       summary: Update a team
       description: Update a team. TIER 2️⃣ | ROLES - AUTHORIZED_APP, INTEGRATION_MANAGER, GOVERNANCE_MANAGER, TEAMS_SERVICE_ADMIN, GLOBAL_ADMIN.
       operationId: UpdateTeam
@@ -395,7 +482,7 @@ paths:
           $ref: "#/components/responses/500"
     delete:
       tags:
-        - teams
+        - Teams
       summary: Delete a team
       description: Delete a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: DeleteTeam
@@ -435,7 +522,7 @@ paths:
   /teams/{teamId}/archive:
     post:
       tags:
-        - teams
+        - Teams
       summary: Archive a team
       description: Archive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: ArchiveTeam
@@ -482,7 +569,7 @@ paths:
   /teams/{teamId}/unarchive:
     post:
       tags:
-        - teams
+        - Teams
       summary: Unarchive a team
       description: Unarchive a team. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: UnarchiveTeam
@@ -522,7 +609,7 @@ paths:
   /teams/{teamId}/members:
     post:
       tags:
-        - teams
+        - Teams
       summary: Add a team member
       description: Add a team member. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: AddTeamMember
@@ -573,7 +660,7 @@ paths:
   /teams/provisioning:
     post:
       tags:
-        - teams
+        - Teams
       summary: Create a new team based on a template
       description: Create a new team provisioning job. TIER 1️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamProvisioningJob
@@ -617,7 +704,7 @@ paths:
   /teams/{teamId}/channels:
     get:
       tags:
-        - teams
+        - Teams
       summary: Get team channels
       description: Get team channels. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannels
@@ -659,7 +746,7 @@ paths:
           $ref: "#/components/responses/500"
     post:
       tags:
-        - teams
+        - Teams
       summary: Create a new team channel
       description: Create a new team channel. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannel
@@ -710,7 +797,7 @@ paths:
   /teams/{teamId}/channels/primary:
     get:
       tags:
-        - teams
+        - Teams
       summary: Get the primary channel of a team
       description: Get the primary channel of a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamPrimaryChannel
@@ -754,7 +841,7 @@ paths:
   /teams/{teamId}/channels/{channelId}/tabs:
     get:
       tags:
-        - teams
+        - Teams
       summary: Get team channel tabs
       description: Get team channel tabs. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetTeamChannelTabs
@@ -802,7 +889,7 @@ paths:
           $ref: "#/components/responses/500"
     post:
       tags:
-        - teams
+        - Teams
       summary: Create a new team channel tab
       description: Create a new team channel tab. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateTeamChannelTab
@@ -859,7 +946,7 @@ paths:
   /jobs/{jobId}:
     get:
       tags:
-        - jobs
+        - Jobs
       summary: Get information about a job
       description: Get detailed information about a job, including its status, progress, logs... TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetJob
@@ -903,7 +990,7 @@ paths:
   /hooks/events:
     get:
       tags:
-        - hooks
+        - Webhooks
       summary: Get webhooks events
       description: Get webhooks events. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GetHooksEvents
@@ -940,7 +1027,7 @@ paths:
   /hooks/signature:
     post:
       tags:
-        - hooks
+        - Webhooks
       summary: Generate a signature from a secret and a webhook payload
       description: Generate a signature from a secret and a webhook payload. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: GenerateHookSignature
@@ -984,7 +1071,7 @@ paths:
   /hooks:
     post:
       tags:
-        - hooks
+        - Webhooks
       summary: Create a new webhook
       description: Create a new webhook. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: CreateHook
@@ -1069,7 +1156,7 @@ paths:
   /hooks/{hookId}:
     delete:
       tags:
-        - hooks
+        - Webhooks
       summary: Delete a webhook
       description: Delete a webhook. TIER 2️⃣ | ROLES - AUTHENTICATED_USER.
       operationId: DeleteHook
@@ -1742,6 +1829,72 @@ components:
     TeamChannelTabPayload:
       title: Team Channel Tab Payload
       description: Payload of a Microsoft Teams team channel tab to be created/updated.
+      type: object
+
+    AuditTrails:
+      title: Audit Trails
+      description: A collection of SalesTim audit trails.
+      type: object
+      properties:
+        "@odata.context":
+          description: Odata context
+          type: string
+        "@odata.count":
+          description: Number of audit trails in the collection
+          type: integer
+          format: int32
+        value:
+          description: Array of audit trails
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditTrail"
+
+    AuditTrail:
+      title: Audit Trail
+      description: A SalesTim audit trail.
+      type: object
+      properties:
+        code:
+          title: Code
+          description: Audit trail code
+          type: string
+        category:
+          title: category
+          description: Audit trail category
+          type: string
+        fields:
+          title: Fields
+          description: A collection of audit trail fields
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditTrailField"
+
+    AuditTrailField:
+      title: Audit Trail Field
+      description: A SalesTim audit trail field.
+      type: string
+
+    AuditTrailRecords:
+      title: Audit Trail Records
+      description: A collection of SalesTim audit trails records.
+      type: object
+      properties:
+        "@odata.context":
+          description: Odata context
+          type: string
+        "@odata.count":
+          description: Number of audit trails records in the collection
+          type: integer
+          format: int32
+        value:
+          description: Array of audit trails records
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditTrailRecord"
+
+    AuditTrailRecord:
+      title: Audit Trail Record
+      description: A SalesTim audit trail record.
       type: object
 
     Labels:

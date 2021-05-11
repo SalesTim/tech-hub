@@ -20,6 +20,9 @@ import ApprovalTeamMember from './model/ApprovalTeamMember';
 import ApprovedApprovalResponsePayload from './model/ApprovedApprovalResponsePayload';
 import ApprovedApprovalResponsePayloadApprover from './model/ApprovedApprovalResponsePayloadApprover';
 import ApprovedApprovalResponsePayloadUpdates from './model/ApprovedApprovalResponsePayloadUpdates';
+import AuditTrail from './model/AuditTrail';
+import AuditTrailRecords from './model/AuditTrailRecords';
+import AuditTrails from './model/AuditTrails';
 import CatalogTemplate from './model/CatalogTemplate';
 import CatalogTemplateClonedTeam from './model/CatalogTemplateClonedTeam';
 import CatalogTemplateNewTeam from './model/CatalogTemplateNewTeam';
@@ -60,12 +63,13 @@ import TeamProvisioningRequestTemplate from './model/TeamProvisioningRequestTemp
 import User1 from './model/User1';
 import Users from './model/Users';
 import ApprovalsApi from './api/ApprovalsApi';
-import CatalogApi from './api/CatalogApi';
-import HooksApi from './api/HooksApi';
+import AuditTrailsApi from './api/AuditTrailsApi';
 import JobsApi from './api/JobsApi';
-import LabelsApi from './api/LabelsApi';
+import SensitivityLabelsApi from './api/SensitivityLabelsApi';
 import TeamsApi from './api/TeamsApi';
+import TemplatesCatalogApi from './api/TemplatesCatalogApi';
 import UsersApi from './api/UsersApi';
+import WebhooksApi from './api/WebhooksApi';
 
 
 /**
@@ -147,6 +151,24 @@ export {
      * @property {module:model/ApprovedApprovalResponsePayloadUpdates}
      */
     ApprovedApprovalResponsePayloadUpdates,
+
+    /**
+     * The AuditTrail model constructor.
+     * @property {module:model/AuditTrail}
+     */
+    AuditTrail,
+
+    /**
+     * The AuditTrailRecords model constructor.
+     * @property {module:model/AuditTrailRecords}
+     */
+    AuditTrailRecords,
+
+    /**
+     * The AuditTrails model constructor.
+     * @property {module:model/AuditTrails}
+     */
+    AuditTrails,
 
     /**
      * The CatalogTemplate model constructor.
@@ -389,16 +411,10 @@ export {
     ApprovalsApi,
 
     /**
-    * The CatalogApi service constructor.
-    * @property {module:api/CatalogApi}
+    * The AuditTrailsApi service constructor.
+    * @property {module:api/AuditTrailsApi}
     */
-    CatalogApi,
-
-    /**
-    * The HooksApi service constructor.
-    * @property {module:api/HooksApi}
-    */
-    HooksApi,
+    AuditTrailsApi,
 
     /**
     * The JobsApi service constructor.
@@ -407,10 +423,10 @@ export {
     JobsApi,
 
     /**
-    * The LabelsApi service constructor.
-    * @property {module:api/LabelsApi}
+    * The SensitivityLabelsApi service constructor.
+    * @property {module:api/SensitivityLabelsApi}
     */
-    LabelsApi,
+    SensitivityLabelsApi,
 
     /**
     * The TeamsApi service constructor.
@@ -419,8 +435,20 @@ export {
     TeamsApi,
 
     /**
+    * The TemplatesCatalogApi service constructor.
+    * @property {module:api/TemplatesCatalogApi}
+    */
+    TemplatesCatalogApi,
+
+    /**
     * The UsersApi service constructor.
     * @property {module:api/UsersApi}
     */
-    UsersApi
+    UsersApi,
+
+    /**
+    * The WebhooksApi service constructor.
+    * @property {module:api/WebhooksApi}
+    */
+    WebhooksApi
 };

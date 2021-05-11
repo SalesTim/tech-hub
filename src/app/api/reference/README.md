@@ -9,14 +9,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ApprovalsApi* | [**approveTeamCreation**](Apis/ApprovalsApi.md#approveteamcreation) | **POST** /approvals/{approvalRequestId}/approve | Approve a team creation request
 *ApprovalsApi* | [**rejectTeamCreation**](Apis/ApprovalsApi.md#rejectteamcreation) | **POST** /approvals/{approvalRequestId}/reject | Reject a team creation request
-*CatalogApi* | [**getCatalogTemplates**](Apis/CatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get teams templates
-*CatalogApi* | [**getMyCatalogTemplates**](Apis/CatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
-*HooksApi* | [**createHook**](Apis/HooksApi.md#createhook) | **POST** /hooks | Create a new webhook
-*HooksApi* | [**deleteHook**](Apis/HooksApi.md#deletehook) | **DELETE** /hooks/{hookId} | Delete a webhook
-*HooksApi* | [**generateHookSignature**](Apis/HooksApi.md#generatehooksignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
-*HooksApi* | [**getHooksEvents**](Apis/HooksApi.md#gethooksevents) | **GET** /hooks/events | Get webhooks events
+*AuditTrailsApi* | [**getAuditTrailRecords**](Apis/AuditTrailsApi.md#getaudittrailrecords) | **GET** /audittrails/{code}/records | Get all the records from an audit trail
+*AuditTrailsApi* | [**getAuditTrails**](Apis/AuditTrailsApi.md#getaudittrails) | **GET** /audittrails | Get audit trails
 *JobsApi* | [**getJob**](Apis/JobsApi.md#getjob) | **GET** /jobs/{jobId} | Get information about a job
-*LabelsApi* | [**getMyLabels**](Apis/LabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
+*SensitivityLabelsApi* | [**getMyLabels**](Apis/SensitivityLabelsApi.md#getmylabels) | **GET** /me/labels | Get my sensitivity labels
 *TeamsApi* | [**addTeamMember**](Apis/TeamsApi.md#addteammember) | **POST** /teams/{teamId}/members | Add a team member
 *TeamsApi* | [**archiveTeam**](Apis/TeamsApi.md#archiveteam) | **POST** /teams/{teamId}/archive | Archive a team
 *TeamsApi* | [**createTeamChannel**](Apis/TeamsApi.md#createteamchannel) | **POST** /teams/{teamId}/channels | Create a new team channel
@@ -29,7 +25,13 @@ Class | Method | HTTP request | Description
 *TeamsApi* | [**getTeamPrimaryChannel**](Apis/TeamsApi.md#getteamprimarychannel) | **GET** /teams/{teamId}/channels/primary | Get the primary channel of a team
 *TeamsApi* | [**unarchiveTeam**](Apis/TeamsApi.md#unarchiveteam) | **POST** /teams/{teamId}/unarchive | Unarchive a team
 *TeamsApi* | [**updateTeam**](Apis/TeamsApi.md#updateteam) | **PATCH** /teams/{teamId} | Update a team
+*TemplatesCatalogApi* | [**getCatalogTemplates**](Apis/TemplatesCatalogApi.md#getcatalogtemplates) | **GET** /catalog/templates | Get teams templates
+*TemplatesCatalogApi* | [**getMyCatalogTemplates**](Apis/TemplatesCatalogApi.md#getmycatalogtemplates) | **GET** /me/catalog/templates | Get my teams templates
 *UsersApi* | [**getUsers**](Apis/UsersApi.md#getusers) | **GET** /users | Retreive users from your Microsoft 365 environment
+*WebhooksApi* | [**createHook**](Apis/WebhooksApi.md#createhook) | **POST** /hooks | Create a new webhook
+*WebhooksApi* | [**deleteHook**](Apis/WebhooksApi.md#deletehook) | **DELETE** /hooks/{hookId} | Delete a webhook
+*WebhooksApi* | [**generateHookSignature**](Apis/WebhooksApi.md#generatehooksignature) | **POST** /hooks/signature | Generate a signature from a secret and a webhook payload
+*WebhooksApi* | [**getHooksEvents**](Apis/WebhooksApi.md#gethooksevents) | **GET** /hooks/events | Get webhooks events
 
 
 <a name="documentation-for-models"></a>
@@ -42,6 +44,9 @@ Class | Method | HTTP request | Description
  - [ApprovedApprovalResponsePayload](./Models/ApprovedApprovalResponsePayload.md)
  - [ApprovedApprovalResponsePayloadApprover](./Models/ApprovedApprovalResponsePayloadApprover.md)
  - [ApprovedApprovalResponsePayloadUpdates](./Models/ApprovedApprovalResponsePayloadUpdates.md)
+ - [AuditTrail](./Models/AuditTrail.md)
+ - [AuditTrailRecords](./Models/AuditTrailRecords.md)
+ - [AuditTrails](./Models/AuditTrails.md)
  - [CatalogTemplate](./Models/CatalogTemplate.md)
  - [CatalogTemplateClonedTeam](./Models/CatalogTemplateClonedTeam.md)
  - [CatalogTemplateNewTeam](./Models/CatalogTemplateNewTeam.md)

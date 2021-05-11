@@ -1,10 +1,11 @@
 Apis/ApprovalsApi.md
-Apis/CatalogApi.md
-Apis/HooksApi.md
+Apis/AuditTrailsApi.md
 Apis/JobsApi.md
-Apis/LabelsApi.md
+Apis/SensitivityLabelsApi.md
 Apis/TeamsApi.md
+Apis/TemplatesCatalogApi.md
 Apis/UsersApi.md
+Apis/WebhooksApi.md
 Models/ApiError.md
 Models/ApiErrorError.md
 Models/ApiErrorErrorInnerError.md
@@ -12,6 +13,9 @@ Models/ApprovalTeamMember.md
 Models/ApprovedApprovalResponsePayload.md
 Models/ApprovedApprovalResponsePayloadApprover.md
 Models/ApprovedApprovalResponsePayloadUpdates.md
+Models/AuditTrail.md
+Models/AuditTrailRecords.md
+Models/AuditTrails.md
 Models/CatalogTemplate.md
 Models/CatalogTemplateClonedTeam.md
 Models/CatalogTemplateNewTeam.md
