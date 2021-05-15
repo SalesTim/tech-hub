@@ -405,7 +405,7 @@ paths:
         family: DeleteTeam
         revision: 1
       summary: Delete a team
-      description: Delete a team. TIER 3️⃣ | ROLES - AUTHENTICATED_USER.
+      description: Delete a team.
       operationId: DeleteTeam
       externalDocs:
         url: https://developers.salestim.com/api/reference/Apis/TeamsApi.html#deleteteam

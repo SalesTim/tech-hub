@@ -53,7 +53,6 @@ tags:
       url: https://developers.salestim.com/api/reference/Apis/HooksApi
 
 paths:
-
   /audittrails:
     get:
       tags:
@@ -90,7 +89,7 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
-  
+
   /audittrails/{code}/records:
     get:
       tags:
@@ -134,7 +133,6 @@ paths:
           $ref: "#/components/responses/503"
         default:
           $ref: "#/components/responses/500"
-
 
   /approvals/{approvalRequestId}/approve:
     post:
@@ -1198,9 +1196,7 @@ paths:
           $ref: "#/components/responses/500"
 
 components:
-
   securitySchemes:
-
     bearerAuth:
       description: A valid Microsoft 365 access_token issued by Azure AD.
       type: http
@@ -1208,7 +1204,6 @@ components:
       bearerFormat: JWT
 
   requestBodies:
-
     TeamCreationApprovalRequestedNotificationPayload:
       description: Team Creation Approval Requested Notification Payload.
       content:
@@ -1506,7 +1501,6 @@ components:
                 type: object
 
   schemas:
-
     ApprovedApprovalResponsePayload:
       title: A positive approval response payload
       description: A positive approval response payload.
