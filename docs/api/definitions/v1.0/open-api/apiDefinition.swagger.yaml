@@ -2325,7 +2325,7 @@ components:
           type: string
         payload:
           description: Webhook payload
-          type: string
+          type: object
       required:
         - secret
         - payload

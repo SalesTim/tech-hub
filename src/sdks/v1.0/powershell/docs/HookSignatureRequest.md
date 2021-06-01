@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Secret** | **String** | Webhook secret | 
-**Payload** | **String** | Webhook payload | 
+**Payload** | [**SystemCollectionsHashtable**](.md) | Webhook payload | 
 
 ## Examples
 

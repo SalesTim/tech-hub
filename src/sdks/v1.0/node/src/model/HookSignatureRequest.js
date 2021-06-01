@@ -24,7 +24,7 @@ class HookSignatureRequest {
      * A HookSignatureRequest object comprised of the secret and payload.
      * @alias module:model/HookSignatureRequest
      * @param secret {String} Webhook secret
-     * @param payload {String} Webhook payload
+     * @param payload {Object} Webhook payload
      */
     constructor(secret, payload) { 
         
@@ -56,7 +56,7 @@ class HookSignatureRequest {
                 obj['secret'] = ApiClient.convertToType(data['secret'], 'String');
             }
             if (data.hasOwnProperty('payload')) {
-                obj['payload'] = ApiClient.convertToType(data['payload'], 'String');
+                obj['payload'] = ApiClient.convertToType(data['payload'], Object);
             }
         }
         return obj;
@@ -73,7 +73,7 @@ HookSignatureRequest.prototype['secret'] = undefined;
 
 /**
  * Webhook payload
- * @member {String} payload
+ * @member {Object} payload
  */
 HookSignatureRequest.prototype['payload'] = undefined;
 

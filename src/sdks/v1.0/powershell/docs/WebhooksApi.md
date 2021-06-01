@@ -125,7 +125,7 @@ $Configuration = Get-Configuration
 $Configuration.Username = "YOUR_USERNAME"
 $Configuration.Password = "YOUR_PASSWORD"
 
-$HookSignatureRequest = (Initialize-HookSignatureRequest -Secret "Secret_example" -Payload "Payload_example") # HookSignatureRequest | A HookSignatureRequest object comprised of the secret and payload.
+$HookSignatureRequest = (Initialize-HookSignatureRequest -Secret "Secret_example" -Payload "TODO") # HookSignatureRequest | A HookSignatureRequest object comprised of the secret and payload.
 
 # Generate a signature from a secret and a webhook payload
 try {

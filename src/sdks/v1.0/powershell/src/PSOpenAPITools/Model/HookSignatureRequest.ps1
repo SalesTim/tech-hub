@@ -31,7 +31,7 @@ function Initialize-HookSignatureRequest {
         [String]
         ${Secret},
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = $true)]
-        [String]
+        [PSCustomObject]
         ${Payload}
     )
 
