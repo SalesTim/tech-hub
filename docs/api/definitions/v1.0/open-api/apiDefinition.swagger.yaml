@@ -4,7 +4,7 @@ info:
   title: SalesTim API
   description: >
     The unified Microsoft Teams Governance API. Visit our [Tech Hub](https://developers.salestim.com/api/) for more information.
-  version: "1.2.1"
+  version: "1.2.3"
   termsOfService: https://www.salestim.com/legal/tos
   contact:
     name: SalesTim Support

@@ -1,6 +1,6 @@
 {
   "name": "tech-hub",
-  "version": "1.0.122",
+  "version": "1.0.123",
   "description": "SalesTim Tech Hub",
   "scripts": {
     "dev": "node ./node_modules/vuepress/cli.js dev src/app -p 3001 --no-clear-screen",
