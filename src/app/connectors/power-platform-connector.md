@@ -72,7 +72,7 @@ https://global.consent.azure-apim.net/redirect
 <input type="text" id="clientIdInput" style="width: 500px;" placeholder="Paste your Application ID here"></input>
 
 - Open the `Authentication` menu
-- Ensure that the `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)` options are chacked from the `Implicit grant and hybrid flows` section, and save your updates if required.
+- Ensure that the `Access tokens (used for implicit flows)` and `ID tokens (used for implicit and hybrid flows)` options are checked from the `Implicit grant and hybrid flows` section, and save your updates if required.
 - Open the `Certificates and secrets` menu and click `New client secret`. A client secret is a kind of a password for your app, so manage it carefully.
 - Give a name to your client secret such as:
 ```
