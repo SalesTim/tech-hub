@@ -24,7 +24,7 @@ This "standalone" package is a personal Microsoft Teams app comprised of the fol
 
 | Package name | Download link |
 |--------------|---------------|
-| SalesTim Standalone | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Standalone_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/packages/io.salestim.automation.standalone.prd.zip) |
+| SalesTim Standalone | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Standalone_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/clients/teams/io.salestim.automation.standalone.prd.zip) |
 
 ::: tip
 Deployment procedure: [Install SalesTim in Microsoft Teams](https://help.salestim.com/articles/3505270-install-salestim-app-on-microsoft-teams)
@@ -36,7 +36,7 @@ This "targeted" package is a personal Microsoft Teams app comprised of 1 tab (Ho
 
 | Package name | Download link |
 |--------------|---------------|
-| SalesTim Home | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Home_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/packages/io.salestim.automation.targeted.home.prd.zip) |
+| SalesTim Home | [![](https://img.shields.io/badge/Microsoft_Teams-Download_SalesTim_Home_Package-darkslateblue?logo=microsoft-teams&logoColor=white&style=flat)](https://dist.salestim.com/clients/teams/io.salestim.automation.targeted.home.prd.zip) |
 
 ::: tip Deployment procedure
 [Setup pinned apps](https://help.salestim.com/articles/3507463-set-up-the-home-page)
