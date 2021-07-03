@@ -29,7 +29,7 @@ Here is a short description of each flow:
 
 All the traffic from and to the SalesTim platform is encrypted (and HTTPS protocol enforced), using [TLS v1.2](https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices), ensuring secure communication between our customers and our platform. To do so, we’re using Azure Front Door as the only entry point to the app (web apps and API).
 
-You can review online our latest [Certificates Report](https://dist.salestim.com/audits/certificates_report.log)
+You can review online our latest [Certificate Report](https://dist.salestim.io/audits/certificates/certificate_report_app.txt)
 
 ::: tip Online SSL Test
 You can see a detailed report of our SSL certificate using this free online service that performs a deep analysis of the configuration of our SSL:  
