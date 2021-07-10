@@ -229,7 +229,7 @@
                           // change spec.servers here to add new entry, use concat to put it as the first & default one
                           spec.servers = [
                             {
-                              url: "https://devgmeweb.eu.ngrok.io/v1.0",
+                              url: "https://gme-dev-api.ngrok.io/v1.0",
                               description: "Development Environment",
                             },
                             {

@@ -180,7 +180,7 @@ function getApiRootUrl() {
     window.location.host.indexOf("localhost", 0) > -1 ||
     window.location.host.indexOf("devgme", 0) > -1
   ) {
-    apiRootUrl = 'https://devgmeweb.eu.ngrok.io/v1.0'
+    apiRootUrl = 'https://gme-dev-api.ngrok.io/v1.0'
   }
   return apiRootUrl
 }
